@@ -23,9 +23,9 @@
     "prettier:fix": "prettier --write ."
   },
   "dependencies": {
-    "@docusaurus/core": "^2.2.0",
-    "@docusaurus/plugin-ideal-image": "^2.2.0",
-    "@docusaurus/preset-classic": "^2.2.0",
+    "@docusaurus/core": "^2.4.3",
+    "@docusaurus/plugin-ideal-image": "^2.4.3",
+    "@docusaurus/preset-classic": "^2.4.3",
     "@mdx-js/react": "^1.6.22",
     "clsx": "^1.2.1",
     "docusaurus-plugin-sass": "^0.2.2",
@@ -35,7 +35,7 @@
     "sass": "^1.57.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^2.0.0",
+    "@docusaurus/module-type-aliases": "^2.4.3",
     "@tsconfig/docusaurus": "^1.0.5",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "eslint": "^8.30.0",
