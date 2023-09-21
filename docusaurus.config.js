@@ -59,17 +59,6 @@ const config = {
         disableInDev: false,
       },
     ],
-    [
-      "@docusaurus/plugin-client-redirects",
-      {
-        redirects: [
-          {
-            to: "/as399728",
-            from: "/.well-known/network/peering.txt",
-          },
-        ],
-      },
-    ],
   ],
   presets: [
     [
