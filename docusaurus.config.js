@@ -7,19 +7,20 @@ const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
+
 const config = {
   title: "P Foundation",
   tagline:
     "Software engineer interested in personal growth and tech trends. Cloud-native and open-source enthusiast.",
   url: "https://p.foundation",
   baseUrl: "/",
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
 
   // GitHub pages deployment config
   organizationName: "pfoundation",
-  projectName: "website",
+  projectName: "p.foundation",
 
   customFields: {
     newsletter: {
@@ -56,6 +57,17 @@ const config = {
         min: 500,
         steps: 4,
         disableInDev: false,
+      },
+    ],
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          {
+            to: "/as399728",
+            from: "/.well-known/network/peering.txt",
+          },
+        ],
       },
     ],
   ],
@@ -135,10 +147,10 @@ const config = {
             alt: "Twitter, now X Logo",
           },
           // {
-          //   href: "https://github.com.com/pfoundation",
-          //   className: "navbar-item-github",
-          //   position: "right",
-          //   alt: "Github Logo (Header)",
+          //   href: 'https://github.com.com/pfoundation',
+          //   className: 'navbar-item-github',
+          //   position: 'right',
+          //   alt: 'Github Logo (Header)',
           // },
         ],
       },
@@ -155,18 +167,18 @@ const config = {
           },
           {
             label: "AS399728",
-            to: "/399728",
+            to: "/as399728",
           },
           {
             label: "Contact",
             href: "mailto:hello@p.foundation",
           },
           // {
-          //   label: "PFS",
-          //   to: "/pfs",
+          //   label: 'PFS',
+          //   to: '/pfs',
           // },
         ],
-        copyright: `<p class="footer--address">700 12th St NW, Washington, DC 20005</p> <p class="footer--copyright">© ${new Date().getFullYear()} P Foundation, some rights reserved.</p>`,
+        copyright: `<p class='footer--address'>700 12th St NW, Washington, DC 20005</p> <p class='footer--copyright'>© ${new Date().getFullYear()} P Foundation, some rights reserved.</p>`,
       },
       // algolia: {
       //   appId: '5DLGGOZ8KA',
