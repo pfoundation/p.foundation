@@ -14,6 +14,7 @@ export interface ProgramMetadata {
   description: React.ReactNode;
   beneficiaries: programBeneficiaries[];
   recordingURL?: string;
+  applyURL?: string;
   slidesURL?: string;
   repoURL?: string;
 }
@@ -21,7 +22,7 @@ export interface ProgramMetadata {
 export interface programBeneficiaries {
   name: string;
   location: string;
-  date: Date;
+  date: string;
 }
 
 const Program: FunctionComponent<ProgramMetadata> = ({
@@ -31,6 +32,7 @@ const Program: FunctionComponent<ProgramMetadata> = ({
   recordingURL,
   slidesURL,
   repoURL,
+  applyURL,
 }) => {
   return (
     <div className="col col--12">
@@ -48,6 +50,18 @@ const Program: FunctionComponent<ProgramMetadata> = ({
         </div>
         <div className="card__footer">
           <div className={styles.buttons}>
+            {applyURL && (
+              <a
+                href={applyURL}
+                target="_blank"
+                className="button button--primary button--outline"
+              >
+                <span className="button__icon">
+                  <MessageIcon />
+                </span>
+                Apply
+              </a>
+            )}
             {recordingURL && (
               <a
                 href={recordingURL}
@@ -111,17 +125,17 @@ const ProgramDetails: FunctionComponent<{ data: programBeneficiaries[] }> = ({
             <LocationIcon className={styles.icon} /> {location}
           </li>
           <li>
-            <CalendarIcon className={styles.icon} /> {formatDateString(date)}
+            <CalendarIcon className={styles.icon} /> {date}
           </li>
         </ul>
       </div>
       {data.length > 1 && (
         <div className="col col--12">
-          <p className="margin--none">Also presented on:</p>
+          <p className="margin--none">Current public beneficiaries</p>
           <ul>
             {otherPrograms.map(({ name, location, date }) => (
               <li key={name}>
-                <strong>{name}</strong> in {location} ({formatDateString(date)})
+                <strong>{name}</strong> in {location} since {date}
               </li>
             ))}
           </ul>

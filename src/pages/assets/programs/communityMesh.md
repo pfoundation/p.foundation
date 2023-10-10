@@ -1,0 +1,7 @@
+The P Foundation recognizes that reliable internet access is not merely a convenience but a pivotal component in ensuring the seamless operation of public services and the overall well-being of communities. The "Community Mesh" program has been meticulously crafted to address gaps in internet connectivity, specifically targeting critical installations where an interruption in access can lead to significant disruptions in essential public services.
+
+Our dedicated team employs a systematic approach, actively scanning media channels to pinpoint these critical installations that require our intervention. While our proactive measures are comprehensive, we also acknowledge and value inputs from external stakeholders and the public at large. Suggestions and insights are welcomed and can be submitted for consideration at cmp@p.foundation.
+
+Additionally, the Community Mesh program has expanded its purview to encompass special event support, particularly for legal and civic rights events. Recognizing the intricate connectivity needs these events may have, our program provides specially designed mega capacity internet access zones. These zones are equipped to support connectivity for over 1500 devices simultaneously, and are fortified with a redundant internet backbone to ensure uninterrupted service.
+
+Event organizers who seek robust internet support for their gatherings are encouraged to liaise with our team. Requests and inquiries can be directed to cmp@p.foundation for further coordination.

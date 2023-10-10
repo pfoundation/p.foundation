@@ -4,61 +4,38 @@ import Layout from "@theme/Layout";
 import Program, { ProgramMetadata } from "../components/programs/Programs";
 
 import BuildingGQLAPIForK8sResDescription from "./assets/programs/_building-gql-api-for-k8s-res.md";
-import DevTeamCollaborationGitBestPracticesDescription from "./assets/programs/_dev-team-collaboration-git-best-practices.md";
-import GraphQLInGoDescription from "./assets/programs/_graphql-in-go.md";
+import CommunityMesh from "./assets/programs/communityMesh.md";
+import MediaGuard from "./assets/programs/mediaGuard.md";
 
 const programs: ProgramMetadata[] = [
   {
-    title: "Building GraphQL API for Kubernetes resources",
-    description: <BuildingGQLAPIForK8sResDescription />,
+    title: "Media Guard",
+    description: <MediaGuard />,
     beneficiaries: [
       {
-        name: "Cloud Native Warsaw",
-        location: "Warsaw, Poland",
-        date: new Date(2019, 8, 10),
+        name: "mediaguard@p.foundation",
+        location: "Worldwide",
+        date: "No deadline",
       },
       {
-        name: "SAP Kubernetes Summit",
-        location: "St. Leon-Rot, Germany",
-        date: new Date(2019, 6, 17),
-      },
-      {
-        name: "San Diego Cloud Native Computing Meetup",
-        location: "San Diego, USA",
-        date: new Date(2019, 10, 26),
+        name: "NA",
+        location: "NA",
+        date: "XA",
       },
     ],
-    recordingURL: "https://www.youtube.com/watch?v=u_hRoDvKC6Q",
-    slidesURL:
-      "https://docs.google.com/presentation/d/1tcm6lH5Z8-El5A-kyHttIm_jJ92WPyPZ5ZQempA6vJQ/edit",
+    applyURL: "mailto:mediaguard@p.foundation",
   },
   {
-    title: "Development team collaboration: Git best practices",
-    description: <DevTeamCollaborationGitBestPracticesDescription />,
+    title: "Community Mesh",
+    description: <CommunityMesh />,
     beneficiaries: [
       {
-        name: "SAP Labs Hack Your Career",
-        location: "Gliwice, Poland",
-        date: new Date(2019, 2, 26),
+        name: "cmp@p.foundation",
+        location: "Lebanon",
+        date: "Open",
       },
     ],
-    slidesURL:
-      "https://docs.google.com/presentation/d/12Izhj479oZ7ilDsAgljwBBHXt4_cPsX120QZtf1hIA4/edit",
-  },
-  {
-    title: "GraphQL in Go",
-    description: <GraphQLInGoDescription />,
-    beneficiaries: [
-      {
-        name: "Gophers Silesia",
-        location: "Katowice, Poland",
-        date: new Date(2018, 4, 10),
-      },
-    ],
-    recordingURL: "https://www.youtube.com/watch?v=NjFXLbJvZmQ",
-    slidesURL:
-      "https://docs.google.com/presentation/d/1v6H21vHMd_rAZ9qjXcags2dMR2OYR-kQkarNVJZxbOs/edit",
-    repoURL: "https://github.com/pkosiec/golang-graphql-samples",
+    applyURL: "mailto:cmp@p.foundation",
   },
 ];
 
