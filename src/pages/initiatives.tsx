@@ -1,71 +1,50 @@
 import React from "react";
 import Layout from "@theme/Layout";
 
-import Program, { ProgramMetadata } from "../components/programs/Programs";
+import { Project, ProjectData } from "../components/projects/Project";
 
-import BuildingGQLAPIForK8sResDescription from "./assets/programs/_building-gql-api-for-k8s-res.md";
-import DevTeamCollaborationGitBestPracticesDescription from "./assets/programs/_dev-team-collaboration-git-best-practices.md";
-import GraphQLInGoDescription from "./assets/programs/_graphql-in-go.md";
-
-const programs: ProgramMetadata[] = [
+const assetsDir = "./assets/projects";
+const projects: ProjectData[] = [
   {
-    title: "Building GraphQL API for Kubernetes resources",
-    description: <BuildingGQLAPIForK8sResDescription />,
-    beneficiaries: [
-      {
-        name: "Cloud Native Warsaw",
-        location: "Warsaw, Poland",
-        date: new Date(2019, 8, 10),
-      },
-      {
-        name: "SAP Kubernetes Summit",
-        location: "St. Leon-Rot, Germany",
-        date: new Date(2019, 6, 17),
-      },
-      {
-        name: "San Diego Cloud Native Computing Meetup",
-        location: "San Diego, USA",
-        date: new Date(2019, 10, 26),
-      },
-    ],
-    recordingURL: "https://www.youtube.com/watch?v=u_hRoDvKC6Q",
-    slidesURL:
-      "https://docs.google.com/presentation/d/1tcm6lH5Z8-El5A-kyHttIm_jJ92WPyPZ5ZQempA6vJQ/edit",
+    title: "LebanonAlerts",
+    description: `Established in the wake of the 6 February 2023 Turkey-Syria earthquake, "Lebanon Alerts" is a X account committed to bridging the information gap experienced by the Lebanese populace. Born from the pressing need for transparency and timely updates, the account integrates with Raspberry Shake and global seismographic networks, delivering real-time seismic activity reports. Additionally, a dedicated YouTube live stream offers a continuous visual of the seismographs, ensuring data transparency and public awareness.`,
+    image: require(`${assetsDir}/capact.png`),
+    role: "Active",
+    x: "LebanonAlerts",
+    youtube: "LebanonAlerts",
   },
   {
-    title: "Development team collaboration: Git best practices",
-    description: <DevTeamCollaborationGitBestPracticesDescription />,
-    beneficiaries: [
-      {
-        name: "SAP Labs Hack Your Career",
-        location: "Gliwice, Poland",
-        date: new Date(2019, 2, 26),
-      },
-    ],
-    slidesURL:
-      "https://docs.google.com/presentation/d/12Izhj479oZ7ilDsAgljwBBHXt4_cPsX120QZtf1hIA4/edit",
+    title: "Lebanon IA Monitor",
+    description: `A pivotal initiative aimed at maintaining transparency in Lebanon's internet landscape. Recognizing that ISPs often refrain from acknowledging outages, especially when attributed to maintenance or sourcing lapses, this platform diligently monitors internet access across various providers. Offering real-time outage reports, it harnesses data from diverse sources such as real-time traffic to partner websites/apps, RIPE Atlas, and a network of mobile devices strategically placed throughout Lebanon.`,
+    image: require(`${assetsDir}/mongo-seeding.png`),
+    role: "Active",
+    x: "LebanonIAMonitor",
   },
   {
-    title: "GraphQL in Go",
-    description: <GraphQLInGoDescription />,
-    beneficiaries: [
-      {
-        name: "Gophers Silesia",
-        location: "Katowice, Poland",
-        date: new Date(2018, 4, 10),
-      },
-    ],
-    recordingURL: "https://www.youtube.com/watch?v=NjFXLbJvZmQ",
-    slidesURL:
-      "https://docs.google.com/presentation/d/1v6H21vHMd_rAZ9qjXcags2dMR2OYR-kQkarNVJZxbOs/edit",
-    repoURL: "https://github.com/pkosiec/golang-graphql-samples",
+    title: "PTUN",
+    description: ``,
+    url: "https:///",
+    image: require(`${assetsDir}/botkube.png`),
+    role: "Active",
+  },
+  {
+    title: "Open Reporting",
+    description: ``,
+    image: require(`${assetsDir}/botkube.png`),
+    role: "Queued",
+  },
+  {
+    title: "National Digital Archive",
+    description: ``,
+    image: require(`${assetsDir}/botkube.png`),
+    role: "Queued",
   },
 ];
 
-const title = "Programs";
-const description = "Current active programs";
+const title = "Initiaves";
+const description = "Featured initiatives we are involved in.";
 
-export default function Programs(): JSX.Element {
+export default function Projects(): JSX.Element {
   return (
     <Layout title={title} description={description}>
       <main className="container container--fluid margin-vert--lg">
@@ -73,8 +52,8 @@ export default function Programs(): JSX.Element {
         <p>{description}</p>
 
         <div className="row">
-          {programs.map((programData) => (
-            <Program key={programData.title} {...programData} />
+          {projects.map((project) => (
+            <Project key={project.title} {...project} />
           ))}
         </div>
       </main>

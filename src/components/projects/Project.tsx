@@ -3,13 +3,17 @@ import React, { FunctionComponent } from "react";
 import Image from "@theme/IdealImage";
 
 import DiscoverIcon from "./assets/icon-discover.svg";
+import XIcon from "./assets/icon-x.svg";
+import YoutubeIcon from "./assets/icon-youtube.svg";
 import styles from "./Project.module.scss";
 
 export interface ProjectData {
   title: string;
   description: string;
   role?: string;
-  url: string;
+  url?: string;
+  x?: string;
+  youtube?: string;
   image: string;
 }
 
@@ -17,6 +21,8 @@ export const Project: FunctionComponent<ProjectData> = ({
   title,
   description,
   url,
+  x,
+  youtube,
   role,
   image,
 }) => {
@@ -27,7 +33,7 @@ export const Project: FunctionComponent<ProjectData> = ({
           <Image img={image} alt={description} title={title} />
           {role && (
             <span className={clsx("badge badge--secondary", styles.role)}>
-              Role: {role}
+              {role}
             </span>
           )}
         </div>
@@ -36,16 +42,44 @@ export const Project: FunctionComponent<ProjectData> = ({
           <p>{description}</p>
         </div>
         <div className="card__footer">
-          <a
-            href={url}
-            target="_blank"
-            className="button button--primary button--outline"
-          >
-            <span className="button__icon">
-              <DiscoverIcon />
-            </span>
-            Discover
-          </a>
+          <div className={styles.buttons}>
+            {url && (
+              <a
+                href={url}
+                target="_blank"
+                className="button button--primary button--outline"
+              >
+                <span className="button__icon">
+                  <DiscoverIcon className={styles.icon} />
+                </span>
+                Discover
+              </a>
+            )}
+            {x && (
+              <a
+                href={`https://twitter.com/${x}`}
+                target="_blank"
+                className="button button--primary button--outline"
+              >
+                <span className="button__icon">
+                  <XIcon className={styles.icon} />
+                </span>
+                {x}
+              </a>
+            )}
+            {youtube && (
+              <a
+                href={`https://youtube.com/@${x}`}
+                target="_blank"
+                className="button button--primary button--outline"
+              >
+                <span className="button__icon">
+                  <YoutubeIcon className={styles.icon} />
+                </span>
+                {youtube}
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </div>
