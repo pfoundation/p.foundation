@@ -9,7 +9,7 @@ import {
 import { Hero } from "../components/homepage/Hero";
 
 import avatar from "./assets/index/avatar.jpg";
-import AboutMeDesc from "./assets/index/_about-me.md";
+import AboutMeDesc from "./assets/index/_about.md";
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();

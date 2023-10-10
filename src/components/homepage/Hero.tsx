@@ -8,13 +8,14 @@ export const Hero: FunctionComponent = () => {
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className="container">
         <h1 className={clsx("hero__title", styles.title)}>
-          Hi. I'm <span className={styles.highlighted}>Paweł Kosiec</span>,
-          <br />
-          Full-stack Cloud Developer.
+          Empowering nations through{" "}
+          <span className={styles.highlighted}>open internet</span>, and{" "}
+          <span className={styles.highlighted}>free journalism.</span>.
         </h1>
         <p className={clsx("hero__subtitle", styles.subtitle)}>
-          Software engineer interested in personal growth and tech trends.
-          <br /> Cloud-native and open-source enthusiast.
+          Bridging the digital divide, the P Foundation is committed to
+          connecting communities and fostering a world of informed, global
+          collaboration.
         </p>
       </div>
     </header>

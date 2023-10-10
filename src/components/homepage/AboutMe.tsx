@@ -16,8 +16,8 @@ export const AboutMe: FunctionComponent<AboutMeProps> = ({
     <div className="margin-top--lg">
       <h2>About us</h2>
       <div className="row">
-        <div className="col col--6">{descriptionComponent}</div>
-        <div className={clsx("col col--5", styles.avatarContainer)}>
+        <div className="col col--9">{descriptionComponent}</div>
+        <div className={clsx("col col--2", styles.avatarContainer)}>
           <div className={styles.avatar}>
             <Image img={avatar} />
           </div>
