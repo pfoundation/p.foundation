@@ -119,10 +119,6 @@ const config = {
             to: "/programs",
             label: "Programs",
             position: "left",
-            items: [
-              { to: "/programs", label: "Education" },
-              { to: "/programs", label: "Health" },
-            ],
           },
           { to: "/initiatives", label: "Initiatives", position: "left" },
           {
