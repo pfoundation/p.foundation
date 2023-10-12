@@ -126,7 +126,7 @@ const config = {
             position: "right",
           },
           {
-            href: "https://x.com/pfoundation",
+            href: "https://x.com/tpfndn",
             className: "navbar-item-x",
             position: "right",
             alt: "Twitter, now X Logo",
