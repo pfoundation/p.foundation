@@ -18,7 +18,7 @@ export default function Home(): JSX.Element {
       <Hero />
       <main>
         <div className="container padding-vert">
-          <AboutMe avatar={avatar} descriptionComponent={<AboutMeDesc />} />
+          {/** <AboutMe avatar={avatar} descriptionComponent={<AboutMeDesc />} /> */}
         </div>
       </main>
     </Layout>
