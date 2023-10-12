@@ -8,7 +8,7 @@ import {
 } from "../components/homepage/SocialLinks";
 import { Hero } from "../components/homepage/Hero";
 
-import avatar from "./assets/index/avatar.jpg";
+//import avatar from "./assets/index/avatar.jpg";
 import AboutMeDesc from "./assets/index/_about.md";
 
 export default function Home(): JSX.Element {
@@ -18,7 +18,7 @@ export default function Home(): JSX.Element {
       <Hero />
       <main>
         <div className="container padding-vert">
-          {/** <AboutMe avatar={avatar} descriptionComponent={<AboutMeDesc />} /> */}
+          <AboutMe descriptionComponent={<AboutMeDesc />} />
         </div>
       </main>
     </Layout>

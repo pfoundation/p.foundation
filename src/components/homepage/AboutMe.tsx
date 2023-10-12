@@ -4,7 +4,7 @@ import Image from "@theme/IdealImage";
 import styles from "./AboutMe.module.scss";
 
 export interface AboutMeProps {
-  avatar: string;
+  avatar?: string;
   descriptionComponent: React.ReactNode;
 }
 
@@ -18,9 +18,7 @@ export const AboutMe: FunctionComponent<AboutMeProps> = ({
       <div className="row">
         <div className="col col--9">{descriptionComponent}</div>
         <div className={clsx("col col--2", styles.avatarContainer)}>
-          <div className={styles.avatar}>
-            <Image img={avatar} />
-          </div>
+          <div className={styles.avatar}></div>
         </div>
       </div>
     </div>
