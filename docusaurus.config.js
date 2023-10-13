@@ -42,9 +42,9 @@ const config = {
       en: {
         htmlLang: "en-US",
       },
-      ar: {
-        direction: "rtl",
-      },
+      // ar: {
+      //   direction: "rtl",
+      // },
     },
   },
   plugins: [
