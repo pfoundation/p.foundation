@@ -59,6 +59,13 @@ const config = {
         disableInDev: false,
       },
     ],
+    [
+      "@docusaurus/plugin-google-gtag",
+      {
+        trackingID: "G-TPGR86P8FH",
+        anonymizeIP: false,
+      },
+    ],
   ],
   presets: [
     [
