@@ -15,19 +15,13 @@ _Founded in 2021 and duly recognized as a 501(c)(3) non-profit organization base
 
 In the wake of escalating tensions and recent events in Gaza, we are increasingly concerned about the high likelihood of a military conflict erupting between Israel and Lebanon.
 
-## Infrastructure Concerns
-
 Possessing an in-depth understanding of Lebanon's Internet Infrastructure, we project that even without targeted attacks on vital internet nodes and in the absence of a national diesel reserve, most local exchange points are at risk of depleting their diesel reserves. Should this occur, a widespread internet blackout across Lebanon would be inevitable within one to two weeks.
 
 ## Our Initiative
 
 While we have successfully secured funds for our Media Guard Emergency Plan, we are actively seeking immediate donors to contribute to our Community Mesh Program.
 
-## Importance of Communication
-
 Given the displacement of populations and the extreme stress associated with wartime conditions, maintaining communication lines and internet access will become indispensable for residents to stay connected both within and beyond the country's borders.
-
-## Program Expansion
 
 As we await the final authorizations to deploy temporary satellite internet access, we aim to broaden the reach of our Community Mesh Program by integrating an additional 150 communities.
 
@@ -35,15 +29,11 @@ As we await the final authorizations to deploy temporary satellite internet acce
 
 Each community will be equipped with a compact satellite dish for internet access and a Wi-Fi access point capable of supporting up to 300 devices simultaneously. The system is powered by solar panels and supplemented with a small battery, enabling limited nighttime usage.
 
-## Operational Management
-
 Depending on the location, the management and upkeep of the mesh will be delegated either to the local municipality or a partnering non-profit organization. Volunteers will be stationed to ensure stable access and offer any required guidance to the public.
 
 ## Geographical Distribution
 
 We intend to deploy these mesh networks in densely populated regions like Beirut, Mount Lebanon, and North Lebanon, based on multiple criteria. The public will be informed of the mesh locations via our website or through a dedicated local phone number.
-
-## Capacity Limitations
 
 Should the demand surpass our current capabilities, we plan to rotate the mesh networks among various locations, thus maximizing the number of people who can gain internet access.
 
