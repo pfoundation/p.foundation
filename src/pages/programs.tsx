@@ -17,11 +17,11 @@ const programs: ProgramMetadata[] = [
         location: "Worldwide",
         date: "No deadline",
       },
-      {
-        name: "NA",
-        location: "NA",
-        date: "XA",
-      },
+      // {
+      //   name: "NA",
+      //   location: "NA",
+      //   date: "XA",
+      // },
     ],
     applyURL: "mailto:mediaguard@p.foundation",
   },
