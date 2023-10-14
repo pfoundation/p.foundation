@@ -42,9 +42,9 @@ const config = {
       en: {
         htmlLang: "en-US",
       },
-      // ar: {
-      //   direction: "rtl",
-      // },
+      ar: {
+        direction: "rtl",
+      },
     },
   },
   plugins: [
@@ -128,10 +128,10 @@ const config = {
             position: "left",
           },
           { to: "/initiatives", label: "Initiatives", position: "left" },
-          {
-            type: "localeDropdown",
-            position: "right",
-          },
+          // {
+          //   type: "localeDropdown",
+          //   position: "right",
+          // },
           {
             href: "https://x.com/tpfndn",
             className: "navbar-item-x",
