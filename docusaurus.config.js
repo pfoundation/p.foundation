@@ -97,7 +97,7 @@ const config = {
         {
           name: "description",
           content:
-            "I am software developer interested in technology and gadgets. Cloud-native and open-source enthusiast.",
+            "Empowering nations through open internet, and free journalism.",
         },
         {
           name: "keywords",
@@ -105,7 +105,8 @@ const config = {
         },
         {
           name: "twitter:card",
-          content: "summary",
+          content:
+            "Empowering nations through open internet, and free journalism.",
         },
       ],
       colorMode: {
