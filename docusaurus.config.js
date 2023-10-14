@@ -92,7 +92,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: "img/logo-small.png",
+      image: "img/logo.png",
       metadata: [
         {
           name: "description",
@@ -114,11 +114,11 @@ const config = {
       },
       navbar: {
         hideOnScroll: false,
-        title: "P Foundation",
+        //title: "P Foundation",
         logo: {
-          alt: "P Foundation Logo",
+          alt: "P Foundation",
           src: "img/logo.svg",
-          srcDark: "img/logo-white.svg",
+          srcDark: "img/logoDark.svg",
         },
         items: [
           //{ to: '/blog', label: 'Blog', position: 'left' },

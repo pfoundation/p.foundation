@@ -30,6 +30,7 @@ h5 {
   --ifm-footer-padding-vertical: calc(var(--ifm-spacing-vertical) * 3);
 
   --ifm-global-radius: 0.3rem;
+  --ifm-navbar-height: 5rem;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -51,6 +52,10 @@ html[data-theme="dark"] {
   .navbar {
     border-bottom: 1px solid var(--ifm-color-emphasis-200);
   }
+}
+
+.navbar__logo {
+  height: 3.5rem;
 }
 
 .footer {
