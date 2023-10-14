@@ -11,7 +11,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "P Foundation",
   tagline: "Empowering nations through open internet, and free journalism.",
-  url: "https://p.foundation",
+  url: "https://www.p.foundation",
   baseUrl: "/",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
