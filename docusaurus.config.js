@@ -10,8 +10,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 const config = {
   title: "P Foundation",
-  tagline:
-    "Software engineer interested in personal growth and tech trends. Cloud-native and open-source enthusiast.",
+  tagline: "Empowering nations through open internet, and free journalism.",
   url: "https://p.foundation",
   baseUrl: "/",
   onBrokenLinks: "warn",
@@ -66,6 +65,25 @@ const config = {
         anonymizeIP: false,
       },
     ],
+    [
+      "@docusaurus/plugin-content-blog",
+      {
+        /**
+         * Required for any multi-instance plugin
+         */
+        id: "messages",
+        /**
+         * URL route for the blog section of your site.
+         * *DO NOT* include a trailing slash.
+         */
+        routeBasePath: "messages",
+        /**
+         * Path to data on filesystem relative to site dir.
+         */
+        path: "./messages",
+        blogSidebarCount: 0,
+      },
+    ],
   ],
   presets: [
     [
@@ -73,15 +91,15 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: false,
-        blog: false,
-        //blog: {
+        // blog: {
+        //   routeBasePath: "/",
         //   showReadingTime: true,
-        //   editUrl: 'https://github.com/pfoundation/website/tree/main/',
+        //   editUrl: "https://github.com/pfoundation/p.foundation/tree/master/",
         //   feedOptions: {
-        //     type: 'all',
+        //     type: "all",
         //     copyright: `Copyright © ${new Date().getFullYear()} P Foundation`,
         //   },
-        //},
+        // },
         theme: {
           customCss: [require.resolve("./src/css/custom.scss")],
         },
