@@ -4,6 +4,6 @@ It's our way of walking beside media organizations from all around the world, of
 
 Designed to bolster media organizations globally, Media Guard extends tailored support, ensuring they maintain a consistent and uninterrupted media presence.
 
-Depending on the specific needs of each organization, our aid encompasses a variety of services including backhaul support, downlinking, digital streaming, and content distribution. Media organizations from every corner of the globe are welcome to join us in our mission.
+Depending on the specific needs of each organization, our aid encompasses a variety of services including backhaul support, downlinking, digital streaming, and content distribution.
 
 The program is available for media organizations around the world. Organizations interested in taking part in our program can apply at mediaguard@p.foundation.
