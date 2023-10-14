@@ -9,9 +9,7 @@ hide_table_of_contents: false
 date: 2023-10-13T23:00
 ---
 
-## Introduction
-
-Founded in 2021 and duly recognized as a 501(c)(3) non-profit organization based in Washington, DC, the P Foundation is anchored in a strong conviction about the transformative power of media and technology. We are unwaveringly committed to fostering progress and uplifting the communities we serve. Central to our mission is the philosophy that an open internet and unrestricted journalism serve as the lifeblood of progressive societies, weaving together the essential elements of transparency, accountability, and unfettered expression.
+_Founded in 2021 and duly recognized as a 501(c)(3) non-profit organization based in Washington, DC, the P Foundation is anchored in a strong conviction about the transformative power of media and technology. We are unwaveringly committed to fostering progress and uplifting the communities we serve. Central to our mission is the philosophy that an open internet and unrestricted journalism serve as the lifeblood of progressive societies, weaving together the essential elements of transparency, accountability, and unfettered expression._
 
 ## Situation Overview
 
