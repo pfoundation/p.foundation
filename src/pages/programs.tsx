@@ -15,7 +15,7 @@ const programs: ProgramMetadata[] = [
       {
         name: "mediaguard@p.foundation",
         location: "Worldwide",
-        date: "No deadline",
+        date: "Open/Extended Deadline",
       },
       // {
       //   name: "NA",
