@@ -1,4 +1,4 @@
-@import "../../css/mixins";
+@import '../../css/mixins';
 
 .card {
   border: 1px solid var(--ifm-color-emphasis-300);
@@ -46,7 +46,7 @@
   position: relative;
   top: 2px;
 
-  [data-theme="dark"] & {
+  [data-theme='dark'] & {
     fill: var(--ifm-font-color-base);
   }
 }

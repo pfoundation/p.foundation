@@ -1,7 +1,7 @@
-import clsx from "clsx";
-import React, { FunctionComponent } from "react";
+import clsx from 'clsx';
+import React, { FunctionComponent } from 'react';
 
-import styles from "./SocialLinks.module.scss";
+import styles from './SocialLinks.module.scss';
 
 export interface SocialLinkData {
   name: string;
@@ -15,8 +15,8 @@ export interface SocialLinksProps {
 
 export const defaultSocialLinkData = [
   {
-    name: "GitHub",
-    url: "https://github.com/pfoundation",
+    name: 'GitHub',
+    url: 'https://github.com/pfoundation',
     svg: (
       <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <title>GitHub</title>
@@ -25,8 +25,8 @@ export const defaultSocialLinkData = [
     ),
   },
   {
-    name: "X",
-    url: "https://x.com/pfoundation",
+    name: 'X',
+    url: 'https://x.com/pfoundation',
     svg: (
       <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <title>Twitter</title>
@@ -38,11 +38,11 @@ export const defaultSocialLinkData = [
 
 export const SocialLinks: FunctionComponent<SocialLinksProps> = ({ data }) => {
   const socialLinksComponents = data.map(({ name, url, svg }) => (
-    <div className={clsx("col", styles.col)} key={name}>
+    <div className={clsx('col', styles.col)} key={name}>
       <a
         href={url}
         target="_blank"
-        className={clsx("button button--outline button--primary", styles.btn)}
+        className={clsx('button button--outline button--primary', styles.btn)}
       >
         <span className={styles.btnIcon}>{svg}</span>
       </a>
@@ -51,7 +51,7 @@ export const SocialLinks: FunctionComponent<SocialLinksProps> = ({ data }) => {
 
   return (
     <div className={styles.socialContainer}>
-      <div className={clsx("row", styles.socialLinks)}>
+      <div className={clsx('row', styles.socialLinks)}>
         {socialLinksComponents}
       </div>
     </div>

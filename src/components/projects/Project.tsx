@@ -1,11 +1,11 @@
-import clsx from "clsx";
-import React, { FunctionComponent } from "react";
-import Image from "@theme/IdealImage";
+import clsx from 'clsx';
+import React, { FunctionComponent } from 'react';
+import Image from '@theme/IdealImage';
 
-import DiscoverIcon from "./assets/icon-discover.svg";
-import XIcon from "./assets/icon-x.svg";
-import YoutubeIcon from "./assets/icon-youtube.svg";
-import styles from "./Project.module.scss";
+import DiscoverIcon from './assets/icon-discover.svg';
+import XIcon from './assets/icon-x.svg';
+import YoutubeIcon from './assets/icon-youtube.svg';
+import styles from './Project.module.scss';
 
 export interface ProjectData {
   title: string;
@@ -27,12 +27,12 @@ export const Project: FunctionComponent<ProjectData> = ({
   image,
 }) => {
   return (
-    <div className={clsx("col col--6", styles.cardContainer)}>
-      <div className={clsx("card", styles.card)}>
-        <div className={clsx("card__image", styles.image)}>
+    <div className={clsx('col col--6', styles.cardContainer)}>
+      <div className={clsx('card', styles.card)}>
+        <div className={clsx('card__image', styles.image)}>
           <Image img={image} alt={description} title={title} />
           {role && (
-            <span className={clsx("badge badge--secondary", styles.role)}>
+            <span className={clsx('badge badge--secondary', styles.role)}>
               {role}
             </span>
           )}

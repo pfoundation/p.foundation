@@ -1,4 +1,4 @@
-@import "../../css/mixins";
+@import '../../css/mixins';
 
 .card {
   margin-bottom: calc(var(--ifm-spacing-horizontal) * 2);
@@ -46,7 +46,7 @@
   position: relative;
   top: 4px;
 
-  [data-theme="dark"] & {
+  [data-theme='dark'] & {
     fill: var(--ifm-font-color-base);
   }
 }

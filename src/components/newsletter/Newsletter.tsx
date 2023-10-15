@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent } from 'react';
 
-import NewsIcon from "./assets/icon-news.svg";
+import NewsIcon from './assets/icon-news.svg';
 
-import styles from "./Newsletter.module.scss";
+import styles from './Newsletter.module.scss';
 
 export interface NewsletterProps {
   data: NewsletterData;
@@ -10,7 +10,7 @@ export interface NewsletterProps {
 
 export interface NewsletterData {
   action: string;
-  method: "get" | "post";
+  method: 'get' | 'post';
   emailFieldName: string;
   firstNameFieldName: string;
   submitButtonName: string;
@@ -50,7 +50,7 @@ export const Newsletter: FunctionComponent<NewsletterProps> = ({ data }) => {
           />
           {/* <input name={firstNameFieldName} placeholder="Your first name" /> */}
           <div
-            style={{ position: "absolute", left: "-5000px" }}
+            style={{ position: 'absolute', left: '-5000px' }}
             aria-hidden="true"
           >
             <input

@@ -1,15 +1,15 @@
-import React from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Layout from "@theme/Layout";
-import { AboutMe } from "../components/homepage/AboutMe";
+import React from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Layout from '@theme/Layout';
+import { AboutMe } from '../components/homepage/AboutMe';
 import {
   SocialLinkData,
   SocialLinks,
-} from "../components/homepage/SocialLinks";
-import { Hero } from "../components/homepage/Hero";
+} from '../components/homepage/SocialLinks';
+import { Hero } from '../components/homepage/Hero';
 
 //import avatar from "./assets/index/avatar.jpg";
-import AboutMeDesc from "./assets/index/_about.md";
+import AboutMeDesc from './assets/index/_about.md';
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();

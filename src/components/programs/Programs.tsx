@@ -1,13 +1,13 @@
-import clsx from "clsx";
-import React, { FunctionComponent } from "react";
+import clsx from 'clsx';
+import React, { FunctionComponent } from 'react';
 
-import styles from "./Programs.module.scss";
-import RecordingIcon from "./assets/icon-recording.svg";
-import SlidesIcon from "./assets/icon-slides.svg";
-import RepositoryIcon from "./assets/icon-repository.svg";
-import CalendarIcon from "./assets/icon-calendar.svg";
-import MessageIcon from "./assets/icon-message.svg";
-import LocationIcon from "./assets/icon-location.svg";
+import styles from './Programs.module.scss';
+import RecordingIcon from './assets/icon-recording.svg';
+import SlidesIcon from './assets/icon-slides.svg';
+import RepositoryIcon from './assets/icon-repository.svg';
+import CalendarIcon from './assets/icon-calendar.svg';
+import MessageIcon from './assets/icon-message.svg';
+import LocationIcon from './assets/icon-location.svg';
 
 export interface ProgramMetadata {
   title: string;
@@ -36,14 +36,14 @@ const Program: FunctionComponent<ProgramMetadata> = ({
 }) => {
   return (
     <div className="col col--12">
-      <div className={clsx("card", styles.card)}>
+      <div className={clsx('card', styles.card)}>
         <div className="card__header">
           <h2>{title}</h2>
         </div>
         <div className="card__body">
           <div className="row">
             <div className="col col--7">{description}</div>
-            <div className={clsx("col col--5", styles.eventDetailsContainer)}>
+            <div className={clsx('col col--5', styles.eventDetailsContainer)}>
               <ProgramDetails data={beneficiaries} />
             </div>
           </div>

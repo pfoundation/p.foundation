@@ -4,9 +4,9 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
     paths-ignore:
-      - "LICENSE"
+      - 'LICENSE'
     branches:
-      - "main"
+      - 'main'
 
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: "npm"
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm install
@@ -51,27 +51,27 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           level: info
-          patterns: "**.md"
+          patterns: '**.md'
           # LanguageTool flags - see https://languagetool.org/http-api/swagger-ui/#!/default/post_check
-          language: "en-US"
-          enabled_rules: "WHITESPACE_RULE,EN_QUOTES,DASH_RULE,WORD_CONTAINS_UNDERSCORE,UPPERCASE_SENTENCE_START,ARROWS,COMMA_PARENTHESIS_WHITESPACE,UNLIKELY_OPENING_PUNCTUATION,SENTENCE_WHITESPACE,CURRENCY,EN_UNPAIRED_BRACKETS,PHRASE_REPETITION,PUNCTUATION_PARAGRAPH_END,METRIC_UNITS_EN_US,ENGLISH_WORD_REPEAT_BEGINNING_RULE"
-          disabled_categories: "TYPOS,TYPOGRAPHY,CASING"
+          language: 'en-US'
+          enabled_rules: 'WHITESPACE_RULE,EN_QUOTES,DASH_RULE,WORD_CONTAINS_UNDERSCORE,UPPERCASE_SENTENCE_START,ARROWS,COMMA_PARENTHESIS_WHITESPACE,UNLIKELY_OPENING_PUNCTUATION,SENTENCE_WHITESPACE,CURRENCY,EN_UNPAIRED_BRACKETS,PHRASE_REPETITION,PUNCTUATION_PARAGRAPH_END,METRIC_UNITS_EN_US,ENGLISH_WORD_REPEAT_BEGINNING_RULE'
+          disabled_categories: 'TYPOS,TYPOGRAPHY,CASING'
 
       - name: Run misspell
         uses: reviewdog/action-misspell@v1
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
-          pattern: "**.md"
+          pattern: '**.md'
           level: info
-          locale: "US"
+          locale: 'US'
 
       - name: Check links
         uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
-          use-quiet-mode: "yes"
-          file-extension: ".md"
-          check-modified-files-only: "yes"
-          config-file: ".mlc.config.json"
-          folder-path: "blog, src/components/talks/abstracts, src/components/homepage"
-          base-branch: "main"
+          use-quiet-mode: 'yes'
+          file-extension: '.md'
+          check-modified-files-only: 'yes'
+          config-file: '.mlc.config.json'
+          folder-path: 'blog, src/components/talks/abstracts, src/components/homepage'
+          base-branch: 'main'

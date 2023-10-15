@@ -1,5 +1,5 @@
 ---
-title: "Conflict Connectivity: Urgent Donor Call"
+title: 'Conflict Connectivity: Urgent Donor Call'
 description: In the wake of escalating tensions and recent events in Gaza, we are increasingly concerned about the high likelihood of a military conflict erupting between Israel and Lebanon.
 slug: conflict_connectivity_donor_call
 authors: jud
