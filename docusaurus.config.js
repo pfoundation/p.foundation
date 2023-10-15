@@ -82,6 +82,9 @@ const config = {
          */
         path: "./messages",
         blogSidebarCount: 0,
+        blogTitle: "P Foundation Messages",
+        blogDescription:
+          "Messages from the P Foundation to the donors and community.",
       },
     ],
   ],
