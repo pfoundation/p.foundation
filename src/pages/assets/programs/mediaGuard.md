@@ -1,4 +1,4 @@
-We firmly believe in the power and significance of open access to media and a free press. Recognizing their pivotal role in the success and development of nations and communities, we proudly present the "Media Guard" program.
+We firmly believe in the power and significance of open access to media and a free press. Recognizing their pivotal role in the success and development of nations and communities, we proudly present the Media Guard program.
 
 It's our way of walking beside media organizations from all around the world, offering a helping hand so they can maintain a steady presence.
 
