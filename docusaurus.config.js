@@ -2,54 +2,54 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const lightCodeTheme = require("prism-react-renderer/themes/github");
+const lightCodeTheme = require('prism-react-renderer/themes/github');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 
 const config = {
-  title: "P Foundation",
-  tagline: "Empowering nations through open internet, and free journalism.",
-  url: "https://www.p.foundation",
-  baseUrl: "/",
-  onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
+  title: 'P Foundation',
+  tagline: 'Empowering nations through open internet, and free journalism.',
+  url: 'https://www.p.foundation',
+  baseUrl: '/',
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/favicon.ico',
 
   // GitHub pages deployment config
-  organizationName: "pfoundation",
-  projectName: "p.foundation",
+  organizationName: 'pfoundation',
+  projectName: 'p.foundation',
 
   customFields: {
     newsletter: {
-      action: "https://dev.us14.list-manage.com/subscribe/post?u=?",
-      method: "post",
-      emailFieldName: "EMAIL",
-      firstNameFieldName: "FNAME",
-      submitButtonName: "subscribe",
-      tosURL: "https://mailchimp.com/legal/terms/",
-      privacyPolicyURL: "https://www.intuit.com/privacy/statement/",
-      serviceName: "Mailchimp",
+      action: 'https://dev.us14.list-manage.com/subscribe/post?u=?',
+      method: 'post',
+      emailFieldName: 'EMAIL',
+      firstNameFieldName: 'FNAME',
+      submitButtonName: 'subscribe',
+      tosURL: 'https://mailchimp.com/legal/terms/',
+      privacyPolicyURL: 'https://www.intuit.com/privacy/statement/',
+      serviceName: 'Mailchimp',
     },
   },
 
   i18n: {
-    defaultLocale: "en",
-    locales: ["en", "ar"],
+    defaultLocale: 'en',
+    locales: ['en', 'ar'],
     localeConfigs: {
       en: {
-        htmlLang: "en-US",
+        htmlLang: 'en-US',
       },
       ar: {
-        direction: "rtl",
+        direction: 'rtl',
       },
     },
   },
   plugins: [
-    "docusaurus-plugin-sass",
+    'docusaurus-plugin-sass',
     [
-      "@docusaurus/plugin-ideal-image",
+      '@docusaurus/plugin-ideal-image',
       {
         quality: 85,
         max: 2000,
@@ -59,52 +59,52 @@ const config = {
       },
     ],
     [
-      "@docusaurus/plugin-google-gtag",
+      '@docusaurus/plugin-google-gtag',
       {
-        trackingID: "G-TPGR86P8FH",
+        trackingID: 'G-TPGR86P8FH',
         anonymizeIP: false,
       },
     ],
     [
-      "@docusaurus/plugin-content-blog",
+      '@docusaurus/plugin-content-blog',
       {
         /**
          * Required for any multi-instance plugin
          */
-        id: "messages",
+        id: 'messages',
         /**
          * URL route for the blog section of your site.
          * *DO NOT* include a trailing slash.
          */
-        routeBasePath: "messages",
+        routeBasePath: 'messages',
         /**
          * Path to data on filesystem relative to site dir.
          */
-        path: "./messages",
+        path: './messages',
         blogSidebarCount: 0,
-        blogTitle: "P Foundation Messages",
+        blogTitle: 'P Foundation Messages',
         blogDescription:
-          "Messages from the P Foundation to the donors and community.",
+          'Messages from the P Foundation to the donors and community.',
       },
     ],
   ],
   presets: [
     [
-      "classic",
+      'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: false,
         // blog: {
-        //   routeBasePath: "/",
+        //   routeBasePath: '/',
         //   showReadingTime: true,
-        //   editUrl: "https://github.com/pfoundation/p.foundation/tree/master/",
+        //   editUrl: 'https://github.com/pfoundation/p.foundation/tree/master/',
         //   feedOptions: {
-        //     type: "all",
+        //     type: 'all',
         //     copyright: `Copyright © ${new Date().getFullYear()} P Foundation`,
         //   },
         // },
         theme: {
-          customCss: [require.resolve("./src/css/custom.scss")],
+          customCss: [require.resolve('./src/css/custom.scss')],
         },
       }),
     ],
@@ -113,54 +113,54 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: "img/logo.png",
+      image: 'img/logo.png',
       metadata: [
         {
-          name: "description",
+          name: 'description',
           content:
-            "Empowering nations through open internet, and free journalism.",
+            'Empowering nations through open internet, and free journalism.',
         },
         {
-          name: "keywords",
-          content: "foundation, nonprofit, pfoundation, lebanon, usa, dc",
+          name: 'keywords',
+          content: 'foundation, nonprofit, pfoundation, lebanon, usa, dc',
         },
         {
-          name: "twitter:card",
+          name: 'twitter:card',
           content:
-            "Empowering nations through open internet, and free journalism.",
+            'Empowering nations through open internet, and free journalism.',
         },
       ],
       colorMode: {
-        defaultMode: "light",
+        defaultMode: 'light',
         //disableSwitch: true,
         respectPrefersColorScheme: false,
       },
       navbar: {
         hideOnScroll: false,
-        //title: "P Foundation",
+        //title: 'P Foundation',
         logo: {
-          alt: "P Foundation",
-          src: "img/logo.svg",
-          srcDark: "img/logoDark.svg",
+          alt: 'P Foundation',
+          src: 'img/logo.svg',
+          srcDark: 'img/logoDark.svg',
         },
         items: [
           //{ to: '/blog', label: 'Blog', position: 'left' },
           //{ to: '/projects', label: 'Projects', position: 'left' },
           {
-            to: "/programs",
-            label: "Programs",
-            position: "left",
+            to: '/programs',
+            label: 'Programs',
+            position: 'left',
           },
-          { to: "/initiatives", label: "Initiatives", position: "left" },
+          { to: '/initiatives', label: 'Initiatives', position: 'left' },
           // {
-          //   type: "localeDropdown",
-          //   position: "right",
+          //   type: 'localeDropdown',
+          //   position: 'right',
           // },
           {
-            href: "https://x.com/pfoundation_",
-            className: "navbar-item-x",
-            position: "right",
-            alt: "Twitter, now X Logo",
+            href: 'https://x.com/pfoundation_',
+            className: 'navbar-item-x',
+            position: 'right',
+            alt: 'Twitter, now X Logo',
           },
           // {
           //   href: 'https://github.com.com/pfoundation',
@@ -171,23 +171,23 @@ const config = {
         ],
       },
       footer: {
-        style: "light",
+        style: 'light',
         links: [
           {
-            label: "Terms",
-            to: "/terms",
+            label: 'Terms',
+            to: '/terms',
           },
           {
-            label: "Privacy",
-            to: "/privacy",
+            label: 'Privacy',
+            to: '/privacy',
           },
           {
-            label: "AS399728",
-            to: "/as399728",
+            label: 'AS399728',
+            to: '/as399728',
           },
           {
-            label: "Contact",
-            href: "mailto:hello@p.foundation",
+            label: 'Contact',
+            href: 'mailto:hello@p.foundation',
           },
           // {
           //   label: 'PFS',
