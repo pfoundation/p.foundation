@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkp_foundation=self.webpackChunkp_foundation||[]).push([[627],{397:o=>{o.exports=JSON.parse('{"permalink":"/ar/messages/tags/donor-support","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
