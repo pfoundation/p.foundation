@@ -128,7 +128,9 @@ const config = {
         },
       ],
       colorMode: {
-        respectPrefersColorScheme: true,
+        defaultMode: "light",
+        //disableSwitch: true,
+        respectPrefersColorScheme: false,
       },
       navbar: {
         hideOnScroll: false,
