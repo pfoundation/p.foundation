@@ -4,7 +4,7 @@ import Layout from '@theme/Layout';
 import Program, { ProgramMetadata } from '../components/programs/Programs';
 
 import BuildingGQLAPIForK8sResDescription from './assets/programs/_building-gql-api-for-k8s-res.md';
-import CommunityMesh from './assets/programs/communityMesh.md';
+import CitizensMesh from './assets/programs/citizensMesh.md';
 import MediaGuard from './assets/programs/mediaGuard.md';
 
 const programs: ProgramMetadata[] = [
@@ -26,8 +26,8 @@ const programs: ProgramMetadata[] = [
     applyURL: 'mailto:mediaguard@p.foundation',
   },
   {
-    title: 'Community Mesh',
-    description: <CommunityMesh />,
+    title: 'Citizens Mesh',
+    description: <CitizensMesh />,
     beneficiaries: [
       {
         name: 'cmp@p.foundation',
