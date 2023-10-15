@@ -6,6 +6,7 @@ import Program, { ProgramMetadata } from '../components/programs/Programs';
 import BuildingGQLAPIForK8sResDescription from './assets/programs/_building-gql-api-for-k8s-res.md';
 import CitizensMesh from './assets/programs/citizensMesh.md';
 import MediaGuard from './assets/programs/mediaGuard.md';
+import ResilientNet from './assets/programs/resilientNet.md';
 
 const programs: ProgramMetadata[] = [
   {
@@ -36,6 +37,18 @@ const programs: ProgramMetadata[] = [
       },
     ],
     applyURL: 'mailto:cmp@p.foundation',
+  },
+  {
+    title: 'ResilientNet',
+    description: <ResilientNet />,
+    beneficiaries: [
+      {
+        name: 'resilient@p.foundation',
+        location: 'Lebanon',
+        date: 'Open',
+      },
+    ],
+    applyURL: 'mailto:resilient@p.foundation',
   },
 ];
 
