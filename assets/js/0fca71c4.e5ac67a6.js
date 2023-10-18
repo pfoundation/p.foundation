@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkp_foundation=self.webpackChunkp_foundation||[]).push([[71],{8021:s=>{s.exports=JSON.parse('{"label":"donor-support","permalink":"/messages/tags/donor-support","allTagsPath":"/messages/tags","count":1}')}}]);
