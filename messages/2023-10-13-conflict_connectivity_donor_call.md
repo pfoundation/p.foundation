@@ -7,15 +7,14 @@ tags: [donor-support, community-mesh]
 #image: https://i.imgur.com/mErPwqL.png
 hide_table_of_contents: false
 date: 2023-10-13T23:00:00Z
+draft: true
 ---
-
-_Founded in 2021 and duly recognized as a 501(c)(3) non-profit organization based in Washington, DC, the P Foundation is anchored in a strong conviction about the transformative power of media and technology. We are unwaveringly committed to fostering progress and uplifting the communities we serve. Central to our mission is the philosophy that an open internet and unrestricted journalism serve as the lifeblood of progressive societies, weaving together the essential elements of transparency, accountability, and unfettered expression._
-
-## Situation Overview
 
 In the wake of escalating tensions and recent events in Gaza, we are increasingly concerned about the high likelihood of a military conflict erupting between Israel and Lebanon.
 
 Possessing an in-depth understanding of Lebanon's Internet Infrastructure, we project that even without targeted attacks on vital internet nodes and in the absence of a national diesel reserve, most local exchange points are at risk of depleting their diesel reserves. Should this occur, a widespread internet blackout across Lebanon would be inevitable within one to two weeks.
+
+<!--truncate-->
 
 ## Our Initiative
 
@@ -44,3 +43,5 @@ Once the local infrastructure begins to recover post-conflict, these mesh networ
 ## Urgent Call to Action
 
 We are racing against time; the most pressing challenge is to acquire the necessary equipment and transport it to Lebanon before a conflict commences and potential airport closures occur. While we have managed to make the requisite down payments for the satellite dishes, we are urgently seeking $350,000 to finalize implementation and sustain 90 days of service.
+
+_Founded in 2021 and duly recognized as a 501(c)(3) non-profit organization based in Washington, DC, the P Foundation is anchored in a strong conviction about the transformative power of media and technology. We are unwaveringly committed to fostering progress and uplifting the communities we serve. Central to our mission is the philosophy that an open internet and unrestricted journalism serve as the lifeblood of progressive societies, weaving together the essential elements of transparency, accountability, and unfettered expression._
