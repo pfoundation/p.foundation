@@ -29,7 +29,7 @@ Central to MediaGuard's mission is aiding media organizations in achieving and m
 
 Although an internet blackout may not occur immediately, we anticipate that it could become a reality if the conflict lasts longer than 30 days.
 
-While most tv broadcaster in Lebanon go over IP, we believe they all also maintain a satellite backup. We urge all broadcasters to ensure that their satellite backup is operational. If satellite resources are currently at scarces or unavailable, we have allocated few units on our end for this purpose. Please reach out to your contact point at PF to arrange.
+While most tv broadcaster in Lebanon use IP for their backhaul, we believe they all also maintain a satellite backup. We urge all broadcasters to ensure that their satellite backup is operational.
 
 In addition to the satellite backup, we have expanded our computing capacities in both London and New York which would allow us to allocate enough resources for all broadcasters to maintain a backup playout in case of emergency. We recommend that you upload backup content from now instead of waiting for last minute. Please communicate your requirements to your contact point, and we will allocate the necessary resources.
 
