@@ -9,16 +9,22 @@ h5 {
   font-weight: 700;
 }
 
+.important-btn {
+  background-color: #e23350;
+  color: #fff;
+  padding: 15px 26px;
+}
+
 /* You can override the default Infima variables here. */
 :root {
-  --pk-blue: #0054ad;
-  --pk-green: #b8fb3c;
+  --pk-blue: #292432;
+  --pk-green: #23a0e0;
 
   --ifm-color-primary: var(--pk-blue);
-  --ifm-color-primary-dark: #004c9c;
+  --ifm-color-primary-dark: #292432;
   --ifm-color-primary-darker: #004793;
   --ifm-color-primary-darkest: #003b79;
-  --ifm-color-primary-light: #005cbe;
+  --ifm-color-primary-light: #5c607c;
   --ifm-color-primary-lighter: #0061c7;
   --ifm-color-primary-lightest: #006de1;
   --ifm-code-font-size: 95%;

@@ -162,6 +162,12 @@ const config = {
             position: 'right',
             alt: 'Twitter, now X Logo',
           },
+          {
+            label: 'Donate',
+            position: 'right',
+            href: 'https://donate.stripe.com/8wM15masqehlgfu4gh',
+            className: 'button--primary important-btn',
+          },
           // {
           //   href: 'https://github.com.com/pfoundation',
           //   className: 'navbar-item-github',
