@@ -180,12 +180,8 @@ const config = {
         style: 'light',
         links: [
           {
-            label: 'Terms',
-            to: '/terms',
-          },
-          {
-            label: 'Privacy',
-            to: '/privacy',
+            label: 'Code of Conduct',
+            to: '/coc',
           },
           {
             label: 'AS399728',
