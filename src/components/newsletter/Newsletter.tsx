@@ -63,6 +63,7 @@ export const Newsletter: FunctionComponent<NewsletterProps> = ({ data }) => {
           <button
             type="submit"
             name={submitButtonName}
+            disabled={true}
             className="button button--primary button--newsletter"
           >
             Subscribe
