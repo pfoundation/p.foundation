@@ -70,22 +70,6 @@ Entities are appraised based on their needs, with resources allotted in cases of
 | Religious Centers | TBD              | 6         | 0                |
 | Other             | Universities     | 5         | 0                |
 
-### Networking
-
-We operate a dynamic NOC from multiple locations. For detailed information, refer to [AS322728](/as322728).
-
-_Details to be published_.
-
-#### Deployment Plan
-
-#### Redudancy Consideration
-
-#### Technical Requirement
-
-#### Peering
-
-#### IP Assignement
-
 ## Community Connectivity (Citizen Mesh)
 
 The P Foundation deeply acknowledges the transformative essence of connectivity. Internet access during conflicts acts as a channel for information dissemination, public engagement, and global cognizance, thus underscoring the resilience of internet infrastructure.
@@ -151,3 +135,19 @@ _Details to be published_.
 ### Hardware Required
 
 ### Ways to contribute
+
+## Networking
+
+We operate a dynamic NOC from multiple locations. For detailed information, refer to [AS322728](/as322728).
+
+_Details to be published_.
+
+### Deployment Plan
+
+### Redudancy Consideration
+
+### Technical Requirement
+
+### Peering
+
+### IP Assignement
