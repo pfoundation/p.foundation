@@ -146,7 +146,7 @@ _Details to be published_.
 
 ### Financials Support
 
-#### Expenses List
+#### Expense List
 
 ### Hardware Required
 
