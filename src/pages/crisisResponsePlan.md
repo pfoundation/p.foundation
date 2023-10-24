@@ -1,3 +1,9 @@
+---
+title: Crisis Response Plan
+description: P Foundation crisis response plan in case of military conflict in Lebanon.
+unlisted: true
+---
+
 # Crisis Response Plan
 
 With the escalating potential for military conflict in Lebanon, the P Foundation has activated its crisis response plan. This initiative is undertaken in close partnership with the Lebanese Ministry of Telecom, SpaceX, and local organizations.
