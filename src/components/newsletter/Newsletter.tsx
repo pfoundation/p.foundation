@@ -70,7 +70,7 @@ export const Newsletter: FunctionComponent<NewsletterProps> = ({ data }) => {
           </button>
         </form>
         <div className={styles.formFooter}>
-          By entering your email address and clicking “Submit,” you agree to
+          By entering your email address and clicking “Subscribe”, you agree to
           receive updates from the P Foundation about our work. <br />
           To learn more about how we use and protect your personal data, please
           view our privacy policy.
