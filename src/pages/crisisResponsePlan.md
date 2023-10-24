@@ -22,11 +22,9 @@ ResilientNet aims to maintain internet connectivity for critical establishments 
 
 Central to this program is a meticulous, needs-based assessment methodology, tailored to discern the distinct connectivity requisites of each targeted critical establishment.
 
-### Priorities
+### First Level Priority
 
 Although we have streamlined the assessment process typically applied, our deployment priority is directed towards first responders, medical facilities, and select public establishments.
-
-**Total Locations:** 51 + 1 Mobile
 
 | Category           | Entity         | Locations | Mobile Locations |
 | ------------------ | -------------- | --------- | ---------------- |
@@ -39,6 +37,8 @@ Although we have streamlined the assessment process typically applied, our deplo
 | Utilitis           | EDL            | 1         | 0                |
 | Utilitis           | Ogero          | 1         | 0                |
 | Utilitis           | Civil Aviation | 1         | 0                |
+| Utilitis           | Beirut Port    | 1         | 0                |
+| Utilitis           | Tripoli Port   | 1         | 0                |
 | Utilitis           | Mic 1          | 1         | 0                |
 | Utilitis           | Mic 2          | 1         | 0                |
 | Lebanon Goverment  | TBS            | 15        | 0                |
@@ -46,8 +46,6 @@ Although we have streamlined the assessment process typically applied, our deplo
 ### Second Level Priority
 
 Entities under second-level priority necessitate internet access for functionality, albeit not deemed critical if internet interruption or deployment delay occurs.
-
-**Total Locations:** 40
 
 | Category           | Entity                | Locations | Mobile Locations |
 | ------------------ | --------------------- | --------- | ---------------- |
@@ -60,8 +58,6 @@ Entities under second-level priority necessitate internet access for functionali
 ### Needs Based Assessment
 
 Entities are appraised based on their needs, with resources allotted in cases of critical necessity.
-
-**Total Locations:** 26 + 5 mobile
 
 | Category          | Entity           | Locations | Mobile Locations |
 | ----------------- | ---------------- | --------- | ---------------- |
