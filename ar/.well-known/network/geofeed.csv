@@ -1,5 +1,5 @@
 # Self-published geofeed as defined in datatracker.ietf.org/doc/html/rfc8805
-# P Foundation Geofeed,lastupdated (rfc3339): 2023-09-20T15:50:55-04:00
+# P Foundation Geofeed,lastupdated (rfc3339): 2023-09-23T15:50:55-04:00
 172.98.48.0/24,US,US-DC,Washington,20005
 172.98.49.0/24,US,US-NY,New York,
 172.98.50.0/29,US,US-DC,Washington,20005
@@ -45,19 +45,19 @@
 172.98.51.64/29,GB,GB-LND,London,
 172.98.51.72/29,GB,GB-LND,London,
 172.98.51.80/29,FR,FR-75,Paris,
-172.98.51.88/29,FR,FR-75,Paris,
+172.98.51.88/29,LB,LB-NA,Nabatieh,
 172.98.51.96/29,LB,LB-BA,Beirut,
 172.98.51.104/29,LB,LB-BA,Beirut,
-172.98.51.112/29,US,US-NY,New York,
-172.98.51.120/29,US,US-NY,New York,
-172.98.51.128/29,US,US-NY,New York,
-172.98.51.136/29,US,US-NY,New York,
-172.98.51.144/29,US,US-NY,New York,
-172.98.51.152/29,US,US-NY,New York,
+172.98.51.112/29,LB,LB-AK,Akkar,
+172.98.51.120/29,LB,LB-BH,Baalbeck,
+172.98.51.128/29,LB,LB-BI,Beqaa,
+172.98.51.136/29,LB,LB-AS,North Governorate,
+172.98.51.144/29,LB,LB-JA,South Governorate,
+172.98.51.152/29,US,LB,LB-BA,Beirut,
 172.98.51.160/29,AE,AE-DU,Dubai,
 172.98.51.168/29,AE,AE-AZ,Abu Dhabi,
 172.98.51.176/29,US,US-DC,Washington,20005
-172.98.51.184/29,US,US-DC,Washington,20005
+172.98.51.184/29,LB,LB-JL,Mount Lebanon,
 172.98.51.192/29,US,US-DC,Washington,20005
 172.98.51.200/29,US,US-DC,Washington,20005
 172.98.51.208/29,US,US-DC,Washington,20005
