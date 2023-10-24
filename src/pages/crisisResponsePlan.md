@@ -70,6 +70,22 @@ Entities are appraised based on their needs, with resources allotted in cases of
 | Religious Centers | TBD              | 6         | 0                |
 | Other             | Universities     | 5         | 0                |
 
+### Applying
+
+Each entity entitled to ResilientNet must submit a request via email to crisisresponse@p.foundation, including the following details:
+
+- Number of people benefiting from the service (if applicable)
+- Internet access requirement (e.g., speed, wifi, lan)
+- Maintenance of own routers: Specify if your router supports WireGuard or IPSec
+- Location of facility, including coordinates or a Google Maps link
+- Point of Contact
+- Technical Point of Contact
+- Upon receiving your request, we will review all the provided information and forward it to the Ministry of Telecom for approval.
+
+Once approved, the required devices will be allocated to you for collection, and you will be added to relevant messaging groups to assist you with the setup.
+
+While the hardware is in your possession, it is your responsibility to maintain and safeguard it, ensuring its return in the same condition it was received.
+
 ## Community Connectivity (Citizen Mesh)
 
 The P Foundation deeply acknowledges the transformative essence of connectivity. Internet access during conflicts acts as a channel for information dissemination, public engagement, and global cognizance, thus underscoring the resilience of internet infrastructure.
@@ -107,47 +123,3 @@ We anticipate that individuals will utilize MICZs to connect with family and fri
 ### Post Conflict Assigment
 
 Following the conclusion of the conflict, and as displaced individuals begin to return to their hometowns, the EICZs can be dynamically relocated to provide connectivity while Ogero continues to restore the damaged infrastructure.
-
-## Coordination with different parties
-
-## Skilled Volunteer Cadre
-
-_Details to be published_.
-
-### Installation and Maintenance
-
-### Network Administration
-
-### Access and support
-
-### Monitoring and Evaluation
-
-### Community Engagement
-
-## Donations and Funding
-
-_Details to be published_.
-
-### Financials Support
-
-#### Expenses
-
-### Hardware Required
-
-### Ways to contribute
-
-## Networking
-
-We operate a dynamic NOC from multiple locations. For detailed information, refer to [AS322728](/as322728).
-
-_Details to be published_.
-
-### Deployment Plan
-
-### Redudancy Consideration
-
-### Technical Requirement
-
-### Peering
-
-### IP Assignement
