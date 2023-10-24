@@ -130,7 +130,7 @@ _Details to be published_.
 
 ### Financials Support
 
-#### Expense List
+#### Expenses
 
 ### Hardware Required
 
