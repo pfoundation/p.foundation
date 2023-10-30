@@ -6,7 +6,7 @@ unlisted: true
 
 # Crisis Response Plan
 
-With the escalating potential for military conflict in Lebanon, the P Foundation has activated its crisis response plan. This initiative is undertaken in close partnership with the Lebanese Ministry of Telecom, SpaceX, and local organizations.
+With the escalating potential for military conflict in Lebanon, the P Foundation has activated its crisis response plan. This initiative is undertaken in close partnership with the Lebanese Ministry of Telecom, and local organizations.
 
 Similar to [MediaGuard Continuity Plan](messages/mediaguard_continuity_plan), this plan augments the existing P Foundation programs, enhancing their capacity and introducing new services.
 
@@ -30,8 +30,7 @@ Although we have streamlined the assessment process typically applied, our deplo
 | ------------------ | -------------- | --------- | ---------------- |
 | First Responsders  | Red Cross      | 7         | 1                |
 | First Responsders  | Civil Defense  | 3         | 0                |
-| First Responsders  | Lebanese Army  | 3         | 0                |
-| First Responsders  | ISF            | 2         | 0                |
+| First Responsders  | ISF            | 3         | 0                |
 | Emergency Services | Hospitals      | 15        | 0                |
 | Emergency Services | Forensic Labs  | 1         | 0                |
 | Utilitis           | EDL            | 1         | 0                |
