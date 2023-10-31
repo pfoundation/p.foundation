@@ -8,7 +8,7 @@ unlisted: true
 
 With the escalating potential for military conflict in Lebanon, the P Foundation has activated its crisis response plan. This initiative is undertaken in close partnership with the Lebanese Ministry of Telecom, and local organizations.
 
-Similar to [MediaGuard Continuity Plan](messages/mediaguard_continuity_plan), this plan augments the existing P Foundation programs, enhancing their capacity and introducing new services.
+Similar to [MediaGuard Continuity Plan](/messages/mediaguard_continuity_plan), this plan augments the existing P Foundation programs, enhancing their capacity and introducing new services.
 
 While our objective is to mitigate Lebanon's disconnection from the global internet, we recognize the limitations posed by our resources in achieving this goal entirely.
 
@@ -26,52 +26,41 @@ Central to this program is a meticulous, needs-based assessment methodology, tai
 
 Although we have streamlined the assessment process typically applied, our deployment priority is directed towards first responders, medical facilities, and select public establishments.
 
-| Category           | Entity         | Locations | Mobile Locations |
-| ------------------ | -------------- | --------- | ---------------- |
-| First Responsders  | Red Cross      | 7         | 1                |
-| First Responsders  | Civil Defense  | 3         | 0                |
-| First Responsders  | ISF            | 3         | 0                |
-| Emergency Services | Hospitals      | 15        | 0                |
-| Emergency Services | Forensic Labs  | 1         | 0                |
-| Utilitis           | EDL            | 1         | 0                |
-| Utilitis           | Ogero          | 1         | 0                |
-| Utilitis           | Civil Aviation | 1         | 0                |
-| Utilitis           | Beirut Port    | 1         | 0                |
-| Utilitis           | Tripoli Port   | 1         | 0                |
-| Utilitis           | Mic 1          | 1         | 0                |
-| Utilitis           | Mic 2          | 1         | 0                |
-| Lebanon Goverment  | TBS            | 15        | 0                |
-
-### Second Level Priority
-
-Entities under second-level priority necessitate internet access for functionality, albeit not deemed critical if internet interruption or deployment delay occurs.
-
-| Category           | Entity                | Locations | Mobile Locations |
-| ------------------ | --------------------- | --------- | ---------------- |
-| Utilties           | Registered ISPs       | 5         | 0                |
-| Utilties           | Banks                 | 10        | 0                |
-| Media              | TV Broadcaster        | 5         | 0                |
-| Emergency Services | Hospitals             | 15        | 0                |
-| Emergency Services | Other Security Forces | 5         | 0                |
+| Category           | Entity             | Locations | Mobile Locations |
+| ------------------ | ------------------ | --------- | ---------------- |
+| First Responsders  | Red Cross          | 25        | 1                |
+| First Responsders  | Civil Defense      | 3         | 0                |
+| First Responsders  | ISF                | 3         | 0                |
+| First Responsders  | Lebanese Army/UN   | 3         | 0                |
+| Emergency Services | Hospitals          | 29        | 0                |
+| Emergency Services | Forensic Labs (UL) | 1         | 0                |
+| Utilities          | EDL                | 1         | 0                |
+| Utilities          | Ogero              | 2         | 0                |
+| Utilities          | Civil Aviation     | 1         | 0                |
+| Utilities          | Beirut Port        | 1         | 0                |
+| Utilities          | Tripoli Port       | 1         | 0                |
+| Utilities          | Mic 1              | 2         | 0                |
+| Utilities          | Mic 2              | 2         | 0                |
+| Lebanon Government | Ministries         | 17        | 0                |
+| Lebanon Government | Parliament         | 1         | 0                |
+| Lebanon Government | Public Media       | 3         | 0                |
 
 ### Needs Based Assessment
 
 Entities are appraised based on their needs, with resources allotted in cases of critical necessity.
 
-| Category          | Entity           | Locations | Mobile Locations |
-| ----------------- | ---------------- | --------- | ---------------- |
-| Media             | TV Reporters     | 10        | 5                |
-| Media             | Online platforms | 5         | 0                |
-| Religious Centers | TBD              | 6         | 0                |
-| Other             | Universities     | 5         | 0                |
+| Category          | Entity       | Locations | Mobile Locations |
+| ----------------- | ------------ | --------- | ---------------- |
+| Religious Centers | TBD          | 6         | 0                |
+| Other             | Universities | 5         | 0                |
 
 ### Applying
 
-Each entity entitled to ResilientNet must submit a request via email to crisisresponse@p.foundation, including the following details:
+Each entity entitled to ResilientNet (through Ministry of Telecommunications) must submit a request via email to crisisresponse@p.foundation, including the following details:
 
 - Number of people benefiting from the service (if applicable)
-- Internet access requirement (e.g., speed, wifi, lan)
-- Maintenance of own routers: Specify if your router supports WireGuard or IPSec
+- Internet access requirement (e.g. speed, wifi, lan, bgp, dedicated ip, ...)
+- Network Reuqirement
 - Location of facility, including coordinates or a Google Maps link
 - Point of Contact
 - Technical Point of Contact
@@ -115,6 +104,6 @@ The MICZs utilize specialized mobile hardware that facilitates immediate interne
 
 We anticipate that individuals will utilize MICZs to connect with family and friends, reassuring them of their safety. Additionally, media organizations can leverage MICZs as a backup for their live reporting.
 
-### Post Conflict Assigment
+### Post Conflict Assignment
 
 Following the conclusion of the conflict, and as displaced individuals begin to return to their hometowns, the EICZs can be dynamically relocated to provide connectivity while Ogero continues to restore the damaged infrastructure.
