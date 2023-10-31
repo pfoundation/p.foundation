@@ -44,6 +44,7 @@ Although we have streamlined the assessment process typically applied, our deplo
 | Lebanon Government | Ministries         | 17        | 0                |
 | Lebanon Government | Parliament         | 1         | 0                |
 | Lebanon Government | Public Media       | 3         | 0                |
+| Replacement        |                    | 5         | 0                |
 
 ### Needs Based Assessment
 
