@@ -22,8 +22,6 @@ ResilientNet aims to maintain internet connectivity for critical establishments 
 
 Central to this program is a meticulous, needs-based assessment methodology, tailored to discern the distinct connectivity requisites of each targeted critical establishment.
 
-### First Level Priority
-
 Although we have streamlined the assessment process typically applied, our deployment priority is directed towards first responders, medical facilities, and select public establishments.
 
 | Category           | Entity             | Locations | Mobile Locations |
@@ -31,7 +29,7 @@ Although we have streamlined the assessment process typically applied, our deplo
 | First Responders   | Red Cross          | 25        | 1                |
 | First Responders   | Civil Defense      | 3         | 0                |
 | First Responders   | ISF                | 3         | 0                |
-| First Responders   | Lebanese Army/UN   | 3         | 0                |
+| First Responders   | UN OCHA            | 3         | 0                |
 | Emergency Services | Hospitals          | 29        | 0                |
 | Emergency Services | Forensic Labs (UL) | 1         | 0                |
 | Utilities          | EDL                | 1         | 0                |
@@ -46,16 +44,7 @@ Although we have streamlined the assessment process typically applied, our deplo
 | Lebanon Government | Public Media       | 3         | 0                |
 | Replacement        |                    | 5         | 0                |
 
-### Needs Based Assessment
-
-Entities are appraised based on their needs, with resources allotted in cases of critical necessity.
-
-| Category          | Entity       | Locations | Mobile Locations |
-| ----------------- | ------------ | --------- | ---------------- |
-| Religious Centers | TBD          | 6         | 0                |
-| Other             | Universities | 5         | 0                |
-
-### Applying
+### Deployment Process
 
 Each entity entitled to ResilientNet (through Ministry of Telecommunications) must submit a request via email to crisisresponse@p.foundation, including the following details:
 
@@ -81,7 +70,9 @@ Our crisis response extends our Citizen Mesh program, incorporating multiple ope
 
 ### Emergency Internet Connectivity Zones (EICZs)
 
-In collaboration with the Lebanese Red Cross, local communities, and P Foundation volunteers, we aim to establish over 50 Emergency Internet Connectivity Zones (EICZs) across secure Lebanese territories in the event of a conflict, prioritizing areas with a high influx of displaced individuals and erratic internet access.
+_Pending MOU with LRC and IFRC_
+
+In collaboration with the Lebanese Red Cross , local communities, and P Foundation volunteers, we aim to establish over 50 Emergency Internet Connectivity Zones (EICZs) across secure Lebanese territories in the event of a conflict, prioritizing areas with a high influx of displaced individuals and erratic internet access.
 
 Each zone is equipped with multiple WiFi access points, facilitating easy internet access for the public.
 
@@ -108,3 +99,10 @@ We anticipate that individuals will utilize MICZs to connect with family and fri
 ### Post Conflict Assignment
 
 Following the conclusion of the conflict, and as displaced individuals begin to return to their hometowns, the EICZs can be dynamically relocated to provide connectivity while Ogero continues to restore the damaged infrastructure.
+
+## Change Log
+
+**10/31/23 22:05**
+
+- Removed "Needs based assestment" from ResilientNet segment.
+- Updated allocations table.
