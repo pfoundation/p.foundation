@@ -189,7 +189,7 @@ const config = {
           },
           {
             label: 'Contact',
-            href: 'mailto:hello@p.foundation',
+            href: 'mailto:contact@p.foundation',
           },
           // {
           //   label: 'PFS',
