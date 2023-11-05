@@ -46,12 +46,13 @@ Although we have streamlined the assessment process typically applied, our deplo
 
 ### Deployment Process
 
-Each entity entitled to ResilientNet (through Ministry of Telecommunications) must submit a request via email to crisisresponse@p.foundation, including the following details:
+Each entity entitled to ResilientNet (through Ministry of Telecommunications) must submit a request using the webform or by email to crisisresponse@p.foundation, including the following details:
 
+- Name of the organization
 - Number of people benefiting from the service (if applicable)
 - Internet access requirement (e.g. speed, wifi, lan, bgp, dedicated ip, ...)
 - Network Reuqirement
-- Location of facility, including coordinates or a Google Maps link
+- Location of facility, including coordinates or a Google Maps link (The service will be limited mentioned location.)
 - Point of Contact
 - Technical Point of Contact
 - Upon receiving your request, we will review all the provided information and forward it to the Ministry of Telecom for approval.
@@ -101,6 +102,10 @@ We anticipate that individuals will utilize MICZs to connect with family and fri
 Following the conclusion of the conflict, and as displaced individuals begin to return to their hometowns, the EICZs can be dynamically relocated to provide connectivity while Ogero continues to restore the damaged infrastructure.
 
 ## Change Log
+
+**10/05/23 17:00**
+
+- Added details to deployment process
 
 **10/31/23 22:05**
 
