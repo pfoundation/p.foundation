@@ -71,9 +71,9 @@ Our crisis response extends our Citizen Mesh program, incorporating multiple ope
 
 ### Emergency Internet Connectivity Zones (EICZs)
 
-_Pending MOU with LRC and IFRC_
+_Pending MOU with LRC _
 
-In collaboration with the Lebanese Red Cross , local communities, and P Foundation volunteers, we aim to establish over 50 Emergency Internet Connectivity Zones (EICZs) across secure Lebanese territories in the event of a conflict, prioritizing areas with a high influx of displaced individuals and erratic internet access.
+In collaboration with local partners, and P Foundation volunteers, we aim to establish over 50 Emergency Internet Connectivity Zones (EICZs) across secure Lebanese territories in the event of a conflict, prioritizing areas with a high influx of displaced individuals and erratic internet access.
 
 Each zone is equipped with multiple WiFi access points, facilitating easy internet access for the public.
 
