@@ -29,7 +29,6 @@ Although we have streamlined the assessment process typically applied, our deplo
 | First Responders   | Red Cross          | 25        | 1                |
 | First Responders   | Civil Defense      | 3         | 0                |
 | First Responders   | ISF                | 3         | 0                |
-| First Responders   | UN OCHA            | 3         | 0                |
 | Emergency Services | Hospitals          | 29        | 0                |
 | Emergency Services | Forensic Labs (UL) | 1         | 0                |
 | Utilities          | EDL                | 1         | 0                |
