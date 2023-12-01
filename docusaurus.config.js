@@ -125,7 +125,7 @@ const config = {
         {
           name: 'description',
           content:
-            'Empowering nations through open internet, and free journalism.',
+            'Empowering nations through open internet and free journalism.',
         },
         {
           name: 'keywords',
@@ -134,7 +134,7 @@ const config = {
         {
           name: 'twitter:card',
           content:
-            'Empowering nations through open internet, and free journalism.',
+            'Empowering nations through open internet and free journalism.',
         },
       ],
       colorMode: {
