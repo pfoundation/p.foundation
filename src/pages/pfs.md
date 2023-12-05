@@ -6,7 +6,7 @@ unlisted: true
 
 # PFS LTD
 
-PFS LTD functions as the commercial arm of the P Foundation, extending its reach into more advanced service offerings.
+PFS LTD functions as the commercial parnter for the P Foundation, extending its reach into more advanced service offerings.
 
 While the P Foundation provides essential foundational support at no cost, PFS LTD enhances this by offering a broader spectrum of support services. These include comprehensive network communication solutions like advanced interconnectivity, internet access, and various managed services, thereby enriching and extending beyond the basic services supported by the P Foundation Programs.
 
