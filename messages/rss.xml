@@ -4,10 +4,19 @@
         <title>P Foundation Blog</title>
         <link>https://www.p.foundation/messages</link>
         <description>P Foundation Blog</description>
-        <lastBuildDate>Wed, 18 Oct 2023 13:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 31 Mar 2024 09:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Roadmap to 2027]]></title>
+            <link>https://www.p.foundation/messages/roadmap_to_2027</link>
+            <guid>https://www.p.foundation/messages/roadmap_to_2027</guid>
+            <pubDate>Sun, 31 Mar 2024 09:00:00 GMT</pubDate>
+            <description><![CDATA[P Foundation is redoubling its efforts through MediaGuard program, which has been steadfastly supporting journalists and media organizations for the past 2 years.]]></description>
+            <content:encoded><![CDATA[<p>(Developing)</p>]]></content:encoded>
+            <author>jud@p.foundation (Jud Saoud)</author>
+        </item>
         <item>
             <title><![CDATA[MediaGuard Continuity Plan for Lebanon Conflict]]></title>
             <link>https://www.p.foundation/messages/mediaguard_continuity_plan</link>

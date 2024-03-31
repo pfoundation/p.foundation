@@ -2,11 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.p.foundation/ar/messages</id>
     <title>P Foundation Blog</title>
-    <updated>2023-10-18T13:00:00.000Z</updated>
+    <updated>2024-03-31T09:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.p.foundation/ar/messages"/>
     <subtitle>P Foundation Blog</subtitle>
     <icon>https://www.p.foundation/ar/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Roadmap to 2027]]></title>
+        <id>https://www.p.foundation/ar/messages/roadmap_to_2027</id>
+        <link href="https://www.p.foundation/ar/messages/roadmap_to_2027"/>
+        <updated>2024-03-31T09:00:00.000Z</updated>
+        <summary type="html"><![CDATA[P Foundation is redoubling its efforts through MediaGuard program, which has been steadfastly supporting journalists and media organizations for the past 2 years.]]></summary>
+        <content type="html"><![CDATA[<p>(Developing)</p>]]></content>
+        <author>
+            <name>Jud Saoud</name>
+            <email>jud@p.foundation</email>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[MediaGuard Continuity Plan for Lebanon Conflict]]></title>
         <id>https://www.p.foundation/ar/messages/mediaguard_continuity_plan</id>
