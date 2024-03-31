@@ -191,6 +191,10 @@ const config = {
             to: '/coc',
           },
           {
+            label: 'Messages',
+            to: '/messages',
+          },
+          {
             label: 'AS399728',
             to: '/as399728',
           },
