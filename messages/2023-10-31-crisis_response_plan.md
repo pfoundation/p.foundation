@@ -3,7 +3,6 @@ title: Lebanon Crisis Response Plan
 description: P Foundation crisis response plan in case of military conflict in Lebanon.
 slug: lebanon_crisis_response_plan
 authors: jud
-tags: [MediaGuard]
 #image: https://i.imgur.com/mErPwqL.png
 hide_table_of_contents: false
 date: 2023-10-31T08:20:00Z
