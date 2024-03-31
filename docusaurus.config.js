@@ -86,6 +86,7 @@ const config = {
         blogTitle: 'P Foundation Messages',
         blogDescription:
           'Messages from the P Foundation to the donors and community.',
+        showLastUpdateTime: true,
       },
     ],
   ],
