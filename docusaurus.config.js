@@ -10,7 +10,7 @@ const darkCodeTheme = themes.dracula;
 
 const config = {
   title: 'P Foundation',
-  tagline: 'Empowering nations through open internet and free journalism.',
+  tagline: 'Empowering nations with open internet and free journalism.',
   url: 'https://www.p.foundation',
   baseUrl: '/',
   trailingSlash: false,
@@ -189,6 +189,10 @@ const config = {
           {
             label: 'Code of Conduct',
             to: '/coc',
+          },
+          {
+            label: 'Messages',
+            to: '/messages',
           },
           {
             label: 'AS399728',
