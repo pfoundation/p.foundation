@@ -3,7 +3,6 @@ title: MediaGuard Continuity Plan for Lebanon Conflict
 description: P Foundation is redoubling its efforts through MediaGuard program, which has been steadfastly supporting journalists and media organizations for the past 18 months—all at no cost.
 slug: mediaguard_continuity_plan
 authors: jud
-tags: [MediaGuard]
 #image: https://i.imgur.com/mErPwqL.png
 hide_table_of_contents: false
 date: 2023-10-18T13:00:00Z
