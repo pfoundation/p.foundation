@@ -14,10 +14,6 @@
         <updated>2024-03-31T09:00:00.000Z</updated>
         <summary type="html"><![CDATA[P Foundation is redoubling its efforts through MediaGuard program, which has been steadfastly supporting journalists and media organizations for the past 2 years.]]></summary>
         <content type="html"><![CDATA[<p>(Developing)</p>]]></content>
-        <author>
-            <name>Jud Saoud</name>
-            <email>jud@p.foundation</email>
-        </author>
     </entry>
     <entry>
         <title type="html"><![CDATA[Lebanon Crisis Response Plan]]></title>
@@ -88,7 +84,6 @@
             <name>Jud Saoud</name>
             <email>jud@p.foundation</email>
         </author>
-        <category label="MediaGuard" term="MediaGuard"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[MediaGuard Continuity Plan for Lebanon Conflict]]></title>
@@ -128,6 +123,5 @@
             <name>Jud Saoud</name>
             <email>jud@p.foundation</email>
         </author>
-        <category label="MediaGuard" term="MediaGuard"/>
     </entry>
 </feed>
