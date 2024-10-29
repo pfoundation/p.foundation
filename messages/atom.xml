@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.p.foundation/messages</id>
     <title>P Foundation Blog</title>
-    <updated>2024-03-31T09:00:00.000Z</updated>
+    <updated>2024-03-30T09:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.p.foundation/messages"/>
     <subtitle>P Foundation Blog</subtitle>
@@ -11,9 +11,26 @@
         <title type="html"><![CDATA[Roadmap to 2027]]></title>
         <id>https://www.p.foundation/messages/roadmap_to_2027</id>
         <link href="https://www.p.foundation/messages/roadmap_to_2027"/>
-        <updated>2024-03-31T09:00:00.000Z</updated>
+        <updated>2024-03-30T09:00:00.000Z</updated>
         <summary type="html"><![CDATA[P Foundation is redoubling its efforts through MediaGuard program, which has been steadfastly supporting journalists and media organizations for the past 2 years.]]></summary>
-        <content type="html"><![CDATA[<p>(Developing)</p>]]></content>
+        <content type="html"><![CDATA[<p>(Developing)</p>
+<p>Every birthday brings with it a moment of reflection, a brief melancholy that pushes me to evaluate my journey so far. In 2021, as I approached my 30th birthday, the introspection was different. I found myself thinking not just about my past but also about my legacy. It wasn't just another birthday—it was a turning point.</p>
+<p>I grew up in a Lebanese Christian household that resisted the Syrian occupation of Lebanon. We criticized the United States role in the situation, yet we understood that only the US had the power to change it. My father was a remarkable figure in my life, always instilling in me that I have no limits, that we control our destiny, and that our choices defined us. Later, my brother played an even bigger role in shaping my worldview. He introduced me to different cultures, sects and unwittingly led me to the world of media. I had the unique opportunity to grow up in newsrooms—first at a radio station, then at a television network. This exposure, at such an early age, laid the foundation for everything I would do later.</p>
+<p>In my younger years, I started out as a developer. I moved into the corporate world, but it didn’t take long for me to realize that it wasn’t where I belonged. I left to pursue commercial media independently, only to find myself eventually shifting toward communications. None of these transitions were planned; they happened because I saw a goal worth pursuing in each new phase.</p>
+<p>Meanwhile, Lebanon was enduring its third year of a deepening financial crisis. Poverty was on the rise, infrastructure was crumbling, and basic services were failing. Some areas were dealing with daily internet blackouts, impacting not only households but essential services like medication distribution. Internet access had become a political bargaining chip, with politicians using it as leverage against the public.</p>
+<p>As my 30th birthday approached, I knew I could no longer afford to move forward without a clear plan. I decided that I was done doing things that didn’t resonate with me. The best legacy, I believed, was one that left a positive impact on the community.
+I am a firm believer that open internet access is as vital as education for the future of any nation. Free journalism is another pillar I stand by. Both of these beliefs converged on that introspective day, and before I knew it, I was filling out paperwork to register a foundation in Washington, D.C.</p>
+<p>I’ve always preferred working behind the scenes, and it was no different for the foundation. I didn't even bother to create a Twitter account for it. I focused on building a network that would serve as the backbone for our future endeavors. At the same time, I reached out to friends in media organizations, trying to understand their challenges and exploring ways to help. Parallel to this, we were tackling smaller but significant issues, such as minor internet outages in Lebanon. By working with different organizations, we aimed to keep people connected, even if that meant nudging entities to simply do their jobs or by integrating with their teams to tackle challenges they are facing.</p>
+<p>The vision for the foundation took shape gradually. We began developing programs that addressed core challenges, while also stepping in with initiatives when crises struck. One such example was @LebanonAlerts, a small but impactful initiative that helped lower local fear and anxiety after 2023 Turkey deadly earthquake.</p>
+<p>On October 7th, we woke up to news of a massacre in south Israel, only for certain groups in Lebanon to use the situation as a pretext to ignite tensions with Israel. By October 18th, we had prepared our media continuity plan, scaling up resources and preparing for a potential escalation between Israel and Hezbollah. Ensuring Lebanon’s continued access to the internet was a priority for us, and as we observed the Lebanese government's inadequate response, we put together a connectivity response plan and began communicating with relevant parties. Unfortunately, political complications led to our plan being sidelined—Hezbollah’s opposition being a major reason. Setbacks are an inevitable part of any meaningful journey, and we continue in our efforts to ensure Lebanon remain connected.</p>
+<p>Creating a traditional roadmap in such an unpredictable environment, especially in the Middle East where we operate, would be impractical. Instead, we need a flexible framework—one that could adapt to the ever-changing political and social landscape, allowing us to respond effectively to new challenges as they arise.</p>
+<p>With all these considerations, here are the key priorities and goals I see us pursuing over the next three years:</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="grow-our-partners">Grow our partners<a href="https://www.p.foundation/messages/roadmap_to_2027#grow-our-partners" class="hash-link" aria-label="Direct link to Grow our partners" title="Direct link to Grow our partners">​</a></h3>
+<p>Growing the number of beneficiaries of our programs, adding additional organizations to our media guard program.</p>
+<p>Moving infrastructure is not an easy task on their small digital teams (with one system administrator, if not outsourced) so providing them with more one on one support and dedicated point of contact is a must to increase efficiency and help them transition.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="increase-our-citizens-directed-programs-and-initiatives">Increase our citizens directed programs and initiatives<a href="https://www.p.foundation/messages/roadmap_to_2027#increase-our-citizens-directed-programs-and-initiatives" class="hash-link" aria-label="Direct link to Increase our citizens directed programs and initiatives" title="Direct link to Increase our citizens directed programs and initiatives">​</a></h3>
+<p>By working closely with different parties, I feel there is more tools, utilities, and integration that we can offer, mostly to existing organizations that work and serve citizens directly.</p>
+<p>To achieve this, we will working more closely with partner organizations that have direct impact on citizens and have years of grassroots experience.</p>]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Lebanon Crisis Response Plan]]></title>
