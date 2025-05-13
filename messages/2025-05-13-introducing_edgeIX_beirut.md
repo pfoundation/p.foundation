@@ -1,7 +1,7 @@
 ---
 title: Announcing EdgeIX Beirut, Localizing Lebanon’s Internet Exchange
 description: Launching Lebanon’s first carrier-neutral Internet Exchange Point to localize traffic and dramatically improve internet performance.
-slug: introducing_EdgeIXBeirut
+slug: Introducing_EdgeIXBeirut
 authors: jud
 #image: https://i.imgur.com/mErPwqL.png
 hide_table_of_contents: true
