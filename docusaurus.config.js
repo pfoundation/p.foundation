@@ -97,6 +97,10 @@ const config = {
             to: 'https://pfoundation.maps.arcgis.com/apps/instant/basic/index.html?appid=c96d564f47cd44ca8c6b8118e4338d29',
             from: '/s/southBeirutMap',
           },
+          {
+            to: '/messages/IntroducingOpenIXBeirut',
+            from: '/messages/Introducing_EdgeIXBeirut',
+          },
         ],
       },
     ],
