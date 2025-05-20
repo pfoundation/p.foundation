@@ -110,7 +110,8 @@ const config = {
         id: 'openix',
         path: 'OpenIX',
         routeBasePath: 'OpenIX',
-        sidebarPath: require.resolve('./sidebarsOpenIX.js'),
+        sidebarCollapsed: false,
+        sidebarCollapsible: true,
       },
     ],
   ],
@@ -184,6 +185,8 @@ const config = {
             position: 'left',
           },
           { to: '/initiatives', label: 'Initiatives', position: 'left' },
+          { to: '/OpenIX', label: 'OpenIX', position: 'left' },
+          { to: '/messages', label: 'Updates', position: 'right' },
           // {
           //   type: 'localeDropdown',
           //   position: 'right',
