@@ -104,6 +104,15 @@ const config = {
         ],
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'openix',
+        path: 'OpenIX',
+        routeBasePath: 'OpenIX',
+        sidebarPath: require.resolve('./sidebarsOpenIX.js'),
+      },
+    ],
   ],
   presets: [
     [
