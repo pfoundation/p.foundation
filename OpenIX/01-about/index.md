@@ -11,7 +11,7 @@ import DocCardList from '@theme/DocCardList';
 
 # OpenIX
 
-OpenIX Internet Exchange (OpenIX) is a neutral, carrier-neutral, and data center-neutral interconnection platform that enables networks to efficiently exchange internet traffic.
+OpenIX Internet Exchange is a carrier-neutral, and data center-neutral interconnection platform that enables networks to efficiently exchange internet traffic.
 
 The following policy outlines the terms, conditions, and standards for connecting to and using OpenIX. All participants must adhere to these policies to maintain a secure, efficient, and fair peering environment. OpenIX is committed to international best practices and adheres strictly to local laws and regulatory requirements in each country where it operates.
 
