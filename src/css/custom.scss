@@ -37,6 +37,10 @@ h5 {
 
   --ifm-global-radius: 0.3rem;
   --ifm-navbar-height: 5rem;
+
+  /* Add link color styling */
+  --ifm-link-color: #0d5b85;
+  --ifm-link-hover-color: #094563;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -49,6 +53,10 @@ h5 {
   --ifm-color-primary-lighter: #c9fc6a;
   --ifm-color-primary-lightest: #d9fd97;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  /* Keep link color consistent in dark mode */
+  --ifm-link-color: var(--pk-green);
+  --ifm-link-hover-color: #4db5e7;
 }
 
 html[data-theme='dark'] {
@@ -66,6 +74,24 @@ html[data-theme='dark'] {
 
 .navbar-sidebar .navbar__logo {
   height: 2rem;
+}
+
+/* Add styling for active navigation item */
+.navbar__link--active {
+  position: relative;
+  font-weight: bold;
+  color: var(--pk-green) !important;
+}
+
+/* Underline indicator for active navigation item */
+.navbar__link--active:after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--pk-green);
 }
 
 .footer {
