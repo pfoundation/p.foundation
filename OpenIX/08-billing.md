@@ -8,7 +8,7 @@ OpenIX operates on a for-profit, commercial basis. Participants are required to 
 
 ## Port Fees
 
-A standard **port fee** is charged for each port (physical interface) a participant has on the exchange. Fees may vary by port speed – for example, a 1 Gbps port will have a lower monthly fee than a 10 Gbps or 100 Gbps port, reflecting the greater capacity and resources of higher speeds. Port fees cover the right to use the exchange fabric, the route servers, and basic support. The fee is typically recurring (billed monthly, quarterly, or annually as per the agreement).
+A standard port fee is charged for each port (physical interface) a participant has on the exchange. Fees may vary by port speed – for example, a 1 Gbps port will have a lower monthly fee than a 10 Gbps or 100 Gbps port, reflecting the greater capacity and resources of higher speeds. Port fees cover the right to use the exchange fabric, the route servers, and basic support. The fee is typically recurring (billed monthly, quarterly, or annually as per the agreement).
 
 OpenIX may offer discounts for longer-term commitments (e.g., paying annually in advance) or for volume (e.g., if a participant has multiple ports or connects in multiple cities in the future). The current fee schedule can be obtained from OpenIX sales or website.
 

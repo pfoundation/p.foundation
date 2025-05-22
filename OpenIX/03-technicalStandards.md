@@ -33,9 +33,9 @@ If a participant needs to connect multiple routers or networks, they must obtain
 
 The exchange fabric is an Ethernet switching environment carrying IP traffic only. The following EtherTypes and protocols are permitted:
 
-- **0x0800: IPv4**
-- **0x86DD: IPv6**
-- **0x0806: ARP** (Address Resolution Protocol for IPv4) as well as IPv6 Neighbor Discovery messages (ICMPv6 types for ND)
+- **0x0800**: IPv4
+- **0x86DD**: IPv6
+- **0x0806**: ARP (Address Resolution Protocol for IPv4) as well as IPv6 Neighbor Discovery messages (ICMPv6 types for ND)
 
 No other Layer 2 protocols or non‑IP traffic will be forwarded. In particular, **link‑local or control protocols** such as Spanning Tree Protocol (STP), Rapid STP, Cisco Discovery Protocol (CDP), Link Aggregation Control Protocol (LACP), LLDP, and similar traffic must be disabled on the interface toward OpenIX. The exchange will drop these frames.
 
