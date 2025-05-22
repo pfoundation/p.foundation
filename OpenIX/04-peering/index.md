@@ -6,7 +6,7 @@ description: The policies governing traffic exchange, BGP sessions, and multilat
 
 import DocCardList from '@theme/DocCardList';
 
-OpenIX’s core purpose is to facilitate **peering** among networks. Peering is the mutual exchange of routing information and traffic between participants’ networks. OpenIX itself does not involve itself in participants’ business arrangements (most peering at OpenIX is settlement-free, but any commercial terms between networks are outside the scope of OpenIX).
+OpenIX’s core purpose is to facilitate peering among networks. Peering is the mutual exchange of routing information and traffic between participants’ networks. OpenIX itself does not involve itself in participants’ business arrangements (most peering at OpenIX is settlement-free, but any commercial terms between networks are outside the scope of OpenIX).
 
 To ensure an effective peering environment, the following policies apply:
 
