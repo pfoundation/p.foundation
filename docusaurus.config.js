@@ -11,7 +11,7 @@ const darkCodeTheme = themes.dracula;
 const config = {
   title: 'P Foundation',
   tagline: 'Empowering nations with open internet and free journalism.',
-  url: 'https://www.p.foundation',
+  url: 'https://p.foundation',
   baseUrl: '/',
   trailingSlash: false,
   onBrokenLinks: 'warn',
