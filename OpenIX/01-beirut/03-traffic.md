@@ -1,10 +1,9 @@
 ---
-id: statistics
-title: Statistics
+title: Traffic Statistics
 description: OpenIX Beirut Traffic Statistics
 ---
 
-# Statistics
+# Traffic Statistics
 
 :::note
 
