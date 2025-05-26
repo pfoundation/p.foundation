@@ -83,9 +83,9 @@ const config = {
          */
         path: './messages',
         blogSidebarCount: 0,
-        blogTitle: 'P Foundation Messages',
+        blogTitle: 'P Foundation Updates',
         blogDescription:
-          'Messages from the P Foundation to the donors and community.',
+          'Updates from the P Foundation to the donors and community.',
         showLastUpdateTime: true,
       },
     ],
@@ -134,7 +134,7 @@ const config = {
           customCss: [require.resolve('./src/css/custom.scss')],
         },
         sitemap: {
-          changefreq: 'weekly',
+          changefreq: 'daily',
           priority: 0.5,
           ignorePatterns: ['/tags/**'],
           filename: 'sitemap.xml',
@@ -217,10 +217,6 @@ const config = {
           {
             label: 'Code of Conduct',
             to: '/coc',
-          },
-          {
-            label: 'Messages',
-            to: '/messages',
           },
           {
             label: 'AS399728',
