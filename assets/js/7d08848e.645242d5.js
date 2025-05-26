@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkp_foundation=self.webpackChunkp_foundation||[]).push([[6757],{6592:e=>{e.exports=JSON.parse('{"blogBasePath":"/messages","blogTitle":"P Foundation Updates"}')}}]);
