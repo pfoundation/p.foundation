@@ -1,5 +1,4 @@
 ---
-id: connectedSites
 title: Connected Sites
 description: List of sites connected to OpenIX Beirut.
 ---
