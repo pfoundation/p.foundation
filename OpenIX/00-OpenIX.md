@@ -7,8 +7,6 @@ breadcrumbs: false
 hide_table_of_contents: true
 ---
 
-import DocCardList from '@theme/DocCardList';
-
 # OpenIX
 
 OpenIX Internet Exchange is a carrier-neutral interconnection platform that enables networks to efficiently exchange internet traffic.
@@ -24,7 +22,3 @@ OpenIX maintains a neutral governance stance and is not affiliated with any sing
 OpenIX operates in compliance with the local telecommunications regulations and applicable laws of each jurisdiction in which it operates. Where required, OpenIX obtains and maintains any licenses or approvals necessary for operating a commercial Internet Exchange. The organization ensures alignment with local regulatory authorities' guidelines, along with global best practices for Internet Exchanges.
 
 As an initiative operated by the non-profit P Foundation, OpenIX structures its fees to cover operational costs plus a minimal profit margin capped at 30%. This surplus is fully reinvested into the P Foundation to support further development and sustainability of OpenIX and related projects. The primary aim is to deliver a stable, efficient, and open interconnection environment benefiting the broader internet ecosystem in each region.
-
-## Locations
-
-<DocCardList />
