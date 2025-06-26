@@ -104,7 +104,7 @@ const config = {
           {
             from: '/calendarbooking/jud',
             to: 'https://calendar.app.google/UrCGibVPmTqTtjGcA',
-          }
+          },
         ],
       },
     ],
