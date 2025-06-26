@@ -101,6 +101,10 @@ const config = {
             to: '/messages/IntroducingOpenIXBeirut',
             from: '/messages/Introducing_EdgeIXBeirut',
           },
+          {
+            from: '/calendarbooking/jud',
+            to: 'https://calendar.app.google/UrCGibVPmTqTtjGcA',
+          }
         ],
       },
     ],
