@@ -9,8 +9,8 @@ export const Hero: FunctionComponent = () => {
       <div className="container">
         <h1 className={clsx('hero__title', styles.title)}>
           Empowering nations with{' '}
-          <span className={styles.highlighted}>open internet</span> and{' '}
-          <span className={styles.highlighted}>free journalism</span>.
+          <span className={styles.highlightedFirst}>open internet</span> and{' '}
+          <span className={styles.highlightedSecond}>free journalism</span>.
         </h1>
         <p className={clsx('hero__subtitle', styles.subtitle)}>
           Bridging the digital divide, the P Foundation is committed to
