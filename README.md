@@ -2,9 +2,13 @@
  <img src="https://raw.githubusercontent.com/pkosiec/website/main/static/img/logo.png" width="75">
 </p>
 
-# Paweł Kosiec - Personal Website
+# P Foundation Website
 
-This repository contains source code of the Paweł Kosiec's personal website. To see it live, navigate to the [kosiec.dev](https://kosiec.dev) address.
+This repository contains the source code for the P Foundation website. To see it live, navigate to [p.foundation](https://p.foundation).
+
+## Credits
+
+This website is based on the original design and codebase by [Paweł Kosiec](https://github.com/pkosiec). We thank him for creating the excellent foundation that powers this site.
 
 ## Development
 
@@ -34,4 +38,4 @@ This command generates static content into the `build` directory and can be serv
 
 ### Deployment
 
-This site is deployed automatically from the `main` branch using [Cloudflare Pages](https://pages.cloudflare.com/).
+This site is deployed automatically from the `master` branch using GitHub Pages.
