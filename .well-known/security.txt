@@ -1,5 +1,5 @@
 Contact: mailto:security@p.foundation
 Contact: tel:+1-202-351-5555
 Expires: 2026-01-31T23:59:00.000Z
-Preferred-Languages: en, fr, ar, cn, ru
+Preferred-Languages: en, fr, ar, zh, ru
 Canonical: https://p.foundation/.well-known/security.txt
