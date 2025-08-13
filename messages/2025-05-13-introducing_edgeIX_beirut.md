@@ -1,5 +1,5 @@
 ---
-title: Announcing OpenIX Beirut, Localizing Lebanon’s Internet Exchange
+title: Announcing OpenIX Beirut
 description: Launching Lebanon’s first carrier-neutral Internet Exchange Point to localize traffic and dramatically improve internet performance.
 slug: IntroducingOpenIXBeirut
 authors: jud
@@ -18,7 +18,7 @@ However, after extensive discussions with various stakeholders and recognizing t
 
 Our goal is for OpenIX Beirut to become Lebanon’s first truly carrier-neutral Internet Exchange, significantly enhancing the nation’s internet infrastructure.
 
-## Lebanon Needs a Local IX
+## Localizing Lebanon’s Internet Traffic
 
 Lebanon currently lacks any active IX, forcing local internet traffic to traverse international routes unnecessarily. The country’s previous two exchange points, including Beirut-IX launched in 2007, never scaled effectively and are now defunct. Consequently, even when Lebanese users access local content, the data frequently travels thousands of kilometers to Europe and back, typically via Marseille or Paris, just to reach a nearby network. Although major content providers have recently installed local caches, historically most traffic has been routed via Europe due to the national backbone (Ogero) primarily connecting there. Such indirect paths add substantial latency (\~50 milliseconds round-trip), degrade user experience, and inflate transit costs for ISPs.
 
