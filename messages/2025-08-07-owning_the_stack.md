@@ -56,7 +56,7 @@ In many ways, Cloudflare complements our sovereign infrastructure by adding anot
 
 We also recognize that there are moments when demand exceeds our own capacity. During major events such as presidential elections or sudden breaking news with massive audience spikes, we temporarily rely on external content delivery networks to help handle the load. This approach ensures that users continue to enjoy a seamless experience even when traffic surges unexpectedly. By combining our own infrastructure with these external resources only when necessary, we strike a balance between sovereignty, cost-effectiveness, and readiness for high-impact moments.
 
-### Empowering Media Guard
+### Media Guard
 
 One of the biggest beneficiaries of our infrastructure is our Media Guard program, which provides technical infrastructure to independent media outlets worldwide. This includes satellite news downlinking, backhaul support, digital streaming, and content distribution. In essence, we serve as the backend backbone that helps keep news sites and streams online, even in challenging environments.
 
@@ -66,7 +66,7 @@ Owning the platform also lets us tailor support and protection. We can apply cus
 
 Migrating partners from cloud setups to our PoPs is not simple, but our team provides hands-on support to ensure smooth transitions. This consolidation allows us to onboard more organizations without proportionally increasing costs, which is vital for our nonprofit model.
 
-### Reinvesting Savings into Growth and Innovation
+### Reinvesting
 
 The savings from avoiding high cloud costs have allowed us to expand and innovate. We have been able to invest in new regions, such as launching the OpenIX Beirut project to localize internet infrastructure in Lebanon. We are also exploring new PoPs in other areas to improve local media connectivity.
 
