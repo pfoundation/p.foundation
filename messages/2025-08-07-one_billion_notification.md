@@ -1,14 +1,14 @@
 ---
-title: '1 Billion Notifications and Counting: The Power of Our Sovereign Platform'
+title: 'Owning the Stack: Control, Privacy, and Unstoppable Scale'
 description: P Foundation built its own sovereign infrastructure to cut costs, boost performance, and protect data, helping independent media and communities.
-slug: PowerOfOurSovereignPlatform
+slug: OwningTheStack
 authors: jud
 #image: https://i.imgur.com/mErPwqL.png
 hide_table_of_contents: false
 date: 2025-08-07T21:00:00Z
 ---
 
-# 1 Billion Notifications and Counting: The Power of Our Sovereign Platform
+# Owning the Stack: Control, Privacy, and Unstoppable Scale
 
 _I think this might be my fourth draft about ONS (Open Notification Service). The first was for the initial announcement, the second for the milestone of sending 1 billion notifications, and now this one. Neither of the earlier drafts made it to the website for one reason or another, so I hope this version covers everything and more._
 
