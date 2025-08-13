@@ -12,7 +12,8 @@ date: 2025-08-07T21:00:00Z
 
 _I think this might be my fourth draft about ONS (Open Notification Service). The first was for the initial announcement, the second for the milestone of sending 1 billion notifications, and now this one. Neither of the earlier drafts made it to the website for one reason or another, so I hope this version covers everything and more._
 
-Before founding P Foundation, I was an early cloud adopter, going back to Google App Engine in 2008-9, and I continued to use the cloud for most projects. But when I started P Foundation in 2021, we made a deliberate, day‑one decision to build and operate our own infrastructure end‑to‑end: from the network layer to the hardware and, ultimately, our own data centers one day.
+Before founding P Foundation, I was an early cloud adopter, going back to Google App Engine in 2008-9, and I continued to use the cloud for most projects. But when I started P Foundation in 2021, we made a deliberate, day-one decision to build and operate our own infrastructure end-to-end: from the network layer to the hardware, and eventually run our own data centers.
+
 <!--truncate-->
 
 ## Control, Privacy, and Scale
