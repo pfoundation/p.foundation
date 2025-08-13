@@ -1,5 +1,5 @@
 ---
-title: 'Owning the Stack: Control, Privacy, and Unstoppable Scale'
+title: 'Owning the Stack: Control, Privacy, and Scale'
 description: P Foundation built its own sovereign infrastructure to cut costs, boost performance, and protect data, helping independent media and communities.
 slug: OwningTheStack
 authors: jud
@@ -10,11 +10,11 @@ date: 2025-08-07T21:00:00Z
 
 # Owning the Stack
 
-## Control, Privacy, and Unstoppable Scale
-
 _I think this might be my fourth draft about ONS (Open Notification Service). The first was for the initial announcement, the second for the milestone of sending 1 billion notifications, and now this one. Neither of the earlier drafts made it to the website for one reason or another, so I hope this version covers everything and more._
 
 Before founding P Foundation, I was an early cloud adopter, going back to Google App Engine in 2008-9, and I continued to use the cloud for most projects. But when I started P Foundation in 2021, we made a deliberate, day‑one decision to build and operate our own infrastructure end‑to‑end: from the network layer to the hardware and, ultimately, our own data centers.
+
+## Control, Privacy, and Scale
 
 From the outset we kept our use of public cloud minimal and intentional. As a nonprofit, we couldn’t justify locking ourselves into high recurring costs or vendor dependencies for core workloads. We chose to own and run what matters, and avoid deep reliance on the public cloud. When DHH and 37signals publicly detailed their own decision to step back from the cloud in October 2022, it simply validated a path we were already on.
 
