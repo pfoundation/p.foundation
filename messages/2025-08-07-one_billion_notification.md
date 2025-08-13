@@ -8,7 +8,9 @@ hide_table_of_contents: false
 date: 2025-08-07T21:00:00Z
 ---
 
-# Owning the Stack: Control, Privacy, and Unstoppable Scale
+# Owning the Stack
+
+## Control, Privacy, and Unstoppable Scale
 
 _I think this might be my fourth draft about ONS (Open Notification Service). The first was for the initial announcement, the second for the milestone of sending 1 billion notifications, and now this one. Neither of the earlier drafts made it to the website for one reason or another, so I hope this version covers everything and more._
 
@@ -20,7 +22,7 @@ By owning our infrastructure, we have real cost control. We know exactly what we
 
 <!--truncate-->
 
-### Data Sovereignty and Owning Our Destiny
+### Data Sovereignty
 
 Cost wasn’t the only driver. Data sovereignty and operational independence were, and are, central. We support independent media worldwide and often handle sensitive information. Parking that data in hyperscale clouds can subject it to external jurisdictions and policies outside our control. Running on hardware we choose, in locations we choose, gives us clarity over where assets live and who can access them.
 
@@ -34,7 +36,7 @@ We optimized our infrastructure for the specific needs of our Media Guard platfo
 
 Reliability has also improved. By distributing infrastructure across multiple PoPs, we have built redundancy and fault tolerance into our network. If one pop encounters an issue, others can take over, something harder to achieve in a single cloud region. Additionally, direct peering with local ISPs and internet exchanges allows us to route around problems and avoid congestion.
 
-### Smarter Storage: Keeping What Makes Sense in the Cloud
+### Strategic Cloud Use
 
 Building on the performance and reliability gains from our own infrastructure, we also examined which elements could still benefit from selective cloud use.
 
@@ -44,7 +46,7 @@ This approach gives us the best of both worlds. We keep live, mission-critical s
 
 We encrypt any sensitive data stored in the cloud with our own keys, addressing sovereignty concerns. For now, this mix of ownership and selective renting gives us maximum value: we control high-impact workloads and rent low-cost storage. As our needs grow, we will periodically revisit these decisions.
 
-### Cloudflare Partnership and Appreciation
+### Cloudflare Love
 
 While Cloudflare is a third-party provider, its role in our ecosystem complements rather than contradicts our sovereign approach. We regard it as a strategic ally whose services enhance rather than diminish our autonomy, operating as a neutral, globally distributed network layer under our configuration and control.
 
@@ -54,7 +56,7 @@ In many ways, Cloudflare complements our sovereign infrastructure by adding anot
 
 We also recognize that there are moments when demand exceeds our own capacity. During major events such as presidential elections or sudden breaking news with massive audience spikes, we temporarily rely on external content delivery networks to help handle the load. This approach ensures that users continue to enjoy a seamless experience even when traffic surges unexpectedly. By combining our own infrastructure with these external resources only when necessary, we strike a balance between sovereignty, cost-effectiveness, and readiness for high-impact moments.
 
-### Empowering Media Guard on Our Own Platform
+### Empowering Media Guard
 
 One of the biggest beneficiaries of our infrastructure is our Media Guard program, which provides technical infrastructure to independent media outlets worldwide. This includes satellite news downlinking, backhaul support, digital streaming, and content distribution. In essence, we serve as the backend backbone that helps keep news sites and streams online, even in challenging environments.
 
