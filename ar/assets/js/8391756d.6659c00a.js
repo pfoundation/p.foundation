@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkp_foundation=self.webpackChunkp_foundation||[]).push([[1937],{9133:n=>{n.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"openix"}')}}]);
