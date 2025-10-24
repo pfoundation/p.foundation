@@ -15,8 +15,14 @@ const config = {
   baseUrl: '/',
   trailingSlash: false,
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
+
+  // Markdown configuration
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
 
   // GitHub pages deployment config
   organizationName: 'pfoundation',
