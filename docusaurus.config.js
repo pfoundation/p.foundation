@@ -78,16 +78,16 @@ const config = {
         /**
          * Required for any multi-instance plugin
          */
-        id: 'messages',
+        id: 'updates',
         /**
          * URL route for the blog section of your site.
          * *DO NOT* include a trailing slash.
          */
-        routeBasePath: 'messages',
+        routeBasePath: 'updates',
         /**
          * Path to data on filesystem relative to site dir.
          */
-        path: './messages',
+        path: './updates',
         blogSidebarCount: 0,
         blogTitle: 'P Foundation Updates',
         blogDescription:
@@ -104,7 +104,7 @@ const config = {
             from: '/s/southBeirutMap',
           },
           {
-            to: '/messages/IntroducingOpenIXBeirut',
+            to: '/updates/IntroducingOpenIXBeirut',
             from: '/messages/Introducing_EdgeIXBeirut',
           },
           {
@@ -112,6 +112,23 @@ const config = {
             to: 'https://calendar.app.google/UrCGibVPmTqTtjGcA',
           },
         ],
+        // Add per-page legacy aliases: /messages/* -> /updates/*
+        /**
+         * Map generated /updates routes (with or without locale prefix) to legacy /messages routes.
+         * Examples:
+         *  - /updates/slug            -> /messages/slug
+         *  - /ar/updates/slug         -> /ar/messages/slug
+         *  - /updates                 -> /messages
+         *  - /ar/updates              -> /ar/messages
+         * @param {string} existingPath
+         * @returns {string[]|undefined}
+         */
+        createRedirects(existingPath) {
+          if (existingPath.includes('/updates')) {
+            return [existingPath.replace('/updates', '/messages')];
+          }
+          return undefined;
+        },
       },
     ],
     [
@@ -196,7 +213,7 @@ const config = {
           },
           { to: '/initiatives', label: 'Initiatives', position: 'left' },
           { to: '/OpenIX', label: 'OpenIX', position: 'left' },
-          { to: '/messages', label: 'Updates', position: 'right' },
+          { to: '/updates', label: 'Updates', position: 'right' },
           // {
           //   type: 'localeDropdown',
           //   position: 'right',

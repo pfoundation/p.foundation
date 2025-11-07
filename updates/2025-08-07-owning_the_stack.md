@@ -68,7 +68,7 @@ Migrating partners from cloud setups to our PoPs is not simple, but our team pro
 
 ### Reinvesting
 
-The savings from avoiding high cloud costs have allowed us to expand and innovate. We have been able to invest in new regions, such as launching the [OpenIX Beirut](/messages/IntroducingOpenIXBeirut) to localize internet infrastructure in Lebanon. We are also exploring new PoPs in other areas to improve local media connectivity.
+The savings from avoiding high cloud costs have allowed us to expand and innovate. We have been able to invest in new regions, such as launching the [OpenIX Beirut](/updates/IntroducingOpenIXBeirut) to localize internet infrastructure in Lebanon. We are also exploring new PoPs in other areas to improve local media connectivity.
 
 We invested in our own GPU cluster, enabling us to run AI workloads in-house instead of paying for expensive cloud GPUs. This has allowed us to develop AI tools for our partner newsrooms, such as automatic video transcription, AI-based content moderation, and intelligent alert systems. These tools require significant compute power, which we can now provide ourselves.
 
