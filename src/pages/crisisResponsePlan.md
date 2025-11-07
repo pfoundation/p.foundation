@@ -8,7 +8,7 @@ unlisted: true
 
 With the escalating potential for military conflict in Lebanon, the P Foundation has activated its crisis response plan. This initiative is undertaken in close partnership with the Lebanese Ministry of Telecom, and local organizations.
 
-Similar to [MediaGuard Continuity Plan](/messages/mediaguard_continuity_plan), this plan augments the existing P Foundation programs, enhancing their capacity and introducing new services.
+Similar to [MediaGuard Continuity Plan](/updates/mediaguard_continuity_plan), this plan augments the existing P Foundation programs, enhancing their capacity and introducing new services.
 
 While our objective is to mitigate Lebanon's disconnection from the global internet, we recognize the limitations posed by our resources in achieving this goal entirely.
 
