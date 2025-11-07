@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkp_foundation=globalThis.webpackChunkp_foundation||[]).push([[7919],{3979:a=>{a.exports=JSON.parse('{"metadata":{"permalink":"/ar/messages","page":1,"postsPerPage":10,"totalPages":1,"totalCount":5,"blogDescription":"Updates from the P Foundation to the donors and community.","blogTitle":"P Foundation Updates"}}')}}]);

@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkp_foundation=globalThis.webpackChunkp_foundation||[]).push([[1955],{4068:a=>{a.exports=JSON.parse('{"blogBasePath":"/ar/messages","blogTitle":"P Foundation Updates","authorsListPath":"/ar/messages/authors"}')}}]);

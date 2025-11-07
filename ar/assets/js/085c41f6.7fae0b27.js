@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkp_foundation=globalThis.webpackChunkp_foundation||[]).push([[1610],{5170:u=>{u.exports=JSON.parse('{"authors":[{"name":"Jud Saoud","title":"COO of P Foundation","email":"jud@p.foundation","imageURL":"https://github.com/judsd.png","key":"jud","page":null,"count":5}]}')}}]);
