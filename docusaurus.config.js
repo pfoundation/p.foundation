@@ -242,12 +242,16 @@ const config = {
         style: 'light',
         links: [
           {
-            label: 'Code of Conduct',
-            to: '/coc',
-          },
-          {
             label: 'AS399728',
             to: '/as399728',
+          },
+          {
+            label: 'Privacy Policy',
+            to: '/privacy',
+          },
+          {
+            label: 'Code of Conduct',
+            to: '/coc',
           },
           {
             label: 'Contact',
