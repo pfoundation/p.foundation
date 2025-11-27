@@ -30,6 +30,7 @@ src: 'https://grafana.openix.ong/d-solo/admhsjl/openix-beirut-traffic-overview?o
 
 <>
 {widgetConfigs.map((widget) => (
+
 <section
 key={widget.id}
 style={{
