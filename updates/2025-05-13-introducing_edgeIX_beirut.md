@@ -10,7 +10,7 @@ date: 2025-05-13T19:00:00Z
 
 # Announcing OpenIX Beirut
 
-We initially envisioned OpenIX as a program that provides grants, training, technical assistance, and equipment to set up micro-efficient IXs—neutral hubs where networks openly peer and enjoy low-cost colocation. The vision was to bring internet content and service providers together locally, enabling data to be exchanged within Lebanon instead of traversing distant overseas hubs.
+We initially envisioned OpenIX as a program that provides grants, training, technical assistance, and equipment to set up micro-efficient IXs neutral hubs where networks openly peer and enjoy low-cost colocation. The vision was to bring internet content and service providers together locally, enabling data to be exchanged within Lebanon instead of traversing distant overseas hubs.
 
 <!--truncate-->
 
@@ -38,11 +38,11 @@ OpenIX Beirut brings the exchange closer to users, eliminating the need for Leba
 
 ## Lebanon’s Chance to Catch Up
 
-Internet Exchange Points have long been integral to internet growth. Many global IXs began as community or academic projects, with the first established in 1988 at a university campus. These early IXs demonstrated the benefits of local interconnection: faster, cheaper access for everyone. Major tech hubs worldwide—such as Silicon Valley and Amsterdam—now thrive due to robust IXs handling substantial local traffic.
+Internet Exchange Points have long been integral to internet growth. Many global IXs began as community or academic projects, with the first established in 1988 at a university campus. These early IXs demonstrated the benefits of local interconnection: faster, cheaper access for everyone. Major tech hubs worldwide, such as Silicon Valley and Amsterdam, now thrive due to robust IXs handling substantial local traffic.
 
 However, the Middle East and Africa remain largely underserved in terms of IXs. Lebanon’s first attempt in 2007 at the American University of Beirut showed promise but faltered due to limited participation. Today, Lebanon still lacks a fully functional IX, exacerbating its digital divide through heavy dependence on international bandwidth. OpenIX Beirut aims to transform this landscape, placing Lebanon firmly on the map of globally connected internet communities.
 
-We are confident this model works. For example, Kenya and Nigeria increased local traffic exchange from about 30% to 70% within eight years by developing strong IXs. Inspired by these success stories, our ambitious goal is to achieve over 70% local traffic exchange in Lebanon by Summer 2025. This means everything—from videos to financial transactions and academic resources—will reach users locally without leaving the country.
+We are confident this model works. For example, Kenya and Nigeria increased local traffic exchange from about 30% to 70% within eight years by developing strong IXs. Inspired by these success stories, our ambitious goal is to achieve over 70% local traffic exchange in Lebanon by Summer 2025. This means everything, from videos to financial transactions and academic resources will reach users locally without leaving the country.
 
 _With OpenIX Beirut, local ISPs and content providers will directly exchange traffic within Lebanon, significantly boosting speed, reliability, and efficiency._
 
@@ -60,12 +60,12 @@ For Lebanese internet users, these developments mean tangible improvements: fast
 
 ## Community Impact
 
-The launch of OpenIX Beirut marks more than just a technical improvement—it is a community milestone. It unites telecom operators, private ISPs, universities, and content companies in enhancing Lebanon’s digital ecosystem. Localized traffic means faster, more affordable, and resilient internet, benefitting everything from business services to education tools. Critically, local peering ensures continued domestic connectivity even if international routes face disruptions.
+The launch of OpenIX Beirut marks more than just a technical improvement, it is a community milestone. It unites telecom operators, private ISPs, universities, and content companies in enhancing Lebanon’s digital ecosystem. Localized traffic means faster, more affordable, and resilient internet, benefitting everything from business services to education tools. Critically, local peering ensures continued domestic connectivity even if international routes face disruptions.
 
-OpenIX Beirut also serves as a pilot for broader regional expansion. Our mission at P Foundation is to foster a more equitable, distributed internet, enabling every community to fully engage in the global digital economy.
+OpenIX Beirut also serves as a pilot for broader regional expansion. At P Foundation, our mission is to foster a more equitable, distributed internet that enables every community to fully participate in the global digital economy.
 
-We warmly invite all Lebanese ISPs, telecom carriers, content providers, and community networks to join OpenIX Beirut. The benefits of local peering—lower latency, reduced costs, enhanced user experiences—are immediate and substantial. Regional and global partners interested in supporting or participating are also encouraged to connect.
+We warmly invite Lebanese ISPs, telecom carriers, content providers, and community networks to join OpenIX Beirut. The benefits of local peering are immediate and substantial: lower latency, reduced costs, and enhanced user experiences. We also welcome regional and global partners interested in supporting, interconnecting with, or otherwise participating in this initiative.
 
-To learn more or to participate, contact us at [openix.beirut@p.foundation](mailto:openix.beirut@p.foundation).
+To learn more or get involved, contact us at [openix.beirut@p.foundation](mailto:openix.beirut@p.foundation).
 
 _Note on naming: We briefly referred to this initiative as EdgeIX, but upon learning of EdgeIX Australia, we chose OpenIX to avoid potential naming conflicts and ensure clarity for our global audience._
