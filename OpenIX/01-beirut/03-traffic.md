@@ -19,7 +19,7 @@ src: 'https://grafana.openix.ong/d-solo/admhsjl/openix-beirut-traffic-overview?o
 {
 id: 'panel-3',
 title: 'Past Week',
-src: 'https://grafana.openix.ong/d-solo/admhsjl/openix-beirut-traffic-overview?orgId=1&from=now-7d&to=now&timezone=browser&theme=dark&panelId=panel-3&__feature.dashboardSceneSolo=true',
+src: 'https://grafana.openix.ong/d-solo/admhsjl/openix-beirut-traffic-overview?orgId=1&from=now-7d&to=now&timezone=browser&theme=light&panelId=panel-3&__feature.dashboardSceneSolo=true',
 },
 {
 id: 'panel-4',
@@ -43,7 +43,6 @@ style={{
           position: 'relative',
           maxWidth: '2560px',
           aspectRatio: '2560 / 1308',
-          paddingBottom: '40px',
           border: '1px solid #e2e8f0',
           borderRadius: '12px',
           boxShadow:
@@ -59,7 +58,7 @@ style={{
             top: 0,
             left: 0,
             width: '100%',
-            height: '700px',
+            height: '100%',
           }} ></iframe>
 </div>
 </section>
