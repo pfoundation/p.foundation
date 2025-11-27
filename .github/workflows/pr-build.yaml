@@ -73,5 +73,5 @@ jobs:
           file-extension: '.md'
           check-modified-files-only: 'yes'
           config-file: '.mlc.config.json'
-          folder-path: 'blog, messages, src/pages'
+          folder-path: 'blog, updates, src/pages'
           base-branch: 'master'
