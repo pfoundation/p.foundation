@@ -3,7 +3,7 @@ title: 2025 State of the Internet in Lebanon
 description: A snapshot of Lebanon’s Internet in 2025, covering traffic growth, service and device trends, and shifting ISP market share.
 slug: 2025lb_state_of_internet
 authors: jud
-image: https://assets.p.foundation/assets/a80aff34-af99-4e6d-8bd4-c38f98f29196/default.jpg
+image: https://assets.p.foundation/assets/a80aff34-af99-4e6d-8bd4-c38f98f29196?key=social
 hide_table_of_contents: false
 date: 2026-01-01T17:00:00Z
 ---
