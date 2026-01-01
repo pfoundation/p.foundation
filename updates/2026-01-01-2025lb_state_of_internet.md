@@ -48,8 +48,6 @@ Several smaller providers posted strong growth. **My ISP** (AS34447) grew from *
 
 Overall, the market appears to be gradually fragmenting. The **top 5 providers** accounted for roughly **44% of traffic** (down from 45% in 2024), and the **top 10** accounted for about **62%** (down from 63%). Meanwhile, stable performers such as **TerraNet** (AS39010) (**9.75% → 9.95%**) and **IDM** (AS9051) (**9.74% → 9.90%**) maintained their positions, suggesting strong retention despite broad turbulence.
 
-Growth among fiber-oriented providers (e.g., **Ferrari Networks**) and the steady rise of **VISP** (AS35197) (**2.59% → 2.98%**) are consistent with continued fiber deployment where feasible.
-
 Finally, the presence of **200+ ASNs**, including many micro-ISPs below **0.1% share**, reflects Lebanon’s highly fragmented telecom environment—shaped by infrastructure limitations, the electricity crisis, and regulatory complexity. The trend also suggests Lebanese consumers are increasingly willing to switch providers for better service, with mobile—and potentially satellite—emerging as viable alternatives to traditional fixed-line access.
 
 ---
