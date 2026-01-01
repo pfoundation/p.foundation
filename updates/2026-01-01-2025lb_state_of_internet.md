@@ -12,43 +12,41 @@ date: 2026-01-01T17:00:00Z
 
 As we enter a new year, it’s a good moment to look back at 2025 and see how Lebanon’s Internet evolved—from traffic growth and device shifts to routing, security, and ISP market share.
 
-Understanding how a country’s local networks change over time helps explain performance and resilience, and highlights where local interconnection can make a real difference.
-
-That’s also the spirit behind OpenIX Beirut and P Foundation’s pledge to make connectivity more local so more traffic can stay local when it makes sense.
+Understanding how a country’s local networks change over time helps explain performance and resilience, and highlights where local interconnection can make a real difference. That’s also the spirit behind OpenIX Beirut and P Foundation’s pledge to make connectivity more local so more traffic can stay local when it makes sense.
 
 <!--truncate-->
 
 ## Quick 2025 facts [^1]
 
-- **Internet traffic grew by 36%.**
-- Top Internet services (in order): **Google, Facebook, Instagram, TikTok, WhatsApp, YouTube, Apple Services, Microsoft, Snapchat, Outlook**.
-- Messaging apps (ranked): **WhatsApp** leads, followed by **QQ**, then **Telegram, Viber, Signal, WeChat, imo, Facebook Messenger**.
+- Internet traffic grew by **36%**.
+- Top Internet services (ranked): **Google, Facebook, Instagram, TikTok, WhatsApp, YouTube, Apple Services, Microsoft, Snapchat, Outlook**.
+- Messaging apps (ranked): **WhatsApp** leads, followed by **QQ**, then **Telegram**, Viber, Signal, WeChat, imo, Facebook Messenger.
 - Mobile OS share shifted:
   - **iOS rose to 37%** (from 27%)
   - **Android fell to 63%** (from 73%)
-- **Google maintained ~97%** share in search.
-- **IPv6 adoption decreased** from **0.96%** to **0.77%**.
-- **Latency remains high** for most services at around **51 ms**.
-- **Desktop traffic increased** from **39%** to **45%**.
+- Google maintained **~97%** share in search.
+- IPv6 adoption decreased from **0.96%** to **0.77%**.
+- Latency remains high for most services at around **51 ms**.
+- Desktop traffic increased from **39%** to **45%**.
 - Routing security (RPKI):
   - **0.25% decrease** in RPKI-valid IPv4 address space in Lebanon
   - **0.51% increase** in RPKI-valid IPv4 routes in Lebanon
 
 ## ISP and network market share: what changed
 
-Lebanon’s ISP landscape saw noticeable shifts between 2024 and 2025. **OGERO** (AS42003), the dominant state telecom provider, declined slightly from **17.96% to 16.75%**, pointing to increased competition and/or service constraints.
+Lebanon’s ISP landscape saw noticeable shifts between 2024 and 2025. **OGERO** (AS42003), the dominant state telecom provider, declined slightly from 17.96% to 16.75%, pointing to increased competition and/or service constraints.
 
-The largest gain came from **MIC1 (Alfa)** (AS57513), which grew from **6.23% to 7.61%**, consistent with stronger mobile Internet usage and/or improved service reach. By contrast, **TH Global Vision** (AS59989) dropped sharply from **6.48% to 4.77%**, losing nearly **26%** of its prior share.
+The largest gain came from **Alfa** (AS57513), which grew from 6.23% to 7.61%, consistent with stronger mobile Internet usage and/or improved service reach. By contrast, **TH Global Vision** (AS59989) dropped sharply from 6.48% to 4.77%, losing nearly **26%** of its prior share.
 
-Beyond TH Global Vision’s decline, several established players lost ground. **ENERGY Bridge** (AS56902) slipped from **3.41% to 3.04%**, **SODETEL** (AS31126) from **1.45% to 1.22%**, and **WaveNet** (AS31037) from **1.36% to 1.08%**. More dramatically, **GSL Networks** (AS137409) fell from **0.43% to 0.11%** (a ~74% drop), and **EagleNet** (AS60372) decreased from **0.63% to 0.46%**.
+Beyond TH Global Vision’s decline, several established players lost ground. **ENERGY Bridge** (AS56902) slipped from 3.41% to 3.04%, **SODETEL** (AS31126) from 1.45% to 1.22%, and **WaveNet** (AS31037) from 1.36% to 1.08%. More dramatically, **GSL Networks** (AS137409) fell from 0.43% to 0.11% (a ~74% drop), and **EagleNet** (AS60372) decreased from 0.63% to 0.46%.
 
-Mobile operators diverged: **Alfa** grew strongly, while **Touch** (AS38999) rose more modestly from **5.90% to 6.36%**. The entry of SpaceX **Starlink** (AS14593) at **0.035%** is also notable, introducing LEO satellite Internet into the Lebanese market—potentially pressuring traditional ISPs, particularly in underserved or rural areas.
+Mobile operators diverged: **Alfa** grew strongly, while **Touch** (AS38999) rose more modestly from 5.90% to 6.36%. The entry of **Starlink** (AS14593) at 0.035% is also notable, introducing LEO satellite Internet into the Lebanese market—potentially pressuring traditional ISPs, particularly in underserved or rural areas.
 
-Several smaller providers posted strong growth. **My ISP** (AS34447) grew from **1.19% to 2.04%**, and **Ferrari Networks** (AS39402) increased from **1.60% to 2.16%**. **ZINA** (AS206519) expanded from **0.30% to 0.51%** (+68%), while **Smart Networks** (AS34458) rose from **1.09% to 1.37%**. Among micro-ISPs, **Smart City** (AS204429) more than doubled (**0.08% to 0.20%**), **Coinnet (Matrix)** (AS214728) nearly quadrupled (**0.02% to 0.07%**), and **CONNEXIONS SAL** (AS205423) increased from **0.004% to 0.018%**. **AOUN Networks** (AS13044) stood out with growth from **0.07% to 0.33%**, suggesting aggressive expansion and/or acquisition activity.
+Several smaller providers posted strong growth. **My ISP** (AS34447) grew from 1.19% to 2.04%, and **Ferrari Networks** (AS39402) increased from 1.60% to 2.16%. **ZINA** (AS206519) expanded from 0.30% to 0.51% (+68%), while **Smart Networks** (AS34458) rose from 1.09% to 1.37%. Among micro-ISPs, Smart City (AS204429) more than doubled (0.08% to 0.20%), Coinnet (Matrix) (AS214728) nearly quadrupled (0.02% to 0.07%), and CONNEXIONS SAL (AS205423) increased from 0.004% to 0.018%. **AOUN Networks** (AS13044) stood out with growth from 0.07% to 0.33%, suggesting aggressive expansion and/or acquisition activity.
 
-Overall, the market appears to be gradually fragmenting. The **top 5 providers** accounted for roughly **44% of traffic** (down from 45% in 2024), and the **top 10** accounted for about **62%** (down from 63%). Meanwhile, stable performers such as **TerraNet** (AS39010) (**9.75% → 9.95%**) and **IDM** (AS9051) (**9.74% → 9.90%**) maintained their positions, suggesting strong retention despite broad turbulence.
+Overall, the market appears to be gradually fragmenting. The **top 5 providers** accounted for roughly **44% of traffic** (down from 45% in 2024), and the **top 10** accounted for about **62%** (down from 63%). Meanwhile, stable performers such as **TerraNet** (AS39010) (9.75% → 9.95%) and **IDM** (AS9051) (9.74% → 9.90%) maintained their positions, suggesting strong retention despite broad turbulence.
 
-Finally, the presence of **200+ ASNs**, including many micro-ISPs below **0.1% share**, reflects Lebanon’s highly fragmented telecom environment—shaped by infrastructure limitations, the electricity crisis, and regulatory complexity. The trend also suggests Lebanese consumers are increasingly willing to switch providers for better service, with mobile—and potentially satellite—emerging as viable alternatives to traditional fixed-line access.
+Finally, the presence of **200+ ASNs**, including many micro-ISPs below 0.1% share, reflects Lebanon’s highly fragmented telecom environment—shaped by infrastructure limitations, the electricity crisis, and regulatory complexity. The trend also suggests Lebanese consumers are increasingly willing to switch providers for better service, with mobile—and potentially satellite—emerging as viable alternatives to traditional fixed-line access.
 
 ---
 
@@ -91,10 +89,10 @@ _Change (pp) = 2025 share minus 2024 share (percentage points). Values rounded t
 
 ## OpenIX Beirut
 
-**OpenIX Beirut** is built to strengthen Lebanon’s Internet by making local interconnection simpler, faster, and more accessible—so networks can exchange traffic locally instead of sending it abroad when it doesn’t need to.
+OpenIX Beirut is built to strengthen Lebanon’s Internet by making local interconnection simpler, faster, and more accessible—so networks can exchange traffic locally instead of sending it abroad when it doesn’t need to.
 
-OpenIX Beirut is now **open for business**. We welcome Lebanese networks, mobile operators, content and cloud platforms, enterprises, and CDNs to join and peer locally. [Click here to learn more and get started](https://p.foundation/OpenIX/beirut).
+OpenIX Beirut is now **open for business**. We welcome Lebanese networks, mobile operators, content and cloud platforms, enterprises, and CDNs to join and peer locally. [Click here to learn more](https://p.foundation/OpenIX/beirut).
 
 ---
 
-[^1]: Data is based on traffic observed on our network, supplemented by publicly available Cloudflare data. For additional context, see [Cloudflare Radar — Year in Review (Lebanon)](https://radar.cloudflare.com/year-in-review/2025/lb?previousYear=true). Cover image credit: Piotr Chrobot (Unsplash); edited using Google Nano Banana.
+[^1]: Data is based on traffic observed on our network, supplemented by publicly available Cloudflare data. For additional context, see [Cloudflare Radar 2025 Year in Review for Lebanon](https://radar.cloudflare.com/year-in-review/2025/lb). Cover image credit: Piotr Chrobot (Unsplash); edited with Google Nano Banana.
