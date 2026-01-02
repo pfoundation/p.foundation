@@ -89,7 +89,7 @@ _Change (pp) = 2025 share minus 2024 share (percentage points). Values rounded t
 
 OpenIX Beirut is built to strengthen Lebanon’s Internet by making local interconnection simpler, faster, and more accessible—so networks can exchange traffic locally instead of sending it abroad when it doesn’t need to.
 
-OpenIX Beirut is **open for business** since October 2025. We welcome Lebanese networks, mobile operators, content and cloud platforms, enterprises, and CDNs to join and peer locally. [Click here to learn more](https://p.foundation/OpenIX/beirut).
+OpenIX Beirut is **open for peering** since October 2025. We welcome Lebanese networks, mobile operators, content and cloud platforms, enterprises, and CDNs to join and peer locally. [Click here to learn more](https://p.foundation/OpenIX/beirut).
 
 ---
 
