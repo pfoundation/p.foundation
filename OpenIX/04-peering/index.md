@@ -22,7 +22,7 @@ OpenIX offers route server service to simplify peering for participants. By peer
 
 Participants can still establish direct bilateral BGP sessions with any other participant if they choose (for example, if they prefer not to use the route server for certain peers or in general). OpenIX’s route servers implement prefix filtering (using IRR and RPKI data to allow only valid, registered routes) and do not propagate routes learned from one participant to another if those routes are filtered or if the participant is not authorized to advertise them.
 
-The route servers also support community controls – participants can tag routes with BGP communities to control which peers receive them (e.g., to opt-out of peering with specific ASNs or to limit route distribution). These community conventions are documentted under the Route Servers section.
+The route servers also support community controls – participants can tag routes with BGP communities to control which peers receive them (e.g., to opt-out of peering with specific ASNs or to limit route distribution). These community conventions are documented under the Route Servers section.
 
 ## Bilateral Peering
 
