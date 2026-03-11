@@ -96,7 +96,17 @@ To establish a BGP session with OpenIX route servers:
 Participants can monitor their route server sessions through:
 
 - BGP session status and statistics on their own routers
-- Looking glass tools (if available)
 - Direct contact with OpenIX NOC for troubleshooting
 
 For questions about route server configuration or to report issues, contact the OpenIX Network Operations Center (NOC).
+
+### Known Vendor Issues
+
+While OpenIX route servers are designed to work with all major router vendors and BGP implementations, participants should be aware of the following considerations:
+
+- **BGP Session Configuration**: Ensure your router supports BGP communities (both standard and large communities) for full policy control functionality
+- **MD5 Authentication**: Some older router firmware versions may have limitations with MD5 authentication on BGP sessions
+- **Route Refresh Capability**: Modern route refresh capability (RFC 2918) is recommended for optimal route server interaction
+- **Maximum Prefix Limits**: Configure appropriate max-prefix limits on your router to prevent session flapping
+
+If you encounter any vendor-specific issues when connecting to OpenIX route servers, please contact the NOC with details about your router model and software version so we can assist with configuration or document any known compatibility issues.
