@@ -15,14 +15,10 @@ OpenIX Route Servers operate under **ASN 4969**.
 
 ### OpenIX Beirut
 
-- **OpenIX Beirut RS1**
-
-  - IPv4: `23.181.208.251`
-  - IPv6: `2620:98:e00e:9::4969:1`
-
-- **OpenIX Beirut RS3**
-  - IPv4: `23.181.208.253`
-  - IPv6: `2620:98:e00e:9::4969:3`
+| Route Server      | IPv4             | IPv6                     |
+| ----------------- | ---------------- | ------------------------ |
+| OpenIX Beirut RS1 | `23.181.208.251` | `2620:98:e00e:9::4969:1` |
+| OpenIX Beirut RS3 | `23.181.208.253` | `2620:98:e00e:9::4969:3` |
 
 Participants should establish BGP sessions with both route servers for redundancy.
 
@@ -65,4 +61,42 @@ OpenIX is open to all qualified networks and will not bar participants just beca
 
 ## Additional Information
 
-For more detailed information about route server best practices and operations, please refer to the [LINX Route Servers documentation](https://community.linx.net/exchange-docs-oo8vcsp0/post/linx-route-servers-information-xCXmq6SqZUpC80k), which provides comprehensive guidance that is broadly applicable to Internet Exchange route server operations.
+### How Route Servers Work
+
+Route servers facilitate multilateral peering by acting as a central point for route distribution. When you peer with a route server:
+
+1. **No Traffic Forwarding**: Route servers only exchange routing information (BGP routes). They do not forward any data traffic. All traffic flows directly between participants' routers.
+
+2. **Next-Hop Preservation**: The original BGP next-hop is preserved in route announcements. This ensures traffic flows directly between peers, not through the route server.
+
+3. **Transparent AS Path**: The route server's ASN (4969) is not added to the AS_PATH, maintaining transparency in routing.
+
+### Route Filtering
+
+OpenIX route servers implement multiple layers of filtering to ensure routing security:
+
+- **IRR-based Filtering**: Routes are validated against Internet Routing Registry (IRR) databases
+- **RPKI Validation**: Route Origin Validation (ROV) using RPKI to prevent hijacking
+- **Prefix Length Limits**: Enforced minimum and maximum prefix lengths (typically /24 for IPv4, /48 for IPv6)
+- **Bogon Filtering**: Automatic rejection of bogon prefixes and invalid routes
+- **Max-Prefix Limits**: Per-participant prefix limits to prevent route flooding
+
+### Session Configuration
+
+To establish a BGP session with OpenIX route servers:
+
+1. Configure BGP sessions to both RS1 and RS3 IPv4 and IPv6 addresses
+2. Use MD5 authentication (contact NOC for the shared secret)
+3. Announce only prefixes registered in your IRR AS-SET
+4. Set appropriate max-prefix limits on your side
+5. Apply route server communities as needed for traffic engineering
+
+### Monitoring and Support
+
+Participants can monitor their route server sessions through:
+
+- BGP session status and statistics on their own routers
+- Looking glass tools (if available)
+- Direct contact with OpenIX NOC for troubleshooting
+
+For questions about route server configuration or to report issues, contact the OpenIX Network Operations Center (NOC).
