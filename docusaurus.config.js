@@ -55,6 +55,7 @@ const config = {
   },
   plugins: [
     'docusaurus-plugin-sass',
+    require.resolve('./src/plugins/oix-members-plugin'),
     [
       '@docusaurus/plugin-ideal-image',
       {
