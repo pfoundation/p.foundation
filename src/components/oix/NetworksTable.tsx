@@ -113,7 +113,7 @@ export default function NetworksTable(): React.ReactElement {
         </tbody>
       </table>
       <p className={styles.memberCount}>
-        {data.member_list.length} connected networks
+        {new Set(rows.map((r) => r.asn)).size} connected networks
       </p>
     </div>
   );
