@@ -3,6 +3,7 @@ import { usePluginData } from '@docusaurus/useGlobalData';
 import styles from './NetworksTable.module.scss';
 
 interface VlanEntry {
+  vlan_id: number;
   ipv4?: { address: string };
   ipv6?: { address: string };
 }
@@ -57,7 +58,7 @@ export default function NetworksTable(): React.ReactElement {
   for (const member of data.member_list) {
     for (const conn of member.connection_list) {
       const speed = conn.if_list?.[0]?.if_speed;
-      for (const vlan of conn.vlan_list) {
+      for (const vlan of conn.vlan_list.filter((v) => v.vlan_id === 1)) {
         rows.push({
           asn: member.asnum,
           name: member.name,
