@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkp_foundation=globalThis.webpackChunkp_foundation||[]).push([[8851],{8961:n=>{n.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"openix"}')}}]);
