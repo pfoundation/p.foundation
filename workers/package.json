@@ -1,0 +1,13 @@
+{
+  "name": "pf-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cloudflare Worker backing donations and the mailing list for p.foundation",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

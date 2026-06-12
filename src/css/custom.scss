@@ -1,112 +1,302 @@
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap');
+@import './mixins';
+
+/**
+ * P Foundation design system ("Spectrum").
+ * Tokens are derived from the brand logo bars:
+ * ink, blue, crimson, green, amber, slate, silver.
+ */
+
+:root {
+  /* Brand spectrum */
+  --pf-ink: #14101d;
+  --pf-ink-2: #292432;
+  --pf-crimson: #e23350;
+  --pf-crimson-dark: #c92646;
+  --pf-crimson-darker: #a91e3a;
+  /* Tints that keep AA contrast on dark ink sections. */
+  --pf-crimson-soft: #ff8ba0;
+  --pf-error-soft: #ffa3b3;
+  --pf-blue: #23a0e0;
+  --pf-green: #3eb842;
+  --pf-amber: #f9a52c;
+  --pf-slate: #5c607c;
+  --pf-silver: #c5d1db;
+
+  /* Surfaces and text. --pf-ink is a CONSTANT dark surface color (heroes,
+     CTA bands) and must never be used as a text color; use --pf-heading or
+     --pf-text, which flip in dark mode. */
+  --pf-bg: #fafafc;
+  --pf-surface: #ffffff;
+  --pf-text: #1d1929;
+  --pf-text-muted: #5d5868;
+  --pf-heading: #14101d;
+  --pf-border: rgba(20, 16, 29, 0.08);
+  --pf-border-strong: rgba(20, 16, 29, 0.16);
+
+  /* Elevation and shape */
+  --pf-shadow-sm: 0 1px 2px rgba(20, 16, 29, 0.05);
+  --pf-shadow-md: 0 2px 4px rgba(20, 16, 29, 0.04),
+    0 10px 24px rgba(20, 16, 29, 0.07);
+  --pf-shadow-lg: 0 4px 8px rgba(20, 16, 29, 0.06),
+    0 24px 48px rgba(20, 16, 29, 0.12);
+  /* Square corner language: every radius resolves to 0. Components must use
+     these tokens (or --ifm-global-radius) instead of literal radii. */
+  --pf-radius-sm: 0;
+  --pf-radius-md: 0;
+  --pf-radius-lg: 0;
+
+  /* Focus indicator: dark enough for 3:1 on light surfaces; the dark theme
+     swaps in the brighter brand blue. */
+  --pf-focus-ring: #1374a9;
+
+  /* Glow tints for the constant-ink hero/CTA surfaces. */
+  --pf-glow-blue: rgba(35, 160, 224, 0.14);
+  --pf-glow-crimson: rgba(226, 51, 80, 0.12);
+
+  /* Gradients */
+  --pf-gradient-warm: linear-gradient(
+    120deg,
+    var(--pf-crimson),
+    var(--pf-amber)
+  );
+  --pf-gradient-cool: linear-gradient(120deg, var(--pf-blue), var(--pf-green));
+  --pf-gradient-spectrum: linear-gradient(
+    90deg,
+    var(--pf-ink-2) 0%,
+    var(--pf-blue) 20%,
+    var(--pf-crimson) 40%,
+    var(--pf-green) 60%,
+    var(--pf-amber) 80%,
+    var(--pf-silver) 100%
+  );
+
+  /* Typography */
+  --pf-font-display: 'Chakra Petch', 'Inter', system-ui, sans-serif;
+
+  /* Infima overrides */
+  --ifm-color-primary: #1d1929;
+  --ifm-color-primary-dark: #161320;
+  --ifm-color-primary-darker: #120f1a;
+  --ifm-color-primary-darkest: #0b0910;
+  --ifm-color-primary-light: #332c46;
+  --ifm-color-primary-lighter: #41385a;
+  --ifm-color-primary-lightest: #5c4f7e;
+
+  --ifm-link-color: #1374a9;
+  --ifm-link-hover-color: #0d5b85;
+
+  --ifm-background-color: var(--pf-bg);
+  --ifm-background-surface-color: var(--pf-surface);
+  --ifm-font-color-base: var(--pf-text);
+  --ifm-heading-color: var(--pf-heading);
+
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, 'Segoe UI',
+    sans-serif;
+  --ifm-heading-font-family: var(--pf-font-display);
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.7;
+  --ifm-heading-line-height: 1.2;
+  --ifm-code-font-size: 90%;
+
+  --ifm-global-radius: 0;
+  --ifm-button-font-weight: 600;
+  --ifm-navbar-height: 4.5rem;
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.85);
+  --ifm-navbar-shadow: none;
+  --ifm-footer-background-color: transparent;
+  --ifm-footer-padding-vertical: 3.5rem;
+  --ifm-toc-border-color: var(--pf-border);
+  --ifm-container-width-xl: 1200px;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.08);
+}
+
+/* Dark theme: full token flip. Components that build on the --pf-* tokens
+   adapt automatically; constant dark surfaces (--pf-ink) stay as they are.
+   html[data-theme] matches Infima's own dark selector specificity, otherwise
+   Infima's defaults win for variables both sides define. */
+html[data-theme='dark'] {
+  --pf-bg: #0f0c16;
+  --pf-surface: #171221;
+  --pf-text: #e9e6ef;
+  --pf-text-muted: #a8a2b3;
+  --pf-heading: #f3f0f7;
+  --pf-border: rgba(255, 255, 255, 0.09);
+  --pf-border-strong: rgba(255, 255, 255, 0.18);
+
+  --pf-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --pf-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.35), 0 10px 24px rgba(0, 0, 0, 0.45);
+  --pf-shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.4), 0 24px 48px rgba(0, 0, 0, 0.55);
+
+  --ifm-color-primary: #c5d1db;
+  --ifm-color-primary-dark: #adbcc9;
+  --ifm-color-primary-darker: #a2b3c2;
+  --ifm-color-primary-darkest: #8598ab;
+  --ifm-color-primary-light: #d3dce4;
+  --ifm-color-primary-lighter: #dde4ea;
+  --ifm-color-primary-lightest: #eef1f5;
+
+  --ifm-link-color: #5fb9e8;
+  --ifm-link-hover-color: #8ccdf0;
+
+  --ifm-background-color: var(--pf-bg);
+  --ifm-background-surface-color: var(--pf-surface);
+  --ifm-font-color-base: var(--pf-text);
+  --ifm-heading-color: var(--pf-heading);
+  --ifm-navbar-background-color: rgba(15, 12, 22, 0.85);
+  --ifm-toc-border-color: var(--pf-border);
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
+  --pf-focus-ring: var(--pf-blue);
+}
+
+[data-theme='dark'] ::selection {
+  background: rgba(255, 139, 160, 0.28);
+}
+
+[data-theme='dark'] .pf-kicker {
+  color: var(--pf-crimson-soft);
+}
+
+[data-theme='dark'] .navbar-item-x::before {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(226, 51, 80, 0.16);
+}
 
 h1,
 h2,
 h3,
 h4,
-h5 {
-  font-family: 'Chakra Petch', sans-serif;
-  font-weight: 700;
+h5,
+h6 {
+  letter-spacing: -0.01em;
 }
 
-.important-btn {
-  background-color: #e23350;
-  color: #fff;
-  padding: 15px 26px;
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible,
+.button:focus-visible {
+  outline: 2px solid var(--pf-focus-ring);
+  outline-offset: 2px;
 }
 
-/* You can override the default Infima variables here. */
-:root {
-  --pk-blue: #292432;
-  --pk-green: #23a0e0;
+/* ------------------------------------------------------------- */
+/* Navbar                                                        */
+/* ------------------------------------------------------------- */
 
-  --ifm-color-primary: var(--pk-blue);
-  --ifm-color-primary-dark: #292432;
-  --ifm-color-primary-darker: #004793;
-  --ifm-color-primary-darkest: #003b79;
-  --ifm-color-primary-light: #5c607c;
-  --ifm-color-primary-lighter: #0061c7;
-  --ifm-color-primary-lightest: #006de1;
-  --ifm-code-font-size: 95%;
-  --ifm-font-family-base: 'Chakra Petch', sans-serif;
-  --ifm-font-size-base: 17px;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-
-  --ifm-footer-background-color: transparent;
-  --ifm-footer-padding-vertical: calc(var(--ifm-spacing-vertical) * 3);
-
-  --ifm-global-radius: 0.3rem;
-  --ifm-navbar-height: 5rem;
-
-  /* Add link color styling */
-  --ifm-link-color: #0d5b85;
-  --ifm-link-hover-color: #094563;
+.navbar {
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--pf-border);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: var(--pk-green);
-  --ifm-color-primary-dark: #adfa1e;
-  --ifm-color-primary-darker: #a7fa0e;
-  --ifm-color-primary-darkest: #8cd504;
-  --ifm-color-primary-light: #c3fc5a;
-  --ifm-color-primary-lighter: #c9fc6a;
-  --ifm-color-primary-lightest: #d9fd97;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-
-  /* Keep link color consistent in dark mode */
-  --ifm-link-color: var(--pk-green);
-  --ifm-link-hover-color: #4db5e7;
-}
-
-html[data-theme='dark'] {
-  --ifm-background-color: #101010;
-  --ifm-background-surface-color: #101010;
-
-  .navbar {
-    border-bottom: 1px solid var(--ifm-color-emphasis-200);
-  }
+.navbar-sidebar {
+  background-color: var(--pf-surface);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .navbar__logo {
-  height: 3.5rem;
+  height: 2.75rem;
 }
 
 .navbar-sidebar .navbar__logo {
   height: 2rem;
 }
 
-/* Add styling for active navigation item */
+.navbar__link {
+  font-weight: 500;
+}
+
 .navbar__link--active {
   position: relative;
-  font-weight: bold;
-  color: var(--pk-green) !important;
+  font-weight: 600;
+  color: var(--pf-heading);
 }
 
-/* Underline indicator for active navigation item */
-.navbar__link--active:after {
+.navbar__link--active::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: -6px;
   left: 0;
   width: 100%;
-  height: 3px;
-  background-color: var(--pk-green);
+  height: 2px;
+  background-color: var(--pf-crimson);
 }
 
-.footer {
-  border-top: 1px solid var(--ifm-color-emphasis-200);
+/* Accent call-to-action (used by the navbar Donate button). The resting
+   background is the dark crimson so white label text keeps AA contrast. */
+.important-btn {
+  background-color: var(--pf-crimson-dark);
+  /* Transparent border keeps the height equal to paired outline buttons. */
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.55rem 1.4rem;
+  box-shadow: var(--pf-shadow-sm);
+  transition: all 0.18s ease;
 
-  &__bottom {
-    margin-top: 0rem;
+  &:hover,
+  &:focus {
+    background-color: var(--pf-crimson-darker);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: var(--pf-shadow-md);
   }
 }
 
-@media (max-width: 996px) {
-  .footer__link-item {
-    display: inline;
-    margin: 5px;
+.navbar-item-x:hover {
+  opacity: 0.6;
+}
+
+.navbar-item-x::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  display: flex;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
+/* ------------------------------------------------------------- */
+/* Buttons                                                       */
+/* ------------------------------------------------------------- */
+
+.button {
+  border-radius: 0;
+  transition: all 0.18s ease;
+}
+
+.button--primary:not(.button--outline) {
+  box-shadow: var(--pf-shadow-sm);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--pf-shadow-md);
   }
+}
+
+.button--lg {
+  padding: 0.875rem 1.75rem;
 }
 
 .button--outline {
@@ -130,111 +320,124 @@ html[data-theme='dark'] {
 
   .button--secondary & {
     fill: var(--ifm-color-gray-900);
-
-    [data-theme='dark'] & {
-      fill: var(--ifm-font-color-base);
-    }
-  }
-
-  .button--outline:hover &,
-  .button--outline:active &,
-  .button--outline:focus &,
-  .button--outline.button--active & {
-    [data-theme='dark'] & {
-      fill: var(--ifm-font-color-base-inverse);
-    }
   }
 }
 
-.DocSearch {
-  [data-theme='light'] & {
-    /* --docsearch-primary-color: var(--ifm-color-primary); */
-    /* --docsearch-text-color: var(--ifm-font-color-base); */
-    --docsearch-muted-color: var(--ifm-color-secondary-darkest);
-    --docsearch-container-background: rgba(94, 100, 112, 0.7);
-    /* Modal */
-    --docsearch-modal-background: var(--ifm-color-secondary-lighter);
-    /* Search box */
-    --docsearch-searchbox-background: var(--ifm-color-secondary);
-    --docsearch-searchbox-focus-background: var(--ifm-color-white);
-    /* Hit */
-    --docsearch-hit-color: var(--ifm-font-color-base);
-    --docsearch-hit-active-color: var(--ifm-color-white);
-    --docsearch-hit-background: var(--ifm-color-white);
-    /* Footer */
-    --docsearch-footer-background: var(--ifm-color-white);
+/* ------------------------------------------------------------- */
+/* Cards                                                         */
+/* ------------------------------------------------------------- */
+
+.card {
+  background-color: var(--pf-surface);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-lg);
+  box-shadow: var(--pf-shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Hover lift signals clickability, so only link cards get it. */
+a.card:hover {
+  border-color: var(--pf-border-strong);
+  box-shadow: var(--pf-shadow-md);
+  transform: translateY(-2px);
+}
+
+/* ------------------------------------------------------------- */
+/* Footer                                                        */
+/* ------------------------------------------------------------- */
+
+.footer {
+  position: relative;
+  border-top: 1px solid var(--pf-border);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--pf-gradient-spectrum);
   }
 
-  [data-theme='dark'] & {
-    --docsearch-text-color: var(--ifm-font-color-base);
-    --docsearch-muted-color: var(--ifm-color-secondary-darkest);
-    --docsearch-container-background: rgba(47, 55, 69, 0.7);
-    /* Modal */
-    --docsearch-modal-background: var(--ifm-background-color);
-    /* Search box */
-    --docsearch-searchbox-background: var(--ifm-color-emphasis-100);
-    --docsearch-searchbox-focus-background: var(--ifm-color-black);
-    /* Hit */
-    --docsearch-hit-color: var(--ifm-font-color-base);
-    --docsearch-hit-active-color: var(--ifm-color-black);
-    --docsearch-hit-background: var(--ifm-color-emphasis-100);
-    /* Footer */
-    --docsearch-footer-background: var(--ifm-background-surface-color);
-    --docsearch-key-gradient: linear-gradient(
-      -26.5deg,
-      var(--ifm-color-emphasis-200) 0%,
-      var(--ifm-color-emphasis-100) 100%
-    );
+  &__bottom {
+    margin-top: 0;
   }
-}
-
-.navbar-item-github:hover {
-  opacity: 0.6;
-}
-
-.navbar-item-github::before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
-    no-repeat;
-}
-
-[data-theme='dark'] .navbar-item-github::before {
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
-    no-repeat;
-}
-
-.navbar-item-x:hover {
-  opacity: 0.6;
-}
-
-.navbar-item-x::before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'/%3E%3C/svg%3E")
-    no-repeat;
-}
-
-[data-theme='dark'] .navbar-item-x::before {
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'/%3E%3C/svg%3E")
-    no-repeat;
-}
-
-.button--newsletter {
-  display: block !important;
-  margin: 1rem 0 0 0 !important;
 }
 
 .footer--copyright {
-  margin-top: 0rem;
+  margin-top: 0;
   font-size: small;
+  color: var(--pf-text-muted);
 }
 
 .footer--address {
-  margin-bottom: 0rem;
+  margin-bottom: 0;
   font-size: medium;
+}
+
+@media (max-width: 996px) {
+  .footer__link-item {
+    display: inline;
+    margin: 5px;
+  }
+}
+
+/* ------------------------------------------------------------- */
+/* Shared section utilities                                      */
+/* ------------------------------------------------------------- */
+
+.pf-section {
+  padding: 4.5rem 0;
+
+  @include small-size {
+    padding: 3rem 0;
+  }
+}
+
+.pf-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--pf-font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-crimson-dark);
+  margin-bottom: 0.75rem;
+
+  &::before {
+    content: '';
+    width: 1.5rem;
+    height: 3px;
+    background: var(--pf-gradient-warm);
+  }
+}
+
+.pf-lede {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--pf-text-muted);
+  max-width: 46rem;
+}
+
+.pf-spectrum-bar {
+  height: 3px;
+  border: 0;
+  background: var(--pf-gradient-spectrum);
+}
+
+.pf-text-gradient-warm {
+  background-image: var(--pf-gradient-warm);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pf-text-gradient-cool {
+  background-image: var(--pf-gradient-cool);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

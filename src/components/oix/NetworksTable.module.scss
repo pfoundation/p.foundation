@@ -14,6 +14,13 @@
   td {
     padding: 0.6rem 0.75rem;
     border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  }
+
+  /* Only data that must not break stays on one line; network names wrap so
+     the table fits the full content width without horizontal scrolling. */
+  td:first-child,
+  td code,
+  th {
     white-space: nowrap;
   }
 

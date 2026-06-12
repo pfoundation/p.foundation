@@ -1,16 +1,16 @@
 ---
 title: Introducing OpenCache
-description: As OpenIX Beirut reaches its first milestone (35 networks representing roughly 73% of Lebanon's traffic), we introduce OpenCache, an open caching network that serves content from inside local networks, for every content provider rather than only the hyperscalers.
+description: As OpenIX Beirut reaches its first milestone (37 networks representing roughly 73% of Lebanon's traffic), we introduce OpenCache, an open caching network that serves content from inside local networks, for every content provider rather than only the hyperscalers.
 slug: IntroducingOpenCache
 authors: jud
 #image: https://i.imgur.com/mErPwqL.png
 hide_table_of_contents: false
-date: 2026-06-12T17:00:00Z
+date: 2026-06-13T17:00:00Z
 ---
 
 # Introducing OpenCache
 
-A little over a year after we [announced OpenIX Beirut](/updates/IntroducingOpenIXBeirut), the exchange has reached its first major milestone: **35 networks** are now connected, including **25 of Lebanon's [top 30](/updates/2025lb_state_of_internet)**. Together they represent roughly **73% of the country's internet traffic**. At launch we set ourselves the ambitious goal of bringing over 70% of Lebanon's traffic within local reach. It took a year longer than we hoped, but the threshold has been crossed. The two largest networks still missing are **Ogero** and **IDM**, which together carry more than a quarter of Lebanon's traffic. We continue to actively pursue both, because the resilience this exchange exists to provide is not complete until they are at the table.
+A little over a year after we [announced OpenIX Beirut](/updates/IntroducingOpenIXBeirut), the exchange has reached its first major milestone: **37 networks** are now connected, including **25 of Lebanon's [top 30](/updates/2025lb_state_of_internet)**. Together they represent roughly **73% of the country's internet traffic**. At launch we set ourselves the ambitious goal of bringing over 70% of Lebanon's traffic within local reach. It took a year longer than we hoped, but the threshold has been crossed. The two largest networks still missing are **Ogero** and **IDM**, which together carry more than a quarter of Lebanon's traffic. We continue to actively pursue both, because the resilience this exchange exists to provide is not complete until they are at the table.
 
 Getting here also taught us where the next gap is. An exchange localizes _interconnection_: networks meet locally and trade traffic directly. It does not, by itself, localize _content_. Today we are introducing **OpenCache**: an open caching network, built and operated by P Foundation, that serves content from inside the local network, for every content provider, not just the platforms big enough to build their own.
 

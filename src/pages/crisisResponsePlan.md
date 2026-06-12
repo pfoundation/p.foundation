@@ -12,7 +12,7 @@ Similar to [MediaGuard Continuity Plan](/updates/mediaguard_continuity_plan), th
 
 While our objective is to mitigate Lebanon's disconnection from the global internet, we recognize the limitations posed by our resources in achieving this goal entirely.
 
-Upon completing all allocations related to ResilientNet, and with the onset of any conflict, we will broaden our Citizen Mesh program to assist other communities.
+Upon completing all allocations related to ResilientNet, and with the onset of any conflict, we will broaden our CitizenMesh program to assist other communities.
 
 In adherence to regulatory mandates, all internet traffic facilitated through our deployment is channeled through the P Foundation Network (AS322728).
 
@@ -60,13 +60,13 @@ Once approved, the required devices will be allocated to you for collection, and
 
 While the hardware is in your possession, it is your responsibility to maintain and safeguard it, ensuring its return in the same condition it was received.
 
-## Community Connectivity (Citizen Mesh)
+## Community Connectivity (CitizenMesh)
 
 The P Foundation deeply acknowledges the transformative essence of connectivity. Internet access during conflicts acts as a channel for information dissemination, public engagement, and global cognizance, thus underscoring the resilience of internet infrastructure.
 
 Internet access during conflicts serve as a conduit for information warfare, public engagement, and global awareness. The digital landscape facilitates real-time updates and citizen-driven narratives, contributing to a broader understanding and sometimes humanitarian response to the unfolding crisis. Moreover, the resilience of internet infrastructure underlines its significance in maintaining communication channels, while also spotlighting issues surrounding digital rights, cybersecurity, and narrative control in such geopolitical confrontations.
 
-Our crisis response extends our Citizen Mesh program, incorporating multiple open access services.
+Our crisis response extends our CitizenMesh program, incorporating multiple open access services.
 
 ### Emergency Internet Connectivity Zones (EICZs)
 

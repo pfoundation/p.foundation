@@ -1,0 +1,35 @@
+# Cloudflare Worker configuration for the p.foundation backend.
+#
+# Secrets are NOT stored in this file. Set them with `npx wrangler secret put`
+# locally, or let the Deploy Worker GitHub Action push them on every deploy:
+#   STRIPE_SECRET_KEY  Stripe secret (or restricted) API key
+#   MAILGUN_API_KEY    Mailgun private API key
+
+name = "pf-backend"
+main = "src/index.js"
+compatibility_date = "2026-06-01"
+workers_dev = true
+
+# The worker is served on the custom domain below (webapi.p.foundation is
+# routed to Cloudflare via a partial CNAME setup). The workers.dev URL stays
+# enabled as a fallback. If the custom domain is ever removed, also update
+# customFields.apiBaseUrl in docusaurus.config.js and the PF_API_BASE_URL
+# repository variable.
+routes = [{ pattern = "webapi.p.foundation", custom_domain = true }]
+
+[vars]
+ALLOWED_ORIGINS = "https://p.foundation,http://localhost:3000"
+MAILGUN_LIST_ADDRESS = "updates@bounce.p.foundation"
+MAILGUN_DOMAIN = "bounce.p.foundation"
+MAILGUN_API_BASE = "https://api.mailgun.net"
+SITE_URL = "https://p.foundation"
+
+# Per IP rate limiting: 10 requests per minute per endpoint. The Workers rate
+# limiting API uses the "unsafe" bindings namespace while in beta. The worker
+# code treats the binding as optional, so if a deploy rejects this block you
+# can remove it and everything else keeps working (without rate limiting).
+[[unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1001"
+simple = { limit = 10, period = 60 }

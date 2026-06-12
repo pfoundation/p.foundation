@@ -1,0 +1,99 @@
+@import '../../css/mixins';
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+
+  @include small-size {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+.heading {
+  margin-bottom: 0;
+}
+
+.allLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--pf-font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--pf-heading);
+  white-space: nowrap;
+
+  svg {
+    transition: transform 0.18s ease;
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--pf-crimson-dark);
+    text-decoration: none;
+
+    /* Crimson tones fail AA on the dark background; use the soft tint. */
+    [data-theme='dark'] & {
+      color: var(--pf-crimson-soft);
+    }
+
+    svg {
+      transform: translateX(3px);
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+
+  @include small-size {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  color: var(--pf-text);
+
+  &:hover,
+  &:focus {
+    color: var(--pf-text);
+    text-decoration: none;
+  }
+}
+
+.date {
+  font-family: var(--pf-font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+}
+
+.cardBody {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--pf-text-muted);
+  margin-bottom: 0;
+}

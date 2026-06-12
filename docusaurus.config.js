@@ -29,21 +29,42 @@ const config = {
   projectName: 'p.foundation',
 
   customFields: {
-    newsletter: {
-      action: 'https://dev.us14.list-manage.com/subscribe/post?u=?',
-      method: 'post',
-      emailFieldName: 'EMAIL',
-      firstNameFieldName: 'FNAME',
-      submitButtonName: 'subscribe',
-      tosURL: 'https://mailchimp.com/legal/terms/',
-      privacyPolicyURL: 'https://www.intuit.com/privacy/statement/',
-      serviceName: 'Mailchimp',
-    },
+    // Cloudflare Worker that backs donations, the mailing list, and
+    // application forms. Lives on the webapi.p.foundation custom domain;
+    // override with PF_API_BASE_URL at build time if it ever moves.
+    apiBaseUrl: (
+      process.env.PF_API_BASE_URL || 'https://webapi.p.foundation'
+    ).replace(/\/+$/, ''),
+    // Stripe-hosted donation page, used as a fallback when the API is
+    // unreachable.
+    donateFallbackUrl: 'https://donate.stripe.com/8wM15masqehlgfu4gh',
   },
+
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: 'anonymous',
+      },
+    },
+  ],
+
+  stylesheets: [
+    'https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap',
+  ],
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'ar'],
+    locales: ['en'],
     localeConfigs: {
       en: {
         htmlLang: 'en-US',
@@ -56,6 +77,7 @@ const config = {
   plugins: [
     'docusaurus-plugin-sass',
     require.resolve('./src/plugins/oix-members-plugin'),
+    require.resolve('./src/plugins/recent-updates-plugin'),
     [
       '@docusaurus/plugin-ideal-image',
       {
@@ -192,8 +214,8 @@ const config = {
         },
       ],
       colorMode: {
-        defaultMode: 'light',
-        disableSwitch: true,
+        defaultMode: 'dark',
+        disableSwitch: false,
         respectPrefersColorScheme: false,
       },
       navbar: {
@@ -212,7 +234,7 @@ const config = {
             label: 'Programs',
             position: 'left',
           },
-          { to: '/initiatives', label: 'Initiatives', position: 'left' },
+          { to: '/products', label: 'Products', position: 'left' },
           { to: '/OpenIX', label: 'OpenIX', position: 'left' },
           { to: '/updates', label: 'Updates', position: 'right' },
           // {
@@ -223,12 +245,12 @@ const config = {
             href: 'https://x.com/pfoundation',
             className: 'navbar-item-x',
             position: 'right',
-            alt: 'Twitter, now X Logo',
+            'aria-label': 'P Foundation on X',
           },
           {
             label: 'Donate',
             position: 'right',
-            href: 'https://donate.stripe.com/8wM15masqehlgfu4gh',
+            to: '/donate',
             className: 'button--primary important-btn',
           },
           // {
@@ -243,6 +265,14 @@ const config = {
         style: 'light',
         links: [
           {
+            label: 'Donate',
+            to: '/donate',
+          },
+          {
+            label: 'Initiatives',
+            to: '/initiatives',
+          },
+          {
             label: 'AS399728',
             to: '/as399728',
           },
@@ -256,7 +286,7 @@ const config = {
           },
           {
             label: 'Contact',
-            href: 'mailto:contact@p.foundation',
+            to: '/contact',
           },
           // {
           //   label: 'PFS',

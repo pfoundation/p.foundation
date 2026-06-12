@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
+import Link from '@docusaurus/Link';
 
 import styles from './Programs.module.scss';
 import RecordingIcon from './assets/icon-recording.svg';
@@ -9,9 +10,17 @@ import CalendarIcon from './assets/icon-calendar.svg';
 import MessageIcon from './assets/icon-message.svg';
 import LocationIcon from './assets/icon-location.svg';
 
+export interface RelatedProduct {
+  name: string;
+  to: string;
+  note: string;
+}
+
 export interface ProgramMetadata {
   title: string;
   description: React.ReactNode;
+  provides?: string[];
+  relatedProduct?: RelatedProduct;
   beneficiaries: programBeneficiaries[];
   recordingURL?: string;
   applyURL?: string;
@@ -25,115 +34,64 @@ export interface programBeneficiaries {
   date: string;
 }
 
-const Program: FunctionComponent<ProgramMetadata> = ({
+export const Program: FunctionComponent<ProgramMetadata> = ({
   title,
   description,
+  provides = [],
+  relatedProduct,
   beneficiaries = [],
   recordingURL,
   slidesURL,
   repoURL,
   applyURL,
 }) => {
+  const [primaryContact, ...otherBeneficiaries] = beneficiaries;
+  const hasFooter = Boolean(applyURL || recordingURL || slidesURL || repoURL);
+
   return (
-    <div className="col col--12">
-      <div className={clsx('card', styles.card)}>
-        <div className="card__header">
-          <h2>{title}</h2>
-        </div>
-        <div className="card__body">
-          <div className="row">
-            <div className="col col--7">{description}</div>
-            <div className={clsx('col col--5', styles.eventDetailsContainer)}>
-              <ProgramDetails data={beneficiaries} />
-            </div>
-          </div>
-        </div>
-        <div className="card__footer">
-          <div className={styles.buttons}>
-            {applyURL && (
-              <a
-                href={applyURL}
-                target="_blank"
-                className="button button--primary button--outline"
-              >
-                <span className="button__icon">
-                  <MessageIcon />
-                </span>
-                Apply
-              </a>
-            )}
-            {recordingURL && (
-              <a
-                href={recordingURL}
-                target="_blank"
-                className="button button--primary button--outline"
-              >
-                <span className="button__icon">
-                  <RecordingIcon />
-                </span>
-                Watch recording
-              </a>
-            )}
-            {slidesURL && (
-              <a
-                href={slidesURL}
-                target="_blank"
-                className="button button--secondary button--outline"
-              >
-                <span className="button__icon">
-                  <SlidesIcon />
-                </span>
-                See slides
-              </a>
-            )}
-            {repoURL && (
-              <a
-                href={repoURL}
-                target="_blank"
-                className="button button--secondary button--outline"
-              >
-                <span className="button__icon">
-                  <RepositoryIcon />
-                </span>
-                See repository
-              </a>
-            )}
-          </div>
-        </div>
+    <article className={clsx('card', styles.card)}>
+      <div className={styles.header}>
+        <h2 className={styles.title}>{title}</h2>
+        {applyURL && (
+          <span className={styles.openBadge}>Accepting applications</span>
+        )}
       </div>
-    </div>
-  );
-};
 
-const ProgramDetails: FunctionComponent<{ data: programBeneficiaries[] }> = ({
-  data,
-}) => {
-  if (data.length === 0) {
-    return null;
-  }
+      <div className={styles.description}>{description}</div>
 
-  const [firstProgram, ...otherPrograms] = data;
-  const { name, location, date } = firstProgram;
-  return (
-    <div className="row">
-      <div className="col col--12">
-        <ul className={styles.list}>
+      {provides.length > 0 && (
+        <div className={styles.provides}>
+          <p className={styles.providesLabel}>What we provide</p>
+          <ul className={styles.providesList}>
+            {provides.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {primaryContact && (
+        <ul className={styles.meta}>
           <li>
-            <MessageIcon className={styles.icon} /> <strong>{name}</strong>
+            <MessageIcon className={styles.metaIcon} aria-hidden="true" />
+            <strong>{primaryContact.name}</strong>
           </li>
           <li>
-            <LocationIcon className={styles.icon} /> {location}
+            <LocationIcon className={styles.metaIcon} aria-hidden="true" />
+            {primaryContact.location}
           </li>
           <li>
-            <CalendarIcon className={styles.icon} /> {date}
+            <CalendarIcon className={styles.metaIcon} aria-hidden="true" />
+            {primaryContact.date}
           </li>
         </ul>
-      </div>
-      {data.length > 1 && (
-        <div className="col col--12">
-          <p className="margin--none">Current public beneficiaries</p>
+      )}
+
+      {otherBeneficiaries.length > 0 && (
+        <div className={styles.beneficiaries}>
+          <p>Current public beneficiaries</p>
           <ul>
-            {otherPrograms.map(({ name, location, date }) => (
+            {otherBeneficiaries.map(({ name, location, date }) => (
               <li key={name}>
                 <strong>{name}</strong> in {location} since {date}
               </li>
@@ -141,12 +99,69 @@ const ProgramDetails: FunctionComponent<{ data: programBeneficiaries[] }> = ({
           </ul>
         </div>
       )}
-    </div>
+
+      {relatedProduct && (
+        <p className={styles.related}>
+          <span className={styles.relatedLabel}>Related product</span>
+          <Link to={relatedProduct.to} className={styles.relatedLink}>
+            {relatedProduct.name}
+          </Link>
+          <span className={styles.relatedNote}>{relatedProduct.note}</span>
+        </p>
+      )}
+
+      {hasFooter && (
+        <div className={styles.footer}>
+          {applyURL && (
+            <Link
+              to={applyURL}
+              className={clsx('important-btn', styles.applyButton)}
+            >
+              <MessageIcon aria-hidden="true" />
+              Apply now
+            </Link>
+          )}
+          {recordingURL && (
+            <a
+              href={recordingURL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button button--primary button--outline"
+            >
+              <span className="button__icon">
+                <RecordingIcon aria-hidden="true" />
+              </span>
+              Watch recording
+            </a>
+          )}
+          {slidesURL && (
+            <a
+              href={slidesURL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button button--primary button--outline"
+            >
+              <span className="button__icon">
+                <SlidesIcon aria-hidden="true" />
+              </span>
+              See slides
+            </a>
+          )}
+          {repoURL && (
+            <a
+              href={repoURL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button button--primary button--outline"
+            >
+              <span className="button__icon">
+                <RepositoryIcon aria-hidden="true" />
+              </span>
+              See repository
+            </a>
+          )}
+        </div>
+      )}
+    </article>
   );
 };
-
-function formatDateString(date: Date): string {
-  return `${date.getMonth() + 1}/${date.getUTCFullYear()}`;
-}
-
-export default Program;

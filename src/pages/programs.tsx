@@ -1,34 +1,48 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 
-import Program, { ProgramMetadata } from '../components/programs/Programs';
+import { Program, ProgramMetadata } from '../components/programs/Programs';
 
-import BuildingGQLAPIForK8sResDescription from './assets/programs/_building-gql-api-for-k8s-res.md';
 import CitizenMesh from './assets/programs/citizenMesh.md';
 import MediaGuard from './assets/programs/mediaGuard.md';
 import ResilientNet from './assets/programs/resilientNet.md';
 
 const programs: ProgramMetadata[] = [
   {
-    title: 'Media Guard',
+    title: 'MediaGuard',
     description: <MediaGuard />,
+    provides: [
+      'Backhaul support',
+      'Downlinking',
+      'Digital streaming',
+      'Content distribution',
+    ],
+    relatedProduct: {
+      name: 'OpenNRCS',
+      to: '/products/opennrcs',
+      note: 'a newsroom computer system available to MediaGuard partners',
+    },
     beneficiaries: [
       {
         name: 'mediaguard@p.foundation',
         location: 'Worldwide',
         date: 'Open/Extended Deadline',
       },
-      // {
-      //   name: "NA",
-      //   location: "NA",
-      //   date: "XA",
-      // },
     ],
-    applyURL: 'mailto:mediaguard@p.foundation',
+    applyURL: '/apply?program=mediaguard',
   },
   {
-    title: 'Citizen Mesh',
+    title: 'CitizenMesh',
     description: <CitizenMesh />,
+    provides: [
+      'Community-built networks',
+      'Free access in schools, libraries, and public spaces',
+    ],
+    /*   relatedProduct: {
+      name: 'OpenCache',
+      to: '/products/opencache',
+      note: 'serves popular content from inside local networks like the ones this program builds',
+    }, */
     beneficiaries: [
       {
         name: 'cmp@p.foundation',
@@ -36,11 +50,21 @@ const programs: ProgramMetadata[] = [
         date: 'Open',
       },
     ],
-    applyURL: 'mailto:cmp@p.foundation',
+    applyURL: '/apply?program=citizenmesh',
   },
   {
     title: 'ResilientNet',
     description: <ResilientNet />,
+    provides: [
+      'Needs-based assessments',
+      'Custom network design',
+      'Volunteer deployment for healthcare, emergency services, and utilities',
+    ],
+    /* relatedProduct: {
+      name: 'OpenCache',
+      to: '/products/opencache',
+      note: 'serves popular content from inside local networks',
+    }, */
     beneficiaries: [
       {
         name: 'resilient@p.foundation',
@@ -48,25 +72,37 @@ const programs: ProgramMetadata[] = [
         date: 'Open',
       },
     ],
-    applyURL: 'mailto:resilient@p.foundation',
+    applyURL: '/apply?program=resilientnet',
   },
 ];
 
 const title = 'Programs';
-const description = 'Current active programs';
+const description =
+  'P Foundation programs with open applications: MediaGuard extends tailored support so media organizations worldwide keep a steady presence, while CitizenMesh and ResilientNet build community connectivity in Lebanon for schools, libraries, public spaces, and critical installations.';
 
-export default function Programs(): JSX.Element {
+export default function ProgramsPage(): JSX.Element {
   return (
     <Layout title={title} description={description}>
-      <main className="container container--fluid margin-vert--lg">
-        <h1>{title}</h1>
-        <p>{description}</p>
-
-        <div className="row">
-          {programs.map((programData) => (
-            <Program key={programData.title} {...programData} />
-          ))}
-        </div>
+      <main>
+        <section className="pf-section">
+          <div className="container">
+            <span className="pf-kicker">Programs</span>
+            <h1>{title}</h1>
+            <p className="pf-lede">
+              Three programs are active and accepting applications today.
+              MediaGuard supports media organizations worldwide so they keep a
+              steady presence. CitizenMesh and ResilientNet bring
+              community-built connectivity to Lebanon, from schools, libraries,
+              and public spaces to healthcare, emergency services, and
+              utilities.
+            </p>
+            <div className="margin-top--lg">
+              {programs.map((programData) => (
+                <Program key={programData.title} {...programData} />
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
     </Layout>
   );

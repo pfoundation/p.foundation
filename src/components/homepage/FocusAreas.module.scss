@@ -1,0 +1,81 @@
+@import '../../css/mixins';
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+
+  @include small-size {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  color: var(--pf-text);
+
+  &:hover,
+  &:focus {
+    color: var(--pf-text);
+    text-decoration: none;
+  }
+}
+
+.iconBox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.25rem;
+}
+
+.blue .iconBox {
+  background-color: color-mix(in srgb, var(--pf-blue) 12%, transparent);
+  color: var(--pf-blue);
+}
+
+.crimson .iconBox {
+  background-color: color-mix(in srgb, var(--pf-crimson) 10%, transparent);
+  color: var(--pf-crimson);
+}
+
+.green .iconBox {
+  background-color: color-mix(in srgb, var(--pf-green) 12%, transparent);
+  color: var(--pf-green);
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+}
+
+.cardBody {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--pf-text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  font-family: var(--pf-font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--pf-heading);
+
+  svg {
+    transition: transform 0.18s ease;
+  }
+}
+
+.card:hover .more svg,
+.card:focus .more svg {
+  transform: translateX(3px);
+}

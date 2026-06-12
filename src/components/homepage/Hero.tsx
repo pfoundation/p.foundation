@@ -1,22 +1,42 @@
-import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
+import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 
 import styles from './Hero.module.scss';
 
 export const Hero: FunctionComponent = () => {
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={styles.hero}>
       <div className="container">
-        <h1 className={clsx('hero__title', styles.title)}>
-          Empowering nations with{' '}
-          <span className={styles.highlightedFirst}>open internet</span> and{' '}
-          <span className={styles.highlightedSecond}>free journalism</span>.
-        </h1>
-        <p className={clsx('hero__subtitle', styles.subtitle)}>
-          Bridging the digital divide, the P Foundation is committed to
-          connecting communities and fostering a world of informed, global
-          collaboration.
-        </p>
+        <div className={styles.inner}>
+          <span className={clsx('pf-kicker', styles.kicker)}>
+            A 501(c)(3) nonprofit
+          </span>
+          <h1 className={styles.title}>
+            Empowering nations with{' '}
+            <span className="pf-text-gradient-warm">open internet</span> and{' '}
+            <span className="pf-text-gradient-cool">free journalism</span>.
+          </h1>
+          <p className={styles.lede}>
+            Through programs, products, and grassroots initiatives, the P
+            Foundation builds open infrastructure and defends the free flow of
+            information in Lebanon and across the Middle East.
+          </p>
+          <div className={styles.actions}>
+            <Link
+              className={clsx('button', 'button--lg', 'important-btn')}
+              to="/donate"
+            >
+              Support our work
+            </Link>
+            <Link
+              className={clsx('button', 'button--lg', styles.ghostBtn)}
+              to="/products"
+            >
+              Explore our products
+            </Link>
+          </div>
+        </div>
       </div>
     </header>
   );

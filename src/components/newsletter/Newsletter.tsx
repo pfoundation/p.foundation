@@ -1,81 +1,163 @@
-import React, { FunctionComponent } from 'react';
-
-import NewsIcon from './assets/icon-news.svg';
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import clsx from 'clsx';
+import React, { FunctionComponent, useState } from 'react';
 
 import styles from './Newsletter.module.scss';
 
-export interface NewsletterProps {
-  data: NewsletterData;
-}
+type SubscribeStatus = 'idle' | 'loading' | 'success' | 'error';
 
-export interface NewsletterData {
-  action: string;
-  method: 'get' | 'post';
-  emailFieldName: string;
-  firstNameFieldName: string;
-  submitButtonName: string;
-  serviceName: string;
-  tosURL: string;
-  privacyPolicyURL: string;
-}
+const FALLBACK_ERROR = 'Something went wrong. Please try again.';
 
-export const Newsletter: FunctionComponent<NewsletterProps> = ({ data }) => {
-  const {
-    action,
-    method,
-    emailFieldName,
-    firstNameFieldName,
-    submitButtonName,
-    tosURL,
-    privacyPolicyURL,
-    serviceName,
-  } = data;
+export const Newsletter: FunctionComponent = () => {
+  const { siteConfig } = useDocusaurusContext();
+  const apiBaseUrl = siteConfig.customFields.apiBaseUrl as string;
+
+  const [email, setEmail] = useState('');
+  const [company, setCompany] = useState('');
+  const [status, setStatus] = useState<SubscribeStatus>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    // Honeypot: humans never see the "company" field. If it has a value,
+    // show the success state without calling the API.
+    if (company.trim() !== '') {
+      setStatus('success');
+      return;
+    }
+
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch(`${apiBaseUrl}/api/newsletter/subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          referralPage: window.location.pathname + window.location.search,
+        }),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        return;
+      }
+
+      let message = FALLBACK_ERROR;
+      try {
+        const body = await response.json();
+        if (body && typeof body.error === 'string' && body.error) {
+          message = body.error;
+        }
+      } catch {
+        // Error body was not JSON, keep the fallback message.
+      }
+      setErrorMessage(message);
+      setStatus('error');
+    } catch {
+      setErrorMessage(FALLBACK_ERROR);
+      setStatus('error');
+    }
+  };
 
   return (
-    <div className={styles.newsWrapper}>
-      <div className="container padding-vert--lg">
-        <NewsIcon className={styles.newsIcon} />
-        <h2>Subscribe to updates about P Foundation’s work</h2>
-        <form
-          action={action}
-          className={styles.form}
-          method={method}
-          target="_blank"
-        >
-          <input
-            name={emailFieldName}
-            placeholder="Your email"
-            type="email"
-            required
-          />
-          {/* <input name={firstNameFieldName} placeholder="Your first name" /> */}
-          <div
-            style={{ position: 'absolute', left: '-5000px' }}
-            aria-hidden="true"
-          >
-            <input
-              type="text"
-              name="b_4ed0fd1909674fddee53ac3e7_dfdcae99f5"
-              tabIndex={-1}
-              value=""
-            />
+    <section className={styles.band}>
+      <div className="container">
+        <div className={styles.card}>
+          <div className={styles.intro}>
+            <span className={clsx('pf-kicker', styles.kicker)}>Newsletter</span>
+            <h2 className={styles.heading}>Get updates from the field</h2>
+            <p className={styles.lede}>
+              Occasional updates on our programs and products. No spam.
+            </p>
           </div>
-          <button
-            type="submit"
-            name={submitButtonName}
-            disabled={true}
-            className="button button--primary button--newsletter"
-          >
-            Subscribe
-          </button>
-        </form>
-        <div className={styles.formFooter}>
-          By entering your email address and clicking “Subscribe”, you agree to
-          receive updates from the P Foundation about our work. <br />
-          To learn more about how we use and protect your personal data, please
-          view our privacy policy.
+
+          <div className={styles.action}>
+            {status === 'success' ? (
+              <div className={styles.success} role="status">
+                <svg
+                  className={styles.successIcon}
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="12" cy="12" r="11" fill="var(--pf-green)" />
+                  <path
+                    d="M7 12.5l3.2 3.2L17 9"
+                    fill="none"
+                    stroke="#fff"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <p className={styles.successText}>
+                  You are on the list. We will be in touch.
+                </p>
+              </div>
+            ) : (
+              <>
+                <form className={styles.form} onSubmit={handleSubmit}>
+                  <label className={styles.srOnly} htmlFor="newsletter-email">
+                    Email address
+                  </label>
+                  <input
+                    id="newsletter-email"
+                    className={styles.input}
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="you@example.com"
+                    autoComplete="email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    aria-describedby={
+                      status === 'error' ? 'newsletter-error' : undefined
+                    }
+                  />
+                  <div className={styles.honeypot} aria-hidden="true">
+                    <input
+                      type="text"
+                      name="pf_extra_note"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={company}
+                      onChange={(event) => setCompany(event.target.value)}
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className={clsx('button', 'important-btn', styles.submit)}
+                    disabled={status === 'loading'}
+                  >
+                    {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
+                  </button>
+                </form>
+                {status === 'error' && (
+                  <p
+                    id="newsletter-error"
+                    className={styles.error}
+                    role="alert"
+                  >
+                    {errorMessage}
+                  </p>
+                )}
+                <p className={styles.consent}>
+                  By subscribing you agree to receive email updates about P
+                  Foundation&apos;s work. Read our{' '}
+                  <Link className={styles.consentLink} to="/privacy">
+                    privacy policy
+                  </Link>
+                  .
+                </p>
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
