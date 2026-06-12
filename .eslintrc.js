@@ -17,5 +17,12 @@ module.exports = {
         '@typescript-eslint/no-var-requires': 'off',
       },
     },
+    {
+      // CommonJS files (config, plugins) legitimately use require().
+      files: ['*.js', '*.jsx'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+      },
+    },
   ],
 };

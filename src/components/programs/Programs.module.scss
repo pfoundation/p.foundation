@@ -1,52 +1,215 @@
 @import '../../css/mixins';
 
 .card {
-  margin-bottom: calc(var(--ifm-spacing-horizontal) * 2);
-  border: 1px solid var(--ifm-color-emphasis-300);
-  box-shadow: none;
-}
-
-.eventDetailsContainer {
-  border-left: 1px solid var(--ifm-color-emphasis-300);
+  padding: 2rem 2.25rem;
+  margin-bottom: 1.5rem;
 
   @include small-size {
-    border-left: 0;
-    border-top: 1px solid var(--ifm-color-emphasis-300);
-    padding-top: var(--ifm-spacing-vertical);
+    padding: 1.5rem 1.25rem;
   }
 }
 
-.list {
-  list-style-type: none;
-  padding-left: 0;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1rem;
 }
 
-.buttons {
+.title {
+  margin-bottom: 0;
+}
+
+.openBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  background-color: color-mix(in srgb, var(--pf-green) 12%, transparent);
+  color: color-mix(in srgb, var(--pf-green) 55%, var(--pf-ink));
+
+  [data-theme='dark'] & {
+    color: color-mix(in srgb, var(--pf-green) 65%, #fff);
+  }
+
+  &::before {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: var(--pf-green);
+  }
+}
+
+.description {
+  max-width: 70ch;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.provides {
+  margin-top: 1.5rem;
+}
+
+.providesLabel {
+  margin-bottom: 0.6rem;
+  font-family: var(--pf-font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+}
+
+.providesList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--pf-border-strong);
+    background-color: color-mix(in srgb, var(--pf-text) 3%, transparent);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--pf-text);
+
+    &::before {
+      content: '';
+      width: 0.4rem;
+      height: 0.4rem;
+      flex-shrink: 0;
+      background-color: var(--pf-crimson);
+    }
+  }
+}
+
+.meta {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 2rem;
+  margin: 1.5rem 0 0;
+  padding: 1.1rem 0 0;
+  border-top: 1px solid var(--pf-border);
+  color: var(--pf-text-muted);
+  font-size: 0.95rem;
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.metaIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  fill: var(--pf-slate);
+}
+
+.beneficiaries {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--pf-text-muted);
+
+  p {
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+}
+
+.related {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin: 1.25rem 0 0;
+  font-size: 0.95rem;
+}
+
+.relatedLabel {
+  font-family: var(--pf-font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+}
+
+.relatedLink {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--pf-blue) 35%, transparent);
+  background-color: color-mix(in srgb, var(--pf-blue) 10%, transparent);
+  font-weight: 600;
+  color: var(--ifm-link-color);
+  transition: all 0.18s ease;
+
+  &:hover,
+  &:focus {
+    background-color: color-mix(in srgb, var(--pf-blue) 18%, transparent);
+    color: var(--ifm-link-hover-color);
+    text-decoration: none;
+  }
+}
+
+.relatedNote {
+  color: var(--pf-text-muted);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+
   > a {
     @include small-size {
       width: 100%;
-      margin-top: calc(var(--ifm-spacing-vertical) / 2);
-    }
-  }
-
-  a + a {
-    margin-left: 0.5em;
-
-    @include small-size {
-      margin-left: 0;
+      justify-content: center;
+      text-align: center;
     }
   }
 }
 
-.icon {
-  width: 22px;
-  height: 22px;
-  margin-right: 0.3rem;
-  display: inline-block;
-  position: relative;
-  top: 4px;
+.applyButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.5rem;
+  text-decoration: none;
 
-  [data-theme='dark'] & {
-    fill: var(--ifm-font-color-base);
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    fill: #fff;
   }
 }

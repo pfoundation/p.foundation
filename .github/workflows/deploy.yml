@@ -31,8 +31,19 @@ jobs:
       - name: Lint code
         run: npm run lint
 
+      - name: Check backend URL configuration
+        if: ${{ vars.PF_API_BASE_URL == '' }}
+        run:
+          echo "::warning::The PF_API_BASE_URL repository variable is not set.
+          The site will guess the worker URL; donations and newsletter signups
+          may fail. See workers/README.md."
+
       - name: Build website
         run: npm run build
+        env:
+          # Base URL of the Cloudflare Worker that backs donations and the
+          # mailing list. Set as a repository variable; see workers/README.md.
+          PF_API_BASE_URL: ${{ vars.PF_API_BASE_URL }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

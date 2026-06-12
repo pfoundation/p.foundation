@@ -1,0 +1,548 @@
+@import '../../css/mixins';
+
+/* ------------------------------------------------------------- */
+/* Compact ink hero                                              */
+/* ------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  padding: 4rem 0 4.5rem;
+  background: radial-gradient(
+      640px 380px at 16% 8%,
+      var(--pf-glow-blue),
+      transparent 70%
+    ),
+    radial-gradient(
+      560px 360px at 88% 92%,
+      var(--pf-glow-crimson),
+      transparent 70%
+    ),
+    var(--pf-ink);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.04) 0 1px,
+        transparent 1px 72px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.04) 0 1px,
+        transparent 1px 72px
+      );
+    pointer-events: none;
+  }
+
+  @include small-size {
+    padding: 3rem 0 3.5rem;
+  }
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Lighter kicker tint for AA contrast on ink. Nested under .hero so it
+   deterministically outranks the global .pf-kicker color. */
+.hero .heroKicker {
+  color: var(--pf-crimson-soft);
+}
+
+.heroTitle {
+  color: #fff;
+  font-size: 2.75rem;
+  max-width: 22ch;
+  margin-bottom: 1rem;
+
+  @include small-size {
+    font-size: 2rem;
+  }
+}
+
+.heroLede {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.15rem;
+  line-height: 1.65;
+  max-width: 44rem;
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------- */
+/* Form section                                                  */
+/* ------------------------------------------------------------- */
+
+.formSection {
+  padding: 3.5rem 0 4.5rem;
+
+  @include small-size {
+    padding: 2.5rem 0 3rem;
+  }
+}
+
+.formWrap {
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.formCard {
+  position: relative;
+  overflow: hidden;
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border);
+  box-shadow: var(--pf-shadow-lg);
+  padding: 2rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--pf-gradient-spectrum);
+  }
+
+  @include small-size {
+    padding: 1.5rem;
+  }
+}
+
+/* ------------------------------------------------------------- */
+/* Selectors: radio cards (/apply) and segments (/apply/opencache) */
+/* ------------------------------------------------------------- */
+
+.selectorGroup {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.selectorLegend {
+  display: block;
+  width: 100%;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--pf-text-muted);
+}
+
+.programCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+
+  @include small-size {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.programCard {
+  position: relative;
+  display: block;
+  border: 1px solid var(--pf-border-strong);
+  background: var(--pf-surface);
+  padding: 0.85rem 0.9rem;
+  cursor: pointer;
+  transition: all 0.18s ease;
+
+  &:hover {
+    border-color: var(--pf-crimson);
+  }
+
+  &:focus-within {
+    outline: 2px solid var(--pf-focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+.programCardActive {
+  border-color: var(--pf-crimson);
+  background: color-mix(in srgb, var(--pf-crimson) 8%, transparent);
+  box-shadow: inset 0 0 0 1px var(--pf-crimson);
+}
+
+.programRadio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.programName {
+  display: block;
+  font-family: var(--pf-font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--pf-heading);
+
+  .programCardActive & {
+    color: var(--pf-crimson-dark);
+
+    [data-theme='dark'] & {
+      color: var(--pf-crimson-soft);
+    }
+  }
+}
+
+.programDesc {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--pf-text-muted);
+}
+
+.segment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  background: color-mix(in srgb, var(--pf-text) 7%, transparent);
+}
+
+.segmentBtn {
+  border: 0;
+  background: transparent;
+  padding: 0.55rem 1rem;
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--pf-text-muted);
+  cursor: pointer;
+  transition: all 0.18s ease;
+
+  &:hover {
+    color: var(--pf-text);
+  }
+}
+
+.segmentBtnActive {
+  background: var(--pf-surface);
+  color: var(--pf-heading);
+  box-shadow: var(--pf-shadow-sm);
+
+  &:hover {
+    color: var(--pf-heading);
+  }
+}
+
+/* ------------------------------------------------------------- */
+/* Fields                                                        */
+/* ------------------------------------------------------------- */
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.15rem 1rem;
+  margin-top: 1.5rem;
+  align-items: start;
+}
+
+.field {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.fieldHalf {
+  grid-column: auto;
+
+  @include small-size {
+    grid-column: 1 / -1;
+  }
+}
+
+.fieldLabel {
+  display: block;
+  margin: 0 0 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--pf-text-muted);
+}
+
+.requiredMark {
+  color: var(--pf-crimson-dark);
+
+  [data-theme='dark'] & {
+    color: var(--pf-crimson-soft);
+  }
+}
+
+.input {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--pf-border-strong);
+  background: var(--pf-surface);
+  color: var(--pf-text);
+  padding: 0.65rem 0.8rem;
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+
+  &::placeholder {
+    color: var(--pf-text-muted);
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: var(--pf-focus-ring);
+    box-shadow: 0 0 0 3px
+      color-mix(in srgb, var(--pf-focus-ring) 25%, transparent);
+  }
+}
+
+.inputError {
+  border-color: var(--pf-crimson);
+}
+
+.textarea {
+  min-height: 8.5rem;
+  resize: vertical;
+}
+
+.textareaShort {
+  min-height: 5.25rem;
+}
+
+.selectWrap {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0.95rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-top: -0.4rem;
+    border-right: 2px solid var(--pf-text-muted);
+    border-bottom: 2px solid var(--pf-text-muted);
+    transform: rotate(45deg);
+    pointer-events: none;
+  }
+}
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2.4rem;
+  cursor: pointer;
+}
+
+.checkGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1rem;
+
+  @include small-size {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.checkItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--pf-text);
+  cursor: pointer;
+}
+
+.checkbox {
+  flex: none;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.15rem;
+  accent-color: var(--pf-crimson-dark);
+}
+
+.fieldHint {
+  margin: 0.4rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--pf-text-muted);
+}
+
+.fieldError {
+  margin: 0.4rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--pf-crimson-dark);
+
+  [data-theme='dark'] & {
+    color: var(--pf-error-soft);
+  }
+}
+
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------- */
+/* Submit, error, and success states                             */
+/* ------------------------------------------------------------- */
+
+.submitBtn {
+  display: block;
+  width: 100%;
+  margin-top: 1.5rem;
+  border: 0;
+  /* Dark crimson resting state keeps the white label at AA contrast. */
+  background: var(--pf-crimson-dark);
+  color: #fff;
+  padding: 0.95rem 1.5rem;
+  font-family: var(--ifm-font-family-base);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--pf-shadow-sm);
+  transition: all 0.18s ease;
+
+  &:hover:not(:disabled) {
+    background: var(--pf-crimson-darker);
+    transform: translateY(-2px);
+    box-shadow: var(--pf-shadow-md);
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+.errorBox {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--pf-crimson) 35%, transparent);
+  background: color-mix(in srgb, var(--pf-crimson) 7%, transparent);
+  color: var(--pf-crimson-dark);
+  font-size: 0.9rem;
+  line-height: 1.55;
+
+  [data-theme='dark'] & {
+    color: var(--pf-error-soft);
+  }
+}
+
+.success {
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.successIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  background: color-mix(in srgb, var(--pf-green) 12%, transparent);
+  color: var(--pf-green);
+
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.successTitle {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.successText {
+  margin: 0 auto;
+  max-width: 32rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--pf-text-muted);
+}
+
+/* ------------------------------------------------------------- */
+/* Direct contact block (/contact)                               */
+/* ------------------------------------------------------------- */
+
+.directCard {
+  margin-top: 1.5rem;
+  border: 1px solid var(--pf-border);
+  background: var(--pf-surface);
+  box-shadow: var(--pf-shadow-sm);
+  padding: 1.5rem 2rem;
+
+  @include small-size {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+.directTitle {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+}
+
+.directList {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+}
+
+.directRow {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+
+  @include small-size {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+}
+
+.directLabel {
+  flex: none;
+  width: 4.5rem;
+  margin: 0;
+  font-weight: 600;
+  color: var(--pf-text-muted);
+}
+
+.directValue {
+  margin: 0;
+  color: var(--pf-text);
+}
+
+/* ------------------------------------------------------------- */
+/* Cross link between the two application pages                  */
+/* ------------------------------------------------------------- */
+
+.crossLink {
+  margin: 1.5rem 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--pf-text-muted);
+
+  a {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+}

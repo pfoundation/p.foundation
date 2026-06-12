@@ -2,3 +2,5 @@
 /build
 /.docusaurus
 /coverage
+node_modules
+tmpRef

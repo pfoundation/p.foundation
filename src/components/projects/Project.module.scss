@@ -1,39 +1,144 @@
 @import '../../css/mixins';
 
-.card {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  box-shadow: none;
-  height: 100%;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
 
-  &Container {
-    margin-bottom: calc(var(--ifm-spacing-horizontal) * 2);
+  @include small-size {
+    grid-template-columns: 1fr;
   }
 }
 
-.image {
-  background: #f7f7f7;
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem;
+}
+
+.tile {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 8.5rem;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 18% 0%,
+      rgba(255, 255, 255, 0.28),
+      transparent 60%
+    );
+    pointer-events: none;
+  }
 }
 
-.role {
+.tileWarm {
+  background: var(--pf-gradient-warm);
+}
+
+.tileCool {
+  background: var(--pf-gradient-cool);
+}
+
+.tileDusk {
+  background: linear-gradient(120deg, var(--pf-slate), var(--pf-blue));
+}
+
+.tileEmber {
+  background: linear-gradient(120deg, var(--pf-amber), var(--pf-crimson));
+}
+
+.initials {
+  font-family: var(--pf-font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 1px 3px rgba(20, 16, 29, 0.2);
+}
+
+.badge {
   position: absolute;
-  left: 1rem;
-  bottom: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  box-shadow: var(--pf-shadow-sm);
+
+  &::before {
+    content: '';
+    width: 0.45rem;
+    height: 0.45rem;
+  }
 }
 
-.buttons {
+.badgeActive {
+  background-color: color-mix(in srgb, var(--pf-green) 14%, var(--pf-surface));
+  color: color-mix(in srgb, var(--pf-green) 55%, var(--pf-ink));
+
+  [data-theme='dark'] & {
+    color: color-mix(in srgb, var(--pf-green) 65%, #fff);
+  }
+
+  &::before {
+    background-color: var(--pf-green);
+  }
+}
+
+.badgeQueued {
+  background-color: color-mix(in srgb, var(--pf-amber) 18%, var(--pf-surface));
+  color: color-mix(in srgb, var(--pf-amber) 45%, var(--pf-ink));
+
+  [data-theme='dark'] & {
+    color: color-mix(in srgb, var(--pf-amber) 70%, #fff);
+  }
+
+  &::before {
+    background-color: var(--pf-amber);
+  }
+}
+
+.body {
+  flex: 1;
+  padding: 1.25rem 0.75rem 0.5rem;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  margin-bottom: 0;
+}
+
+.comingSoon {
+  margin-bottom: 0;
+  color: var(--pf-text-muted);
+  font-style: italic;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem 0.75rem 0.5rem;
+
   > a {
     @include small-size {
       width: 100%;
-      margin-top: calc(var(--ifm-spacing-vertical) / 2);
-    }
-  }
-
-  a + a {
-    margin-left: 0.5em;
-
-    @include small-size {
-      margin-left: 0;
     }
   }
 }
@@ -45,8 +150,4 @@
   display: inline-block;
   position: relative;
   top: 2px;
-
-  [data-theme='dark'] & {
-    fill: var(--ifm-font-color-base);
-  }
 }

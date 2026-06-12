@@ -1,0 +1,359 @@
+@import '../../css/mixins';
+
+/* ------------------------------------------------------------- */
+/* Hero: constant ink surface, theme-invariant by design         */
+/* ------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  padding: 5rem 0;
+  background: radial-gradient(
+      640px 380px at 16% 8%,
+      var(--pf-glow-blue),
+      transparent 70%
+    ),
+    radial-gradient(
+      560px 360px at 88% 92%,
+      var(--pf-glow-crimson),
+      transparent 70%
+    ),
+    var(--pf-ink);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.04) 0 1px,
+        transparent 1px 72px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.04) 0 1px,
+        transparent 1px 72px
+      );
+    pointer-events: none;
+  }
+
+  @include small-size {
+    padding: 3.5rem 0;
+  }
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Lighter kicker tint for AA contrast on ink. Nested under .hero so it
+   deterministically outranks the global .pf-kicker color. */
+.hero .heroKicker {
+  color: var(--pf-crimson-soft);
+}
+
+.heroTitle {
+  color: #fff;
+  font-size: 3.25rem;
+  max-width: 18ch;
+  margin-bottom: 1rem;
+
+  @include small-size {
+    font-size: 2.25rem;
+  }
+}
+
+.heroLede {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.15rem;
+  line-height: 1.65;
+  max-width: 44rem;
+  margin-bottom: 2rem;
+}
+
+/* Availability callout on the constant-ink hero; literal whites are
+   intentional, matching the hero's other surfaces in both themes. */
+.heroAvailability {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 2rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+  font-family: var(--pf-font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+
+  /* Square marker, on brand with the sharp-corner language. */
+  &::before {
+    content: '';
+    flex: none;
+    width: 6px;
+    height: 6px;
+    background: var(--pf-crimson-soft);
+  }
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Secondary action on the ink hero; literal whites are intentional. */
+.heroGhostBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.65);
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+/* ------------------------------------------------------------- */
+/* Shared section pieces                                         */
+/* ------------------------------------------------------------- */
+
+.sectionBody {
+  max-width: 46rem;
+  margin-top: 1rem;
+
+  p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Alternating band behind "How it works". */
+.band {
+  background: var(--pf-surface);
+  border-top: 1px solid var(--pf-border);
+  border-bottom: 1px solid var(--pf-border);
+}
+
+/* ------------------------------------------------------------- */
+/* How it works: feature blocks                                  */
+/* ------------------------------------------------------------- */
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+
+  @include small-size {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature {
+  padding: 1.75rem;
+}
+
+.featureWide {
+  grid-column: 1 / -1;
+}
+
+.featureIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.1rem;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.iconBlue {
+  background: color-mix(in srgb, var(--pf-blue) 12%, transparent);
+  color: var(--pf-blue);
+}
+
+.iconGreen {
+  background: color-mix(in srgb, var(--pf-green) 12%, transparent);
+  color: var(--pf-green);
+}
+
+.iconAmber {
+  background: color-mix(in srgb, var(--pf-amber) 14%, transparent);
+  color: var(--pf-amber);
+}
+
+.iconCrimson {
+  background: color-mix(in srgb, var(--pf-crimson) 10%, transparent);
+  color: var(--pf-crimson);
+}
+
+.iconSlate {
+  background: color-mix(in srgb, var(--pf-slate) 14%, transparent);
+  color: var(--pf-slate);
+}
+
+.featureTitle {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.featureBody {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--pf-text-muted);
+}
+
+/* ------------------------------------------------------------- */
+/* Languages strip (chip row under the feature grid)             */
+/* ------------------------------------------------------------- */
+
+.languages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  margin-top: 2.25rem;
+}
+
+.languagesLabel {
+  font-family: var(--pf-font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+}
+
+.languageList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.languageChip {
+  padding: 0.3rem 0.85rem;
+  border: 1px solid var(--pf-border-strong);
+  background: var(--pf-bg);
+  font-family: var(--pf-font-display);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--pf-heading);
+}
+
+/* ------------------------------------------------------------- */
+/* Who it is for                                                 */
+/* ------------------------------------------------------------- */
+
+.audienceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+
+  @include small-size {
+    grid-template-columns: 1fr;
+  }
+}
+
+.audience {
+  padding: 1.75rem;
+}
+
+.audienceLabel {
+  display: block;
+  font-family: var(--pf-font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-crimson-dark);
+  margin-bottom: 0.6rem;
+
+  [data-theme='dark'] & {
+    color: var(--pf-crimson-soft);
+  }
+}
+
+.audienceTitle {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.audienceBody {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--pf-text-muted);
+}
+
+/* ------------------------------------------------------------- */
+/* Closing CTA: constant ink surface, theme-invariant by design  */
+/* ------------------------------------------------------------- */
+
+.cta {
+  position: relative;
+  overflow: hidden;
+  padding: 4.5rem 0;
+  background-color: var(--pf-ink);
+  color: #fff;
+  text-align: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        34rem 22rem at 18% 120%,
+        var(--pf-glow-blue),
+        transparent 70%
+      ),
+      radial-gradient(
+        32rem 20rem at 84% -20%,
+        var(--pf-glow-crimson),
+        transparent 70%
+      );
+    pointer-events: none;
+  }
+
+  @include small-size {
+    padding: 3.5rem 0;
+  }
+}
+
+.ctaInner {
+  position: relative;
+  z-index: 1;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.ctaTitle {
+  color: #fff;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  margin-bottom: 0.75rem;
+}
+
+.ctaText {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 1.75rem;
+}
