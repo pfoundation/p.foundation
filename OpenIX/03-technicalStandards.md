@@ -43,7 +43,7 @@ Proxy ARP is also forbidden. Participants should reply to ARP or ND only for add
 
 ## MTU (Maximum Transmission Unit)
 
-OpenIX supports the standard 1500‑byte Ethernet frame size by default and also supports jumbo frames up to 9000 bytes. Two peers may exchange jumbo frames if they explicitly agree to do so and configure their interfaces consistently. Route servers are configured for jumbo frames as well.
+OpenIX supports the standard 1500‑byte Ethernet frame size by default and also supports jumbo frames up to 9000 bytes. Two peers may exchange jumbo frames when both explicitly agree and configure their interfaces consistently. Route servers are configured for jumbo frames as well.
 
 All devices must handle 1500‑byte frames. Using jumbo frames is optional but recommended for efficiency when all parties agree.
 
@@ -67,7 +67,7 @@ OpenIX does not rate‑limit ports other than the physical port speed. Participa
 
 The exchange fabric is non‑blocking at line rate. OpenIX monitors for excessive broadcasts or unknown‑destination flooding and applies MAC filtering and storm control to keep these to a minimum.
 
-Participants must not send continuous high‑rate broadcast or multicast traffic, as doing so degrades service for others and violates the AUP.
+Participants must not send continuous high‑rate broadcast or multicast traffic, as this degrades service for others and violates the AUP.
 
 ## Clock and Synchronization
 

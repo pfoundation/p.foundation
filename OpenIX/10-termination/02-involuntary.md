@@ -52,13 +52,13 @@ In cases like non-payment, we’ll give a final notice with a short deadline (e.
 
 Upon termination, OpenIX will close out the account: disabling ports, removing routing configs, and updating our records that the ASN is no longer connected.
 
-If the participant was listed on our website or member list, we will update that as well. The participant must also immediately stop sending any traffic to the exchange – physically unplugging or disabling their connection. If they reconnect without authorization (which would be hard if physically disconnected), that would be considered trespass on the network.
+If the participant was listed on our website or member list, we will update that as well. The participant must also immediately stop sending any traffic to the exchange, physically unplugging or disabling their connection. If they reconnect without authorization (which would be hard if physically disconnected), that would be considered trespass on the network.
 
 ## Post-Termination Financials and Legal
 
 If termination was due to breach (policy or non-payment), and there are remaining contractual months, OpenIX may pursue the owed fees for the remainder of the term as damages, depending on contract terms.
 
-We prefer not to go the legal route and would rather settle amicably, but participants should be aware that a breach does not simply erase obligations – in fact, many contracts stipulate that if OpenIX terminates for cause, the participant is liable for all remaining fees under the contract term immediately.
+We prefer not to go the legal route and would rather settle amicably, but participants should be aware that a breach does not simply erase obligations; in fact, many contracts stipulate that if OpenIX terminates for cause, the participant is liable for all remaining fees under the contract term immediately.
 
 Conversely, if OpenIX terminated services without cause (not likely except for a shutdown scenario or very lenient approach), and the participant had prepaid, we’d refund unused fees. Each case will follow the contract in place.
 

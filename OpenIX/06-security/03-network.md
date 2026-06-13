@@ -22,7 +22,7 @@ OpenIX applies ACLs on the fabric to drop known illegitimate traffic types (e.g.
 
 The route servers themselves have stringent controls. They do not forward traffic, and they implement filters to ensure one participant cannot impersonate another at the BGP level. They also have prefix limits per peer and deny lists for bogon prefixes.
 
-The route servers are configured to **never** forward a next-hop that isn’t the originator (meaning they preserve the original BGP next hop of the route, which ensures that traffic from one participant to another goes directly, not through the route server). This way, even if compromised (which is highly unlikely with our security), a route server couldn’t man-in-the-middle traffic – it’s simply not in the forwarding path.
+The route servers are configured to **never** forward a next-hop that isn’t the originator (meaning they preserve the original BGP next hop of the route, which ensures that traffic from one participant to another goes directly, not through the route server). This way, even if compromised (which is highly unlikely with our security), a route server couldn’t man-in-the-middle traffic; it’s simply not in the forwarding path.
 
 Additionally, the route servers are secured with MD5 passwords on BGP sessions if the participant requests (optional but available), and they run on hardened systems (limited access, regularly patched software, etc.).
 

@@ -203,15 +203,34 @@ summary:focus-visible,
 /* ------------------------------------------------------------- */
 
 .navbar {
-  backdrop-filter: saturate(180%) blur(14px);
-  -webkit-backdrop-filter: saturate(180%) blur(14px);
   border-bottom: 1px solid var(--pf-border);
+  /* Solid surface below the desktop breakpoint: backdrop-filter establishes
+     a containing block for fixed descendants, which traps the mobile
+     sidebar (position: fixed inside .navbar) in the 4.5rem navbar box.
+     Infima only renders the sidebar below 997px, where the blur is off. */
+  background-color: var(--pf-surface);
+
+  @media (min-width: 997px) {
+    background-color: var(--ifm-navbar-background-color);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+  }
 }
 
 .navbar-sidebar {
   background-color: var(--pf-surface);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+}
+
+/* The color mode switch lives only in the footer (src/components/ThemeToggle).
+   src/theme/Navbar/ColorModeToggle already nulls the built-in navbar and
+   mobile-sidebar toggle; this guard keeps it hidden even before a dev server
+   restart registers that swizzle. The sidebar is rendered inside .navbar, so
+   this one scope covers desktop navbar and mobile sidebar alike. */
+.navbar [class*='colorModeToggle'],
+.navbar button[aria-label^='Switch between dark and light mode'] {
+  display: none !important;
 }
 
 .navbar__logo {

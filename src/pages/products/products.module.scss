@@ -56,6 +56,10 @@
   background: linear-gradient(120deg, var(--pf-green), var(--pf-amber));
 }
 
+.spectrum::before {
+  background: var(--pf-gradient-spectrum);
+}
+
 .cardTitle {
   font-size: 1.6rem;
   margin-bottom: 0.6rem;
@@ -120,4 +124,60 @@
 .card:hover .more svg,
 .card:focus .more svg {
   transform: translateX(3px);
+}
+
+/* ------------------------------------------------------------- */
+/* Featured wide card: spans the full row below the trio         */
+/* ------------------------------------------------------------- */
+
+/* The card spans the full grid row. Its children stay in normal card order,
+   so on mobile (where .card is the shared flex column) it looks exactly like
+   the other product cards. The two-column featured layout is desktop-only. */
+.wide {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 997px) {
+  .wide {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    grid-template-areas:
+      'title     highlights'
+      'value     highlights'
+      'program   highlights'
+      'more      highlights';
+    grid-template-rows: auto auto auto auto;
+    align-items: start;
+    column-gap: 2.75rem;
+  }
+
+  .wideTitle {
+    grid-area: title;
+    margin-bottom: 0.6rem;
+  }
+
+  .wideValue {
+    grid-area: value;
+    margin-bottom: 0;
+  }
+
+  /* Highlights occupy the right column, centered against the left stack. The
+     vertical card's bottom separator and auto spacer are dropped here. */
+  .wideHighlights {
+    grid-area: highlights;
+    align-self: center;
+    margin: 0;
+  }
+
+  .wideProgram {
+    grid-area: program;
+    margin: 1.25rem 0 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .wideMore {
+    grid-area: more;
+    margin-top: 0.75rem;
+  }
 }

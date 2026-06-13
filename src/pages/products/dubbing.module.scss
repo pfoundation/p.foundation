@@ -1,0 +1,766 @@
+@import '../../css/mixins';
+
+/* ------------------------------------------------------------------ */
+/* Scroll reveal                                                      */
+/* ------------------------------------------------------------------ */
+
+.reveal {
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.revealHidden {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+  }
+
+  .revealHidden {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero                                                               */
+/* ------------------------------------------------------------------ */
+
+.hero {
+  background-color: var(--pf-ink);
+  background-image: radial-gradient(
+      720px 360px at 12% -10%,
+      var(--pf-glow-blue),
+      transparent 70%
+    ),
+    radial-gradient(
+      640px 320px at 90% 115%,
+      var(--pf-glow-crimson),
+      transparent 70%
+    );
+  padding: 5.5rem 0;
+
+  @include small-size {
+    padding: 3.5rem 0;
+  }
+}
+
+.heroInner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: 3.5rem;
+
+  @media (max-width: 996px) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.heroKicker {
+  color: var(--pf-crimson-soft);
+}
+
+.heroTitle {
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+
+.heroAccent {
+  background-image: var(--pf-gradient-cool);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroLede {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--pf-silver);
+  max-width: 38rem;
+  margin-bottom: 1.5rem;
+}
+
+.heroAvailability {
+  display: inline-block;
+  font-family: var(--pf-font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pf-silver);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 0.3rem 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.ghostBtn {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+}
+
+/* Hero fan ----------------------------------------------------------- */
+
+.fan {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background-color: rgba(255, 255, 255, 0.04);
+  padding: 1.75rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1.5rem;
+
+  @include small-size {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.fanSource {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background-color: rgba(255, 255, 255, 0.04);
+  padding: 1rem 1.1rem;
+}
+
+.fanSourceLabel {
+  font-family: var(--pf-font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pf-crimson-soft);
+}
+
+.fanWave {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 2rem;
+
+  span {
+    width: 4px;
+    height: 100%;
+    background-color: var(--pf-silver);
+    transform-origin: bottom;
+    transform: scaleY(0.35);
+    animation: dub-wave 1.4s ease-in-out infinite;
+    animation-delay: calc(var(--pf-bar) * 0.12s);
+  }
+}
+
+@keyframes dub-wave {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fanWave span {
+    animation: none;
+    transform: scaleY(0.6);
+  }
+}
+
+.fanSourceLang {
+  font-size: 0.78rem;
+  color: var(--pf-silver);
+}
+
+.fanList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.fanRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fanWire {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.16);
+  overflow: visible;
+}
+
+.fanPulse {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  background-color: var(--pf-blue);
+  box-shadow: 0 0 8px rgba(35, 160, 224, 0.9);
+  animation: dub-travel 2.6s ease-in-out infinite;
+  animation-delay: calc(var(--pf-line) * 0.4s);
+}
+
+@keyframes dub-travel {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 8px);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fanPulse {
+    animation: none;
+    left: calc(100% - 8px);
+    opacity: 1;
+  }
+}
+
+.fanLang {
+  flex-shrink: 0;
+  min-width: 5.5rem;
+  text-align: center;
+  font-family: var(--pf-font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 0.35rem 0.6rem;
+}
+
+.fanCaption {
+  grid-column: 1 / -1;
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--pf-silver);
+  text-align: center;
+}
+
+/* ------------------------------------------------------------------ */
+/* Section utilities                                                  */
+/* ------------------------------------------------------------------ */
+
+.band {
+  background-color: var(--pf-surface);
+  border-top: 1px solid var(--pf-border);
+  border-bottom: 1px solid var(--pf-border);
+}
+
+.crossLink {
+  margin: 2rem 0 0;
+  color: var(--pf-text-muted);
+}
+
+/* ------------------------------------------------------------------ */
+/* From source to dubbed cut: vertical flow                          */
+/* ------------------------------------------------------------------ */
+
+.steps {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+}
+
+.step {
+  display: flex;
+  gap: 1.25rem;
+  padding-bottom: 1.75rem;
+  position: relative;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.stepMarker {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.stepNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 2px solid var(--pf-slate);
+  font-family: var(--pf-font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--pf-heading);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Connector line between markers. */
+.step:not(:last-child) .stepMarker::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 2.4rem;
+  bottom: -0.65rem;
+  width: 2px;
+  transform: translateX(-50%);
+  background-color: var(--pf-border-strong);
+}
+
+.stepBody {
+  padding-top: 0.25rem;
+}
+
+.stepName {
+  font-size: 1.2rem;
+  margin-bottom: 0.45rem;
+}
+
+.stepText {
+  margin: 0;
+  color: var(--pf-text-muted);
+  line-height: 1.65;
+  max-width: 46rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Translation built for the clock                                    */
+/* ------------------------------------------------------------------ */
+
+.tf {
+  margin-top: 2.5rem;
+  border: 1px solid var(--pf-border);
+  background-color: var(--pf-surface);
+  padding: 1.75rem 2rem;
+
+  @include small-size {
+    padding: 1.25rem;
+  }
+}
+
+.tfRows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.tfRowHead {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.tfRowLabel {
+  font-family: var(--pf-font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+}
+
+.tfBadge {
+  font-family: var(--pf-font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.1rem 0.5rem;
+}
+
+.tfBadge_source {
+  color: var(--pf-text-muted);
+  background-color: color-mix(in srgb, var(--pf-text) 9%, transparent);
+}
+
+.tfBadge_over {
+  color: #fff;
+  background-color: var(--pf-crimson);
+}
+
+.tfBadge_fit {
+  color: var(--pf-green);
+  background-color: color-mix(in srgb, var(--pf-green) 14%, transparent);
+}
+
+.tfRowText {
+  margin: 0 0 0.5rem;
+  color: var(--pf-heading);
+  line-height: 1.5;
+}
+
+.tfBarTrack {
+  position: relative;
+  height: 16px;
+  background-color: color-mix(in srgb, var(--pf-text) 6%, transparent);
+  border: 1px solid var(--pf-border);
+}
+
+.tfSlotLine {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 0;
+  border-left: 2px dashed var(--pf-heading);
+  z-index: 1;
+}
+
+.tfBar {
+  display: block;
+  height: 100%;
+}
+
+.tfBar_source {
+  background-color: var(--pf-slate);
+}
+
+.tfBar_over {
+  background-color: var(--pf-crimson);
+}
+
+.tfBar_fit {
+  background-color: var(--pf-green);
+}
+
+.tfSlotNote {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 1.5rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--pf-text-muted);
+}
+
+.tfSlotTick {
+  flex: 0 0 auto;
+  align-self: stretch;
+  width: 0;
+  border-left: 2px dashed var(--pf-heading);
+  min-height: 1.1rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Per-segment treatments                                             */
+/* ------------------------------------------------------------------ */
+
+.treat {
+  margin-top: 2.5rem;
+}
+
+.treatTimeline {
+  display: flex;
+  gap: 3px;
+  height: 2.6rem;
+  margin-bottom: 1.75rem;
+}
+
+.treatBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+.treatBlock_lipsync {
+  background-color: var(--pf-blue);
+}
+
+.treatBlock_dub {
+  background-color: var(--pf-amber);
+  color: var(--pf-ink);
+}
+
+.treatBlock_cc {
+  background-color: var(--pf-green);
+}
+
+.treatBlock_discard {
+  color: var(--pf-text-muted);
+  background-color: transparent;
+  border: 1px dashed var(--pf-border-strong);
+}
+
+.treatLegend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+
+  @include small-size {
+    grid-template-columns: 1fr;
+  }
+}
+
+.treatItem {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.treatSwatch {
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.2rem;
+}
+
+.treatSwatch_lipsync {
+  background-color: var(--pf-blue);
+}
+
+.treatSwatch_dub {
+  background-color: var(--pf-amber);
+}
+
+.treatSwatch_cc {
+  background-color: var(--pf-green);
+}
+
+.treatSwatch_discard {
+  border: 1px dashed var(--pf-border-strong);
+}
+
+.treatName {
+  display: block;
+  font-family: var(--pf-font-display);
+  font-weight: 700;
+  color: var(--pf-heading);
+}
+
+.treatDesc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--pf-text-muted);
+}
+
+/* ------------------------------------------------------------------ */
+/* One source, many languages band                                   */
+/* ------------------------------------------------------------------ */
+
+.source {
+  background-color: var(--pf-ink);
+  background-image: radial-gradient(
+    640px 320px at 85% -20%,
+    var(--pf-glow-blue),
+    transparent 70%
+  );
+  padding: 5rem 0;
+
+  @include small-size {
+    padding: 3.5rem 0;
+  }
+}
+
+.sourceKicker {
+  color: var(--pf-crimson-soft);
+}
+
+.sourceTitle {
+  color: #fff;
+  max-width: 36rem;
+  margin-bottom: 2.5rem;
+}
+
+.sourceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+
+  @include small-size {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sourceItem {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background-color: rgba(255, 255, 255, 0.04);
+  padding: 1.5rem 1.75rem;
+
+  h3 {
+    font-size: 1.05rem;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--pf-silver);
+  }
+}
+
+.langs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+}
+
+.langsLabel {
+  font-family: var(--pf-font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pf-silver);
+  margin-right: 0.25rem;
+}
+
+.langsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.langsChip {
+  font-family: var(--pf-font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 0.3rem 0.75rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Audience                                                           */
+/* ------------------------------------------------------------------ */
+
+.audienceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+
+  @include small-size {
+    grid-template-columns: 1fr;
+  }
+}
+
+.audience {
+  padding: 2rem 2.25rem;
+
+  @include small-size {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+.audienceLabel {
+  display: inline-block;
+  font-family: var(--pf-font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+  border: 1px solid var(--pf-border-strong);
+  padding: 0.2rem 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.audienceTitle {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.audienceBody {
+  margin: 0;
+  color: var(--pf-text-muted);
+  line-height: 1.65;
+}
+
+/* ------------------------------------------------------------------ */
+/* Final CTA                                                          */
+/* ------------------------------------------------------------------ */
+
+.cta {
+  background-color: var(--pf-ink);
+  background-image: radial-gradient(
+      640px 320px at 15% 120%,
+      var(--pf-glow-blue),
+      transparent 70%
+    ),
+    radial-gradient(
+      560px 280px at 85% -20%,
+      var(--pf-glow-crimson),
+      transparent 70%
+    );
+  padding: 5rem 0;
+
+  @include small-size {
+    padding: 3.5rem 0;
+  }
+}
+
+.ctaInner {
+  max-width: 44rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ctaTitle {
+  color: #fff;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  margin-bottom: 1rem;
+}
+
+.ctaText {
+  color: var(--pf-silver);
+  font-size: 1.1rem;
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+
+.ctaActions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}

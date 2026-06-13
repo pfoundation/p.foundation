@@ -5,7 +5,7 @@ sidebar_position: 6
 description: OpenIX achieves high availability through redundant route servers, switching platforms, and power systems that minimize single points of failure.
 ---
 
-Key elements of the exchange are redundant. For example, there are typically two route server instances – if one fails, the other can continue to serve the community (participants should ideally peer with both for redundancy).
+Key elements of the exchange are redundant. For example, there are typically two route server instances; if one fails, the other can continue to serve the community (participants should ideally peer with both for redundancy).
 
 The switching platform may have redundancy either in the form of a modular chassis with dual supervisors or two parallel switches splitting the load with rapid failover. Additionally, power feeds to OpenIX equipment are redundant A/B feeds backed by UPS and generators in the facility.
 

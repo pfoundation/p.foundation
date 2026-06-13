@@ -7,6 +7,6 @@ In case of a major security incident (for example, a widespread virus affecting 
 
 We will communicate via all available channels (e.g., email, phone, messaging groups) to alert participants.
 
-OpenIX maintains an **incident response plan** for various scenarios (including cybersecurity incidents, physical disasters, etc.), and this plan is periodically reviewed and tested. Participants should ensure their NOC contacts are current so they can be reached during such events.
+OpenIX maintains an **incident response plan** for various scenarios (including cybersecurity incidents, physical disasters, etc.), and this plan is periodically reviewed and tested. Participants should keep their NOC contacts current to ensure they can be reached during such events.
 
-It’s also recommended for participants to subscribe to OpenIX provides emergency notification system and follow our social media channels.
+We also recommend that participants subscribe to the OpenIX emergency notification system and follow our social media channels.

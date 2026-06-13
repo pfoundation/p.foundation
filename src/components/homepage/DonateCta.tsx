@@ -9,10 +9,10 @@ export const DonateCta: FunctionComponent = () => {
     <section className={styles.cta}>
       <div className="container">
         <div className={styles.inner}>
-          <h2 className={styles.title}>Help keep Lebanon connected</h2>
+          <h2 className={styles.title}>Help keep communities connected</h2>
           <p className={styles.text}>
             The P Foundation is a 501(c)(3) nonprofit registered in Washington,
-            DC, so your donation is tax deductible in the United States.
+            DC. Your donation is tax deductible in the United States.
           </p>
           <Link
             className={clsx('button', 'button--lg', 'important-btn')}
