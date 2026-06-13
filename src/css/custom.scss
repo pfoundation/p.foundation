@@ -297,6 +297,141 @@ summary:focus-visible,
 }
 
 /* ------------------------------------------------------------- */
+/* Mobile navigation (full-width drawer)                         */
+/* ------------------------------------------------------------- */
+/* Below 997px Infima collapses the navbar items into a slide-in sidebar.
+   The defaults are a narrow 83vw drawer with small, doc-sidebar-sized links.
+   This block turns it into a full-width, high-contrast menu with large tap
+   targets in the spirit of Cloudflare's mobile nav. Every rule is scoped
+   under .navbar-sidebar: the same .menu / .menu__link classes drive the
+   OpenIX docs sidebar, which must stay untouched. */
+
+/* A larger, higher-contrast hamburger so the entry point reads clearly. */
+.navbar__toggle {
+  color: var(--pf-heading);
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@include small-size {
+  /* Full-screen takeover instead of the 83vw drawer. Overriding the variable
+     (not just .navbar-sidebar's width) keeps the secondary-menu slide
+     transform, which is derived from it, aligned. */
+  :root {
+    --ifm-navbar-sidebar-width: 100%;
+  }
+}
+
+.navbar-sidebar {
+  /* Slightly slower than --ifm-transition-fast for a deliberate, full-screen
+     slide-in. */
+  transition-duration: 0.25s;
+}
+
+/* Header: align the brand row with the top bar and give the close control
+   real presence. */
+.navbar-sidebar__brand {
+  height: var(--ifm-navbar-height);
+  border-bottom: 1px solid var(--pf-border);
+}
+
+.navbar-sidebar__close {
+  svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  svg g {
+    stroke: var(--pf-heading);
+  }
+}
+
+/* Rows run edge to edge; horizontal breathing room lives on each link. */
+.navbar-sidebar__item {
+  padding: 0.5rem 0;
+}
+
+/* The core of the redesign: large, bold rows separated by dividers. */
+.navbar-sidebar .menu__link {
+  position: relative;
+  border-radius: 0;
+  padding: 1.15rem 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--pf-heading);
+  border-bottom: 1px solid var(--pf-border);
+}
+
+/* Chevron affordance on the internal nav rows. The Donate CTA and the
+   icon-only X row opt out. */
+.navbar-sidebar
+  .menu__list-item
+  > .menu__link:not(.important-btn):not(.navbar-item-x)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-top: 2px solid var(--pf-text-muted);
+  border-right: 2px solid var(--pf-text-muted);
+  transform: translateY(-50%) rotate(45deg);
+  transition: border-color 0.15s ease, right 0.15s ease;
+}
+
+.navbar-sidebar .menu__link:hover {
+  background: transparent;
+  color: var(--pf-crimson);
+}
+
+.navbar-sidebar .menu__link:hover::after {
+  border-color: var(--pf-crimson);
+  right: 1.25rem;
+}
+
+.navbar-sidebar .menu__link--active {
+  color: var(--pf-crimson);
+}
+
+/* Donate: a prominent, inset full-width CTA pinned below the link list rather
+   than another text row. */
+.navbar-sidebar .menu__link.important-btn {
+  justify-content: center;
+  margin: 1.5rem 1.5rem 0;
+  padding: 0.95rem 1.4rem;
+  font-size: 1.15rem;
+  color: #fff;
+  border-bottom: none;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+/* X: pair the brand glyph with a real label so it isn't a mystery icon in a
+   large menu. The desktop navbar keeps its icon-only treatment. */
+.navbar-sidebar .menu__link.navbar-item-x {
+  gap: 0.85rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--pf-text);
+
+  &::before {
+    width: 24px;
+    height: 24px;
+  }
+
+  &::after {
+    content: 'Follow us on X';
+  }
+}
+
+/* ------------------------------------------------------------- */
 /* Buttons                                                       */
 /* ------------------------------------------------------------- */
 
