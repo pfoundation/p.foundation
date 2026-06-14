@@ -103,6 +103,13 @@
 }
 
 .submit {
+  /* important-btn is shorter than the input (smaller font + padding), so the
+     two don't line up on the row. Stretch the button to the input's height and
+     center its label; align-self overrides the row's align-items: center. */
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   white-space: nowrap;
 
   &:disabled,

@@ -699,7 +699,7 @@ export default function OpenCacheLanding(): JSX.Element {
             <div className={styles.heroActions}>
               <Link
                 className={clsx('button', 'button--lg', 'important-btn')}
-                to="/apply/opencache?as=provider"
+                to="/apply/opencache"
               >
                 Start serving
               </Link>
@@ -935,7 +935,7 @@ export default function OpenCacheLanding(): JSX.Element {
                   </ol>
                   <Link
                     className={clsx('button', styles.ghostBtnDark)}
-                    to="/apply/opencache?as=isp"
+                    to="/apply/opencache/isp"
                   >
                     Apply as an ISP
                   </Link>
@@ -959,7 +959,7 @@ export default function OpenCacheLanding(): JSX.Element {
               <div className={styles.ctaActions}>
                 <Link
                   className={clsx('button', 'button--lg', 'important-btn')}
-                  to="/apply/opencache?as=provider"
+                  to="/apply/opencache"
                 >
                   Start serving
                 </Link>

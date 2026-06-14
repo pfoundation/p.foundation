@@ -26,7 +26,7 @@ const PRODUCTS: ProductSummary[] = [
       'Open to any content provider, with no CDN of your own required',
       'Hosting a node grants no control: policies stay with the foundation',
     ],
-    program: 'Built and operated end to end by the foundation',
+    program: 'Built and operated by the foundation',
   },
   {
     name: 'OpenNRCS',

@@ -214,8 +214,10 @@ export default function Apply(): JSX.Element {
               selector={selector}
             />
             <p className={styles.crossLink}>
-              Joining OpenCache as an ISP or a content provider?{' '}
-              <Link to="/apply/opencache">Apply for OpenCache</Link>.
+              Joining OpenCache?{' '}
+              <Link to="/apply/opencache">Create an account</Link> to serve
+              content, or <Link to="/apply/opencache/isp">apply as an ISP</Link>{' '}
+              to host a node.
             </p>
           </div>
         </div>

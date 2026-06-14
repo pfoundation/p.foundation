@@ -244,6 +244,8 @@ export const ApplicationForm: FunctionComponent<{
   loadingLabel?: string;
   /** Heading of the success state. */
   successTitle?: string;
+  /** Body of the success state; receives the submitted email. */
+  successMessage?: (email: string) => React.ReactNode;
   /** Inline error shown when the request fails without a server message. */
   errorFallback?: string;
 }> = ({
@@ -253,6 +255,11 @@ export const ApplicationForm: FunctionComponent<{
   submitLabel = 'Submit application',
   loadingLabel = 'Sending application...',
   successTitle = 'Application received',
+  successMessage = (email) => (
+    <>
+      We will get back to you at <strong>{email}</strong>.
+    </>
+  ),
   errorFallback = FALLBACK_ERROR,
 }) => {
   const { siteConfig } = useDocusaurusContext();
@@ -393,9 +400,7 @@ export const ApplicationForm: FunctionComponent<{
           >
             {successTitle}
           </h2>
-          <p className={styles.successText}>
-            We will get back to you at <strong>{submittedEmail}</strong>.
-          </p>
+          <p className={styles.successText}>{successMessage(submittedEmail)}</p>
         </div>
       </div>
     );

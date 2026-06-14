@@ -114,7 +114,7 @@
 }
 
 /* ------------------------------------------------------------- */
-/* Selectors: radio cards (/apply) and segments (/apply/opencache) */
+/* Selector: radio cards (/apply program picker) */
 /* ------------------------------------------------------------- */
 
 .selectorGroup {
@@ -203,38 +203,15 @@
   color: var(--pf-text-muted);
 }
 
-.segment {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  padding: 4px;
-  background: color-mix(in srgb, var(--pf-text) 7%, transparent);
-}
-
-.segmentBtn {
-  border: 0;
-  background: transparent;
-  padding: 0.55rem 1rem;
-  font-family: var(--ifm-font-family-base);
+/* Intro line inside the form card (the OpenCache signup uses this in the
+   selector slot to frame the form as creating an account). */
+.formLead {
+  margin: 0;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--pf-border);
   font-size: 0.95rem;
-  font-weight: 600;
+  line-height: 1.6;
   color: var(--pf-text-muted);
-  cursor: pointer;
-  transition: all 0.18s ease;
-
-  &:hover {
-    color: var(--pf-text);
-  }
-}
-
-.segmentBtnActive {
-  background: var(--pf-surface);
-  color: var(--pf-heading);
-  box-shadow: var(--pf-shadow-sm);
-
-  &:hover {
-    color: var(--pf-heading);
-  }
 }
 
 /* ------------------------------------------------------------- */

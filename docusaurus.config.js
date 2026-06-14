@@ -271,12 +271,6 @@ const config = {
             to: '/donate',
             className: 'button--primary important-btn',
           },
-          // {
-          //   href: 'https://github.com.com/pfoundation',
-          //   className: 'navbar-item-github',
-          //   position: 'right',
-          //   alt: 'Github Logo (Header)',
-          // },
         ],
       },
       footer: {
