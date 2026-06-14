@@ -12,7 +12,7 @@ OpenIX Beirut was officially announced on [May 13, 2025](/updates/IntroducingOpe
 
 By bringing together ISPs, content providers, and infrastructure partners, OpenIX Beirut supports the growth of locally hosted content and services. Today, only 36% of Lebanon’s internet traffic is served domestically. Our goal is to raise that number to **56% by the end of 2025**, reaching the Asia regional average. Local peering means faster access to websites, smoother streaming, lower costs for service providers, and better internet experiences for everyone.
 
-OpenIX Beirut is not just about better technology—it’s about building a more resilient and inclusive digital ecosystem for Lebanon. It gives networks of all sizes the ability to grow, interconnect, and serve users efficiently within the country.
+OpenIX Beirut is not just about better technology; it’s about building a more resilient and inclusive digital ecosystem for Lebanon. It gives networks of all sizes the ability to grow, interconnect, and serve users efficiently within the country.
 <DocCardList />
 
 ---

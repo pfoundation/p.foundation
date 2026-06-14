@@ -157,7 +157,12 @@ html[data-theme='dark'] {
 }
 
 [data-theme='dark'] .navbar-item-x::before {
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'/%3E%3C/svg%3E")
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
+[data-theme='dark'] .navbar-item-github::before {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
     no-repeat center / contain;
 }
 
@@ -203,15 +208,34 @@ summary:focus-visible,
 /* ------------------------------------------------------------- */
 
 .navbar {
-  backdrop-filter: saturate(180%) blur(14px);
-  -webkit-backdrop-filter: saturate(180%) blur(14px);
   border-bottom: 1px solid var(--pf-border);
+  /* Solid surface below the desktop breakpoint: backdrop-filter establishes
+     a containing block for fixed descendants, which traps the mobile
+     sidebar (position: fixed inside .navbar) in the 4.5rem navbar box.
+     Infima only renders the sidebar below 997px, where the blur is off. */
+  background-color: var(--pf-surface);
+
+  @media (min-width: 997px) {
+    background-color: var(--ifm-navbar-background-color);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+  }
 }
 
 .navbar-sidebar {
   background-color: var(--pf-surface);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+}
+
+/* The color mode switch lives only in the footer (src/components/ThemeToggle).
+   src/theme/Navbar/ColorModeToggle already nulls the built-in navbar and
+   mobile-sidebar toggle; this guard keeps it hidden even before a dev server
+   restart registers that swizzle. The sidebar is rendered inside .navbar, so
+   this one scope covers desktop navbar and mobile sidebar alike. */
+.navbar [class*='colorModeToggle'],
+.navbar button[aria-label^='Switch between dark and light mode'] {
+  display: none !important;
 }
 
 .navbar__logo {
@@ -273,8 +297,181 @@ summary:focus-visible,
   width: 20px;
   height: 20px;
   display: flex;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'/%3E%3C/svg%3E")
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z'/%3E%3C/svg%3E")
     no-repeat center / contain;
+}
+
+.navbar-item-github:hover {
+  opacity: 0.6;
+}
+
+.navbar-item-github::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  display: flex;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
+/* ------------------------------------------------------------- */
+/* Mobile navigation (full-width drawer)                         */
+/* ------------------------------------------------------------- */
+/* Below 997px Infima collapses the navbar items into a slide-in sidebar.
+   The defaults are a narrow 83vw drawer with small, doc-sidebar-sized links.
+   This block turns it into a full-width, high-contrast menu with large tap
+   targets in the spirit of Cloudflare's mobile nav. Every rule is scoped
+   under .navbar-sidebar: the same .menu / .menu__link classes drive the
+   OpenIX docs sidebar, which must stay untouched. */
+
+/* A larger, higher-contrast hamburger so the entry point reads clearly. */
+.navbar__toggle {
+  color: var(--pf-heading);
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@include small-size {
+  /* Full-screen takeover instead of the 83vw drawer. Overriding the variable
+     (not just .navbar-sidebar's width) keeps the secondary-menu slide
+     transform, which is derived from it, aligned. */
+  :root {
+    --ifm-navbar-sidebar-width: 100%;
+  }
+}
+
+.navbar-sidebar {
+  /* Slightly slower than --ifm-transition-fast for a deliberate, full-screen
+     slide-in. */
+  transition-duration: 0.25s;
+}
+
+/* Header: align the brand row with the top bar and give the close control
+   real presence. */
+.navbar-sidebar__brand {
+  height: var(--ifm-navbar-height);
+  border-bottom: 1px solid var(--pf-border);
+}
+
+.navbar-sidebar__close {
+  svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  svg g {
+    stroke: var(--pf-heading);
+  }
+}
+
+/* The PrimaryMenu swizzle splits the items into a nav-link list plus a bottom
+   group (social row + Donate). The panel is a flex column filling the drawer
+   height so that group can be pinned to the bottom. */
+.navbar-sidebar__item {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  overflow-y: auto;
+}
+
+.pf-mobile-menu {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.pf-mobile-menu__bottom {
+  margin-top: auto;
+}
+
+/* The core of the redesign: large, bold nav rows separated by dividers. */
+.pf-mobile-menu > .menu__list .menu__link {
+  position: relative;
+  border-radius: 0;
+  padding: 1.15rem 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--pf-heading);
+  border-bottom: 1px solid var(--pf-border);
+}
+
+/* Chevron affordance on the nav rows. */
+.pf-mobile-menu > .menu__list .menu__link::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-top: 2px solid var(--pf-text-muted);
+  border-right: 2px solid var(--pf-text-muted);
+  transform: translateY(-50%) rotate(45deg);
+  transition: border-color 0.15s ease, right 0.15s ease;
+}
+
+.pf-mobile-menu > .menu__list .menu__link:hover {
+  background: transparent;
+  color: var(--pf-crimson);
+}
+
+.pf-mobile-menu > .menu__list .menu__link:hover::after {
+  border-color: var(--pf-crimson);
+  right: 1.25rem;
+}
+
+.pf-mobile-menu > .menu__list .menu__link--active {
+  color: var(--pf-crimson);
+}
+
+/* Social row: simple icons centered over the CTA, just above it. */
+.pf-mobile-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+
+  /* Infima gives every non-first menu item a margin-top for vertical lists;
+     in this horizontal row it shoves the 2nd icon (GitHub) down out of line. */
+  .menu__list-item {
+    margin-top: 0;
+  }
+}
+
+.pf-mobile-social .menu__link {
+  width: auto;
+  padding: 0.65rem;
+  border-radius: 0;
+
+  &:hover {
+    background: transparent;
+    opacity: 0.6;
+  }
+
+  &::before {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* Donate: a prominent, inset full-width CTA pinned to the bottom of the drawer. */
+.navbar-sidebar .menu__link.important-btn {
+  justify-content: center;
+  margin: 0.25rem 1.5rem 1.5rem;
+  padding: 0.95rem 1.4rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 0;
+
+  &:hover {
+    color: #fff;
+  }
 }
 
 /* ------------------------------------------------------------- */

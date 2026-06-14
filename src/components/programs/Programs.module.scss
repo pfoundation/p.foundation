@@ -48,6 +48,7 @@
 
 .description {
   max-width: 70ch;
+  text-align: justify;
 
   > :last-child {
     margin-bottom: 0;
@@ -139,21 +140,35 @@
 }
 
 .related {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.75rem;
   margin: 1.25rem 0 0;
   font-size: 0.95rem;
 }
 
 .relatedLabel {
+  display: block;
+  margin-bottom: 0.6rem;
   font-family: var(--pf-font-display);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--pf-text-muted);
+}
+
+.relatedList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.relatedItem {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
 }
 
 .relatedLink {

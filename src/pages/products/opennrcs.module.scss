@@ -1,0 +1,661 @@
+@import '../../css/mixins';
+
+/* ------------------------------------------------------------------ */
+/* Scroll reveal                                                      */
+/* ------------------------------------------------------------------ */
+
+.reveal {
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.revealHidden {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+  }
+
+  .revealHidden {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero                                                               */
+/* ------------------------------------------------------------------ */
+
+.hero {
+  background-color: var(--pf-ink);
+  background-image: radial-gradient(
+      720px 360px at 12% -10%,
+      var(--pf-glow-crimson),
+      transparent 70%
+    ),
+    radial-gradient(
+      640px 320px at 88% 110%,
+      var(--pf-glow-blue),
+      transparent 70%
+    );
+  padding: 5.5rem 0;
+
+  @include small-size {
+    padding: 3.5rem 0;
+  }
+}
+
+.heroInner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: 3.5rem;
+
+  @media (max-width: 996px) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.heroKicker {
+  color: var(--pf-crimson-soft);
+}
+
+.heroTitle {
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+
+.heroAccent {
+  background-image: var(--pf-gradient-warm);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroLede {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--pf-silver);
+  max-width: 38rem;
+  margin-bottom: 1.5rem;
+}
+
+.heroAvailability {
+  display: inline-block;
+  font-family: var(--pf-font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pf-silver);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 0.3rem 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.ghostBtn {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+}
+
+/* Hero pipeline ------------------------------------------------------ */
+
+.pipeline {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background-color: rgba(255, 255, 255, 0.04);
+  padding: 2rem 1.75rem 1.5rem;
+}
+
+.pipelineTrack {
+  position: relative;
+}
+
+.pipelineLine {
+  position: absolute;
+  left: 1.1rem;
+  top: 1.1rem;
+  bottom: 1.1rem;
+  width: 2px;
+  background-color: rgba(255, 255, 255, 0.16);
+  overflow: visible;
+
+  @media (min-width: 720px) {
+    left: 1.1rem;
+    right: 1.1rem;
+    top: 1.1rem;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+  }
+}
+
+.pipelinePacket {
+  position: absolute;
+  left: -4px;
+  top: 0;
+  width: 9px;
+  height: 9px;
+  margin-top: -4px;
+  background-color: var(--pf-crimson-soft);
+  box-shadow: 0 0 10px rgba(255, 139, 160, 0.9);
+  animation: nrcs-flow-y 4.5s ease-in-out infinite;
+
+  @media (min-width: 720px) {
+    left: 0;
+    top: 1px;
+    animation: nrcs-flow-x 4.5s ease-in-out infinite;
+  }
+}
+
+@keyframes nrcs-flow-y {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes nrcs-flow-x {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pipelinePacket {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.pipelineStages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+
+  @media (min-width: 720px) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+}
+
+.pipelineStage {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--pf-font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--pf-silver);
+
+  @media (min-width: 720px) {
+    flex-direction: column;
+    gap: 0.55rem;
+    font-size: 0.78rem;
+    text-align: center;
+  }
+}
+
+.pipelineDot {
+  width: 0.85rem;
+  height: 0.85rem;
+  background-color: var(--pf-ink);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+  /* Sequential pulse so the eye reads the path top to bottom. */
+  animation: nrcs-pulse 4.5s ease-in-out infinite;
+  animation-delay: calc(var(--pf-stage) * 0.18s);
+}
+
+@keyframes nrcs-pulse {
+  0%,
+  60%,
+  100% {
+    border-color: rgba(255, 255, 255, 0.4);
+    background-color: var(--pf-ink);
+  }
+  12%,
+  20% {
+    border-color: var(--pf-crimson-soft);
+    background-color: var(--pf-crimson-soft);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pipelineDot {
+    animation: none;
+  }
+}
+
+.pipelineCaption {
+  margin: 1.75rem 0 0;
+  font-size: 0.85rem;
+  color: var(--pf-silver);
+  text-align: center;
+
+  @media (min-width: 720px) {
+    margin-top: 1.5rem;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Section utilities                                                  */
+/* ------------------------------------------------------------------ */
+
+.band {
+  background-color: var(--pf-surface);
+  border-top: 1px solid var(--pf-border);
+  border-bottom: 1px solid var(--pf-border);
+}
+
+.crossLink {
+  margin: 2rem 0 0;
+  color: var(--pf-text-muted);
+}
+
+/* ------------------------------------------------------------------ */
+/* Wire-to-air flow diagram                                           */
+/* ------------------------------------------------------------------ */
+
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+
+  @include small-size {
+    flex-direction: column;
+  }
+}
+
+.flowStep {
+  flex: 1 1 200px;
+  display: flex;
+}
+
+.flowNode {
+  flex: 1;
+  border: 1px solid var(--pf-border);
+  border-top: 3px solid var(--pf-slate);
+  background-color: var(--pf-surface);
+  padding: 1.5rem 1.6rem;
+}
+
+.flowKicker {
+  display: block;
+  font-family: var(--pf-font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.flowName {
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.flowBody {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--pf-text-muted);
+}
+
+.flowArrow {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.4rem;
+  font-family: var(--pf-font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--pf-crimson);
+
+  @include small-size {
+    padding: 0.5rem 0;
+    transform: rotate(90deg);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* One story, three angles branch diagram                            */
+/* ------------------------------------------------------------------ */
+
+.branch {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1.75rem;
+  margin-top: 2.5rem;
+
+  @include small-size {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.branchSource {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--pf-border-strong);
+  border-left: 3px solid var(--pf-crimson);
+  background-color: var(--pf-surface);
+  padding: 1.25rem 1.5rem;
+}
+
+.branchSourceKicker {
+  font-family: var(--pf-font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+}
+
+.branchSourceName {
+  font-family: var(--pf-font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--pf-heading);
+}
+
+.branchList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.branchRow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+
+  @include small-size {
+    gap: 0.5rem;
+  }
+}
+
+.branchWire {
+  flex: 0 0 2.5rem;
+  height: 2px;
+  background-color: var(--pf-border-strong);
+
+  @include small-size {
+    flex-basis: 1.25rem;
+  }
+}
+
+.branchNode {
+  flex: 1;
+  border: 1px solid var(--pf-border);
+  border-left: 3px solid var(--pf-blue);
+  background-color: var(--pf-surface);
+  padding: 0.9rem 1.25rem;
+
+  .branchRow:nth-child(2) & {
+    border-left-color: var(--pf-green);
+  }
+
+  .branchRow:nth-child(3) & {
+    border-left-color: var(--pf-amber);
+  }
+}
+
+.branchName {
+  font-size: 1.05rem;
+  margin-bottom: 0.15rem;
+}
+
+.branchBody {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--pf-text-muted);
+}
+
+/* ------------------------------------------------------------------ */
+/* Inside the workspace cards                                         */
+/* ------------------------------------------------------------------ */
+
+.capabilities {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+
+  @media (max-width: 996px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.capability {
+  padding: 1.75rem 2rem;
+  border-top: 3px solid var(--pf-crimson);
+
+  &:nth-child(2) {
+    border-top-color: var(--pf-blue);
+  }
+
+  &:nth-child(3) {
+    border-top-color: var(--pf-green);
+  }
+
+  @include small-size {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+.capabilityTitle {
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.capabilityBody {
+  margin: 0;
+  color: var(--pf-text-muted);
+  line-height: 1.65;
+}
+
+/* ------------------------------------------------------------------ */
+/* One workspace band                                                 */
+/* ------------------------------------------------------------------ */
+
+.workspace {
+  background-color: var(--pf-ink);
+  background-image: radial-gradient(
+    640px 320px at 85% -20%,
+    var(--pf-glow-crimson),
+    transparent 70%
+  );
+  padding: 5rem 0;
+
+  @include small-size {
+    padding: 3.5rem 0;
+  }
+}
+
+.workspaceKicker {
+  color: var(--pf-crimson-soft);
+}
+
+.workspaceTitle {
+  color: #fff;
+  max-width: 34rem;
+  margin-bottom: 2.5rem;
+}
+
+.workspaceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+
+  @include small-size {
+    grid-template-columns: 1fr;
+  }
+}
+
+.workspaceItem {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background-color: rgba(255, 255, 255, 0.04);
+  padding: 1.5rem 1.75rem;
+
+  h3 {
+    font-size: 1.05rem;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--pf-silver);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Audience                                                           */
+/* ------------------------------------------------------------------ */
+
+.audienceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+
+  @include small-size {
+    grid-template-columns: 1fr;
+  }
+}
+
+.audience {
+  padding: 2rem 2.25rem;
+
+  @include small-size {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+.audienceLabel {
+  display: inline-block;
+  font-family: var(--pf-font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+  border: 1px solid var(--pf-border-strong);
+  padding: 0.2rem 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.audienceTitle {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.audienceBody {
+  margin: 0;
+  color: var(--pf-text-muted);
+  line-height: 1.65;
+}
+
+/* ------------------------------------------------------------------ */
+/* Final CTA                                                          */
+/* ------------------------------------------------------------------ */
+
+.cta {
+  background-color: var(--pf-ink);
+  background-image: radial-gradient(
+      640px 320px at 15% 120%,
+      var(--pf-glow-crimson),
+      transparent 70%
+    ),
+    radial-gradient(
+      560px 280px at 85% -20%,
+      var(--pf-glow-blue),
+      transparent 70%
+    );
+  padding: 5rem 0;
+
+  @include small-size {
+    padding: 3.5rem 0;
+  }
+}
+
+.ctaInner {
+  max-width: 44rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ctaTitle {
+  color: #fff;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  margin-bottom: 1rem;
+}
+
+.ctaText {
+  color: var(--pf-silver);
+  font-size: 1.1rem;
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+
+.ctaActions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}

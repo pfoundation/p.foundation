@@ -277,9 +277,9 @@ const WhatItFunds: FunctionComponent = () => {
         <div>
           <h3>OpenCache</h3>
           <p>
-            Builds out servers for OpenCache, our open caching network, so
-            popular content is served from inside local networks instead of
-            traveling long distances to reach people.
+            Builds out servers for OpenCache, our open caching network, which
+            serves popular content from inside local networks instead of having
+            it travel long distances to reach people.
           </p>
         </div>
       </div>
@@ -305,7 +305,8 @@ const WhatItFunds: FunctionComponent = () => {
           <p>
             Funds MediaGuard, our program that gives media organizations
             tailored support, from backhaul and streaming to content
-            distribution, so independent reporting keeps reaching the public.
+            distribution, ensuring independent reporting keeps reaching the
+            public.
           </p>
         </div>
       </div>
@@ -333,7 +334,7 @@ const Faq: FunctionComponent = () => {
             <div className={styles.faqBody}>
               <p>
                 Yes. P Foundation is a 501(c)(3) nonprofit registered in
-                Washington, DC, so donations are tax deductible in the US.
+                Washington, DC, and donations are tax deductible in the US.
                 Stripe emails you a receipt as soon as your donation goes
                 through. Keep it for your records.
               </p>
@@ -392,7 +393,7 @@ export default function Donate(): JSX.Element {
             through volunteer-built networks, OpenCache servers that bring
             content closer to people, and tailored support that keeps
             independent media organizations on the air. P Foundation is a
-            501(c)(3) nonprofit, so donations are tax deductible in the US.
+            501(c)(3) nonprofit, and donations are tax deductible in the US.
           </p>
         </div>
       </header>

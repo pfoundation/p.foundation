@@ -1,23 +1,20 @@
-import clsx from 'clsx';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Link from '@docusaurus/Link';
-import { useLocation } from '@docusaurus/router';
+import { useHistory, useLocation } from '@docusaurus/router';
 import Layout from '@theme/Layout';
 
 import { ApplicationForm, ApplyHero, FieldDef } from './_shared';
 import styles from './apply.module.scss';
 
-type RoleKey = 'isp' | 'provider';
+const FORM_KEY = 'opencache-provider';
 
-const FORM_KEYS: Record<RoleKey, string> = {
-  isp: 'opencache-isp',
-  provider: 'opencache-provider',
-};
-
-const CONTACT_FIELDS: FieldDef[] = [
+// Account-style signup fields. The email becomes the PF Console username, and
+// the company and website frame this as creating an account rather than
+// filing an application.
+const FIELDS: FieldDef[] = [
   {
     id: 'contact',
-    label: 'Contact name',
+    label: 'Your name',
     type: 'text',
     required: true,
     half: true,
@@ -25,154 +22,99 @@ const CONTACT_FIELDS: FieldDef[] = [
   },
   {
     id: 'email',
-    label: 'Email',
+    label: 'Work email',
     type: 'email',
     required: true,
     half: true,
     maxLength: 254,
     autoComplete: 'email',
-    hint: 'We will reply at this address, and it becomes your username for PF Console once your application is approved.',
+  },
+  {
+    id: 'account',
+    label: 'Company',
+    type: 'text',
+    required: true,
+    half: true,
+    autoComplete: 'organization',
+  },
+  {
+    id: 'domain',
+    label: 'Company website',
+    type: 'text',
+    required: true,
+    half: true,
+    placeholder: 'e.g. example.com',
+    pattern: {
+      regex: /^[^\s/]+\.[^\s/]+$/,
+      message: 'Enter a domain like example.com, with no http:// or path.',
+    },
+  },
+  {
+    id: 'regions',
+    label: 'Audience regions',
+    type: 'text',
+    placeholder: 'e.g. Lebanon and the wider Middle East',
+  },
+  {
+    id: 'notes',
+    label: 'Anything we should know',
+    type: 'textarea',
+    short: true,
+    maxLength: 2000,
   },
 ];
 
-const NOTES_FIELD: FieldDef = {
-  id: 'notes',
-  label: 'Anything we should know',
-  type: 'textarea',
-  short: true,
-  maxLength: 2000,
-};
+const formLead = (
+  <p className={styles.formLead}>
+    Creating your account sets up delivery through OpenCache and your login for
+    PF Console. It is free, and your origin stays under your control.
+  </p>
+);
 
-const ROLE_FIELDS: Record<RoleKey, FieldDef[]> = {
-  isp: [
-    {
-      id: 'network',
-      label: 'Network name',
-      type: 'text',
-      required: true,
-      half: true,
-      autoComplete: 'organization',
-    },
-    {
-      id: 'asn',
-      label: 'ASN',
-      type: 'text',
-      required: true,
-      half: true,
-      maxLength: 10,
-      inputMode: 'numeric',
-      placeholder: 'e.g. 399728',
-      pattern: {
-        regex: /^[0-9]{1,10}$/,
-        message: 'Enter the AS number as digits only.',
-      },
-    },
-    {
-      id: 'isp-location',
-      label: 'Country and city',
-      type: 'text',
-      required: true,
-      half: true,
-    },
-    {
-      id: 'uplink',
-      label: 'Uplink capacity',
-      type: 'text',
-      half: true,
-      placeholder: 'e.g. 2 x 10 Gbps',
-    },
-    ...CONTACT_FIELDS,
-    NOTES_FIELD,
-  ],
-  provider: [
-    {
-      id: 'organization',
-      label: 'Organization name',
-      type: 'text',
-      required: true,
-      autoComplete: 'organization',
-    },
-    {
-      id: 'domains',
-      label: 'Primary domains',
-      type: 'textarea',
-      required: true,
-      short: true,
-      maxLength: 2000,
-      hint: 'The domains you serve content from. One per line is fine.',
-    },
-    {
-      id: 'regions',
-      label: 'Audience regions',
-      type: 'text',
-      placeholder: 'e.g. Lebanon and the wider Middle East',
-    },
-    ...CONTACT_FIELDS,
-    NOTES_FIELD,
-  ],
-};
-
-export default function ApplyOpenCache(): JSX.Element {
+export default function SignUpOpenCache(): JSX.Element {
   const location = useLocation();
-  const [role, setRole] = useState<RoleKey>('isp');
+  const history = useHistory();
 
-  // Preselection via ?as=isp|provider is applied after hydration so the
-  // statically rendered markup stays consistent.
+  // The role toggle used to live here behind ?as=isp|provider. ISPs now have
+  // their own page; old ?as=isp links are forwarded there.
   useEffect(() => {
-    const requested = new URLSearchParams(location.search).get('as');
-    if (requested === 'isp' || requested === 'provider') {
-      setRole(requested);
+    if (new URLSearchParams(location.search).get('as') === 'isp') {
+      history.replace('/apply/opencache/isp');
     }
-  }, [location.search]);
-
-  const selector = (
-    <div className={styles.segment} role="group" aria-label="Apply as">
-      <button
-        type="button"
-        className={clsx(
-          styles.segmentBtn,
-          role === 'isp' && styles.segmentBtnActive
-        )}
-        aria-pressed={role === 'isp'}
-        onClick={() => setRole('isp')}
-      >
-        As an ISP
-      </button>
-      <button
-        type="button"
-        className={clsx(
-          styles.segmentBtn,
-          role === 'provider' && styles.segmentBtnActive
-        )}
-        aria-pressed={role === 'provider'}
-        onClick={() => setRole('provider')}
-      >
-        As a content provider
-      </button>
-    </div>
-  );
+  }, [location.search, history]);
 
   return (
     <Layout
-      title="Apply for OpenCache"
-      description="Apply to join OpenCache, P Foundation's neutral shared caching network, as an ISP that hosts a cache node or as a content provider that serves through the network."
+      title="Create your OpenCache account"
+      description="Sign up for OpenCache, P Foundation's neutral shared caching network, and serve your content from inside local networks free of charge."
     >
       <ApplyHero
-        title="Apply for OpenCache"
-        lede="OpenCache is our neutral shared caching network. ISPs host nodes by providing space, power, uplink, and a BGP session, and delivery through the network is open to any content provider. Tell us who you are and we will reply by email."
+        kicker="OpenCache signup"
+        title="Create your OpenCache account"
+        lede="Serve your content from inside local networks, free of charge. Create your account to get started, and we will set up delivery through OpenCache along with a PF Console login. Your origin and your authority over your content stay with you."
       />
 
       <main className={styles.formSection}>
         <div className="container">
           <div className={styles.formWrap}>
             <ApplicationForm
-              formKey={FORM_KEYS[role]}
-              fields={ROLE_FIELDS[role]}
-              selector={selector}
+              formKey={FORM_KEY}
+              fields={FIELDS}
+              selector={formLead}
+              submitLabel="Create account"
+              loadingLabel="Creating your account..."
+              successTitle="Your request is being reviewed"
+              successMessage={(email) => (
+                <>
+                  Thanks for signing up. As soon as we approve your account, we
+                  will email a link to <strong>{email}</strong> to finish your
+                  signup and sign in to PF Console.
+                </>
+              )}
             />
             <p className={styles.crossLink}>
-              Looking for our programs instead?{' '}
-              <Link to="/apply">Apply to a program</Link>.
+              Run a network and want to host a node?{' '}
+              <Link to="/apply/opencache/isp">Apply as an ISP</Link>.
             </p>
           </div>
         </div>

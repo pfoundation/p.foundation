@@ -20,7 +20,7 @@ export interface ProgramMetadata {
   title: string;
   description: React.ReactNode;
   provides?: string[];
-  relatedProduct?: RelatedProduct;
+  relatedProducts?: RelatedProduct[];
   beneficiaries: programBeneficiaries[];
   recordingURL?: string;
   applyURL?: string;
@@ -38,7 +38,7 @@ export const Program: FunctionComponent<ProgramMetadata> = ({
   title,
   description,
   provides = [],
-  relatedProduct,
+  relatedProducts = [],
   beneficiaries = [],
   recordingURL,
   slidesURL,
@@ -100,14 +100,24 @@ export const Program: FunctionComponent<ProgramMetadata> = ({
         </div>
       )}
 
-      {relatedProduct && (
-        <p className={styles.related}>
-          <span className={styles.relatedLabel}>Related product</span>
-          <Link to={relatedProduct.to} className={styles.relatedLink}>
-            {relatedProduct.name}
-          </Link>
-          <span className={styles.relatedNote}>{relatedProduct.note}</span>
-        </p>
+      {relatedProducts.length > 0 && (
+        <div className={styles.related}>
+          <span className={styles.relatedLabel}>
+            {relatedProducts.length > 1
+              ? 'Related products'
+              : 'Related product'}
+          </span>
+          <ul className={styles.relatedList}>
+            {relatedProducts.map((product) => (
+              <li key={product.to} className={styles.relatedItem}>
+                <Link to={product.to} className={styles.relatedLink}>
+                  {product.name}
+                </Link>
+                <span className={styles.relatedNote}>{product.note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
 
       {hasFooter && (

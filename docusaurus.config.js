@@ -134,6 +134,22 @@ const config = {
             from: '/calendarbooking/jud',
             to: 'https://calendar.app.google/UrCGibVPmTqTtjGcA',
           },
+          {
+            from: '/opencache',
+            to: '/products/opencache',
+          },
+          {
+            from: '/nrcs',
+            to: '/products/opennrcs',
+          },
+          {
+            from: '/aidubbing',
+            to: '/products/dubbing',
+          },
+          {
+            from: '/hms',
+            to: '/products/hms',
+          },
         ],
         // Add per-page legacy aliases: /messages/* -> /updates/*
         /**
@@ -215,6 +231,8 @@ const config = {
       ],
       colorMode: {
         defaultMode: 'dark',
+        // The switch itself lives in the footer (src/components/ThemeToggle);
+        // the navbar slot is emptied in src/theme/Navbar/ColorModeToggle.
         disableSwitch: false,
         respectPrefersColorScheme: false,
       },
@@ -253,12 +271,6 @@ const config = {
             to: '/donate',
             className: 'button--primary important-btn',
           },
-          // {
-          //   href: 'https://github.com.com/pfoundation',
-          //   className: 'navbar-item-github',
-          //   position: 'right',
-          //   alt: 'Github Logo (Header)',
-          // },
         ],
       },
       footer: {

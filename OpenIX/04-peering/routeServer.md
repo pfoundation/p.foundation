@@ -109,4 +109,4 @@ While OpenIX route servers are designed to work with all major router vendors an
 - **Route Refresh Capability**: Modern route refresh capability (RFC 2918) is recommended for optimal route server interaction
 - **Maximum Prefix Limits**: Configure appropriate max-prefix limits on your router to prevent session flapping
 
-If you encounter any vendor-specific issues when connecting to OpenIX route servers, please contact the NOC with details about your router model and software version so we can assist with configuration or document any known compatibility issues.
+If you encounter any vendor-specific issues when connecting to OpenIX route servers, please contact the NOC with details about your router model and software version, and we will assist with configuration or document any known compatibility issues.

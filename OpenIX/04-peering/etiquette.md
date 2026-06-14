@@ -7,7 +7,7 @@ description: Industry best practices and expected behaviors for OpenIX participa
 
 All participants should follow industry best practices for peering. This includes:
 
-- Keeping contact information current so that other networks can reach out to request peering or address issues.
+- Keeping contact information current, enabling other networks to reach out to request peering or address issues.
 - Responding to peering requests in a reasonable timeframe, even if the answer is a polite refusal (especially for networks with selective policies).
 - Advertising only their own routes or those of their customers (no route leaks of prefixes that are not authorized).
 - Accepting and honoring BGP prefix length constraints (for example, if the exchange has a maximum prefix length filter, e.g., no more specific than /24 for IPv4, /48 for IPv6 on the route servers, participants should abide by those when advertising).

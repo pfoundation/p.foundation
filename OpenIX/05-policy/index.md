@@ -31,7 +31,7 @@ For example, if Network A is connected, they cannot offer to carry traffic acros
 
 A participant’s port is meant for that participant’s sole use (and their internal network or customer routes as per normal BGP). Participants are not allowed to share their port with other organizations or entities that are not officially registered with OpenIX as part of their organization.
 
-For example, two ISPs cannot split the cost of one port and each use it for their own ASN without notifying OpenIX — each distinct network ASN connecting should have its own agreement with OpenIX (or a formal reseller arrangement if one is acting as a reseller for remote peering, which would be explicitly authorized by OpenIX). If a participant is found to be informally reselling or allowing an unauthorized party to piggyback on their connection, OpenIX will consider this a breach of policy.
+For example, two ISPs cannot split the cost of one port and each use it for their own ASN without notifying OpenIX; each distinct network ASN connecting should have its own agreement with OpenIX (or a formal reseller arrangement if one is acting as a reseller for remote peering, which would be explicitly authorized by OpenIX). If a participant is found to be informally reselling or allowing an unauthorized party to piggyback on their connection, OpenIX will consider this a breach of policy.
 
 ## Adherence to Technical Rules
 
@@ -41,7 +41,7 @@ All technical standards outlined in the previous section must be followed as par
 
 Participants must only advertise routes which they are authorized to announce (their own prefixes or those of their downstream customers with permission). Advertisement of prefixes not owned or assigned (prefix hijacking), or a broader prefix that encompasses someone else’s more specific (to hijack traffic), is strictly forbidden.
 
-Additionally, participants should not propagate routing information learned from one peer to another (no re-advertisement of peers’ prefixes to other peers, especially via the route server – the route server is configured to prevent this by default). In essence, each BGP session on the exchange should be bilateral (or multilateral via RS) and not be used to carry transit routes between other parties. Participants found propagating routes improperly will be disconnected until the issue is fixed.
+Additionally, participants should not propagate routing information learned from one peer to another (no re-advertisement of peers’ prefixes to other peers, especially via the route server; the route server is configured to prevent this by default). In essence, each BGP session on the exchange should be bilateral (or multilateral via RS) and not be used to carry transit routes between other parties. Participants found propagating routes improperly will be disconnected until the issue is fixed.
 
 ## Collaboration and Issue Resolution
 
@@ -57,7 +57,7 @@ Additionally, any use of the exchange that could bring OpenIX into disrepute or 
 
 OpenIX monitors aggregate traffic levels and may inspect traffic patterns or packet headers as needed for troubleshooting and ensuring compliance with these policies (for example, checking for disallowed protocols or identifying a traffic flood source). However, OpenIX does not inspect packet payloads or snoop into the content of communications between participants. Any monitoring is done in accordance with privacy laws and purely for operational integrity.
 
-Participants should be aware that if they violate technical rules (like sending BPDUs), those frames may be captured for analysis. All participants are responsible for the privacy and security of their own traffic – end-to-end encryption of sensitive data is recommended as always on any shared network.
+Participants should be aware that if they violate technical rules (like sending BPDUs), those frames may be captured for analysis. All participants are responsible for the privacy and security of their own traffic; end-to-end encryption of sensitive data is recommended as always on any shared network.
 
 ---
 

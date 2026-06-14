@@ -8,7 +8,7 @@ OpenIX operates on a for-profit, commercial basis. Participants are required to 
 
 ## Port Fees
 
-A standard port fee is charged for each port (physical interface) a participant has on the exchange. Fees may vary by port speed – for example, a 1 Gbps port will have a lower monthly fee than a 10 Gbps or 100 Gbps port, reflecting the greater capacity and resources of higher speeds. Port fees cover the right to use the exchange fabric, the route servers, and basic support. The fee is typically recurring (billed monthly, quarterly, or annually as per the agreement).
+A standard port fee is charged for each port (physical interface) a participant has on the exchange. Fees may vary by port speed; for example, a 1 Gbps port will have a lower monthly fee than a 10 Gbps or 100 Gbps port, reflecting the greater capacity and resources of higher speeds. Port fees cover the right to use the exchange fabric, the route servers, and basic support. The fee is typically recurring (billed monthly, quarterly, or annually as per the agreement).
 
 OpenIX may offer discounts for longer-term commitments (e.g., paying annually in advance) or for volume (e.g., if a participant has multiple ports or connects in multiple cities in the future). The current fee schedule can be obtained from OpenIX sales or website.
 
@@ -22,11 +22,11 @@ OpenIX will coordinate the technical setup but any such third-party costs (e.g.,
 
 If a participant subscribes to additional OpenIX services beyond the basic port/public peering (for example, a private VLAN interconnect, a cloud connect service, remote peering via a partner, etc.), those services may incur extra monthly fees. Each such service will be quoted individually. For instance, a private interconnect VLAN between two ports might have a flat monthly charge per VLAN.
 
-Cloud connectivity might be charged based on bandwidth or a fixed port fee if a separate port is provided for cloud access. All these details will be transparently provided and agreed upon before provisioning. There are no hidden charges – OpenIX will document any non-standard service charges in the service order.
+Cloud connectivity might be charged based on bandwidth or a fixed port fee if a separate port is provided for cloud access. All these details will be transparently provided and agreed upon before provisioning. There are no hidden charges; OpenIX will document any non-standard service charges in the service order.
 
 ## Billing Cycle
 
-By default, OpenIX bills services monthly. Invoices are typically issued at the start of each month (or on the anniversary of service commencement) and include charges for that month’s service in advance, plus any variable or one-time charges from the previous period if applicable. For example, a January 1 invoice might cover the port fee for January 1–31, plus any setup fee or any overage/late fees from prior period. Some customers may opt for quarterly or annual billing – OpenIX can accommodate different billing cycles on request, especially for international participants or those who prefer fewer invoices.
+By default, OpenIX bills services monthly. Invoices are typically issued at the start of each month (or on the anniversary of service commencement) and include charges for that month’s service in advance, plus any variable or one-time charges from the previous period if applicable. For example, a January 1 invoice might cover the port fee for January 1-31, plus any setup fee or any overage/late fees from prior period. Some customers may opt for quarterly or annual billing; OpenIX can accommodate different billing cycles on request, especially for international participants or those who prefer fewer invoices.
 
 ## Payment Terms
 
@@ -42,7 +42,7 @@ Additionally, if in the future any regulatory cost recovery fees or contribution
 
 Timely payment is critical to maintain service. If an invoice is not paid by the due date, OpenIX will send a reminder. Generally, we provide a short grace period (e.g., 10-15 days after due date) before taking action. Past that, the following may apply: a late fee or interest may accrue on overdue balances (for instance, 1.5% per month or a flat fee for administrative handling). If an invoice remains unpaid for an extended period (e.g., over 30 days past due) and the participant has not made arrangements, OpenIX reserves the right to suspend the participant’s port (temporarily disabling peering) until payment is received.
 
-We will provide warning notices (via email/phone to the provided contacts) prior to any suspension. Ultimately, continued non-payment is grounds for termination of service (see Termination section). We understand sometimes there are billing disputes or delays – participants are encouraged to communicate with OpenIX’s billing department if there’s any issue processing payment so that we can find a solution or provide an extension if warranted. Good communication can prevent unnecessary downtime.
+We will provide warning notices (via email/phone to the provided contacts) prior to any suspension. Ultimately, continued non-payment is grounds for termination of service (see Termination section). We understand sometimes there are billing disputes or delays; participants are encouraged to communicate with OpenIX’s billing department if there’s any issue processing payment, and we will work to find a solution or provide an extension if warranted. Good communication can prevent unnecessary downtime.
 
 ## Currency and Exchange Rates
 
@@ -62,4 +62,4 @@ Any new quotes or orders will clearly show the effect on recurring fees. If Open
 
 ---
 
-OpenIX’s goal is to have a fair and sustainable fee structure that allows us to operate and improve the exchange while remaining affordable for participants. We aim for transparency in billing – no surprise charges, and clear communication of costs. Participants are encouraged to reach out if they have any questions about their bill or if they need custom arrangements (for example, a tailored billing cycle or combined billing for multiple ports, etc.). We consider our participants as valued customers and will work to accommodate reasonable requests in the billing process.
+OpenIX’s goal is to have a fair and sustainable fee structure that allows us to operate and improve the exchange while remaining affordable for participants. We aim for transparency in billing: no surprise charges, and clear communication of costs. Participants are encouraged to reach out if they have any questions about their bill or if they need custom arrangements (for example, a tailored billing cycle or combined billing for multiple ports, etc.). We consider our participants as valued customers and will work to accommodate reasonable requests in the billing process.
