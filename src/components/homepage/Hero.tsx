@@ -9,9 +9,7 @@ export const Hero: FunctionComponent = () => {
     <header className={styles.hero}>
       <div className="container">
         <div className={styles.inner}>
-          <span className={clsx('pf-kicker', styles.kicker)}>
-            A 501(c)(3) nonprofit
-          </span>
+          <span className={clsx('pf-kicker', styles.kicker)}></span>
           <h1 className={styles.title}>
             Empowering nations with{' '}
             <span className="pf-text-gradient-warm">open internet</span> and{' '}
@@ -24,16 +22,16 @@ export const Hero: FunctionComponent = () => {
           </p>
           <div className={styles.actions}>
             <Link
+              className={clsx('button', 'button--lg', styles.ghostBtn)}
+              to="/programs"
+            >
+              Explore our programs
+            </Link>
+            <Link
               className={clsx('button', 'button--lg', 'important-btn')}
               to="/donate"
             >
               Support our work
-            </Link>
-            <Link
-              className={clsx('button', 'button--lg', styles.ghostBtn)}
-              to="/products"
-            >
-              Explore our products
             </Link>
           </div>
         </div>

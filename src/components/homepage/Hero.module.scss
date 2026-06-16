@@ -55,7 +55,7 @@
 .inner {
   position: relative;
   z-index: 1;
-  max-width: 56rem;
+  max-width: 70rem;
 }
 
 /* Dark ink sections share the soft crimson kicker tint for AA contrast. */
@@ -76,7 +76,7 @@
   font-size: 1.2rem;
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.72);
-  max-width: 40rem;
+  max-width: 50rem;
   margin-bottom: 2.25rem;
 
   @include small-size {
