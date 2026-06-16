@@ -80,28 +80,24 @@ export default function Contact(): JSX.Element {
               <h2 className={styles.directTitle}>Other ways to reach us</h2>
               <dl className={styles.directList}>
                 <div className={styles.directRow}>
+                  <dt className={styles.directLabel}>Postal Address</dt>
+                  <dd className={styles.directValue}>
+                    P Foundation{' '}
+                    <dd className={styles.directValue}> 700 12th St NW</dd>{' '}
+                    <dd className={styles.directValue}>Ste 700</dd>
+                    <dd className={styles.directValue}>Washington, DC 20005</dd>
+                    <dd className={styles.directValue}>U.S.A</dd>
+                  </dd>
+                </div>
+                <div className={styles.directRow}>
+                  <dt className={styles.directLabel}>Tel</dt>
+                  <dd className={styles.directValue}>+1 (202) 351-5555</dd>
+                </div>
+                <div className={styles.directRow}>
                   <dt className={styles.directLabel}>Email</dt>
                   <dd className={styles.directValue}>
                     <a href="mailto:contact@p.foundation">
                       contact@p.foundation
-                    </a>
-                  </dd>
-                </div>
-                <div className={styles.directRow}>
-                  <dt className={styles.directLabel}>Mail</dt>
-                  <dd className={styles.directValue}>
-                    700 12th St NW, Washington, DC 20005
-                  </dd>
-                </div>
-                <div className={styles.directRow}>
-                  <dt className={styles.directLabel}>X</dt>
-                  <dd className={styles.directValue}>
-                    <a
-                      href="https://x.com/pfoundation"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      x.com/pfoundation
                     </a>
                   </dd>
                 </div>

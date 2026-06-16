@@ -18,5 +18,6 @@ OpenIX Beirut is not just about better technology; it’s about building a more 
 ---
 
 - [OpenIX Beirut on PeeringDB](https://www.peeringdb.com/ix/4727)
+- [OpenIX Beirut on bgp.tools](https://bgp.tools/ixp/OpenIX%20Beirut)
 - **Participation Inquiries:** [sales@openix.ong](mailto:sales@openix.ong)
 - **Technical Support:** [support@openix.ong](mailto:support@openix.ong)
