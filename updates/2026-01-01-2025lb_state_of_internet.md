@@ -10,9 +10,9 @@ date: 2026-01-01T17:00:00Z
 
 # 2025 State of the Internet in Lebanon
 
-As we enter a new year, it’s a good moment to look back at 2025 and see how Lebanon’s Internet evolved—from traffic growth and device shifts to routing, security, and ISP market share.
+As we enter a new year, it’s a good moment to look back at 2025 and see how Lebanon’s Internet evolved, from traffic growth and device shifts to routing, security, and ISP market share.
 
-Understanding how a country’s local networks change over time helps explain performance and resilience, and highlights where local interconnection can make a real difference. That’s also the spirit behind OpenIX Beirut and P Foundation’s pledge to make connectivity more local so more traffic can stay local when it makes sense.
+Understanding how a country’s local networks change over time helps explain performance and resilience, and highlights where local interconnection can make a real difference. That’s also the spirit behind OpenIX Beirut and P Foundation’s pledge to make connectivity more local, allowing more traffic to stay local when it makes sense.
 
 <!--truncate-->
 
@@ -87,7 +87,7 @@ _Change (pp) = 2025 share minus 2024 share (percentage points). Values rounded t
 
 ## OpenIX Beirut
 
-OpenIX Beirut is built to strengthen Lebanon’s Internet by making local interconnection simpler, faster, and more accessible—so networks can exchange traffic locally instead of sending it abroad when it doesn’t need to.
+OpenIX Beirut is built to strengthen Lebanon’s Internet by making local interconnection simpler, faster, and more accessible, enabling networks to exchange traffic locally instead of sending it abroad when it doesn’t need to.
 
 OpenIX Beirut is **open for peering** since October 2025. We welcome Lebanese networks, mobile operators, content and cloud platforms, enterprises, and CDNs to join and peer locally. [Click here to learn more](https://p.foundation/OpenIX/beirut).
 

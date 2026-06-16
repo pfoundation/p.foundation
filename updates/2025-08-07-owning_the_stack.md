@@ -10,7 +10,7 @@ date: 2025-08-07T21:00:00Z
 
 # Owning the Stack
 
-_I think this might be my fourth draft about ONS (Open Notification Service). The first was for the initial announcement, the second for the milestone of sending 1 billion notifications, and now this one. Neither of the earlier drafts made it to the website for one reason or another, so I hope this version covers everything and more._
+_I think this might be my fourth draft about ONS (Open Notification Service). The first was for the initial announcement, the second for the milestone of sending 1 billion notifications, and now this one. Neither of the earlier drafts made it to the website for one reason or another. I hope this version covers everything and more._
 
 Before founding P Foundation, I was an early cloud adopter, going back to Google App Engine in 2008-9, and I continued to use the cloud for most projects. But when I started P Foundation in 2021, we made a deliberate, day-one decision to build and operate our own infrastructure end-to-end: from the network layer to the hardware, and eventually run our own data centers.
 
@@ -42,7 +42,7 @@ Building on the performance and reliability gains from our own infrastructure, w
 
 While we have intentionally avoided relying on the cloud for most workloads, we recognized there were areas where it made sense to use it. For certain functions, particularly long-term storage and archival, the cloud’s scale and cost-efficiency are hard to beat. Building our own global cold storage system would have been impractical given the large volume of archives and backups we manage, most of which are rarely accessed. Instead of investing in massive storage arrays, we use cost-effective cloud services such as [Amazon S3](https://aws.amazon.com/s3/) for bulk storage and [AWS Glacier](https://aws.amazon.com/glacier/) for deep archives.
 
-This approach gives us the best of both worlds. We keep live, mission-critical systems under our control, while leveraging the cloud’s economies of scale for rarely accessed data. S3 provides affordable storage, and Glacier offers ultra-low-cost archival. The cost per terabyte is so low that it outcompetes running our own tape libraries or spinning disks, especially when factoring in maintenance and power.
+This approach gives us the best of both worlds. We keep live, mission-critical systems under our control, while leveraging the cloud’s economies of scale for rarely accessed data. S3 provides affordable storage, and Glacier offers ultra-low-cost archival. The cost per terabyte is low enough to outcompete running our own tape libraries or spinning disks, especially when factoring in maintenance and power.
 
 We encrypt any sensitive data stored in the cloud with our own keys, addressing sovereignty concerns. For now, this mix of ownership and selective renting gives us maximum value: we control high-impact workloads and rent low-cost storage. As our needs grow, we will periodically revisit these decisions.
 
