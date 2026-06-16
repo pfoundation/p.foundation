@@ -277,16 +277,8 @@ const config = {
         style: 'light',
         links: [
           {
-            label: 'Donate',
-            to: '/donate',
-          },
-          {
             label: 'Initiatives',
             to: '/initiatives',
-          },
-          {
-            label: 'AS399728',
-            to: '/as399728',
           },
           {
             label: 'Privacy Policy',
@@ -295,6 +287,10 @@ const config = {
           {
             label: 'Code of Conduct',
             to: '/coc',
+          },
+          {
+            label: 'AS399728',
+            to: '/as399728',
           },
           {
             label: 'Contact',
