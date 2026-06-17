@@ -37,6 +37,7 @@ const APPLICATION_FORM_LABELS = {
   'opencache-isp': 'OpenCache (ISP)',
   'opencache-provider': 'OpenCache (content provider)',
   contact: 'Contact',
+  support: 'Partner support',
 };
 
 /**
@@ -399,7 +400,7 @@ async function handleApply(request, env, cors) {
     return jsonResponse(
       {
         error:
-          "Form must be one of 'mediaguard', 'citizenmesh', 'resilientnet', 'opencache-isp', 'opencache-provider', 'contact'.",
+          "Form must be one of 'mediaguard', 'citizenmesh', 'resilientnet', 'opencache-isp', 'opencache-provider', 'contact', 'support'.",
       },
       400,
       cors
