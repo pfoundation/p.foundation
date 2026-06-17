@@ -296,6 +296,10 @@ const config = {
             label: 'Contact',
             to: '/contact',
           },
+          {
+            label: 'Support',
+            to: '/support',
+          },
           // {
           //   label: 'PFS',
           //   to: '/pfs',

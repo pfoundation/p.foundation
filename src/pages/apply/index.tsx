@@ -29,7 +29,7 @@ const PROGRAMS: Array<{
     key: 'resilientnet',
     name: 'ResilientNet',
     description:
-      'Resilient connectivity for healthcare, emergency services, and utilities in Lebanon.',
+      'Resilient connectivity for critical infrastructure in Lebanon.',
   },
 ];
 

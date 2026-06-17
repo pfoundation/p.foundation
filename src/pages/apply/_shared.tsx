@@ -28,6 +28,8 @@ export type FieldDef = {
   required?: boolean;
   /** Options for select and checkboxes fields. */
   options?: readonly string[];
+  /** Pre-selected value; for selects it also suppresses the placeholder. */
+  defaultValue?: string;
   /** Half-width column on desktop; full width under 996px. */
   half?: boolean;
   /** Persistent helper line under the control. */
@@ -207,7 +209,7 @@ const FieldControl: FunctionComponent<{
               error && styles.inputError
             )}
           >
-            <option value="">Select an option</option>
+            {!field.defaultValue && <option value="">Select an option</option>}
             {(field.options ?? []).map((option) => (
               <option key={option} value={option}>
                 {option}
@@ -265,7 +267,15 @@ export const ApplicationForm: FunctionComponent<{
   const { siteConfig } = useDocusaurusContext();
   const apiBaseUrl = siteConfig.customFields.apiBaseUrl as string;
 
-  const [values, setValues] = useState<FieldValues>({});
+  const [values, setValues] = useState<FieldValues>(() => {
+    const initial: FieldValues = {};
+    for (const field of fields) {
+      if (field.defaultValue !== undefined) {
+        initial[field.id] = field.defaultValue;
+      }
+    }
+    return initial;
+  });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [company, setCompany] = useState('');
   const [status, setStatus] = useState<FormStatus>('idle');
