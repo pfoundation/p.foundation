@@ -1,6 +1,6 @@
 ---
-title: Introducing OpenCache
-description: As OpenIX Beirut reaches its first milestone (37 networks representing roughly 73% of Lebanon's traffic), we introduce OpenCache, an open caching network that serves content from inside local networks, for every content provider rather than only the hyperscalers.
+title: 'OpenCache: Local Caching for Every Provider'
+description: The edge caching the hyperscalers built for themselves, now open to everyone. OpenCache serves any provider's content from inside local networks, keeping 80-97% of requests local in testing.
 slug: IntroducingOpenCache
 authors: jud
 #image: https://i.imgur.com/mErPwqL.png
@@ -8,9 +8,9 @@ hide_table_of_contents: false
 date: 2026-06-13T17:00:00Z
 ---
 
-# Introducing OpenCache
+# OpenCache: Local Caching for Every Provider
 
-A little over a year after we [announced OpenIX Beirut](/updates/IntroducingOpenIXBeirut), the exchange has reached its first major milestone: **37 networks** are now connected, including **25 of Lebanon's [top 30](/updates/2025lb_state_of_internet)**. Together they represent roughly **73% of the country's internet traffic**. At launch we set ourselves the ambitious goal of bringing over 70% of Lebanon's traffic within local reach. It took a bit longer than we hoped, but the threshold has been crossed. The two largest networks still missing are **Ogero** and **IDM**, which together carry more than a quarter of Lebanon's traffic. We continue to actively pursue both, because the resilience this exchange exists to provide is not complete until they are at the table.
+[OpenIX Beirut](/updates/IntroducingOpenIXBeirut) is just over a year old, and it has more than proven its premise. The exchange now runs as core infrastructure for the country's networks, and keeping Lebanon's traffic at home is no longer something we have to argue for.
 
 Getting here also taught us where the next gap is. An exchange localizes _interconnection_: networks meet locally and trade traffic directly. It does not, by itself, localize _content_. Today we are introducing **OpenCache**: an open caching network, built and operated by P Foundation, that serves content from inside the local network, for every content provider, not just the platforms big enough to build their own.
 

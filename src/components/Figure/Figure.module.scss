@@ -1,0 +1,30 @@
+.figure {
+  /* Centered, full content width by default; `maxWidth` can narrow it. */
+  margin: 2rem auto;
+  padding: 0;
+  overflow: hidden;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.caption {
+  margin: 0;
+  padding: 0.7rem 1rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--pf-text-muted);
+  border-top: 1px solid var(--pf-border);
+  /* Slightly recessed from the image to read as a caption bar. */
+  background-color: var(--pf-bg);
+}
+
+/* The bold lead-in label authors pass in MDX lifts to heading color. */
+.caption :global(strong),
+.caption :global(b) {
+  color: var(--pf-heading);
+  font-weight: 600;
+}
