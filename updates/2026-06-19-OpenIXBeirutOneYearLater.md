@@ -1,7 +1,7 @@
 ---
-title: 'OpenIX Console: Understand Every Bit That Crosses Your Port'
-description: One login where an OpenIX member sees its own traffic, the peers it exchanges with, and the caches keeping it local, the visibility a network usually only gets by building its own analytics stack.
-slug: IntroducingOpenIXConsole
+title: 'OpenIX Beirut: One Year Later'
+description: A year after launch, OpenIX Beirut connects 39 networks and keeps much of Lebanon's traffic within local reach. Today OpenIX joins the P Foundation Console, the home for all of our programs and products, where a member sees its connection, its traffic, the peers it exchanges with, and the caches keeping that traffic local.
+slug: OpenIXBeirutOneYearLater
 authors: jud
 image: https://assets.p.foundation/assets/e045524e-e0ee-40db-8564-c2da4032556b
 hide_table_of_contents: false
@@ -10,17 +10,23 @@ date: 2026-06-19T17:00:00Z
 
 import Figure from '@site/src/components/Figure/Figure';
 
-# OpenIX Console: Understand Every Bit That Crosses Your Port
+# OpenIX Beirut: One Year Later
 
-A little over a year after we [announced OpenIX Beirut](/updates/IntroducingOpenIXBeirut), and with the exchange fully operational since **October 2025**, OpenIX has reached its first milestone: **39 networks** are now connected and trading traffic locally instead of hairpinning through another continent. The exchange has gone from a launch announcement to a working piece of Lebanon's internet, carrying a large share of the country's traffic within local reach.
+We announced OpenIX Beirut on May 13, 2025, with a commitment to run Lebanon's first carrier-neutral Internet Exchange Point for the next ten years. A year on, it is no longer a plan or a launch post. It is a working piece of the country's internet. **39 networks** now connect and trade traffic locally instead of hairpinning through another continent, among them 25 of Lebanon's top 30, and together they keep a large share of the country's traffic within local reach. Two of the largest are not yet with us, Ogero (AS42003) and IDM (AS9051), and we will keep working to bring them on, because the job is not finished while any part of Lebanon's traffic still takes the long way around.
 
-Reaching that milestone surfaced the next need. An exchange has always lived at the edges of a few disconnected systems: a cable in a rack, a spreadsheet of allocated addresses, a separate analytics login, and an email thread with the NOC for every change. Today we are closing that gap. We are introducing the **OpenIX Console**, a single home where every member network sees its connection, watches its traffic, and runs the exchange the way it actually uses it.
+Numbers like that do not assemble themselves. If this year proved anything, it is that Lebanon has a networking community worth betting on. Behind every port that came up was an engineer or an architect on the other end, often working around the clock, and often for a network that competes with the one across the link, to get a config right, a fiber lit, a session up. People treated a shared exchange as something worth their nights, not just their job descriptions, and that is what turned a rack of equipment into a living exchange.
 
 <!--truncate-->
 
+We owe them more than a paragraph can hold. The credit is long and overdue, and the people who built this with us deserve to be named for it. For now it is enough to say what this year made plain: an exchange is people before it is hardware, and Lebanon's showed up.
+
+And none of it was ever really about the exchange. It was about the country. Every megabit that stays in Lebanon is a page that loads faster, a call that does not drop, and a service that keeps working when the path abroad does not. OpenIX is infrastructure, but the benefit belongs to the whole nation, and that is where our focus stays.
+
+Serving traffic at that scale also showed us where we were still falling short of our own members. An exchange has always lived at the edges of a few disconnected systems: a cable in a rack, a spreadsheet of allocated addresses, a separate analytics login, and an email thread with the NOC for every change. A member could be fully connected and still have no single place to see what its connection was actually doing. Today we close that gap. OpenIX now lives in the **P Foundation Console**, the home where all of our programs and products come together, and the place a member runs its life at the exchange.
+
 ## A Member's Home at the Exchange
 
-The console builds on the foundation that IXP Manager has offered for years, the kind of member portal an exchange like ours runs on, and takes it further toward one goal: visibility. Where a traditional portal tells a member what it is connected to, the OpenIX Console shows a member what is actually happening on its connection, in language a network operator reads at a glance rather than in raw configuration.
+The console builds on the foundation that IXP Manager has offered for years, the kind of member portal an exchange like ours runs on, and takes it further toward one goal: visibility. Where a traditional portal tells a member what it is connected to, the console shows a member what is actually happening on its connection, in language a network operator reads at a glance rather than in raw configuration.
 
 Everything a member needs sits behind one login: the shape of its connection, a live picture of its traffic and who it exchanges it with, and the caches keeping that traffic local. No second tool, no support ticket for a number that should already be on the screen.
 
@@ -32,7 +38,7 @@ The routine changes a member used to email about are now a click. Updating a pee
 
 <Figure
   src="https://assets.p.foundation/assets/2953aa37-3ec5-4c12-b37a-cdcbc515fefa"
-  alt="The OpenIX Console's realtime insights view, showing a member's live traffic across the exchange"
+  alt="Realtime insights in the P Foundation Console, showing a member's live traffic across the exchange"
 >
   <strong>Realtime insights.</strong> A member's traffic across the exchange, updating live as it flows, with each service breaking out by the load it carries.
 </Figure>
@@ -49,7 +55,7 @@ This is the visibility a network usually only gets by standing up its own analyt
 
 <Figure
   src="https://assets.p.foundation/assets/f9d3485a-1071-4ef3-bacd-393d660fbd69"
-  alt="The OpenIX Console's peer traffic view, ranking the networks a member exchanges with by volume"
+  alt="Peer traffic in the P Foundation Console, ranking the networks a member exchanges with by volume"
 >
   <strong>Peer traffic.</strong> The networks a member exchanges the most with,
   ranked by volume.
@@ -71,4 +77,4 @@ That pairs with the other half of how OpenIX works. Every change a member makes 
 
 The console is the member's growing home at the exchange, and it is only getting richer. Already on the way: **Premium Caches**, **BGP session** management, **private interconnect** ordering, and operator tooling, including a **looking glass**, **IXP Watch** route-health monitoring, and **route** visibility, to bring a member's entire view of the exchange into one place.
 
-If your network peers at [OpenIX](/OpenIX), the console is live for you today. If you are not yet connected, [talk to us](/contact) about joining the exchange.
+If your network peers at [OpenIX](/OpenIX), your home in the P Foundation Console is live for you today. If you are not yet connected, [talk to us](/contact) about joining; every network that does keeps a little more of Lebanon's internet at home.
