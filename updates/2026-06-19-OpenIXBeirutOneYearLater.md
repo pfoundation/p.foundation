@@ -1,6 +1,6 @@
 ---
 title: 'OpenIX Beirut: One Year Later'
-description: A year after launch, OpenIX Beirut connects 39 networks and keeps much of Lebanon's traffic within local reach. Today OpenIX joins the P Foundation Console, the home for all of our programs and products, where a member sees its connection, its traffic, the peers it exchanges with, and the caches keeping that traffic local.
+description: A year after launch, OpenIX Beirut connects 39 networks and keeps much of Lebanon's traffic within local reach. As thanks for that first year, every port stays free for three more. Today OpenIX also joins the P Foundation Console, the home for all of our programs and products, where a member sees its connection, its traffic, the peers it exchanges with, and the caches keeping that traffic local.
 slug: OpenIXBeirutOneYearLater
 authors: jud
 image: https://assets.p.foundation/assets/e045524e-e0ee-40db-8564-c2da4032556b
@@ -12,7 +12,7 @@ import Figure from '@site/src/components/Figure/Figure';
 
 # OpenIX Beirut: One Year Later
 
-We announced OpenIX Beirut on May 13, 2025, with a commitment to run Lebanon's first carrier-neutral Internet Exchange Point for the next ten years. A year on, it is no longer a plan or a launch post. It is a working piece of the country's internet. **39 networks** now connect and trade traffic locally instead of hairpinning through another continent, among them 25 of Lebanon's top 30, and together they keep a large share of the country's traffic within local reach. Two of the largest are not yet with us, Ogero (AS42003) and IDM (AS9051), and we will keep working to bring them on, because the job is not finished while any part of Lebanon's traffic still takes the long way around.
+We [announced OpenIX Beirut](/updates/IntroducingOpenIXBeirut) on May 13, 2025, with a commitment to run Lebanon's first carrier-neutral Internet Exchange Point for the next ten years. A year on, **much of it with the country at war**, it is no longer a plan or a launch post. It is a working piece of the country's internet. **39 networks** now connect and trade traffic locally instead of hairpinning through another continent, among them **25 of Lebanon's top 30**, and together they keep a large share of the country's traffic within local reach. Two of the largest are not yet with us, Ogero ([AS42003](https://www.peeringdb.com/asn/42003)) and IDM ([AS9051](https://www.peeringdb.com/asn/9051)), and we will keep working to bring them on, because the job is not finished while any part of Lebanon's traffic still takes the long way around.
 
 Numbers like that do not assemble themselves. If this year proved anything, it is that Lebanon has a networking community worth betting on. Behind every port that came up was an engineer or an architect on the other end, often working around the clock, and often for a network that competes with the one across the link, to get a config right, a fiber lit, a session up. People treated a shared exchange as something worth their nights, not just their job descriptions, and that is what turned a rack of equipment into a living exchange.
 
@@ -20,13 +20,25 @@ Numbers like that do not assemble themselves. If this year proved anything, it i
 
 We owe them more than a paragraph can hold. The credit is long and overdue, and the people who built this with us deserve to be named for it. For now it is enough to say what this year made plain: an exchange is people before it is hardware, and Lebanon's showed up.
 
-And none of it was ever really about the exchange. It was about the country. Every megabit that stays in Lebanon is a page that loads faster, a call that does not drop, and a service that keeps working when the path abroad does not. OpenIX is infrastructure, but the benefit belongs to the whole nation, and that is where our focus stays.
+And none of it was ever really about the exchange. It was about the country. Every megabit that stays in Lebanon is a page that loads faster, a call that does not drop, and a service that keeps working when the path abroad does not. It is also a megabit a network no longer has to **buy as international transit**, paid for in scarce foreign currency. Traffic that once had to be imported across a continent now stays home, which **lowers the cost of running a network in Lebanon, keeps that money in the local economy**, and eases the load on the country's fragile international links. OpenIX is infrastructure, but the benefit belongs to the whole nation, and that is where our focus stays.
+
+## Free for Three More Years
+
+There is one more thing this year earned, and it belongs to every network that took the bet with us.
+
+When we launched, we waived every port fee for the first year. No connection charge, no monthly port cost, nothing between a network and the exchange but the will to connect. We did it because an exchange is worth only as much as the networks on it, and the surest way to prove the value of keeping Lebanon's traffic at home was to remove every reason not to try it.
+
+Members answered with the one thing that mattered: they showed up. They lit ports, got sessions up, and carried the exchange from a launch post to a piece of the country's working internet. That trust deserves an answer in kind, and today we give it. **Every port at OpenIX, every one connected today and every one that comes up over the next three years, stays free for that whole stretch**, the largest network and the smallest on the same terms, because the point was never to bill the country for its own internet. It was to keep that internet at home, and to make staying the easy choice for as long as it takes for that to become the obvious one.
+
+And when port fees do return, they return lower than they have ever been. We are cutting our [published rates](/OpenIX/beirut/fees) by more than half: a **40G** port drops to **$499** a month and a **100G** port to **$999**, down from $1,199 and $2,499, with 10G still free. The three free years give every member room to grow, and the new rates make sure that when the waiver ends, staying is still the easy call.
+
+And some networks never see a bill at all. Ports remain free, today and well past the three years, for the **public sector**, **universities and public institutions**, and **critical infrastructure**, because the networks that hold the country together should never be priced off the exchange.
 
 Serving traffic at that scale also showed us where we were still falling short of our own members. An exchange has always lived at the edges of a few disconnected systems: a cable in a rack, a spreadsheet of allocated addresses, a separate analytics login, and an email thread with the NOC for every change. A member could be fully connected and still have no single place to see what its connection was actually doing. Today we close that gap. OpenIX now lives in the **P Foundation Console**, the home where all of our programs and products come together, and the place a member runs its life at the exchange.
 
 ## A Member's Home at the Exchange
 
-The console builds on the foundation that IXP Manager has offered for years, the kind of member portal an exchange like ours runs on, and takes it further toward one goal: visibility. Where a traditional portal tells a member what it is connected to, the console shows a member what is actually happening on its connection, in language a network operator reads at a glance rather than in raw configuration.
+For years an exchange has run on [IXP Manager](https://www.ixpmanager.org/), the open-source platform behind member portals across the industry, and the console is built on that same foundation. What we did with it is the part that matters. We reimagined the member experience for the way operators work today, and pointed all of it at one goal: visibility. Static tables give way to live, dynamic charts, and a page that once listed what a network was wired to becomes a view that moves with the traffic. Where a traditional portal tells a member what it is connected to, the console shows a member what is actually happening on its connection, in language a network operator reads at a glance rather than in raw configuration.
 
 Everything a member needs sits behind one login: the shape of its connection, a live picture of its traffic and who it exchanges it with, and the caches keeping that traffic local. No second tool, no support ticket for a number that should already be on the screen.
 
@@ -63,7 +75,7 @@ This is the visibility a network usually only gets by standing up its own analyt
 
 ## Community Caches, Free of Charge
 
-The console also shows a member exactly how much of its traffic the exchange is keeping local through the caches it runs on its own network: OpenCache, Microsoft, Valve, Ookla Speedtest, and others. These are served to members **free of charge** as a community effort, and the console makes their value visible, cache by cache, in the same traffic picture.
+The console also shows a member exactly how much of its traffic the exchange is keeping local through the caches it runs on its own network: [OpenCache](/updates/IntroducingOpenCache), Microsoft, Valve, Ookla Speedtest, and others. These are served to members **free of charge** as a community effort, and the console makes their value visible, cache by cache, in the same traffic picture.
 
 We are also working to bring **Premium Caches** alongside the community ones. It is on the way, and we will share the full details when it launches.
 

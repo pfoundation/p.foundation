@@ -11,19 +11,21 @@ This page lists service fees for OpenIX Beirut, including monthly peering and op
 
 | Port Speed | Monthly Fee |
 | ---------- | ----------: |
-| 1G         |         $99 |
-| 10G        |        $499 |
-| 40G        |      $1,199 |
-| 100G       |      $2,499 |
+| 10G        |        Free |
+| 40G        |        $499 |
+| 100G       |        $999 |
+
+1G connections are available over 10G ports.
 
 ### Special Rates
 
-OpenIX Beirut offers special pricing for qualifying organizations:
+Some organizations peer at OpenIX Beirut free of charge, with no monthly port fee at any speed, because the parts of the country that depend on the exchange should never be priced off it. This applies to:
 
-- **Public sector**: Free for one port up to 100G
-- **Universities and public institutions**: Free one 1G port
+- **Public sector** bodies and government entities
+- **Universities and public institutions**
+- **Critical infrastructure** operators
 
-Eligibility verification required.
+Eligibility is verified before the rate applies.
 
 ## Additional Service Fees
 
