@@ -225,6 +225,10 @@ const config = {
         },
         {
           name: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          name: 'twitter:description',
           content:
             'Empowering nations through open internet and free journalism.',
         },
@@ -295,10 +299,6 @@ const config = {
           {
             label: 'Contact',
             to: '/contact',
-          },
-          {
-            label: 'Support',
-            to: '/support',
           },
           // {
           //   label: 'PFS',
