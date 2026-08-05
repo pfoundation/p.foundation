@@ -13,7 +13,7 @@ import styles from './opencache.module.scss';
 
 const title = 'OpenCache';
 const description =
-  'OpenCache serves your content from inside local networks: cache nodes at internet exchanges and inside ISP networks, operated end to end by P Foundation. Free for content providers, who cut their CDN fees, and free for host ISPs, who cut their international transit costs.';
+  'OpenCache serves your content from inside local networks: cache PoPs at internet exchanges and Embedded OpenCache PoPs inside ISP networks, operated end to end by P Foundation. Free for content providers, who cut their CDN fees. Host networks cut their international transit costs.';
 
 /* ------------------------------------------------------------------ */
 /* Hooks and primitives                                               */
@@ -446,22 +446,22 @@ const STOPS: Record<StopKey, StopInfo> = {
   control: {
     label: 'Control plane',
     heading: 'P Foundation operates the control plane',
-    body: 'Per-provider site configs, fleet-wide traffic policies, telemetry, and dashboards live centrally. Nodes pull declarative configuration, validate it, and apply it with a zero-downtime reload. Hosting a node grants no access to any of it.',
+    body: 'Per-provider site configs, fleet-wide traffic policies, telemetry, and dashboards live centrally. Nodes pull declarative configuration, validate it, and apply it with a zero-downtime reload. Hosting an Embedded OpenCache PoP grants no access to any of it.',
   },
   isp: {
-    label: 'Nodes inside ISPs',
+    label: 'Embedded PoPs in ISPs',
     heading: 'Subscribers served from on-net',
-    body: 'A node inside an ISP serves that ISP’s subscribers from on-net and offloads its transit. A listen-only BGP session teaches it exactly which prefixes are local, and a health score reported every 15 seconds steers traffic away from a draining or saturated node before users notice.',
+    body: 'An Embedded OpenCache PoP inside an ISP serves that ISP’s subscribers from on-net and offloads its transit. A listen-only BGP session teaches it exactly which prefixes are local, and a health score reported every 15 seconds steers traffic away from a draining or saturated PoP before users notice. Hosting one calls for more than 5 Gbps of peak OpenCache traffic.',
   },
   exchange: {
-    label: 'Node at the exchange',
+    label: 'PoP at the exchange',
     heading: 'A shared parent cache for the whole exchange',
-    body: 'When an ISP node misses, and that ISP peers at the exchange, it pulls from the node at the exchange over local peering instead of reaching abroad. That node serves every peering network directly and acts as a shared upstream for all of them, which means an object first requested through one ISP is already warm for the next. The more ISPs that peer in and run their own nodes, the more misses stay inside the country.',
+    body: 'When an embedded PoP misses, and that ISP peers at the exchange, it pulls from the PoP at the exchange over local peering instead of reaching abroad. That PoP serves every peering network directly and acts as a shared upstream for all of them, which means an object first requested through one ISP is already warm for the next. The more ISPs that peer in and host their own PoPs, the more misses stay inside the country.',
   },
   origin: {
     label: 'Your origin',
     heading: 'Only the last miss leaves the country',
-    body: 'A request reaches your origin only when both the ISP node and the exchange node miss. Even then, one collapsed request fetches the object while every concurrent client waits, stale serving covers revalidation and origin errors, and multiple origins fail over with health-aware retries.',
+    body: 'A request reaches your origin only when both the embedded PoP and the PoP at the exchange miss. Even then, one collapsed request fetches the object while every concurrent client waits, stale serving covers revalidation and origin errors, and multiple origins fail over with health-aware retries.',
   },
 };
 
@@ -497,16 +497,16 @@ const NetworkDiagram: FunctionComponent = () => {
         </div>
 
         <p className={styles.diagramTier}>
-          Subscribers hit the node in their own ISP first
+          Subscribers hit the embedded PoP in their own ISP first
         </p>
         <div className={styles.diagramNodes}>
           <div className={styles.diagramBranch}>
-            {stopButton('isp', 'ISP A node')}
+            {stopButton('isp', 'ISP A PoP')}
             <span className={styles.diagramDrop} aria-hidden="true" />
             <span className={styles.diagramAudience}>ISP A subscribers</span>
           </div>
           <div className={styles.diagramBranch}>
-            {stopButton('isp', 'ISP B node')}
+            {stopButton('isp', 'ISP B PoP')}
             <span className={styles.diagramDrop} aria-hidden="true" />
             <span className={styles.diagramAudience}>ISP B subscribers</span>
           </div>
@@ -595,7 +595,7 @@ const TABS: TabDef[] = [
     body: 'Every response carries cache status and edge-timing headers, and every node exposes a trace endpoint, letting a client report be correlated to a specific node, rule, and origin fetch. Delivery dashboards break traffic down per ISP and per network.',
     mock: [
       { left: 'cache status', right: 'HIT' },
-      { left: 'served by', right: 'node at the exchange' },
+      { left: 'served by', right: 'PoP at the exchange' },
       { left: 'dashboards', right: 'per ISP, per network' },
     ],
   },
@@ -703,12 +703,6 @@ export default function OpenCacheLanding(): JSX.Element {
               >
                 Start serving
               </Link>
-              <Link
-                className={clsx('button', 'button--lg', styles.ghostBtn)}
-                href="https://console.p.foundation/docs/opencache"
-              >
-                Read the docs
-              </Link>
             </div>
           </div>
           <RouteRace />
@@ -755,7 +749,7 @@ export default function OpenCacheLanding(): JSX.Element {
           <div className="container">
             <Reveal>
               <span className="pf-kicker">What it costs</span>
-              <h2>Free to serve. Free to host.</h2>
+              <h2>Free to serve. Qualify to host.</h2>
               <p className="pf-lede">
                 OpenCache is nonprofit infrastructure, operated by P Foundation
                 and open on equal terms.
@@ -781,10 +775,13 @@ export default function OpenCacheLanding(): JSX.Element {
                   )}
                 >
                   <span className={styles.pricingWho}>Host ISPs</span>
-                  <span className={styles.pricingPrice}>Free</span>
+                  <span className={styles.pricingPrice}>5 Gbps</span>
                   <p>
-                    The node is provided and operated at no cost. Every byte
-                    served on-net is a byte that never crosses your
+                    An{' '}
+                    <Link to="/opencacheEmbedded">Embedded OpenCache PoP</Link>{' '}
+                    goes into networks that sustain more than 5 Gbps of peak
+                    OpenCache traffic. We deploy and operate it; every byte it
+                    serves on-net is a byte that never crosses your
                     international transit links, cutting the transit bill for
                     all participating providers&apos; content at once.
                   </p>
@@ -802,21 +799,12 @@ export default function OpenCacheLanding(): JSX.Element {
               <p className="pf-lede">
                 Every node runs the same platform under one control plane; what
                 differs is the network it serves. A miss does not jump straight
-                abroad: it falls through to the node at the exchange first.
+                abroad: it falls through to the PoP at the exchange first.
                 Select any part of the path to see what it does.
               </p>
             </Reveal>
             <Reveal delay={100}>
               <NetworkDiagram />
-            </Reveal>
-            <Reveal delay={150}>
-              <p className={styles.crossLink}>
-                Want the full detail? Read the{' '}
-                <Link href="https://console.p.foundation/docs/opencache">
-                  runtime documentation
-                </Link>
-                .
-              </p>
             </Reveal>
           </div>
         </section>
@@ -850,9 +838,9 @@ export default function OpenCacheLanding(): JSX.Element {
                 <div className={styles.neutralityItem}>
                   <h3>Hosting grants no control</h3>
                   <p>
-                    An ISP hosting a node provides space, power, and
-                    connectivity. It gains no access to provider configuration,
-                    certificates, or traffic policies.
+                    An ISP hosting an Embedded OpenCache PoP provides space,
+                    power, and connectivity. It gains no access to provider
+                    configuration, certificates, or traffic policies.
                   </p>
                 </div>
                 <div className={styles.neutralityItem}>
@@ -875,9 +863,9 @@ export default function OpenCacheLanding(): JSX.Element {
                 <div className={styles.neutralityItem}>
                   <h3>Open at the edge</h3>
                   <p>
-                    The edge software is open source. Any ISP hosting a node,
-                    and any provider serving through one, can read exactly what
-                    runs at the edge on{' '}
+                    The edge software is open source. Any ISP hosting a PoP, and
+                    any provider serving through one, can read exactly what runs
+                    at the edge on{' '}
                     <Link href="https://github.com/pfoundation/opencache">
                       GitHub
                     </Link>
@@ -895,11 +883,12 @@ export default function OpenCacheLanding(): JSX.Element {
               <span className="pf-kicker">Coverage</span>
               <h2>Local where it counts, covered everywhere</h2>
               <p className="pf-lede">
-                OpenCache is live at OpenIX Beirut, where 37 peering networks
-                carrying roughly 73% of Lebanon&apos;s traffic reach it with no
-                transit in the path. Outside the current footprint, partner CDNs
-                keep your audience covered globally, and as the footprint grows,
-                more of that delivery moves local.
+                OpenCache runs at multiple internet exchanges. At OpenIX Beirut,
+                37 peering networks carrying roughly 73% of Lebanon&apos;s
+                traffic reach it with no transit in the path. Outside the
+                current footprint, partner CDNs keep your audience covered
+                globally, and as the footprint grows, more of that delivery
+                moves local.
               </p>
             </Reveal>
           </div>
@@ -911,13 +900,14 @@ export default function OpenCacheLanding(): JSX.Element {
               <div className={styles.ispRow}>
                 <div className={styles.ispCopy}>
                   <span className="pf-kicker">For ISPs</span>
-                  <h2>Host a node, shed your transit</h2>
+                  <h2>Host an Embedded OpenCache PoP</h2>
                   <p className={styles.ispLede}>
                     The model the hyperscaler cache programs proved, made
                     available to everyone at once: a single footprint that
                     offloads transit for every participating provider&apos;s
-                    content, with the node provided and operated at no cost to
-                    you.
+                    content, deployed and operated by the foundation inside your
+                    network. Networks that sustain more than 5 Gbps of peak
+                    OpenCache traffic qualify.
                   </p>
                   <ol className={styles.ispSteps}>
                     <li>
@@ -925,19 +915,19 @@ export default function OpenCacheLanding(): JSX.Element {
                       session.
                     </li>
                     <li>
-                      We deploy and remotely operate the node: configuration,
+                      We deploy and remotely operate the PoP: configuration,
                       monitoring, and lifecycle are handled centrally.
                     </li>
                     <li>
-                      The node learns your prefixes and serves your subscribers
+                      The PoP learns your prefixes and serves your subscribers
                       from on-net, cutting your international transit costs.
                     </li>
                   </ol>
                   <Link
                     className={clsx('button', styles.ghostBtnDark)}
-                    to="/apply/opencache/isp"
+                    to="/opencacheEmbedded"
                   >
-                    Apply as an ISP
+                    Learn more and apply
                   </Link>
                 </div>
               </div>

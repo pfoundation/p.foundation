@@ -526,7 +526,7 @@ export default function HmsLanding(): JSX.Element {
                 Deeper AI, editable transcription with speaker diarization and
                 full dubbing into other languages, runs in the Inference studio
                 on these same library items. See{' '}
-                <Link to="/products/dubbing">AI dubbing</Link>.
+                <Link to="/dubbing">AI dubbing</Link>.
               </p>
             </Reveal>
           </div>
@@ -592,7 +592,7 @@ export default function HmsLanding(): JSX.Element {
               <p className={styles.crossLink}>
                 OpenCache is the foundation’s neutral, shared cache layer that
                 serves content from inside local networks. See{' '}
-                <Link to="/products/opencache">OpenCache</Link>.
+                <Link to="/opencache">OpenCache</Link>.
               </p>
             </Reveal>
           </div>

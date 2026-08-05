@@ -17,20 +17,20 @@ interface ProductSummary {
 const PRODUCTS: ProductSummary[] = [
   {
     name: 'OpenCache',
-    href: '/products/opencache',
+    href: '/opencache',
     accent: 'cool',
     valueProp:
       'A neutral, shared cache layer that serves content from inside local networks, giving any provider the local delivery the largest platforms built for themselves.',
     highlights: [
       'A single distributed platform at internet exchanges and inside ISP networks',
       'Open to any content provider, with no CDN of your own required',
-      'Hosting a node grants no control: policies stay with the foundation',
+      'Hosting an Embedded OpenCache PoP grants no control: policies stay with the foundation',
     ],
     program: 'Built and operated by the foundation',
   },
   {
     name: 'OpenNRCS',
-    href: '/products/opennrcs',
+    href: '/opennrcs',
     accent: 'warm',
     valueProp:
       'A full newsroom computer system that carries a story from the wire through a timed rundown to air, web, and social, all in one shared workspace.',
@@ -43,7 +43,7 @@ const PRODUCTS: ProductSummary[] = [
   },
   {
     name: 'AI dubbing',
-    href: '/products/dubbing',
+    href: '/dubbing',
     accent: 'green',
     valueProp:
       'An AI dubbing studio that takes a finished video in one language to broadcast-ready cuts in other languages, with a human in control of every step.',
@@ -59,7 +59,7 @@ const PRODUCTS: ProductSummary[] = [
 // Featured below the grid as a single wide box, spanning the full row.
 const FEATURED: ProductSummary = {
   name: 'Hosted Media Services',
-  href: '/products/hms',
+  href: '/hms',
   accent: 'spectrum',
   valueProp:
     'One streaming backend for video on demand and live: a library, plus live channels HMS ingests, transcodes, time-shifts for DVR, and restreams to the platforms, delivering signed HLS that can ride OpenCache.',

@@ -34,7 +34,7 @@ const APPLICATION_FORM_LABELS = {
   mediaguard: 'MediaGuard program',
   citizenmesh: 'CitizenMesh program',
   resilientnet: 'ResilientNet program',
-  'opencache-isp': 'OpenCache (ISP)',
+  'opencache-isp': 'Embedded OpenCache PoP',
   'opencache-provider': 'OpenCache (content provider)',
   contact: 'Contact',
   support: 'Partner support',

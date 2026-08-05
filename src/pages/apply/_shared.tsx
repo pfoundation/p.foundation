@@ -1,6 +1,7 @@
 /**
- * Shared form primitives for the application pages (/apply and
- * /apply/opencache) and the contact page (/contact). The leading
+ * Shared form primitives for the application pages (/apply,
+ * /apply/opencache, and the Embedded OpenCache PoP page at /opencacheEmbedded) and
+ * the contact page (/contact). The leading
  * underscore keeps the Docusaurus pages
  * plugin from turning this module into a route (its default exclude list
  * contains the glob "**\/_*.{js,jsx,ts,tsx,md,mdx}").

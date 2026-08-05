@@ -216,8 +216,11 @@ export default function Apply(): JSX.Element {
             <p className={styles.crossLink}>
               Joining OpenCache?{' '}
               <Link to="/apply/opencache">Create an account</Link> to serve
-              content, or <Link to="/apply/opencache/isp">apply as an ISP</Link>{' '}
-              to host a node.
+              content, or{' '}
+              <Link to="/opencacheEmbedded">
+                host an Embedded OpenCache PoP
+              </Link>{' '}
+              on your network.
             </p>
           </div>
         </div>

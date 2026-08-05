@@ -404,7 +404,6 @@ export default function NrcsLanding(): JSX.Element {
               <h2>Built for desks that publish everywhere</h2>
               <div className={styles.audienceGrid}>
                 <div className={clsx('card', styles.audience)}>
-                  <span className={styles.audienceLabel}>Broadcast</span>
                   <h3 className={styles.audienceTitle}>Broadcast newsrooms</h3>
                   <p className={styles.audienceBody}>
                     Producers, reporters, and editors who put a daily show on
@@ -414,7 +413,6 @@ export default function NrcsLanding(): JSX.Element {
                   </p>
                 </div>
                 <div className={clsx('card', styles.audience)}>
-                  <span className={styles.audienceLabel}>Converged</span>
                   <h3 className={styles.audienceTitle}>Converged desks</h3>
                   <p className={styles.audienceBody}>
                     Desks that produce TV, web, and social from one team write

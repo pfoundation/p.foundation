@@ -135,20 +135,34 @@ const config = {
             to: 'https://calendar.app.google/UrCGibVPmTqTtjGcA',
           },
           {
-            from: '/opencache',
-            to: '/products/opencache',
-          },
-          {
             from: '/nrcs',
-            to: '/products/opennrcs',
+            to: '/opennrcs',
           },
           {
             from: '/aidubbing',
-            to: '/products/dubbing',
+            to: '/dubbing',
+          },
+          // The ISP application became the Embedded OpenCache PoP page.
+          {
+            from: '/apply/opencache/isp',
+            to: '/opencacheEmbedded',
+          },
+          // Product pages moved from /products/<name> to /<name>.
+          {
+            from: '/products/opencache',
+            to: '/opencache',
           },
           {
-            from: '/hms',
-            to: '/products/hms',
+            from: '/products/opennrcs',
+            to: '/opennrcs',
+          },
+          {
+            from: '/products/dubbing',
+            to: '/dubbing',
+          },
+          {
+            from: '/products/hms',
+            to: '/hms',
           },
         ],
         // Add per-page legacy aliases: /messages/* -> /updates/*

@@ -76,10 +76,10 @@ export default function SignUpOpenCache(): JSX.Element {
   const history = useHistory();
 
   // The role toggle used to live here behind ?as=isp|provider. ISPs now have
-  // their own page; old ?as=isp links are forwarded there.
+  // their own page (/opencacheEmbedded); old ?as=isp links are forwarded there.
   useEffect(() => {
     if (new URLSearchParams(location.search).get('as') === 'isp') {
-      history.replace('/apply/opencache/isp');
+      history.replace('/opencacheEmbedded');
     }
   }, [location.search, history]);
 
@@ -113,8 +113,11 @@ export default function SignUpOpenCache(): JSX.Element {
               )}
             />
             <p className={styles.crossLink}>
-              Run a network and want to host a node?{' '}
-              <Link to="/apply/opencache/isp">Apply as an ISP</Link>.
+              Run a network?{' '}
+              <Link to="/opencacheEmbedded">
+                Host an Embedded OpenCache PoP
+              </Link>
+              .
             </p>
           </div>
         </div>
