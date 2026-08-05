@@ -6,7 +6,7 @@
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://p.foundation/updates"/>
     <subtitle>P Foundation Blog</subtitle>
-    <icon>https://p.foundation/img/favicon.ico</icon>
+    <icon>https://p.foundation/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[OpenIX Beirut: One Year Later]]></title>
         <id>https://p.foundation/updates/OpenIXBeirutOneYearLater</id>
