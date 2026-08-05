@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Scalable favicon: the brand bars (ink, blue, crimson, green, amber,
+     slate, silver) on a square canvas. Same mark as favicon.ico and the
+     android-chrome/apple-touch PNGs, so tabs stay sharp at any size. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" width="90" height="90">
+    <title>P Foundation</title>
+    <rect fill="#C5D1DB" x="0" y="0" width="90" height="90"></rect>
+    <rect fill="#292432" x="0" y="0" width="10" height="90"></rect>
+    <rect fill="#23A0E0" x="10" y="0" width="10" height="90"></rect>
+    <rect fill="#E23350" x="20" y="0" width="10" height="90"></rect>
+    <rect fill="#3EB842" x="30" y="0" width="10" height="90"></rect>
+    <rect fill="#F9A52C" x="40" y="0" width="10" height="90"></rect>
+    <rect fill="#5C607C" x="50" y="0" width="10" height="90"></rect>
+</svg>
