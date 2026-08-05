@@ -20,17 +20,17 @@ const programs: ProgramMetadata[] = [
     relatedProducts: [
       {
         name: 'OpenNRCS',
-        to: '/products/opennrcs',
+        to: '/opennrcs',
         note: 'a full newsroom computer system, from wire to air to web',
       },
       {
         name: 'Hosted Media Services',
-        to: '/products/hms',
+        to: '/hms',
         note: 'one backend for video on demand and live channels, with DVR and restreaming',
       },
       {
         name: 'AI dubbing',
-        to: '/products/dubbing',
+        to: '/dubbing',
         note: 'broadcast-ready dubbing of finished video into other languages',
       },
     ],
@@ -53,7 +53,7 @@ const programs: ProgramMetadata[] = [
     /*   relatedProducts: [
       {
         name: 'OpenCache',
-        to: '/products/opencache',
+        to: '/opencache',
         note: 'serves popular content from inside local networks like the ones this program builds',
       },
     ], */
@@ -77,7 +77,7 @@ const programs: ProgramMetadata[] = [
     /* relatedProducts: [
       {
         name: 'OpenCache',
-        to: '/products/opencache',
+        to: '/opencache',
         note: 'serves popular content from inside local networks',
       },
     ], */

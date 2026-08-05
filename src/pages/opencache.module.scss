@@ -1,4 +1,4 @@
-@import '../../css/mixins';
+@import '../css/mixins';
 
 /* ------------------------------------------------------------------ */
 /* Scroll reveal                                                      */
@@ -579,13 +579,16 @@
     line-height: 1.65;
   }
 
+  /* Compound selector on purpose: the CSS minifier merges identical
+     declarations across every module and hoists them, which would otherwise
+     let the single-class base rule outrank this variant. */
+  &.pricingCardAlt {
+    border-top-color: var(--pf-blue);
+  }
+
   @include small-size {
     padding: 1.5rem 1.25rem;
   }
-}
-
-.pricingCardAlt {
-  border-top-color: var(--pf-blue);
 }
 
 .pricingWho {

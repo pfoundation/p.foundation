@@ -1,0 +1,895 @@
+@import '../css/mixins';
+
+/* ------------------------------------------------------------------ */
+/* Scroll reveal                                                      */
+/* ------------------------------------------------------------------ */
+
+.reveal {
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.revealHidden {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+  }
+
+  .revealHidden {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero                                                               */
+/* ------------------------------------------------------------------ */
+
+.hero {
+  /* Constant ink surface in both themes. */
+  background-color: var(--pf-ink);
+  background-image: radial-gradient(
+      720px 360px at 10% -10%,
+      var(--pf-glow-blue),
+      transparent 70%
+    ),
+    radial-gradient(
+      640px 320px at 92% 110%,
+      var(--pf-glow-crimson),
+      transparent 70%
+    );
+  padding: 5.5rem 0;
+
+  @include small-size {
+    padding: 3.5rem 0;
+  }
+}
+
+.heroInner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: 3.5rem;
+
+  @media (max-width: 996px) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.heroKicker {
+  color: var(--pf-crimson-soft);
+}
+
+.heroTitle {
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+
+.heroAccent {
+  background-image: var(--pf-gradient-cool);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroLede {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--pf-silver);
+  max-width: 38rem;
+  margin-bottom: 1.75rem;
+}
+
+/* Qualification badge: the one number an ISP needs before reading further. */
+.heroBar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 32rem;
+  margin: 0 0 2rem;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-left: 3px solid var(--pf-green);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.heroBarValue {
+  flex: none;
+  font-family: var(--pf-font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.heroBarLabel {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--pf-silver);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.ghostBtn {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+}
+
+/* Hero figure: where a request is served from ------------------------- */
+
+.panel {
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background-color: rgba(255, 255, 255, 0.04);
+  padding: 1.5rem 1.6rem;
+
+  @include small-size {
+    padding: 1.25rem;
+  }
+}
+
+.panelTitle {
+  display: block;
+  font-family: var(--pf-font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pf-silver);
+  margin-bottom: 1.5rem;
+}
+
+.panelRow {
+  & + & {
+    margin-top: 1.5rem;
+  }
+}
+
+.panelLabel {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.barTrack {
+  display: flex;
+  height: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.barSeg {
+  animation: ep-grow 0.9s ease-out both;
+  transform-origin: left center;
+}
+
+.barLocal {
+  background: var(--pf-gradient-cool);
+}
+
+/* Variants are written as compound selectors throughout this file: the CSS
+   minifier merges identical declarations across every module and hoists them,
+   which would let a single-class base rule outrank a single-class variant. */
+.barTransit {
+  background-color: rgba(226, 51, 80, 0.55);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18) 0 3px,
+    transparent 3px 8px
+  );
+
+  &.barSeg {
+    animation-delay: 0.12s;
+  }
+}
+
+@keyframes ep-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .barSeg {
+    animation: none;
+  }
+}
+
+.panelMeta {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--pf-silver);
+
+  strong {
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.panelNote {
+  margin: 1.5rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(197, 209, 219, 0.75);
+}
+
+/* ------------------------------------------------------------------ */
+/* Sections                                                           */
+/* ------------------------------------------------------------------ */
+
+.band {
+  background-color: var(--pf-surface);
+  border-top: 1px solid var(--pf-border);
+  border-bottom: 1px solid var(--pf-border);
+}
+
+/* Anatomy: a schematic of the unit, with the callouts beside it ------ */
+
+.anatomy {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  align-items: start;
+
+  @media (max-width: 996px) {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+/* The unit reads as a piece of equipment: spectrum edge across the top,
+   labelled internals, then the ports it lands on in your network. */
+.unit {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--pf-border-strong);
+  background-color: var(--pf-surface);
+  padding: 1.5rem 1.6rem 1.6rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--pf-gradient-spectrum);
+  }
+
+  @include small-size {
+    padding: 1.25rem;
+  }
+}
+
+.unitHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.15rem;
+  border-bottom: 1px solid var(--pf-border);
+}
+
+.unitName {
+  font-family: var(--pf-font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--pf-heading);
+}
+
+.unitWhere {
+  font-family: var(--pf-font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+}
+
+.unitLayers {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.unitLayer {
+  border: 1px solid var(--pf-border);
+  border-left: 3px solid var(--pf-blue);
+  background-color: var(--pf-bg);
+  padding: 0.7rem 0.9rem;
+
+  &:nth-child(2) {
+    border-left-color: var(--pf-crimson);
+  }
+
+  &:nth-child(3) {
+    border-left-color: var(--pf-green);
+  }
+
+  &:nth-child(4) {
+    border-left-color: var(--pf-amber);
+  }
+}
+
+.unitLayerLabel {
+  display: block;
+  font-family: var(--pf-font-display);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--pf-heading);
+}
+
+.unitLayerNote {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--pf-text-muted);
+}
+
+.unitPortsTitle {
+  margin: 1.5rem 0 0.75rem;
+  font-family: var(--pf-font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+}
+
+.unitPorts {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.unitPort {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.55rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.unitPortIcon {
+  flex: none;
+  display: flex;
+  align-self: center;
+  color: var(--pf-blue);
+}
+
+.unitPortLabel {
+  font-weight: 600;
+  color: var(--pf-text);
+}
+
+.unitPortNote {
+  color: var(--pf-text-muted);
+}
+
+/* Callouts beside the unit, centred against the taller schematic. */
+.calloutList {
+  display: grid;
+  gap: 1.5rem;
+  align-self: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.callout {
+  padding-left: 1.15rem;
+  border-left: 2px solid var(--pf-crimson);
+
+  &:nth-child(2) {
+    border-left-color: var(--pf-blue);
+  }
+
+  &:nth-child(3) {
+    border-left-color: var(--pf-green);
+  }
+
+  &:nth-child(4) {
+    border-left-color: var(--pf-amber);
+  }
+}
+
+.calloutTitle {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+
+.calloutBody {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--pf-text-muted);
+}
+
+/* What each side brings --------------------------------------------- */
+
+.splitGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+
+  @include small-size {
+    grid-template-columns: 1fr;
+  }
+}
+
+.splitCard {
+  border-top: 3px solid var(--pf-amber);
+  padding: 1.75rem 2rem;
+
+  &.splitCardAlt {
+    border-top-color: var(--pf-blue);
+  }
+
+  @include small-size {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+.splitWho {
+  display: block;
+  font-family: var(--pf-font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+  margin-bottom: 1rem;
+}
+
+.splitList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--pf-text);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0.65rem;
+      left: 0;
+      width: 0.45rem;
+      height: 0.45rem;
+      background-color: var(--pf-crimson);
+    }
+
+    & + li {
+      margin-top: 0.75rem;
+    }
+  }
+}
+
+/* Qualification ------------------------------------------------------ */
+
+.qualRow {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  gap: 2rem;
+  margin-top: 2.5rem;
+  align-items: start;
+
+  @media (max-width: 996px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.qualFigure {
+  border: 1px solid var(--pf-border);
+  border-left: 3px solid var(--pf-crimson);
+  background-color: var(--pf-bg);
+  padding: 1.75rem 1.85rem;
+}
+
+.qualFigurePrefix {
+  display: block;
+  font-family: var(--pf-font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+}
+
+.qualFigureValue {
+  display: block;
+  font-family: var(--pf-font-display);
+  font-size: clamp(2.6rem, 5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--pf-heading);
+  font-variant-numeric: tabular-nums;
+  margin: 0.35rem 0 0.65rem;
+}
+
+.qualFigureLabel {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--pf-text-muted);
+}
+
+.qualCopy {
+  p {
+    color: var(--pf-text-muted);
+    line-height: 1.7;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.reqTitle {
+  font-size: 1.05rem;
+  margin: 2.5rem 0 1rem;
+}
+
+.reqList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include small-size {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reqItem {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--pf-text);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0.55rem;
+    left: 0;
+    width: 0.7rem;
+    height: 0.7rem;
+    border: 2px solid var(--pf-green);
+  }
+}
+
+/* The route for networks under the bar. */
+.qualNote {
+  max-width: 52rem;
+  margin: 1.75rem 0 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--pf-border-strong);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--pf-text-muted);
+}
+
+/* Request path: one row on desktop, a column on small screens -------- */
+
+.path {
+  /* Width of a connector column. The bypass lane below the row is positioned
+     from this same value, which keeps the two aligned at every breakpoint. */
+  --ep-hop-width: 6.5rem;
+  margin-top: 2rem;
+
+  @media (min-width: 997px) and (max-width: 1200px) {
+    --ep-hop-width: 4.5rem;
+  }
+}
+
+.pathRow {
+  display: flex;
+  align-items: stretch;
+
+  @include small-size {
+    flex-direction: column;
+  }
+}
+
+.pathStop {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--pf-border);
+  border-top: 3px solid var(--pf-border-strong);
+  background-color: var(--pf-surface);
+  padding: 1rem 1.15rem;
+
+  &.toneStart {
+    border-style: dashed;
+    background-color: transparent;
+  }
+
+  &.toneLocal {
+    border-top-color: var(--pf-green);
+  }
+
+  &.toneExchange {
+    border-top-color: var(--pf-blue);
+  }
+
+  &.toneOrigin {
+    border-top-color: var(--pf-amber);
+  }
+}
+
+.pathLabel {
+  display: block;
+  font-family: var(--pf-font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--pf-heading);
+}
+
+.pathNote {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--pf-text-muted);
+}
+
+.hop {
+  flex: 0 0 var(--ep-hop-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0 0.5rem;
+
+  @include small-size {
+    flex: none;
+    padding: 0.5rem 0;
+  }
+}
+
+/* Horizontal arrow between stops; it turns downward when the row stacks. */
+.hopArrow {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background-color: var(--pf-border-strong);
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: -4px;
+    border-left: 7px solid var(--pf-border-strong);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+
+  &.hopArrowTransit {
+    background-color: var(--pf-amber);
+
+    &::after {
+      border-left-color: var(--pf-amber);
+    }
+  }
+
+  @include small-size {
+    width: 2px;
+    height: 1.5rem;
+
+    &::after {
+      right: auto;
+      top: auto;
+      bottom: -1px;
+      left: -4px;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 7px solid var(--pf-border-strong);
+      border-bottom: 0;
+    }
+
+    &.hopArrowTransit::after {
+      border-left-color: transparent;
+      border-top-color: var(--pf-amber);
+    }
+  }
+}
+
+.hopLabel {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.35;
+  text-align: center;
+  color: var(--pf-text-muted);
+}
+
+/* Bypass lane: drops out of the embedded PoP, runs past the exchange stop,
+   and turns back up into the origin. Spans centre-of-stop-2 to
+   centre-of-stop-4, derived from four equal stops and three connectors. */
+.bypass {
+  position: relative;
+  height: 3rem;
+  width: calc(50% + var(--ep-hop-width) * 0.5);
+  margin: 0 0 0 calc(37.5% - var(--ep-hop-width) * 0.125);
+
+  @include small-size {
+    position: static;
+    height: auto;
+    width: auto;
+    margin: 1rem 0 0;
+    padding-left: 1rem;
+    border-left: 3px solid var(--pf-amber);
+  }
+}
+
+.bypassBracket {
+  position: absolute;
+  inset: 0;
+  border-left: 2px solid var(--pf-amber);
+  border-right: 2px solid var(--pf-amber);
+  border-bottom: 2px solid var(--pf-amber);
+
+  /* Arrowhead turning back up into the origin stop. */
+  &::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: -6px;
+    border-bottom: 7px solid var(--pf-amber);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+  }
+
+  @include small-size {
+    display: none;
+  }
+}
+
+.bypassLabel {
+  position: absolute;
+  left: 50%;
+  bottom: 0.4rem;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--pf-text-muted);
+
+  @include small-size {
+    position: static;
+    transform: none;
+    white-space: normal;
+    display: block;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+}
+
+/* Process ------------------------------------------------------------ */
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+
+  /* Two columns on narrow desktops. The ranges stay disjoint: overlapping
+     media queries would leave the winner up to how the minifier orders them. */
+  @media (min-width: 997px) and (max-width: 1200px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include small-size {
+    grid-template-columns: 1fr;
+  }
+}
+
+.step {
+  border: 1px solid var(--pf-border);
+  background-color: var(--pf-bg);
+  padding: 1.35rem 1.5rem;
+}
+
+.stepNum {
+  display: block;
+  font-family: var(--pf-font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--pf-crimson);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.6rem;
+
+  [data-theme='dark'] & {
+    color: var(--pf-crimson-soft);
+  }
+}
+
+.stepTitle {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.stepBody {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--pf-text-muted);
+}
+
+/* Application form --------------------------------------------------- */
+
+/* Clears the sticky navbar when an in-page #apply link jumps to the form. */
+.applySection {
+  scroll-margin-top: 5rem;
+}
+
+.formHead {
+  max-width: 46rem;
+  margin: 0 auto 2rem;
+}
+
+.formWrap {
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.crossLink {
+  margin: 1.5rem 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--pf-text-muted);
+
+  a {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+}
