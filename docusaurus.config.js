@@ -8,14 +8,22 @@ const darkCodeTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 
+// Used both for the `baseUrl` option and to build the icon/manifest hrefs in
+// `headTags` below, which Docusaurus emits verbatim (unlike `favicon`, it does
+// not prefix them for us).
+const baseUrl = '/';
+
 const config = {
   title: 'P Foundation',
   tagline: 'Empowering nations with open internet and free journalism.',
   url: 'https://p.foundation',
-  baseUrl: '/',
+  baseUrl,
   trailingSlash: false,
   onBrokenLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  // Kept at the site root: browsers and crawlers request /favicon.ico even
+  // when nothing declares it. static/img/favicon.ico is the same file, left in
+  // place so the previously indexed URL keeps resolving.
+  favicon: 'favicon.ico',
 
   // Markdown configuration
   markdown: {
@@ -41,6 +49,86 @@ const config = {
   },
 
   headTags: [
+    // Favicons. `favicon` above only emits the .ico; these add the scalable
+    // and PNG variants. Google Search wants a square icon that is a multiple
+    // of 48px, which the 48/96 PNGs (and the .ico's 48x48 frame) provide.
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/svg+xml',
+        href: `${baseUrl}img/favicon.svg`,
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '96x96',
+        href: `${baseUrl}img/favicon-96x96.png`,
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '48x48',
+        href: `${baseUrl}img/favicon-48x48.png`,
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: `${baseUrl}img/favicon-32x32.png`,
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: `${baseUrl}img/favicon-16x16.png`,
+      },
+    },
+    // Home-screen icon and label on iOS / iPadOS.
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: `${baseUrl}img/apple-touch-icon.png`,
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'apple-mobile-web-app-title',
+        content: 'P Foundation',
+      },
+    },
+    // Android/Chrome install metadata: name, colors and the 192/512 icons.
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'manifest',
+        href: `${baseUrl}manifest.json`,
+      },
+    },
+    // Matches --pf-bg in the dark theme, which is the default color mode
+    // (themeConfig.colorMode below sets dark and ignores prefers-color-scheme).
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'theme-color',
+        content: '#0f0c16',
+      },
+    },
     {
       tagName: 'link',
       attributes: {
