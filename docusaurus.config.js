@@ -336,7 +336,7 @@ const config = {
         },
       ],
       colorMode: {
-        defaultMode: 'dark',
+        defaultMode: 'light',
         // The switch itself lives in the footer (src/components/ThemeToggle);
         // the navbar slot is emptied in src/theme/Navbar/ColorModeToggle.
         disableSwitch: false,
