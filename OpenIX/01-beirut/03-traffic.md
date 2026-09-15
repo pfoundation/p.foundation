@@ -17,7 +17,7 @@ style={{
       height: 'auto',
       minWidth: '10vh',
       border: '1px solid #e2e8f0',
-      borderRadius: '12px',
+      borderRadius: '0px',
       boxShadow: '0px 0px 1px rgba(45, 55, 72, 0.05), 0px 4px 8px rgba(45, 55, 72, 0.1)',
       overflow: 'hidden',
     }}
