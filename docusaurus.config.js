@@ -6,13 +6,12 @@ const { themes } = require('prism-react-renderer');
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
 
-/** @type {import('@docusaurus/types').Config} */
-
 // Used both for the `baseUrl` option and to build the icon/manifest hrefs in
 // `headTags` below, which Docusaurus emits verbatim (unlike `favicon`, it does
 // not prefix them for us).
 const baseUrl = '/';
 
+/** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'P Foundation',
   tagline: 'Empowering nations with open internet and free journalism.',
