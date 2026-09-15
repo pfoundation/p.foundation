@@ -1,0 +1,12 @@
+{
+  "replacementPatterns": [
+    {
+      "pattern": "^/",
+      "replacement": "https://p.foundation/"
+    }
+  ],
+  "aliveStatusCodes": [200, 206, 429],
+  "retryOn429": true,
+  "retryCount": 3,
+  "timeout": "20s"
+}
