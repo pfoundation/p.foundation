@@ -1,6 +1,6 @@
 ---
 title: "It's About Time: Lebanon's Most-Watched Political Show Goes AI"
-description: When Sar El Waet decided to bring AI into Lebanon's most-watched political talk show, the ideas and the first working tools already existed, dreamed up and built by Rudy Hachache from inside the show's own team. Our job was to listen, help, and make it hold up on live television. Here is how it came together, and a look inside the machine, from the models and the live reel factory to on-air graphics and thousands of audience votes.
+description: When Sar El Waet decided to bring AI into Lebanon's most-watched political talk show, the ideas and the first working tools already existed, dreamed up and built by Rudy Hachache from inside the show's own team. Our job was to listen, help, and make it hold up on live television. Here is how it came together, with a close look at how the show now fact-checks its guests while they are still on air, and at the models, reel factory, on-air graphics, and audience votes behind it.
 slug: SarElWaetAI
 authors: jud
 hide_table_of_contents: false
@@ -45,6 +45,56 @@ Rudy's first version ran on one PC and worked only while that PC stayed switched
 
 It has been a genuine collaboration. Rudy never stopped building, and more than a hundred of the roughly six hundred changes to the codebase are his, including the groundwork for moving it to Cloudflare, the promises ledger, the on-air graphics, and the AI desk. Our share was mostly what viewers never see: one codebase instead of three, long jobs that survive a dropped connection, accounts and permissions for every producer, the public voting service, a dashboard that works on a phone, and the episode archive streamed from our [Hosted Media Services](/hms). Both sides built with AI coding agents, just as Rudy had since his very first reel.
 
+## Fact-Checking Live Television
+
+On a political talk show, the most dangerous moment is a confident number. A guest says it, the conversation moves on, and by the time anyone could check it, the whole country has heard it as fact. Catching that moment was the idea at the center of everything.
+
+### It Started as a Slide
+
+Rudy's pitch deck called it the Live Fact-Box, and it laid out the design in four steps: live transcription listens to the debate, checkable numbers and facts are flagged the moment they are said, an agent verifies them against trusted sources and the show's own archive, and an operator approves before anything reaches the screen. His example was the electricity file: a guest downplays what the state has spent on power, and a card comes back with decades of treasury transfers to the electricity company, sourced to the World Bank. What runs on show night today is that slide, built out step by step. The design is Rudy's; much of the live machinery behind it was our share of the work.
+
+### From a Sentence to a Claim
+
+The transcript does not wait for guests to finish. Because the live transcription cuts at breaths, new lines land throughout, even in the middle of a long monologue. Once about two hundred characters of new speech have built up and half a minute has passed since the last look, the extractor reads them, with the dozen lines before for context. A producer can also force a pass on the spot.
+
+Its instructions are strict. Only checkable facts count: numbers, dates, named events, who said what, laws and procedures, and history. Opinions, predictions, rhetorical questions, jokes, and lines like "the situation is difficult" are ignored. It picks at most five claims per pass and ranks them: numbers, statistics, and accusations first, events and dates next, small details last. It also sees every claim already caught tonight, so the same fact said twice, even in different words, is checked once.
+
+Every claim is stored twice: exactly as it was heard, and rewritten to stand on its own, with pronouns resolved and "last year" turned into a real date relative to the broadcast. The same pass also catches **moments**, a promise, a position, or a number a guest states about themselves, with no verdict attached, ready to become an on-screen card.
+
+### An Investigator for Every Claim
+
+Each claim then gets its own investigator: a durable workflow run with web search, page fetching, and three tools into the show's archive, one that searches by meaning, one for exact names and phrases, and one that reads a whole episode transcript. It searches the web first, two to four searches at most, and stops as soon as two independent sources agree. When a guest says "I said it right here last year," the verdict can point to the episode and the second.
+
+The rules are blunt: no link and no number that did not come out of a tool. Every source must carry its publication date, month and year at the very least. If a search result does not show one, the investigator opens the page to find it, and a verdict that comes back without dates is sent back once to fill them in. Guessing a date is forbidden.
+
+Live television does not wait for a stuck process, and neither does the system. Each attempt gets four minutes before it is retried, a sweep relaunches any check that dies mid-flight, and a claim that cannot be settled ends as "unverified" instead of spinning forever.
+
+### Sources Have Ranks
+
+Not every outlet is equal, and the station decided which ones count. Its leadership drew up a list of fifty outlets, each with its owner and a credibility score from one to five, and that list is written into every research prompt the system sends. Prefer the top two tiers. Never rest a number on a low-tier outlet alone: confirm it from a top-tier outlet or an official document, or say plainly that it is unconfirmed. Official documents, the Official Gazette, Banque du Liban circulars, ministry websites, and the original video, outrank any media. Twenty-eight of the fifty outlets have no website at all, so sources are matched by name as well as by address. Everywhere in the dashboard, each source carries a colored chip for its tier, so a producer can see at a glance what a verdict stands on.
+
+### Six Verdicts and a Line to Whisper
+
+Every claim lands on one of six verdicts: **true**, where the core fact and figure hold within about five percent; **mostly true**; **needs context**, literally true but misleading on its own, like a cherry-picked period or the wrong baseline; **misleading**; **false**; and **unverified**, which the investigator has to say out loud rather than guess.
+
+With the verdict come a confidence score, two to five sentences of explanation, the exact correct wording whenever a claim is false, misleading, or missing context, up to six sources, and any archive moments. And one more thing, written for the pressure of a live control room: a summary of no more than 160 characters, short enough, in the words of its own instructions, for a producer to whisper to the presenter.
+
+On the producer's screen, each claim is a card beside the transcript. Brief mode shows the verdict and the claim; detailed mode adds the explanation and the sources. Tapping the time rewinds the player to just before the words were said.
+
+### Second Opinions and Hand Checks
+
+Any verdict can be checked again from scratch by xAI Grok 4.6, a model from an entirely different family, and the card shows which engine reached it. Producers are not limited to what the extractor catches, either. They can select a few words in any transcript line to check just those, or type a claim straight in, and it goes through the same investigation, marked with the name of whoever asked.
+
+### From Verdict to Screen
+
+When a verdict holds up, one click sends it to the graphics: a draft card with the claim as it was said, the verdict badge, the correction or summary, and a source line with the outlet and the month. A claim that is still being checked cannot be sent. Colors follow the verdict: green for true, white and silver for the shades in between, crimson and red for misleading and false. The producer can still change the verdict before approving the card, and only then does it reach the operator's deck. Nothing a model concludes goes on air on its own.
+
+### Checking Before the Show, Too
+
+The same discipline runs through prep. The receipts ledger reads every episode a guest has appeared on, pulls out each promise and prediction, and checks them online in batches of eight: delivered, partly delivered, not delivered, or unclear. Topic questions are built on facts gathered and sourced up front, and every question names what it rests on. A dossier line without a citation or an archive second never appears, and the intro lists the facts it leans on, each with its source's tier. It all goes back to the rule from Rudy's early reels: find the direct quote or the primary document, or keep the number off the screen.
+
+The machine does the legwork while the show is still on. The call is always a producer's.
+
 ## A Cast of Models
 
 There is no single "AI" behind the show. There is a cast, and every model has one job:
@@ -52,72 +102,62 @@ There is no single "AI" behind the show. There is a cast, and every model has on
 - **The ears: Google Gemini 3.5 Transcribe.** It turns every episode into text with a timestamp on every word and a label on every speaker, and it handles Lebanese Arabic better than anything Rudy tried before it. In his tests it got through 25 minutes of audio in about 44 seconds. Its live sibling, **Gemini 3.5 Transcribe Live**, listens to the broadcast as it happens. The direct line to Google only ever carries audio.
 - **The writer: Anthropic Claude Opus 5.** Everything that has to sound like the show goes through it: Marcel's questions, the intro, the contradictions in a guest's record, the text on every on-air card, and the AI desk's verdicts.
 - **The quick hands: Google Gemini 3.7 Flash.** The fast calls, over and over through the night: which moments deserve a reel, which frame makes the best cover, where the speaker is standing so a vertical crop can follow them, who said which line, and the English and French subtitles.
-- **The researcher:** a web-connected model with live web search and fetch tools and the show's own archive at hand, for dossiers, receipts, and fact-checks. When a verdict needs a second opinion, **xAI Grok 4.6**, from a different family of model entirely, checks the same claim from scratch.
+- **The fact-checker:** a web-connected model with live web search and fetch tools and the show's own archive at hand, for live fact-checks, receipts, and dossiers. When a verdict needs a second opinion, **xAI Grok 4.6**, from a different family of model entirely, checks the same claim from scratch.
 - **The closer: Google Gemini 3.1 Pro.** After the show, one call reads the whole broadcast and names every speaker turn.
 - **The librarian: Cloudflare AI Search.** It indexes the archive for meaning, not just words, and its MCP endpoint hands the archive agent its tools.
 
 Every language model is reached through OpenRouter, so swapping one for a better one is a one-line change, not a rewrite.
 
-## Inside Show Night
+## More From Show Night
 
 ### Before Air: The Dossier Every Guest Dreads
 
-Prep builds a file on every guest: verbatim quotes from their past appearances on the show, each playable at the exact second, what they have told the media over the years, and where they contradict themselves, then versus now. A receipts ledger reads every episode the guest has been on, pulls out each promise, and checks it against what actually happened. Marcel's questions are drafted in his own voice, learned from 489 archived episodes of his real intros and questions, and every question points to the quotes and sourced facts it rests on. It all lands in one shared briefing file that prints to PDF or exports to Word.
+Prep builds a file on every guest: verbatim quotes from their past appearances on the show, each playable at the exact second, what they have told the media over the years, and where they contradict themselves, then versus now. Marcel's questions are drafted in his own voice, learned from 489 archived episodes of his real intros and questions. It all lands in one shared briefing file that prints to PDF or exports to Word.
 
 ### Listening Live
 
-The broadcast audio streams into Gemini Live, and the transcript scrolls across the producers' screens as the guests speak. Waiting for the model to decide when a sentence has ended is too slow for live television, so the system listens for the breath: after twelve seconds of speech it cuts at the next short pause, and never lets a turn run past forty-five. The live model does not know who is speaking, so a producer does: one key press per speaker change, 1 to 9, and every new line is tagged until the next press. At the break, Gemini 3.7 Flash fills in whatever was missed, and a producer's tag always wins over the model's guess.
-
-### Fact-Checking While the Guest Is Still Talking
-
-As the transcript grows, checkable claims are pulled out in batches: numbers, events, quotes, history, and laws, anything a viewer could look up. Each claim gets its own durable workflow that searches the web, reads the sources, and searches the show's own archive for what was said on this program before. The verdict comes back with a confidence score, a correction when one is needed, and the outlet, link, and date of every source, each ranked against the station's own credibility list. A producer can also check any line on demand, or type a claim in by hand. The same pass also catches **moments**: a promise, a position, a number a guest just stated about themselves. One click turns any of them into an on-screen card.
+The broadcast audio streams into Gemini Live. Waiting for the model to decide when a sentence has ended is too slow for live television, so the system listens for the breath: after twelve seconds of speech it cuts at the next short pause, and never lets a turn run past forty-five. The live model does not know who is speaking, so a producer does, with one key press, 1 to 9, at every change of speaker. Later, Gemini 3.7 Flash fills in whatever was missed, and a producer's tag always wins over the model's guess.
 
 ### Graphics That Belong in the Studio
 
-The on-air graphics are a web page, running inside vMix as a transparent 1920 by 1080 browser source, but you would never know it. The guest lower thirds were rebuilt from the studio's own Vizrt scenes, matching their geometry, colors, and animation timing, and the show's logo bug, red sweep and all, is drawn by the same page, with every other graphic measured to stay clear of it. There are 51 designs, from fact-check verdicts and big numbers to then-and-now contradictions and full-screen charts, each one a single file.
-
-Every card is written to fit. Claude condenses it to the show's word budgets, fourteen words and a nine-word second line for a lower third, and keeps the original a click away. A producer approves each card on the control page, the vMix operator sees only the approved deck and presses Air, and Marcel follows along on an iPad showing what is in preview and what is on air. A suite of 68 automated checks renders the real graphics with the real fonts at broadcast resolution, so a line that would overflow is caught in testing, not on television.
+The on-air graphics are a web page running inside vMix as a transparent browser source, but you would never know it. The guest lower thirds were rebuilt from the studio's own Vizrt scenes, down to their geometry, colors, and animation timing, and the show's logo bug, red sweep and all, is drawn by the same page. There are 51 designs, from fact-check verdicts to then-and-now contradictions and full-screen charts. Claude condenses every card to the show's word budgets, a producer approves it, the vMix operator sees only the approved deck and presses Air, and Marcel follows along on an iPad showing what is in preview and what is on air. A suite of 68 automated checks renders the real graphics with the real fonts at broadcast resolution, so a line that would overflow is caught in testing, not on television.
 
 ### Thousands of Votes in a Few Minutes
 
-When a poll goes on screen, a QR code sends the audience to the show's own voting site, and thousands of phones hit it within minutes. That service runs on its own, completely separate from the dashboard, with no access to anything but votes. A Cloudflare Turnstile check keeps bots out without a puzzle. Each vote drops onto a queue, and every second a batch of up to a hundred is written to ClickHouse in one insert, acknowledged only once it is safely stored. Counting is first-vote-wins per device, so a double tap, a retry, or a slow connection never inflates a total, and the bars on screen trail the real count by only a few seconds.
+When a poll goes on screen, a QR code sends the audience to the show's own voting site, and thousands of phones hit it within minutes. That service runs on its own, completely separate from the dashboard. A Cloudflare Turnstile check keeps bots out without a puzzle, each vote drops onto a queue, and every second a batch of up to a hundred is written to ClickHouse, acknowledged only once it is safely stored. Counting is first-vote-wins per device, so a double tap or a retry never inflates a total, and the bars on screen trail the real count by only a few seconds.
 
-Live traffic still had a lesson for us. One Thursday, the logs showed a single phone voting 71 times. The iPhone's built-in code scanner opens pages in a mode that forgets cookies, so every rescan looked like a new phone. Within two days a per-network cap was in place, enforced by a small Durable Object for every poll and network, and the voting page learned to insist on a fresh bot check for every single vote.
-
-The poll can even show where the guests stand: each guest's photo pops onto the answer they picked, right on the results bars.
+Live traffic still had a lesson for us. One Thursday, the logs showed a single phone voting 71 times: the iPhone's built-in code scanner opens pages in a mode that forgets cookies, so every rescan looked like a new phone. Within two days a per-network cap was in place, and every vote now needs a fresh bot check.
 
 ### The AI Desk: Who Answered, Who Dodged, Who Interrupted
 
-At the break, a producer picks the stretch of the show and tonight's guests, and the AI desk reads it. For every guest it drafts which questions they answered, half answered, or deflected, the quote that proves it, their tone on a five-point scale, a contradiction from the same night, and their strongest line. If enough of the transcript is tagged, it adds a fourth card on the floor itself: how long each guest spoke, their longest uninterrupted run, and how often they cut in on someone else. Marcel is never counted. The layout follows the table: one guest gets a solo card, two go head to head, a panel gets a grid. A producer can change every word and every number before any of it goes near the operator.
+At the break, the AI desk reads the last stretch of the show and drafts full-screen graphics for every guest: which questions they answered, half answered, or deflected, with the quote that proves it, their tone, and their strongest line. When enough of the transcript is tagged, it adds the floor itself: who spoke longest, the longest uninterrupted run, and who cut in on whom. Marcel is never counted. A producer can change every word and every number before any of it goes near the operator.
 
 ### A Reel Factory That Never Sleeps
 
-While the show is on, the reel factory wakes up every three minutes and reads the last fifteen. Gemini 3.7 Flash, thinking at its highest setting, looks for moments that hold a complete idea, at least nine seconds, ideally fifteen or more. Each pick becomes a job in a durable workflow:
+While the show is on, the reel factory wakes up every three minutes and reads the last fifteen. Gemini 3.7 Flash, thinking at its highest setting, looks for moments that hold a complete idea, at least nine seconds and ideally fifteen or more. Each pick becomes a durable job:
 
-1. Find the moment in the live recording, and cut it in a media container running ffmpeg and a headless browser.
+1. Cut the moment from the live recording in a media container running ffmpeg and a headless browser.
 2. Transcribe the cut itself, for word-perfect timing on its own clock.
-3. Lay out the captions, two lines at most with the key words in the show's red, and render them in the browser as transparent images, because burning Arabic subtitles directly scrambles right-to-left text.
+3. Render the captions in the browser as transparent images, two lines at most with the key words in red, because burning Arabic subtitles directly scrambles right-to-left text.
 4. Burn captions, the show's lockup, and the episode line in a single encoding pass.
-5. Show a vision model eight frames from inside the cut and let it pick the one where the speaker looks straight into the camera for the cover.
-6. Transcribe the finished file one more time and check it before anyone sees it.
+5. Let a vision model pick, from eight frames, the one where the speaker looks straight into the camera for the cover.
+6. Transcribe the finished file once more and check it before anyone sees it.
 
-The reel then waits on the review board for a person to approve it, reject it, or leave a note. With one click it can be rebuilt as a wide 16:9 version, or reframed so the vertical crop follows whoever is speaking: the vision model looks at a frame every two seconds, the crop tracks the speaker, and a wide studio shot fills any stretch where nobody is on screen. Captions can be corrected line by line and burned again, with English and French versions a click away. Producers can switch the automatic suggestions off for the night, and after the show every clip cuts from the saved recording instead of the live one.
+The reel then waits for a person to approve it. One click rebuilds it as a wide 16:9 version, or reframes the vertical crop to follow whoever is speaking, and English and French subtitles are a click away.
 
 ### After the Credits
 
-Once the episode is published, the team runs a cleaner pass. It re-transcribes the full broadcast from our [Hosted Media Services](/hms) in ten-minute chunks, then makes a single Gemini 3.1 Pro call that names every turn using the producers' live tags, and the episode joins the searchable archive with confirmed names.
-
-That archive is the show's memory. Ask it a question in plain language and an agent searches it and plays you the sentence. Search it word by word, in Arabic, English, or Arabizi. Count how many times a word, a name, or a theme was said on air, year by year, with no model involved at all. Let the hunt pair a story from this week's news with a moment from years ago, or cut any moment in the export studio: set In and Out, fix captions, mark a word in red, pick a thumbnail and one of three suggested headlines, and export.
+Once the episode is published, the team re-transcribes the full broadcast from our [Hosted Media Services](/hms), and a single Gemini 3.1 Pro call names every speaker turn from the producers' live tags. The episode then joins the archive, the show's memory: ask it a question in plain language and it plays you the sentence, count how many times a word was said on air year by year, or cut any moment in the export studio.
 
 ## The Plumbing
 
-Everything runs on one stack, Bun and TypeScript throughout, with a Hono API and a Next.js dashboard on Cloudflare: Workers for the app, D1 for the data, R2 for the media, Workflows for anything that takes more than a few seconds, Containers for ffmpeg and the headless browser, Durable Objects and Queues for the votes, Stream for the live recording, and AI Search for the archive, with ClickHouse counting the votes and our [Hosted Media Services](/hms) serving the episodes. Every model call is a saved step, so a dropped connection resumes where it left off instead of starting over, and a test suite of more than two hundred files has to pass before anything ships.
+Everything runs on one stack, Bun and TypeScript throughout, with a Hono API and a Next.js dashboard on Cloudflare: Workers for the app, D1 for the data, R2 for the media, Workflows for anything that takes more than a few seconds, Containers for ffmpeg and the headless browser, Durable Objects and Queues for the votes, Stream for the live recording, and AI Search for the archive, with ClickHouse counting the votes and our [Hosted Media Services](/hms) serving the episodes. Every model call is a saved step, so a dropped connection resumes where it left off, and a test suite of more than two hundred files has to pass before anything ships.
 
 Rudy's original version ran on Python, a local Whisper model, and one graphics card, and his explainers were made with Higgsfield's image and video models and Claude Code.
 
 ## The Rules That Don't Bend
 
-However smart the models get, three rules stay fixed. **A person approves everything** before it airs or goes online. **Every source is ranked and cited** against a list of fifty outlets drawn up by the station's own leadership, and a claim that rests on a weak source alone is not cleared for air. And **no one's name is ever guessed**: the models suggest, a person confirms.
+However smart the models get, three rules stay fixed. **A person approves everything** before it airs or goes online. **Every source is ranked and cited**, and a claim that rests on a weak source alone is not cleared for air. And **no one's name is ever guessed**: the models suggest, a person confirms.
 
 The models draft, search, and suggest. The team decides.
 
