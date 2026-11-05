@@ -7,7 +7,9 @@
  * static site on GitHub Pages cannot do itself:
  *   - POST /api/donate/checkout      creates Stripe donation Checkout sessions
  *   - POST /api/newsletter/subscribe subscribes emails to the Mailgun list
- *   - POST /api/apply                emails application and contact forms via Mailgun
+ *   - POST /api/apply                records application, contact, and support forms
+ *                                    in Salesforce (Lead or Case), falling back to a
+ *                                    Mailgun email when Salesforce fails
  * Plus GET /health for monitoring. It must not serve pages or static assets.
  */
 
@@ -39,6 +41,53 @@ const APPLICATION_FORM_LABELS = {
   contact: 'Contact',
   support: 'Partner support',
 };
+
+/**
+ * Salesforce object created for each form. Applications are sales
+ * prospects (Leads); contact and support messages need a reply from the
+ * team (Cases). Every form key in APPLICATION_FORM_LABELS must appear here.
+ */
+const SALESFORCE_OBJECT_BY_FORM = {
+  mediaguard: 'Lead',
+  citizenmesh: 'Lead',
+  resilientnet: 'Lead',
+  'opencache-isp': 'Lead',
+  'opencache-provider': 'Lead',
+  contact: 'Case',
+  support: 'Case',
+};
+
+// Question labels (as sent by the site) that map onto standard Salesforce
+// fields. The first label present in a submission wins. Every answer is also
+// written in full to Description, so unmapped questions are never lost.
+const SF_NAME_LABELS = ['Contact name', 'Your name', 'Name'];
+const SF_COMPANY_LABELS = [
+  'Organization or institution name',
+  'Company',
+  'Network name',
+  'Organization',
+];
+const SF_WEBSITE_LABELS = ['Website', 'Company website'];
+
+// Support form severities mapped onto the standard Case Priority picklist.
+const SF_CASE_PRIORITY = {
+  Low: 'Low',
+  Normal: 'Medium',
+  High: 'High',
+  Urgent: 'High',
+};
+
+// Salesforce standard Email fields hold at most 80 characters. Longer
+// addresses skip Salesforce and go out by email instead of being truncated.
+const SF_MAX_EMAIL_LENGTH = 80;
+const SF_TIMEOUT_MS = 8000;
+// Client credentials responses carry no expiry, so cached tokens are
+// refreshed well inside the shortest Salesforce session timeout (15 min is
+// the minimum org setting). A 401 also forces a refresh.
+const SF_TOKEN_TTL_MS = 10 * 60 * 1000;
+
+/** Module scoped token cache, shared by requests within one isolate. */
+let sfTokenCache = null;
 
 /**
  * Build the CORS headers for a request. The Origin header must exactly match
@@ -437,7 +486,7 @@ async function handleApply(request, env, cors) {
     );
   }
 
-  const lines = [`Form: ${formLabel}`, `Sender email: ${email}`, ''];
+  const answers = [];
   for (const [rawLabel, rawValue] of entries) {
     if (typeof rawValue !== 'string') {
       return jsonResponse(
@@ -466,12 +515,75 @@ async function handleApply(request, env, cors) {
         cors
       );
     }
-    // Indent continuation lines of multi line answers under their label.
+    answers.push([label, value]);
+  }
+
+  const submission = { form, formLabel, email, answers };
+
+  // Salesforce first; any failure falls back to the Mailgun email so a
+  // submission is never lost.
+  const salesforce = await submitToSalesforce(submission, env);
+  if (salesforce.ok) {
+    return jsonResponse({ ok: true }, 200, cors);
+  }
+  if (salesforce.reason !== 'not configured') {
+    console.error('Salesforce submission failed:', salesforce.reason);
+  }
+
+  const emailSent = await sendApplicationEmail(
+    submission,
+    env,
+    salesforce.reason
+  );
+  if (!emailSent) {
+    return jsonResponse(
+      { error: 'Email service error. Please try again.' },
+      502,
+      cors
+    );
+  }
+
+  return jsonResponse({ ok: true }, 200, cors);
+}
+
+/**
+ * Render a submission as plain text lines: a header block, then one
+ * "label: answer" line per question, with continuation lines of multi line
+ * answers indented under their label.
+ *
+ * @param {{ formLabel: string, email: string, answers: string[][] }} submission
+ * @returns {string} Plain text body.
+ */
+function formatSubmission({ formLabel, email, answers }) {
+  const lines = [`Form: ${formLabel}`, `Sender email: ${email}`, ''];
+  for (const [label, value] of answers) {
     const [firstLine, ...restLines] = value.split('\n');
     lines.push(`${label}: ${firstLine}`);
     for (const extraLine of restLines) {
       lines.push(`  ${extraLine}`);
     }
+  }
+  return lines.join('\n');
+}
+
+/**
+ * Email a submission to contact@p.foundation via Mailgun, with Reply-To set
+ * to the sender. When Salesforce was configured but failed, the body says
+ * so, signalling the record must be entered in Salesforce by hand.
+ *
+ * @param {{ formLabel: string, email: string, answers: string[][] }} submission
+ * @param {Record<string, string>} env Worker environment bindings.
+ * @param {string} salesforceReason Why Salesforce did not take the record.
+ * @returns {Promise<boolean>} True when Mailgun accepted the message.
+ */
+async function sendApplicationEmail(submission, env, salesforceReason) {
+  const { formLabel, email } = submission;
+  let text = formatSubmission(submission);
+  if (salesforceReason && salesforceReason !== 'not configured') {
+    text +=
+      '\n\n---\nSalesforce did not accept this submission, ' +
+      'so it was not recorded there. Reason: ' +
+      salesforceReason;
   }
 
   // URLSearchParams handles all value encoding; never concatenate strings
@@ -482,7 +594,7 @@ async function handleApply(request, env, cors) {
   // "Website form:" reads naturally for both applications ("Website form:
   // MediaGuard program") and contact messages ("Website form: Contact").
   params.set('subject', `Website form: ${formLabel} (${email})`);
-  params.set('text', lines.join('\n'));
+  params.set('text', text);
   params.set('h:Reply-To', email);
 
   const mailgunResponse = await fetch(
@@ -506,14 +618,211 @@ async function handleApply(request, env, cors) {
       mailgunResponse.status,
       await mailgunResponse.text()
     );
-    return jsonResponse(
-      { error: 'Email service error. Please try again.' },
-      502,
-      cors
+    return false;
+  }
+  return true;
+}
+
+/**
+ * Truncate a string to a Salesforce field length.
+ *
+ * @param {string} value Raw value.
+ * @param {number} max Field length.
+ * @returns {string} Value of at most max characters.
+ */
+function sfClip(value, max) {
+  return value.length > max ? value.slice(0, max) : value;
+}
+
+/**
+ * Return the answer for the first label in labels that the submission
+ * contains, or an empty string.
+ *
+ * @param {string[][]} answers Sanitized [label, value] pairs.
+ * @param {string[]} labels Candidate question labels, in priority order.
+ * @returns {string} Trimmed answer, possibly empty.
+ */
+function answerFor(answers, labels) {
+  for (const label of labels) {
+    const match = answers.find(([key]) => key === label);
+    if (match && match[1].trim()) {
+      return match[1].trim();
+    }
+  }
+  return '';
+}
+
+/**
+ * Get a Salesforce access token with the OAuth 2.0 client credentials flow,
+ * reusing a cached token unless forceRefresh is set.
+ *
+ * @param {Record<string, string>} env Worker environment bindings.
+ * @param {boolean} forceRefresh Ignore the cache.
+ * @returns {Promise<{ accessToken: string, instanceUrl: string }>}
+ */
+async function getSalesforceToken(env, forceRefresh) {
+  if (!forceRefresh && sfTokenCache && sfTokenCache.expiresAt > Date.now()) {
+    return sfTokenCache;
+  }
+  const params = new URLSearchParams();
+  params.set('grant_type', 'client_credentials');
+  params.set('client_id', env.SF_CLIENT_ID);
+  params.set('client_secret', env.SF_CLIENT_SECRET);
+
+  const response = await fetch(
+    `${env.SF_INSTANCE_URL.replace(/\/+$/, '')}/services/oauth2/token`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params,
+      signal: AbortSignal.timeout(SF_TIMEOUT_MS),
+    }
+  );
+  if (!response.ok) {
+    sfTokenCache = null;
+    throw new Error(
+      `token request failed with ${response.status}: ${await response.text()}`
     );
   }
+  const data = await response.json();
+  sfTokenCache = {
+    accessToken: data.access_token,
+    instanceUrl: data.instance_url || env.SF_INSTANCE_URL,
+    expiresAt: Date.now() + SF_TOKEN_TTL_MS,
+  };
+  return sfTokenCache;
+}
 
-  return jsonResponse({ ok: true }, 200, cors);
+/**
+ * Build the Salesforce record body for a submission.
+ *
+ * @param {'Lead' | 'Case'} sobject Target object.
+ * @param {{ form: string, formLabel: string, email: string, answers: string[][] }} submission
+ * @returns {Record<string, string>} Field values for the REST API.
+ */
+function buildSalesforceRecord(sobject, submission) {
+  const { form, formLabel, email, answers } = submission;
+  const description = sfClip(formatSubmission(submission), 32000);
+  const name = answerFor(answers, SF_NAME_LABELS);
+  const company = answerFor(answers, SF_COMPANY_LABELS);
+
+  if (sobject === 'Lead') {
+    // Lead requires LastName and Company. Split on the last space; a single
+    // word name becomes the last name.
+    const split = name.lastIndexOf(' ');
+    const firstName = split > 0 ? name.slice(0, split).trim() : '';
+    const lastName = (split > 0 ? name.slice(split + 1) : name) || email;
+    const record = {
+      LastName: sfClip(lastName, 80),
+      Company: sfClip(company || 'Not provided', 255),
+      Email: email,
+      LeadSource: 'Web',
+      Description: description,
+      Website_Form__c: form,
+    };
+    if (firstName) {
+      record.FirstName = sfClip(firstName, 40);
+    }
+    const website = answerFor(answers, SF_WEBSITE_LABELS);
+    if (website) {
+      record.Website = sfClip(website, 255);
+    }
+    return record;
+  }
+
+  // Case: web submissions use the Supplied* fields, which need no Contact or
+  // Account to exist.
+  const subject =
+    answerFor(answers, ['Subject']) ||
+    `${formLabel}: ${answerFor(answers, ['Topic']) || 'General'}`;
+  const record = {
+    Origin: 'Web',
+    Subject: sfClip(subject, 255),
+    SuppliedEmail: email,
+    Description: description,
+    Website_Form__c: form,
+  };
+  if (name) {
+    record.SuppliedName = sfClip(name, 80);
+  }
+  if (company) {
+    record.SuppliedCompany = sfClip(company, 80);
+  }
+  const priority = SF_CASE_PRIORITY[answerFor(answers, ['Severity'])];
+  if (priority) {
+    record.Priority = priority;
+  }
+  return record;
+}
+
+/**
+ * Create a Lead or Case for a submission. Never throws: every failure is
+ * returned as a reason, which the caller uses to fall back to email.
+ * Salesforce is skipped when SF_INSTANCE_URL, SF_CLIENT_ID, or
+ * SF_CLIENT_SECRET is unset.
+ *
+ * @param {{ form: string, formLabel: string, email: string, answers: string[][] }} submission
+ * @param {Record<string, string>} env Worker environment bindings.
+ * @returns {Promise<{ ok: true, id: string } | { ok: false, reason: string }>}
+ */
+async function submitToSalesforce(submission, env) {
+  if (!env.SF_INSTANCE_URL || !env.SF_CLIENT_ID || !env.SF_CLIENT_SECRET) {
+    return { ok: false, reason: 'not configured' };
+  }
+  const sobject = SALESFORCE_OBJECT_BY_FORM[submission.form];
+  if (!sobject) {
+    return { ok: false, reason: `no Salesforce object for ${submission.form}` };
+  }
+  if (submission.email.length > SF_MAX_EMAIL_LENGTH) {
+    return { ok: false, reason: 'email longer than 80 characters' };
+  }
+  const record = buildSalesforceRecord(sobject, submission);
+  const apiVersion = env.SF_API_VERSION || 'v66.0';
+
+  try {
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      const token = await getSalesforceToken(env, attempt > 0);
+      const response = await fetch(
+        `${token.instanceUrl}/services/data/${apiVersion}/sobjects/${sobject}`,
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token.accessToken}`,
+            'Content-Type': 'application/json',
+            // Run the active Lead or Case assignment rule.
+            'Sforce-Auto-Assign': 'TRUE',
+            // A returning applicant must not be rejected by a duplicate rule;
+            // the record is saved and flagged as a potential duplicate.
+            'Sforce-Duplicate-Rule-Header': 'allowSave=true',
+          },
+          body: JSON.stringify(record),
+          signal: AbortSignal.timeout(SF_TIMEOUT_MS),
+        }
+      );
+      if (response.status === 401 && attempt === 0) {
+        // Expired or revoked session: refresh the token and retry once.
+        continue;
+      }
+      const text = await response.text();
+      if (!response.ok) {
+        return {
+          ok: false,
+          reason: `${sobject} create failed with ${response.status}: ${text}`,
+        };
+      }
+      const result = JSON.parse(text);
+      if (!result.success) {
+        return { ok: false, reason: `${sobject} create failed: ${text}` };
+      }
+      return { ok: true, id: result.id };
+    }
+    return { ok: false, reason: `${sobject} create failed with 401` };
+  } catch (err) {
+    return {
+      ok: false,
+      reason: String(err && err.message ? err.message : err),
+    };
+  }
 }
 
 export default {

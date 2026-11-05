@@ -4,6 +4,8 @@
 # locally, or let the Deploy Worker GitHub Action push them on every deploy:
 #   STRIPE_SECRET_KEY  Stripe secret (or restricted) API key
 #   MAILGUN_API_KEY    Mailgun private API key
+#   SF_CLIENT_ID       Salesforce External Client App consumer key
+#   SF_CLIENT_SECRET   Salesforce External Client App consumer secret
 
 name = "pf-backend"
 main = "src/index.js"
@@ -23,6 +25,10 @@ MAILGUN_LIST_ADDRESS = "updates@bounce.p.foundation"
 MAILGUN_DOMAIN = "bounce.p.foundation"
 MAILGUN_API_BASE = "https://api.mailgun.net"
 SITE_URL = "https://p.foundation"
+# Salesforce My Domain URL, e.g. "https://pfoundation.my.salesforce.com".
+# While empty, /api/apply skips Salesforce and only sends the email.
+SF_INSTANCE_URL = "https://pfoundation.my.salesforce.com"
+SF_API_VERSION = "v66.0"
 
 [observability.logs]
 enabled = true
