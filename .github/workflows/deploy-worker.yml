@@ -31,6 +31,10 @@ jobs:
           secrets: |
             STRIPE_SECRET_KEY
             MAILGUN_API_KEY
+            SF_CLIENT_ID
+            SF_CLIENT_SECRET
         env:
           STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+          SF_CLIENT_ID: ${{ secrets.SF_CLIENT_ID }}
+          SF_CLIENT_SECRET: ${{ secrets.SF_CLIENT_SECRET }}

@@ -1,3 +1,6 @@
 # Copy this file to .dev.vars for npx wrangler dev.
 STRIPE_SECRET_KEY=sk_test_replace_me
 MAILGUN_API_KEY=replace_me
+# Optional: leave empty to skip Salesforce locally (forms then go by email).
+SF_CLIENT_ID=
+SF_CLIENT_SECRET=
