@@ -35,6 +35,8 @@ Before engaging a subprocessor, we review its security and privacy practices. Ea
 | **Stripe, Inc.**                                   | Stripe Checkout                                                | Donation processing and receipts                                        | Name, email address, billing details, payment card data, donation amount            | United States                 |
 | **Mailgun Technologies, Inc.**                     | Mailgun                                                        | Newsletter delivery and the email delivery of website forms             | Name, email address, form submissions                                               | United States                 |
 | **Anthropic, PBC**                                 | Claude                                                         | AI assistance with drafting, analysis, and internal operations          | Information that staff include in their requests, which may contain contact details | United States                 |
+| **OpenAI OpCo, LLC**                               | ChatGPT                                                        | AI assistance with drafting, analysis, and internal operations          | Information that staff include in their requests, which may contain contact details | United States                 |
+| **OpenRouter, Inc.**                               | OpenRouter                                                     | Routing of AI requests to model providers                               | Information included in AI requests, which may contain contact details              | United States                 |
 
 ## Network Providers
 
