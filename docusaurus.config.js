@@ -291,6 +291,16 @@ const config = {
         sidebarCollapsible: true,
       },
     ],
+    // Legal pages (/terms/*) share one sidebar for moving between them.
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'terms',
+        path: 'terms',
+        routeBasePath: 'terms',
+        sidebarPath: require.resolve('./sidebarsTerms.js'),
+      },
+    ],
   ],
   presets: [
     [

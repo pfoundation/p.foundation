@@ -1,4 +1,5 @@
 ---
+sidebar_label: 'Subprocessors'
 title: P Foundation Subprocessors
 description: The third-party service providers that P Foundation engages to process personal information on its behalf, with the purpose, data, and location of each.
 ---

@@ -1,4 +1,5 @@
 ---
+sidebar_label: 'Privacy Policy'
 title: P Foundation Privacy Policy
 description: P Foundation's Privacy Policy details the collection, use, and protection of your personal information, confirming we do not sell your data and adhere to US and international privacy standards.
 ---

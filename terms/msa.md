@@ -1,4 +1,5 @@
 ---
+sidebar_label: 'Master Services Agreement'
 title: 'P Foundation Master Services Agreement'
 description: 'The general terms that apply to every P Foundation service, with the form of Service Order used to order a service.'
 ---

@@ -1,4 +1,5 @@
 ---
+sidebar_label: 'OpenCache SLA'
 title: 'OpenCache Service Level Agreement'
 description: 'Annex A to the OpenCache Service Terms: availability commitments, incident response, maintenance, remedies and reporting for OpenCache.'
 ---

@@ -1,4 +1,5 @@
 ---
+sidebar_label: 'OpenCache Service Terms'
 title: 'OpenCache Service Terms'
 description: 'Appendix 1 to the P Foundation Master Services Agreement: the service-specific terms for OpenCache.'
 ---
