@@ -1,23 +1,27 @@
 ---
 sidebar_label: 'Master Services Agreement'
 title: 'P Foundation Master Services Agreement'
-description: 'The general terms that apply to every P Foundation service, with the form of Service Order used to order a service.'
+description: "P Foundation's standard terms for its services, which apply when P Foundation and a customer sign a Service Order."
 ---
 
 # P Foundation Master Services Agreement
 
-**Last Updated:** October 21, 2026 (version 0.3)
+**Last Updated:** November 9, 2026
 
-This Agreement sets the general terms for every P Foundation service. Each service has its own Service Appendix, and each customer's specifics go in a Service Order. Items in \[square brackets\] are completed per customer.
+These are P Foundation's standard terms for its services. They apply to a customer only when that customer and P Foundation sign a Service Order that refers to them. Each service has its own Service Appendix, and each customer's specifics, including any agreed variations, are set out in its Service Order.
 
-## Parties
+## Parties and Formation
 
-This Master Services Agreement (the "Agreement") is made on \[●\] (the "Effective Date") between:
+This Master Services Agreement (the "Agreement") is between:
 
 1. **P Foundation**, a District of Columbia nonprofit corporation recognized as tax-exempt under Section 501(c)(3) of the U.S. Internal Revenue Code, with offices at 700 12th St NW, Suite 700, Washington, DC 20005, United States ("P Foundation" or "Provider"); and
-2. **\[Customer legal name\]**, a \[entity type\] incorporated in \[jurisdiction\] \[registration no. ●\], with its principal place of business at \[address\] ("Customer").
+2. the customer named in a Service Order that refers to this Agreement ("Customer").
 
 Provider and Customer are each a "Party" and together the "Parties".
+
+**Formation.** This Agreement binds Provider and Customer from the date both Parties sign their first Service Order (the "Effective Date"). Publication of this Agreement is not an offer to supply any Service. Where Provider and Customer have signed a separate master services agreement, that agreement applies in place of this one.
+
+**Versions.** Provider may update this Agreement and its Service Appendices by publishing a new version on this website. Each Service Order is governed by the version in force on the date it is signed. A later version applies to that Service Order only if both Parties agree in writing, for example by signing a new Service Order. Provider will supply any earlier version on request.
 
 ## Background
 
@@ -41,14 +45,14 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 - **"Personal Data"** means information relating to an identified or identifiable natural person, including IP addresses and user or device identifiers.
 - **"Service"** means each service that Provider supplies under a Service Order, as described in its Service Appendix.
 - **"Service Appendix"** means the service-specific terms for a Service, including any service level agreement attached to it.
-- **"Service Order"** means an order in the form of Schedule 1, signed by both Parties.
+- **"Service Order"** means an order that contains the details listed in Schedule 1 and is signed by both Parties.
 - **"Third-Party Provider"** means a third party that Provider uses to supply part of a Service, such as a content delivery network, DNS provider, cloud provider, data center or network operator.
 
 ## 2. Structure of this Agreement
 
 **2.1 Service Appendices.** Each Service is described in a Service Appendix, which sets its service-specific terms and any service levels. Service Appendices are numbered in sequence and each forms part of this Agreement once agreed in writing by both Parties.
 
-**2.2 Service Orders.** Provider supplies a Service only under a Service Order. Each Service Order names the Service and its Service Appendix, and sets out the Customer-specific details, Fees (if any), term and contacts. Each Service Order forms a separate contract incorporating this Agreement and the relevant Service Appendix.
+**2.2 Service Orders.** Provider supplies a Service only under a Service Order. Each Service Order names the Service and its Service Appendix, and sets out the Customer-specific details, Fees (if any), term and contacts. Each Service Order forms a separate contract incorporating this Agreement and the relevant Service Appendix. A Service Order may vary any notice period, time limit, amount or other value in this Agreement or a Service Appendix.
 
 **2.3 Affiliates.** Either Party's Affiliates may sign Service Orders under this Agreement. Customer may also allow its Affiliates to use a Service under Customer's Service Order, and Customer is responsible for their compliance.
 
@@ -60,11 +64,11 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 
 **3.1 Standard.** Provider will supply each Service with reasonable skill and care, in line with good industry practice, and in accordance with this Agreement, the relevant Service Appendix and the Service Order.
 
-**3.2 Changes to a Service.** Provider may update and improve the Services. Provider will give at least \[30\] days' notice before a change that materially reduces the functionality, performance or security of a Service Customer uses in production, unless the change is required for security or by law. If such a change materially harms Customer, Customer may terminate the affected Service Order without liability before the change takes effect.
+**3.2 Changes to a Service.** Provider may update and improve the Services. Provider will give at least 30 days' notice before a change that materially reduces the functionality, performance or security of a Service Customer uses in production, unless the change is required for security or by law. If such a change materially harms Customer, Customer may terminate the affected Service Order without liability before the change takes effect.
 
 **3.3 Third-Party Providers.** Provider may use Third-Party Providers to supply the Services. Provider remains responsible to Customer for each Service, except where a Service Appendix states that a Third-Party Provider's own terms govern part of that Service.
 
-**3.4 Register and changes.** Provider will keep a current list of the Third-Party Providers that deliver Customer Content or process Customer Data for each Service at [p.foundation/terms/subprocessors](/terms/subprocessors). Provider will give at least \[30\] days' notice before adding or replacing one. Customer may object on reasonable grounds within that period; if the Parties cannot resolve the objection, Customer may terminate the affected Service Order without liability.
+**3.4 Register and changes.** Provider will keep a current list of the Third-Party Providers that deliver Customer Content or process Customer Data for each Service at [p.foundation/terms/subprocessors](/terms/subprocessors). Provider will give at least 30 days' notice before adding or replacing one. Customer may object on reasonable grounds within that period; if the Parties cannot resolve the objection, Customer may terminate the affected Service Order without liability.
 
 **3.5 Emergency replacement.** If a Third-Party Provider fails, ends its service or becomes unsuitable at short notice, Provider may replace it immediately to protect the Service, and will notify Customer as soon as practicable.
 
@@ -94,7 +98,7 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 
 **5.5 Disputes.** Customer will notify any disputed invoice within fifteen (15) days of receipt, and pay the undisputed part on time.
 
-**5.6 Fee changes.** Provider will give at least \[90\] days' written notice of a new or increased Fee. A Fee for a Service previously supplied free of charge applies only if Customer signs a Service Order accepting it. If Customer does not accept a change, Customer may terminate the affected Service Order at the end of the notice period without liability.
+**5.6 Fee changes.** Provider will give at least 90 days' written notice of a new or increased Fee. A Fee for a Service previously supplied free of charge applies only if Customer signs a Service Order accepting it. If Customer does not accept a change, Customer may terminate the affected Service Order at the end of the notice period without liability.
 
 **5.7 Donations.** Nothing in this Agreement requires Customer to make a donation to Provider. Any voluntary donation is separate from this Agreement and gives Customer no additional rights or priority.
 
@@ -102,7 +106,7 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 
 **6.1 Security.** Provider will maintain appropriate technical and organizational measures to protect Customer Data against unauthorized access, loss and alteration, including access controls limited to personnel who need access, encryption of Customer Data in transit, and timely security patching.
 
-**6.2 Security incidents.** Provider will notify Customer without undue delay, and within \[48\] hours, after becoming aware of unauthorized access to Customer Data. The notice will describe the incident, the data affected and the steps taken, and Provider will cooperate in Customer's response.
+**6.2 Security incidents.** Provider will notify Customer without undue delay, and within 48 hours, after becoming aware of unauthorized access to Customer Data. The notice will describe the incident, the data affected and the steps taken, and Provider will cooperate in Customer's response.
 
 **6.3 Roles.** For Personal Data that Provider processes on Customer's behalf, Customer is the controller and Provider is the processor. Provider will process that Personal Data only to supply, secure, support and report on the Services, and on Customer's documented instructions.
 
@@ -112,7 +116,7 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 2. bind its personnel and Third-Party Providers that process Personal Data to confidentiality and to written terms at least as protective as this Section;
 3. keep Personal Data only for the retention period in the relevant Service Appendix, or as long as needed to supply the Service;
 4. help Customer respond to requests from individuals and regulators relating to the Services;
-5. delete or return Customer Data within \[30\] days after a Service Order ends, except aggregated data that identifies no person or where law requires retention.
+5. delete or return Customer Data within 30 days after a Service Order ends, except aggregated data that identifies no person or where law requires retention.
 
 **6.5 Transfers.** Where applicable data protection law requires a transfer mechanism for Personal Data processed under this Agreement, the Parties will sign the clauses that law requires.
 
@@ -126,7 +130,7 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 
 **7.3 Permitted disclosure.** A Party may disclose Confidential Information to its Affiliates, personnel, advisers, Third-Party Providers and subcontractors who need to know it and are bound by equivalent obligations, and where required by law, after giving the other Party prompt notice where legally allowed.
 
-**7.4 Duration.** These obligations last for the term of this Agreement and \[3\] years after it ends.
+**7.4 Duration.** These obligations last for the term of this Agreement and 3 years after it ends.
 
 **7.5 Publicity.** Neither Party will use the other's name or logo in public materials without prior written consent.
 
@@ -152,9 +156,9 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 
 **10.1 Excluded losses.** Neither Party is liable for loss of profits, revenue, subscribers or goodwill, or for any indirect, incidental, special or consequential damages, even if advised of their possibility.
 
-**10.2 General cap.** Each Party's total liability arising out of or relating to a Service Order in any 12-month period is limited to the greater of USD \[25,000\] and the Fees paid or payable under that Service Order in the 12 months before the event giving rise to the claim.
+**10.2 General cap.** Each Party's total liability arising out of or relating to a Service Order in any 12-month period is limited to the greater of USD 25,000 and the Fees paid or payable under that Service Order in the 12 months before the event giving rise to the claim.
 
-**10.3 Data and confidentiality cap.** For breach of Section 6 or Section 7, each Party's total liability is limited to the greater of USD \[100,000\] and three times the Fees described in Section 10.2, instead of the general cap.
+**10.3 Data and confidentiality cap.** For breach of Section 6 or Section 7, each Party's total liability is limited to the greater of USD 100,000 and three times the Fees described in Section 10.2, instead of the general cap.
 
 **10.4 Third-Party Provider terms.** Where a Service Appendix states that a Third-Party Provider's terms govern part of a Service, Provider's liability for a failure of that part is limited to the remedies Provider recovers from that Third-Party Provider for the same failure, except to the extent Provider itself caused or contributed to the failure.
 
@@ -174,15 +178,15 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 
 **12.1 Term of this Agreement.** This Agreement starts on the Effective Date and continues until terminated under this Section.
 
-**12.2 Term of Service Orders.** Each Service Order runs for the term it states. If it states none, it runs for an initial term of \[12\] months and then renews automatically for successive \[12\]-month periods unless either Party gives at least \[90\] days' notice of non-renewal.
+**12.2 Term of Service Orders.** Each Service Order runs for the term it states. If it states none, it runs for an initial term of 12 months and then renews automatically for successive 12-month periods unless either Party gives at least 90 days' notice of non-renewal.
 
 **12.3 Suspension.** Provider may suspend or restrict a Service only to the extent reasonably necessary to: (a) respond to an attack, security incident or legal requirement; (b) protect the Service, its infrastructure or other customers from material harm; (c) stop a material breach of Section 4.3; or (d) address non-payment under Section 5.4. Provider will notify Customer beforehand where possible, or immediately afterwards, limit the suspension in scope and time, and restore the Service as soon as the cause is resolved.
 
-**12.4 Termination for convenience.** A Service Order may be terminated for convenience on the notice stated in its Service Appendix or Service Order. If neither states a period, Customer may terminate on \[30\] days' notice and Provider on \[180\] days' notice.
+**12.4 Termination for convenience.** A Service Order may be terminated for convenience on the notice stated in its Service Appendix or Service Order. If neither states a period, Customer may terminate on 30 days' notice and Provider on 180 days' notice.
 
-**12.5 Termination for cause.** Either Party may terminate a Service Order, or this Agreement, on notice if the other Party materially breaches it and fails to cure within \[30\] days of notice, or becomes insolvent.
+**12.5 Termination for cause.** Either Party may terminate a Service Order, or this Agreement, on notice if the other Party materially breaches it and fails to cure within 30 days of notice, or becomes insolvent.
 
-**12.6 Ending this Agreement.** Either Party may terminate this Agreement on \[90\] days' notice. Service Orders in force at the end of that notice continue under the terms of this Agreement until they expire or are terminated.
+**12.6 Ending this Agreement.** Either Party may terminate this Agreement on 90 days' notice. Service Orders in force at the end of that notice continue under the terms of this Agreement until they expire or are terminated.
 
 **12.7 Effect.** On termination of a Service Order, Provider will provide any transition assistance stated in the relevant Service Appendix, and Section 6.4(5) applies to Customer Data. Fees accrued before termination remain payable.
 
@@ -194,11 +198,11 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 
 **13.2 Mitigation.** The affected Party will notify the other promptly, use reasonable efforts to mitigate, and resume performance as soon as possible. This Section does not excuse payment obligations.
 
-**13.3 Prolonged events.** If a force majeure event prevents a Service in a country for more than \[30\] consecutive days, either Party may terminate the affected Service Order for that country on notice.
+**13.3 Prolonged events.** If a force majeure event prevents a Service in a country for more than 30 consecutive days, either Party may terminate the affected Service Order for that country on notice.
 
 ## 14. Compliance
 
-**14.1 Sanctions and export controls.** Each Party will comply with the sanctions and export control laws that apply to it, including those of the United States. Neither Party is, or is owned or controlled by, a person designated on a sanctions list that would prohibit this Agreement. Provider is not required to supply a Service in a country, or to a person, where doing so would breach those laws.
+**14.1 Sanctions and export controls.** Each Party will comply with the sanctions and export control laws that apply to it, including those of the United States. Neither Party is, or is owned or controlled by, a person designated on a sanctions list that would prohibit this Agreement. Provider is not required to supply a Service in a country, or to a person, where that would breach those laws.
 
 **14.2 Anti-corruption.** Each Party will comply with applicable anti-bribery laws, including the U.S. Foreign Corrupt Practices Act, and will not offer or accept any improper payment in connection with this Agreement.
 
@@ -208,9 +212,9 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 
 **15.1 Governing law.** This Agreement and each Service Order are governed by the laws of the District of Columbia, United States, without regard to its conflict of laws rules.
 
-**15.2 Escalation.** The Parties will first try to resolve any dispute through the escalation contacts in the relevant Service Appendix or Service Order, and then between senior executives, for at least \[30\] days.
+**15.2 Escalation.** The Parties will first try to resolve any dispute through the escalation contacts in the relevant Service Appendix or Service Order, and then between senior executives, for at least 30 days.
 
-**15.3 Arbitration.** Any dispute not resolved under Section 15.2 will be finally settled by arbitration under the Rules of Arbitration of the International Chamber of Commerce, by one arbitrator. The seat of arbitration is \[London, United Kingdom\], and the language is English. Either Party may seek urgent injunctive relief from any competent court.
+**15.3 Arbitration.** Any dispute not resolved under Section 15.2 will be finally settled by arbitration under the Rules of Arbitration of the International Chamber of Commerce, by one arbitrator. The seat of arbitration is London, United Kingdom, and the language is English. Either Party may seek urgent injunctive relief from any competent court.
 
 ## 16. General
 
@@ -228,40 +232,19 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 
 **16.7 Counterparts.** This Agreement and each Service Order may be signed in counterparts and by electronic signature.
 
-## Signatures
+## Schedule 1: Service Orders
 
-Signed by the authorized representatives of the Parties on the dates below.
+Each Service Order refers to this Agreement and states:
 
-|           | P Foundation | \[Customer legal name\] |
-| --------- | ------------ | ----------------------- |
-| Signature |              |                         |
-| Name      |              |                         |
-| Title     |              |                         |
-| Date      |              |                         |
+| Item                        | Detail                                                                                                                 |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Customer                    | Customer's legal name, entity type, jurisdiction of incorporation, registration number and principal place of business |
+| Service                     | The Service and its Service Appendix                                                                                   |
+| Start date and term         | The start date, and the term or that Section 12.2 applies                                                              |
+| Customer Affiliates covered | Any Customer Affiliates that may use the Service, or that none are covered                                             |
+| Service details             | The details the Service Appendix asks for, such as hostnames, locations, capacity or ports                             |
+| Fees                        | The Fees and billing terms, or that no Fees apply                                                                      |
+| Variations                  | Any change to this Agreement or the Service Appendix that applies to that Service Order                                |
+| Contacts                    | For each Party: commercial and escalation, technical lead, 24x7 operations, and legal notices                          |
 
-## Schedule 1: Form of Service Order
-
-This Service Order No. \[●\] is made under the Master Services Agreement between P Foundation and \[Customer legal name\] dated \[●\]. It incorporates that Agreement and the Service Appendix named below.
-
-| Item                        | Detail                                                                                    |
-| --------------------------- | ----------------------------------------------------------------------------------------- |
-| Service                     | \[Service name\]                                                                          |
-| Service Appendix            | \[Appendix number and title\]                                                             |
-| Start date and term         | \[Start date\]; \[term, or "as Section 12.2 of the Agreement"\]                           |
-| Customer Affiliates covered | \[Names, or "None"\]                                                                      |
-| Service details             | \[The details the Service Appendix asks for, e.g. hostnames, locations, capacity, ports\] |
-| Fees                        | \[None, or the Fees and billing terms\]                                                   |
-| Variations                  | \[None, or any change to the Agreement or Service Appendix for this Service Order\]       |
-
-**Contacts**
-
-| Role                      | P Foundation                                                             | Customer                      |
-| ------------------------- | ------------------------------------------------------------------------ | ----------------------------- |
-| Commercial and escalation | \[Name, title, email, phone\]                                            | \[Name, title, email, phone\] |
-| Technical lead            | \[Name, email\]                                                          | \[Name, email\]               |
-| 24x7 operations           | \[Email, phone\]                                                         | \[Email, phone\]              |
-| Legal notices             | P Foundation, 700 12th St NW, Suite 700, Washington, DC 20005, \[email\] | \[Address, email\]            |
-
-Signed for P Foundation: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_
-
-Signed for \[Customer legal name\]: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_
+A Service Order is signed by authorized representatives of both Parties, and may be signed in counterparts or by electronic signature under Section 16.7. Provider's postal address for legal notices is P Foundation, 700 12th St NW, Suite 700, Washington, DC 20005, United States, together with the email address stated in the Service Order.
