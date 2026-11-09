@@ -180,7 +180,7 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 
 **12.2 Term of Service Orders.** Each Service Order runs for the term it states. If it states none, it runs for an initial term of 12 months and then renews automatically for successive 12-month periods unless either Party gives at least 90 days' notice of non-renewal.
 
-**12.3 Suspension.** Provider may suspend or restrict a Service only to the extent reasonably necessary to: (a) respond to an attack, security incident or legal requirement; (b) protect the Service, its infrastructure or other customers from material harm; (c) stop a material breach of Section 4.3; or (d) address non-payment under Section 5.4. Provider will notify Customer beforehand where possible, or immediately afterwards, limit the suspension in scope and time, and restore the Service as soon as the cause is resolved.
+**12.3 Suspension.** Provider may suspend or restrict a Service only to the extent reasonably necessary to: (a) respond to an attack, security incident or legal requirement; (b) protect the Service, its infrastructure or other customers from material harm; (c) stop a material breach of Section 4.3; or (d) address non-payment under Section 5.4. Provider will notify Customer beforehand where possible, or immediately afterward, limit the suspension in scope and time, and restore the Service as soon as the cause is resolved.
 
 **12.4 Termination for convenience.** A Service Order may be terminated for convenience on the notice stated in its Service Appendix or Service Order. If neither states a period, Customer may terminate on 30 days' notice and Provider on 180 days' notice.
 

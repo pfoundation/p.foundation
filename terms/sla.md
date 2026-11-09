@@ -91,7 +91,7 @@ If an objective is missed for two consecutive months, the Parties will review th
 
 **5.3 Weekly releases.** Provider's regular software releases, currently weekly, are applied as rolling, zero-downtime configuration reloads. They are not maintenance, and any Failed Requests they cause count toward the service levels.
 
-**5.4 Emergency maintenance.** Provider may perform emergency maintenance to fix a security vulnerability or prevent an imminent failure. It will give as much notice as possible and explain the reason afterwards.
+**5.4 Emergency maintenance.** Provider may perform emergency maintenance to fix a security vulnerability or prevent an imminent failure. It will give as much notice as possible and explain the reason afterward.
 
 **5.5 Limits.** Up to 4 hours per month of scheduled maintenance and 2 hours per month of emergency maintenance are excluded from availability. Maintenance beyond those limits counts as Unavailable Intervals.
 
