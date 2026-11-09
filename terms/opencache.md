@@ -13,6 +13,7 @@ This Appendix sets the terms for OpenCache. It applies only to a Service Order t
 ## 1. Definitions
 
 - **"Committed Capacity"** means the peak egress and monthly volume, per Footprint country, that Provider commits to carry for Customer in the Footprint, as stated in the Service Order and updated under Section 4.3.
+- **"Content Class"** means the class that Provider assigns to a Customer hostname, which sets the delivery addresses and cache treatment for that hostname. Content Classes are shown in the Console under the names used in Annex A.
 - **"Delivery Partner"** means a third-party content delivery network that Provider uses to deliver Customer Content to End Users outside the Footprint.
 - **"Delivery Partner Location"** means any location where End User requests are served by a Delivery Partner rather than by a PoP.
 - **"DNS Provider"** means the third-party authoritative DNS service that Provider uses to resolve OpenCache hostnames and steer End User requests.
@@ -63,6 +64,8 @@ This Appendix sets the terms for OpenCache. It applies only to a Service Order t
 **4.4 Ramp plan.** Customer will increase traffic above the Committed Capacity in steps agreed with Provider, and not by more than 25% of peak per week unless agreed otherwise. Traffic above the Committed Capacity is served on a best-efforts basis and is outside the Annex A service levels.
 
 **4.5 Major events.** Customer will give at least 10 business days' notice of any live event, premiere or release it expects to generate more than 1.5 times its normal peak. The Parties will agree a prefill and capacity plan for the event.
+
+**4.6 Content Classes.** Provider assigns each Customer hostname a Content Class, agreed with Customer and recorded in the Service Order. Provider may change a hostname's Content Class with Customer's agreement, or without it only to the extent Section 12.3 of the Agreement allows, for example to isolate an attack, and will tell Customer promptly when it does.
 
 ## 5. Responsibilities
 
@@ -121,7 +124,7 @@ This Appendix sets the terms for OpenCache. It applies only to a Service Order t
 **10.2 Service Order details.** Each OpenCache Service Order states:
 
 - Customer services and hostnames covered;
-- content types;
+- the Content Class of each hostname;
 - Footprint countries in scope;
 - Committed Capacity per country;
 - whether Delivery Partners are used, any monthly Delivery Partner allowance, and the fallback hostname;

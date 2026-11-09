@@ -53,14 +53,14 @@ Provider commits to the following service levels each calendar month, for traffi
 
 ## 3. Performance Objectives
 
-Provider will report on the following objectives every month but does not commit to them, because they depend on Customer's content mix, cache headers and steering choices. The Service Order sets the content profile, Live or On-demand, for each hostname; where both are used, each offload target applies to its own traffic.
+Provider will report on the following objectives every month but does not commit to them, because they depend on Customer's content mix, cache headers and steering choices. Cache offload objectives apply by Content Class: each target applies to the traffic of Customer hostnames in the Content Classes it names, and other Content Classes have no offload objective unless the Service Order sets one.
 
-| Objective                                               | Target                                                                                                           |
-| ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Cache offload, On-demand profile                        | At least 90% of requests for cacheable objects served from cache, counted from the third request for each object |
-| Cache offload, Live profile                             | At least 80% of requests for cacheable objects served from cache, counted from the third request for each object |
-| Time to first byte on a cache hit, inside Host Networks | Median of 15 ms or less                                                                                          |
-| Time to first byte on a cache hit, global               | Median of 55 ms or less, across all delivery locations including Delivery Partner Locations                      |
+| Objective                                                  | Target                                                                                                           |
+| ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Cache offload, Video on demand and Premium video classes   | At least 90% of requests for cacheable objects served from cache, counted from the third request for each object |
+| Cache offload, Live video and Live sports & events classes | At least 80% of requests for cacheable objects served from cache, counted from the third request for each object |
+| Time to first byte on a cache hit, inside Host Networks    | Median of 15 ms or less                                                                                          |
+| Time to first byte on a cache hit, global                  | Median of 55 ms or less, across all delivery locations including Delivery Partner Locations                      |
 
 If an objective is missed for two consecutive months, the Parties will review the cause together and agree any configuration or capacity changes within 15 business days.
 
