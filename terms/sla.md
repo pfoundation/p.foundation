@@ -55,18 +55,18 @@ Provider commits to the following service levels each calendar month, for traffi
 
 Provider will report on the following objectives every month but does not commit to them, because they depend on Customer's content mix, cache headers and steering choices. Cache offload objectives apply by Content Class: each target applies to the traffic of Customer hostnames in the Content Classes it names, and other Content Classes have no offload objective unless the Service Order sets one.
 
-| Objective                                                  | Target                                                                                                           |
-| ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Cache offload, Video on demand and Premium video classes   | At least 90% of requests for cacheable objects served from cache, counted from the third request for each object |
-| Cache offload, Live video and Live sports & events classes | At least 80% of requests for cacheable objects served from cache, counted from the third request for each object |
-| Time to first byte on a cache hit, inside Host Networks    | Median of 15 ms or less                                                                                          |
-| Time to first byte on a cache hit, global                  | Median of 55 ms or less, across all delivery locations including Delivery Partner Locations                      |
+| Objective                                                  | Target                                                                                                                             |
+| ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Cache offload, Video on demand and Premium video classes   | At least 90% of requests for cacheable objects served from cache, counted from the third request for each object                   |
+| Cache offload, Live video and Live sports & events classes | At least 80% of requests for cacheable objects served from cache, counted from the third request for each object                   |
+| Time to first byte on a cache hit, inside Host Networks    | Median of 15 ms or less                                                                                                            |
+| Time to first byte on a cache hit, global                  | Median of 55 ms or less, across all delivery locations including Delivery Partner Locations, excluding End Users in mainland China |
 
 If an objective is missed for two consecutive months, the Parties will review the cause together and agree any configuration or capacity changes within 15 business days.
 
 ## 4. Support and Incident Management
 
-**4.1 Channels.** Customer may raise incidents through the 24x7 operations email and phone line in the Service Order, the Console, or a shared chat channel where the Service Order provides one. Severity 1 and 2 incidents must be raised by phone, or in the shared chat channel with an @-mention of the on-call engineer. Business hours are 08:00 to 20:00 UTC, Monday to Friday.
+**4.1 Channels.** The default channels for raising incidents are email to [support@p.foundation](mailto:support@p.foundation) and the support page at [p.foundation/support](https://p.foundation/support), both available 24x7. Customer may also use the Console, or any 24x7 phone line or shared chat channel that the Service Order provides. When raising a Severity 1 or 2 incident, Customer should state its severity and, where the Service Order provides them, also call the 24x7 phone line or @-mention the on-call engineer in the shared chat channel. Business hours are 08:00 to 20:00 UTC, Monday to Friday.
 
 **4.2 Severity and response.** Response time runs from the moment Customer reports the incident, or Provider detects it, whichever is earlier.
 
@@ -85,7 +85,7 @@ If an objective is missed for two consecutive months, the Parties will review th
 
 ## 5. Maintenance and Change Management
 
-**5.1 Scheduled maintenance.** Provider performs scheduled maintenance in one monthly window, between 02:00 and 06:00 Asia/Beirut time on a date notified at least 5 business days in advance by email and, where provided, in the shared chat channel. The notice states the PoPs affected, the work and the expected impact.
+**5.1 Scheduled maintenance.** Provider performs scheduled maintenance in one monthly window, between 00:00 and 04:00 UTC on a date notified at least 5 business days in advance by email and, where provided, in the shared chat channel. The notice states the PoPs affected, the work and the expected impact.
 
 **5.2 Drain before work.** Before maintenance, Provider will drain each affected PoP through health steering, moving its traffic to other PoPs. Where no other PoP in the country can carry the traffic, the notice will state this, allowing Customer to steer to its fallback.
 
