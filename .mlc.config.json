@@ -1,0 +1,9 @@
+{
+  "ignorePatterns": [
+    { "pattern": "^https?://localhost(:\\d+)?" },
+    { "pattern": "^https?://127\\.0\\.0\\.1(:\\d+)?" }
+  ],
+  "retryOn429": true,
+  "retryCount": 3,
+  "aliveStatusCodes": [200, 206]
+}

@@ -371,7 +371,7 @@ npx wrangler dev
 `workers/package.json` pins the wrangler version for both local development
 and the Deploy Worker action, which installs from it.
 
-`npx wrangler dev` serves the worker on http://localhost:8787 and loads
+`npx wrangler dev` serves the worker on `http://localhost:8787` and loads
 secrets from `.dev.vars` (gitignored). The worker allows the origin
 `http://localhost:3000`, so `npm start` on the site works against it: build
 or start the site with `PF_API_BASE_URL=http://localhost:8787`.
