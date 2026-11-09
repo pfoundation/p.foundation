@@ -26,6 +26,20 @@ Our services are provided under our standard Master Services Agreement. Each ser
 | [Privacy Policy](/terms/privacy)      | Our websites, apps, programs, and donors | How we collect, use, store, and share personal information, and the rights you have over it.          |
 | [Subprocessors](/terms/subprocessors) | All services                             | The third-party providers that process personal information on our behalf, with purpose and location. |
 
+## Changes and Verification
+
+Each document shows the date it was last updated, with a **Changelog** link to its full edit history on GitHub.
+
+Every published version of these documents is signed with [Sigstore](https://www.sigstore.dev) and released on GitHub as a [signed terms release](https://github.com/pfoundation/p.foundation/releases?q=terms-). Each release contains the documents, their SHA-256 checksums, and a signature bundle recorded in Sigstore's public transparency log. The signature is made by our publishing workflow on the master branch, without a private key that could be lost or copied. To confirm that a copy you hold matches what we published, download the release files and run:
+
+```sh
+cosign verify-blob SHA256SUMS \
+  --bundle SHA256SUMS.sigstore.json \
+  --certificate-identity https://github.com/pfoundation/p.foundation/.github/workflows/sign-terms.yml@refs/heads/master \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+sha256sum -c SHA256SUMS
+```
+
 ## Contact Us
 
 For questions about these documents, please contact us:

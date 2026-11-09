@@ -6,7 +6,7 @@ description: The third-party service providers that P Foundation engages to proc
 
 # P Foundation Subprocessors
 
-**Effective Date:** November 9, 2026
+**Effective Date:** November 9, 2026 · [Changelog](https://github.com/pfoundation/p.foundation/commits/master/terms/subprocessors.md)
 
 ## Introduction
 

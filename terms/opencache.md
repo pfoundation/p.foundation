@@ -6,9 +6,9 @@ description: 'Appendix 1 to the P Foundation Master Services Agreement: the serv
 
 # Appendix 1: OpenCache Service Terms
 
-**Last Updated:** November 9, 2026
+**Last Updated:** November 9, 2026 · [Changelog](https://github.com/pfoundation/p.foundation/commits/master/terms/opencache.md)
 
-This Appendix sets the terms for OpenCache and forms part of the [Master Services Agreement](/terms/msa) for every Service Order that names it. The [OpenCache Service Level Agreement](/terms/sla) is Annex A to this Appendix. Capitalized terms not defined here have the meanings in the Agreement.
+This Appendix sets the terms for OpenCache. It applies only to a Service Order that names OpenCache, and for that Service Order it forms part of the [Master Services Agreement](/terms/msa). A Service Order may vary any value in this Appendix or in Annex A, as Section 2.2 of the Agreement allows. The [OpenCache Service Level Agreement](/terms/sla) is Annex A to this Appendix. Capitalized terms not defined here have the meanings in the Agreement.
 
 ## 1. Definitions
 
@@ -82,7 +82,7 @@ This Appendix sets the terms for OpenCache and forms part of the [Master Service
 
 ## 6. Neutrality and Footprint Changes
 
-**6.1 Equal terms.** Provider offers OpenCache to all content providers on equal terms. Provider will not prioritize, deprioritize, alter or selectively degrade Customer Content relative to other content in the Footprint, except as allowed by Section 12.3 of the Agreement.
+**6.1 Neutral treatment.** Provider makes OpenCache available to content providers on these published terms. Provider will not prioritize, deprioritize, alter or selectively degrade Customer Content relative to other content in the Footprint, except as allowed by Section 12.3 of the Agreement.
 
 **6.2 Host Networks.** Host Networks provide space, power and connectivity only. They gain no access to Customer configuration, certificates or traffic policies, and TLS for Footprint traffic terminates only on Provider-operated hardware.
 

@@ -6,11 +6,11 @@ description: 'Annex A to the OpenCache Service Terms: availability commitments, 
 
 # OpenCache Service Level Agreement
 
-**Last Updated:** November 9, 2026
+**Last Updated:** November 9, 2026 · [Changelog](https://github.com/pfoundation/p.foundation/commits/master/terms/sla.md)
 
-Annex A to [Appendix 1 (OpenCache Service Terms)](/terms/opencache) of the P Foundation [Master Services Agreement](/terms/msa) (the "Agreement"). Capitalized terms not defined here have the meanings given in the Agreement and Appendix 1.
+Annex A to [Appendix 1 (OpenCache Service Terms)](/terms/opencache) of the P Foundation [Master Services Agreement](/terms/msa) (the "Agreement"). It applies to each OpenCache Service Order. Capitalized terms not defined here have the meanings given in the Agreement and Appendix 1.
 
-This SLA commits P Foundation to 99.99% monthly availability for OpenCache globally and 99.9% in each Footprint country, 24x7 incident response, and defined maintenance and reporting practices, for Customer traffic up to the Committed Capacity. Outside the Footprint, Provider delivers only through Delivery Partners whose service levels match or exceed these (Section 10). Because OpenCache is supplied free of charge, remedies are operational and contractual rather than financial (Section 7).
+This SLA commits P Foundation to 99.99% monthly availability for OpenCache globally and 99.9% in each Footprint country, 24x7 incident response, and defined maintenance and reporting practices, for Customer traffic up to the Committed Capacity. Outside the Footprint, Provider delivers only through Delivery Partners whose service levels match or exceed these (Section 10). OpenCache is supplied free of charge unless a Service Order states otherwise, and remedies are operational and contractual rather than financial (Section 7).
 
 ## 1. Definitions and Measurement
 
@@ -66,7 +66,7 @@ If an objective is missed for two consecutive months, the Parties will review th
 
 ## 4. Support and Incident Management
 
-**4.1 Channels.** Customer may raise incidents through the shared chat channel, the 24x7 operations email and phone line in the Service Order, or the Console. Severity 1 and 2 incidents must be raised by phone or in the shared chat channel with an @-mention of the on-call engineer. Business hours are 08:00 to 20:00 UTC, Monday to Friday.
+**4.1 Channels.** Customer may raise incidents through the 24x7 operations email and phone line in the Service Order, the Console, or a shared chat channel where the Service Order provides one. Severity 1 and 2 incidents must be raised by phone, or in the shared chat channel with an @-mention of the on-call engineer. Business hours are 08:00 to 20:00 UTC, Monday to Friday.
 
 **4.2 Severity and response.** Response time runs from the moment Customer reports the incident, or Provider detects it, whichever is earlier.
 
@@ -85,7 +85,7 @@ If an objective is missed for two consecutive months, the Parties will review th
 
 ## 5. Maintenance and Change Management
 
-**5.1 Scheduled maintenance.** Provider performs scheduled maintenance in one monthly window, between 02:00 and 06:00 Asia/Beirut time on a date notified at least 5 business days in advance by email and in the shared chat channel. The notice states the PoPs affected, the work and the expected impact.
+**5.1 Scheduled maintenance.** Provider performs scheduled maintenance in one monthly window, between 02:00 and 06:00 Asia/Beirut time on a date notified at least 5 business days in advance by email and, where provided, in the shared chat channel. The notice states the PoPs affected, the work and the expected impact.
 
 **5.2 Drain before work.** Before maintenance, Provider will drain each affected PoP through health steering, moving its traffic to other PoPs. Where no other PoP in the country can carry the traffic, the notice will state this, allowing Customer to steer to its fallback.
 
@@ -114,7 +114,7 @@ The following are excluded from the service level calculations, to the extent th
 
 ## 7. Remedies and Chronic Failure
 
-**7.1 No service credits.** Because the Service is provided free of charge, no financial service credits apply. The remedies below apply instead.
+**7.1 No service credits.** No financial service credits apply, except as stated in Section 10.5 or in a Service Order. The remedies below apply instead.
 
 **7.2 Service level failure.** If Provider misses any service level in Section 2 in a month, Provider will, at no charge:
 
@@ -128,9 +128,9 @@ The following are excluded from the service level calculations, to the extent th
 2. Country Availability is below 99.0% in any single month; or
 3. two or more Severity 1 incidents in a calendar quarter are not restored within 4 hours.
 
-**7.4 Customer's rights on chronic failure.** On a chronic failure, Customer may, by notice within 60 days, do one or more of the following without liability: (a) terminate the Agreement, or the Service Order for the affected country, with immediate effect; (b) reduce or stop traffic in the affected country without the notice periods in the Agreement or Appendix 1; (c) require a review meeting between the Parties' executives at escalation level 4 within 10 business days.
+**7.4 Customer's rights on chronic failure.** On a chronic failure, Customer may, by notice within 60 days, do one or more of the following without liability: (a) terminate the OpenCache Service Order, or the part of it for the affected country, with immediate effect; (b) reduce or stop traffic in the affected country without the notice periods in the Agreement or Appendix 1; (c) require a review meeting between the Parties' executives at escalation level 4 within 10 business days.
 
-**7.5 Exclusive remedies.** The remedies in this Section are Customer's exclusive remedies for failure to meet a service level. They do not limit Customer's rights for breach of other obligations, including Sections 6 and 7 of the Agreement, or for gross negligence or wilful misconduct.
+**7.5 Exclusive remedies.** The remedies in this Section are Customer's exclusive remedies for failure to meet a service level. They do not limit Customer's rights for breach of other obligations, including Sections 6 and 7 of the Agreement, or for gross negligence or willful misconduct.
 
 **7.6 Claims.** Customer will raise any service level failure not shown in Provider's monthly report within 30 days after receiving that report.
 

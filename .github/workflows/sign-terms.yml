@@ -1,0 +1,87 @@
+name: Sign terms
+
+# Signs the legal documents in terms/ with Sigstore (keyless, using this
+# workflow's GitHub OIDC identity) whenever they change on master, and
+# publishes the signed copy as a GitHub release. Anyone can then check that
+# a document matches what P Foundation published, without trusting a key.
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'terms/**'
+  # Re-sign the current master manually, for example after a failed run.
+  workflow_dispatch:
+
+concurrency:
+  group: sign-terms
+  cancel-in-progress: false
+
+jobs:
+  sign:
+    name: Sign and publish terms
+    # Never sign from another branch, even when dispatched manually.
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # create the tag and release
+      id-token: write # request the OIDC token Sigstore signs with
+
+    env:
+      IDENTITY: https://github.com/${{ github.repository }}/.github/workflows/sign-terms.yml@refs/heads/master
+      ISSUER: https://token.actions.githubusercontent.com
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v4.0.0
+
+      - name: Collect documents and checksums
+        run: |
+          mkdir dist
+          cp terms/*.md dist/
+          (cd dist && sha256sum *.md > SHA256SUMS)
+          cat dist/SHA256SUMS
+
+      - name: Sign checksums
+        run: cosign sign-blob dist/SHA256SUMS --bundle dist/SHA256SUMS.sigstore.json --yes
+
+      - name: Verify signature
+        run: |
+          cosign verify-blob dist/SHA256SUMS \
+            --bundle dist/SHA256SUMS.sigstore.json \
+            --certificate-identity "$IDENTITY" \
+            --certificate-oidc-issuer "$ISSUER"
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="terms-$(date -u +%Y-%m-%d)-${GITHUB_SHA::7}"
+          cat > notes.md <<EOF
+          Signed copy of the P Foundation terms and policies at commit ${GITHUB_SHA}.
+
+          To verify, download \`SHA256SUMS\`, \`SHA256SUMS.sigstore.json\` and the documents, then run:
+
+          \`\`\`sh
+          cosign verify-blob SHA256SUMS \\
+            --bundle SHA256SUMS.sigstore.json \\
+            --certificate-identity ${IDENTITY} \\
+            --certificate-oidc-issuer ${ISSUER}
+          sha256sum -c SHA256SUMS
+          \`\`\`
+          EOF
+          if gh release view "$tag" > /dev/null 2>&1; then
+            gh release upload "$tag" dist/* --clobber
+          else
+            gh release create "$tag" dist/* \
+              --target "$GITHUB_SHA" \
+              --title "Terms ${tag#terms-}" \
+              --notes-file notes.md \
+              --latest=false
+          fi

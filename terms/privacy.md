@@ -6,7 +6,7 @@ description: P Foundation's Privacy Policy details the collection, use, and prot
 
 # P Foundation Privacy Policy
 
-**Effective Date:** November 18, 2025
+**Effective Date:** November 9, 2026 · [Changelog](https://github.com/pfoundation/p.foundation/commits/master/terms/privacy.md)
 
 ## Introduction
 

@@ -6,7 +6,7 @@ description: "P Foundation's standard terms for its services, which apply when P
 
 # P Foundation Master Services Agreement
 
-**Last Updated:** November 9, 2026
+**Last Updated:** November 9, 2026 · [Changelog](https://github.com/pfoundation/p.foundation/commits/master/terms/msa.md)
 
 These are P Foundation's standard terms for its services. They apply to a customer only when that customer and P Foundation sign a Service Order that refers to them. Each service has its own Service Appendix, and each customer's specifics, including any agreed variations, are set out in its Service Order.
 
@@ -162,7 +162,7 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 
 **10.4 Third-Party Provider terms.** Where a Service Appendix states that a Third-Party Provider's terms govern part of a Service, Provider's liability for a failure of that part is limited to the remedies Provider recovers from that Third-Party Provider for the same failure, except to the extent Provider itself caused or contributed to the failure.
 
-**10.5 Unlimited.** Sections 10.1 to 10.4 do not limit liability for fraud, gross negligence or wilful misconduct, for death or personal injury caused by negligence, for Customer's obligations under Section 11.2 or to pay Fees, or for any liability that cannot be limited by law.
+**10.5 Unlimited.** Sections 10.1 to 10.4 do not limit liability for fraud, gross negligence or willful misconduct, for death or personal injury caused by negligence, for Customer's obligations under Section 11.2 or to pay Fees, or for any liability that cannot be limited by law.
 
 **10.6 Basis of the bargain.** The Parties acknowledge that Provider is a nonprofit organization and that some Services are supplied free of charge, and that the limits in this Section reflect that basis.
 
