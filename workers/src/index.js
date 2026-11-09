@@ -68,6 +68,7 @@ const SF_COMPANY_LABELS = [
   'Organization',
 ];
 const SF_WEBSITE_LABELS = ['Website', 'Company website'];
+const SF_PHONE_LABELS = ['Phone', 'Phone number'];
 
 // Support form severities mapped onto the standard Case Priority picklist.
 const SF_CASE_PRIORITY = {
@@ -694,6 +695,155 @@ async function getSalesforceToken(env, forceRefresh) {
 }
 
 /**
+ * Split a full name on its last space. A single word becomes the last name.
+ *
+ * @param {string} name Full name, possibly empty.
+ * @returns {{ firstName: string, lastName: string }}
+ */
+function splitName(name) {
+  const split = name.lastIndexOf(' ');
+  return {
+    firstName: split > 0 ? name.slice(0, split).trim() : '',
+    lastName: split > 0 ? name.slice(split + 1) : name,
+  };
+}
+
+/**
+ * Escape a value for use inside a single quoted SOQL string literal.
+ *
+ * @param {string} value Raw value.
+ * @returns {string} Escaped value.
+ */
+function soqlString(value) {
+  return value.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+}
+
+/**
+ * Send an authenticated request to the Salesforce REST API, refreshing the
+ * token and retrying once on 401. Throws on network errors and timeouts.
+ *
+ * @param {Record<string, string>} env Worker environment bindings.
+ * @param {string} path Path below /services/data/{version}, e.g. "/sobjects/Case".
+ * @param {{ method?: string, headers?: Record<string, string>, body?: unknown }} [options]
+ * @returns {Promise<{ status: number, ok: boolean, text: string }>}
+ */
+async function sfRequest(env, path, options = {}) {
+  const apiVersion = env.SF_API_VERSION || 'v66.0';
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const token = await getSalesforceToken(env, attempt > 0);
+    const headers = {
+      Authorization: `Bearer ${token.accessToken}`,
+      ...options.headers,
+    };
+    if (options.body !== undefined) {
+      headers['Content-Type'] = 'application/json';
+    }
+    const response = await fetch(
+      `${token.instanceUrl}/services/data/${apiVersion}${path}`,
+      {
+        method: options.method || 'GET',
+        headers,
+        body:
+          options.body === undefined ? undefined : JSON.stringify(options.body),
+        signal: AbortSignal.timeout(SF_TIMEOUT_MS),
+      }
+    );
+    if (response.status === 401 && attempt === 0) {
+      // Expired or revoked session: refresh the token and retry once.
+      continue;
+    }
+    return {
+      status: response.status,
+      ok: response.ok,
+      text: await response.text(),
+    };
+  }
+  return { status: 401, ok: false, text: 'unauthorized after token refresh' };
+}
+
+/**
+ * Create a Salesforce record and return its Id. Throws with the API error
+ * text on failure.
+ *
+ * @param {Record<string, string>} env Worker environment bindings.
+ * @param {string} sobject Object API name.
+ * @param {Record<string, string>} record Field values.
+ * @param {Record<string, string>} [headers] Extra request headers.
+ * @returns {Promise<string>} New record Id.
+ */
+async function sfCreate(env, sobject, record, headers = {}) {
+  const response = await sfRequest(env, `/sobjects/${sobject}`, {
+    method: 'POST',
+    headers: {
+      // A returning submitter must not be rejected by a duplicate rule; the
+      // record is saved and flagged as a potential duplicate.
+      'Sforce-Duplicate-Rule-Header': 'allowSave=true',
+      ...headers,
+    },
+    body: record,
+  });
+  if (!response.ok) {
+    throw new Error(
+      `${sobject} create failed with ${response.status}: ${response.text}`
+    );
+  }
+  const result = JSON.parse(response.text);
+  if (!result.success) {
+    throw new Error(`${sobject} create failed: ${response.text}`);
+  }
+  return result.id;
+}
+
+/**
+ * Find the oldest Contact with the submitter's email, or create one under
+ * SF_CONTACT_ACCOUNT_ID. Contacts without an Account are private to their
+ * owner, so when SF_CONTACT_ACCOUNT_ID is unset no Contact is created and
+ * null is returned when there is no existing match.
+ *
+ * @param {Record<string, string>} env Worker environment bindings.
+ * @param {{ email: string, answers: string[][] }} submission
+ * @returns {Promise<string | null>} Contact Id, or null.
+ */
+async function findOrCreateContact(env, submission) {
+  const { email, answers } = submission;
+  const soql =
+    'SELECT Id FROM Contact ' +
+    `WHERE Email = '${soqlString(email)}' ORDER BY CreatedDate LIMIT 1`;
+  const query = await sfRequest(env, `/query?q=${encodeURIComponent(soql)}`);
+  if (!query.ok) {
+    throw new Error(
+      `Contact lookup failed with ${query.status}: ${query.text}`
+    );
+  }
+  const existing = JSON.parse(query.text).records?.[0];
+  if (existing) {
+    return existing.Id;
+  }
+
+  if (!env.SF_CONTACT_ACCOUNT_ID) {
+    console.error(
+      'SF_CONTACT_ACCOUNT_ID is not set; Case created without a Contact.'
+    );
+    return null;
+  }
+  const { firstName, lastName } = splitName(answerFor(answers, SF_NAME_LABELS));
+  const contact = {
+    // LastName is required; fall back to the email's local part.
+    LastName: sfClip(lastName || email.slice(0, email.lastIndexOf('@')), 80),
+    Email: email,
+    AccountId: env.SF_CONTACT_ACCOUNT_ID,
+  };
+  if (firstName) {
+    contact.FirstName = sfClip(firstName, 40);
+  }
+  const phone = answerFor(answers, SF_PHONE_LABELS);
+  if (phone) {
+    contact.Phone = sfClip(phone, 40);
+  }
+  return sfCreate(env, 'Contact', contact);
+}
+
+/**
  * Build the Salesforce record body for a submission.
  *
  * @param {'Lead' | 'Case'} sobject Target object.
@@ -707,13 +857,10 @@ function buildSalesforceRecord(sobject, submission) {
   const company = answerFor(answers, SF_COMPANY_LABELS);
 
   if (sobject === 'Lead') {
-    // Lead requires LastName and Company. Split on the last space; a single
-    // word name becomes the last name.
-    const split = name.lastIndexOf(' ');
-    const firstName = split > 0 ? name.slice(0, split).trim() : '';
-    const lastName = (split > 0 ? name.slice(split + 1) : name) || email;
+    // Lead requires LastName and Company.
+    const { firstName, lastName } = splitName(name);
     const record = {
-      LastName: sfClip(lastName, 80),
+      LastName: sfClip(lastName || email, 80),
       Company: sfClip(company || 'Not provided', 255),
       Email: email,
       LeadSource: 'Web',
@@ -730,8 +877,8 @@ function buildSalesforceRecord(sobject, submission) {
     return record;
   }
 
-  // Case: web submissions use the Supplied* fields, which need no Contact or
-  // Account to exist.
+  // Case: the Supplied* fields keep what the submitter typed; ContactId is
+  // added by submitToSalesforce so Salesforce can email them on updates.
   const subject =
     answerFor(answers, ['Subject']) ||
     `${formLabel}: ${answerFor(answers, ['Topic']) || 'General'}`;
@@ -761,6 +908,11 @@ function buildSalesforceRecord(sobject, submission) {
  * Salesforce is skipped when SF_INSTANCE_URL, SF_CLIENT_ID, or
  * SF_CLIENT_SECRET is unset.
  *
+ * A Case is linked to the submitter's Contact (found or created first). A
+ * Contact failure is logged and the Case is still created without it. Lead
+ * and Case ownership goes to SF_LEAD_OWNER_ID or SF_CASE_OWNER_ID (a queue)
+ * when set, otherwise to the active assignment rule for that object.
+ *
  * @param {{ form: string, formLabel: string, email: string, answers: string[][] }} submission
  * @param {Record<string, string>} env Worker environment bindings.
  * @returns {Promise<{ ok: true, id: string } | { ok: false, reason: string }>}
@@ -777,46 +929,33 @@ async function submitToSalesforce(submission, env) {
     return { ok: false, reason: 'email longer than 80 characters' };
   }
   const record = buildSalesforceRecord(sobject, submission);
-  const apiVersion = env.SF_API_VERSION || 'v66.0';
+  // A configured queue owns the record. Otherwise the active Lead or Case
+  // assignment rule runs; it is turned off with a queue, since the rule would
+  // override an explicit OwnerId.
+  const ownerId =
+    sobject === 'Lead' ? env.SF_LEAD_OWNER_ID : env.SF_CASE_OWNER_ID;
+  if (ownerId) {
+    record.OwnerId = ownerId;
+  }
 
   try {
-    for (let attempt = 0; attempt < 2; attempt += 1) {
-      const token = await getSalesforceToken(env, attempt > 0);
-      const response = await fetch(
-        `${token.instanceUrl}/services/data/${apiVersion}/sobjects/${sobject}`,
-        {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${token.accessToken}`,
-            'Content-Type': 'application/json',
-            // Run the active Lead or Case assignment rule.
-            'Sforce-Auto-Assign': 'TRUE',
-            // A returning applicant must not be rejected by a duplicate rule;
-            // the record is saved and flagged as a potential duplicate.
-            'Sforce-Duplicate-Rule-Header': 'allowSave=true',
-          },
-          body: JSON.stringify(record),
-          signal: AbortSignal.timeout(SF_TIMEOUT_MS),
+    if (sobject === 'Case') {
+      try {
+        const contactId = await findOrCreateContact(env, submission);
+        if (contactId) {
+          record.ContactId = contactId;
         }
-      );
-      if (response.status === 401 && attempt === 0) {
-        // Expired or revoked session: refresh the token and retry once.
-        continue;
+      } catch (err) {
+        console.error(
+          'Salesforce Contact step failed; creating Case without it:',
+          String(err && err.message ? err.message : err)
+        );
       }
-      const text = await response.text();
-      if (!response.ok) {
-        return {
-          ok: false,
-          reason: `${sobject} create failed with ${response.status}: ${text}`,
-        };
-      }
-      const result = JSON.parse(text);
-      if (!result.success) {
-        return { ok: false, reason: `${sobject} create failed: ${text}` };
-      }
-      return { ok: true, id: result.id };
     }
-    return { ok: false, reason: `${sobject} create failed with 401` };
+    const id = await sfCreate(env, sobject, record, {
+      'Sforce-Auto-Assign': ownerId ? 'FALSE' : 'TRUE',
+    });
+    return { ok: true, id };
   } catch (err) {
     return {
       ok: false,

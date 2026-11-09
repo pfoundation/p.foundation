@@ -176,15 +176,18 @@ Set these in the same place, on the Variables tab.
 
 These are plain, non secret values committed in `wrangler.toml`.
 
-| Var                    | Value and purpose                                                                                                                                                         |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ALLOWED_ORIGINS`      | `https://p.foundation,http://localhost:3000`. Comma separated exact origins allowed by CORS.                                                                              |
-| `MAILGUN_LIST_ADDRESS` | `updates@bounce.p.foundation`. The mailing list members are added to.                                                                                                     |
-| `MAILGUN_DOMAIN`       | `bounce.p.foundation`. Sending domain for application emails (`forms@bounce.p.foundation`). Must be an active Mailgun domain; it already is, as the mailing list uses it. |
-| `MAILGUN_API_BASE`     | `https://api.mailgun.net`. Use `https://api.eu.mailgun.net` for EU domains.                                                                                               |
-| `SITE_URL`             | `https://p.foundation`. Used to build the Stripe success and cancel URLs.                                                                                                 |
-| `SF_INSTANCE_URL`      | Salesforce My Domain URL, for example `https://pfoundation.my.salesforce.com`. While empty, `/api/apply` skips Salesforce and only emails.                                |
-| `SF_API_VERSION`       | Salesforce REST API version, `v66.0`.                                                                                                                                     |
+| Var                     | Value and purpose                                                                                                                                                                                      |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ALLOWED_ORIGINS`       | `https://p.foundation,http://localhost:3000`. Comma separated exact origins allowed by CORS.                                                                                                           |
+| `MAILGUN_LIST_ADDRESS`  | `updates@bounce.p.foundation`. The mailing list members are added to.                                                                                                                                  |
+| `MAILGUN_DOMAIN`        | `bounce.p.foundation`. Sending domain for application emails (`forms@bounce.p.foundation`). Must be an active Mailgun domain; it already is, as the mailing list uses it.                              |
+| `MAILGUN_API_BASE`      | `https://api.mailgun.net`. Use `https://api.eu.mailgun.net` for EU domains.                                                                                                                            |
+| `SITE_URL`              | `https://p.foundation`. Used to build the Stripe success and cancel URLs.                                                                                                                              |
+| `SF_INSTANCE_URL`       | Salesforce My Domain URL, for example `https://pfoundation.my.salesforce.com`. While empty, `/api/apply` skips Salesforce and only emails.                                                             |
+| `SF_API_VERSION`        | Salesforce REST API version, `v66.0`.                                                                                                                                                                  |
+| `SF_CONTACT_ACCOUNT_ID` | Account Id (for example the "Website Submitters" account) that new Contacts from contact and support forms are created under. While empty, Cases link only to an existing Contact with the same email. |
+| `SF_CASE_OWNER_ID`      | Queue (or user) Id that owns new Cases. While empty, the active Case assignment rule picks the owner.                                                                                                  |
+| `SF_LEAD_OWNER_ID`      | Queue (or user) Id that owns new Leads. While empty, the active Lead assignment rule picks the owner.                                                                                                  |
 
 ## First deploy checklist
 
@@ -216,10 +219,23 @@ new form on the site from failing in Salesforce.
 The worker also writes these standard fields, which need no setup:
 
 - Lead: FirstName, LastName, Company, Email, Website, LeadSource (`Web`),
-  Description (every answer in full).
+  Description (every answer in full), and OwnerId when `SF_LEAD_OWNER_ID`
+  is set.
 - Case: SuppliedName, SuppliedEmail, SuppliedCompany, Subject, Priority
   (support Severity mapped Low to Low, Normal to Medium, High and Urgent to
-  High), Origin (`Web`), Description.
+  High), Origin (`Web`), Description, ContactId, and OwnerId when
+  `SF_CASE_OWNER_ID` is set.
+- Contact (created for a Case when no Contact has the submitter's email):
+  FirstName, LastName (the email's local part when the form has no name),
+  Email, Phone (when the form has a Phone question), AccountId
+  (`SF_CONTACT_ACCOUNT_ID`).
+
+Before each Case the worker runs `SELECT Id FROM Contact WHERE Email = ...
+ORDER BY CreatedDate LIMIT 1` and links the oldest match, creating a
+Contact only when there is none. With ContactId set, Salesforce can email
+the submitter when the team comments on the Case. If the Contact lookup or
+create fails, the error is logged and the Case is still created without a
+Contact.
 
 Confirm the `Web` value is active in the Lead Source and Case Origin
 picklists, and the Low, Medium, and High values in Case Priority. Validation
@@ -237,10 +253,13 @@ relax them for the integration user or the forms will fall back to email.
    `Salesforce API Integration`. Grant:
    - Object Settings, Leads: Read, Create. Field permissions: Edit on
      Website Form, Description, Website, Lead Source, Email, First Name,
-     Company.
+     Company, Lead Owner.
    - Object Settings, Cases: Read, Create. Field permissions: Edit on
      Website Form, Description, Subject, Priority, Case Origin, Web Email,
-     Web Name, Web Company.
+     Web Name, Web Company, Contact Name, Case Owner.
+   - Object Settings, Contacts: Read, Create. Field permissions: Edit on
+     First Name, Email, Phone, Account Name.
+   - Object Settings, Accounts: Read.
 4. Assign the permission set to the integration user.
 
 If the Lead or Case objects are not offered under that license in your
@@ -297,6 +316,14 @@ Run As user.
 The worker sends `Sforce-Auto-Assign: TRUE`, so the active Lead and Case
 assignment rules run on every record: route by `Website_Form__c` (for
 example `opencache-isp` to the peering team, `support` to the NOC queue).
+Without an active assignment rule whose entries match, a Lead or Case
+stays owned by the integration user and its notifications go to that
+user's email. Either activate a rule with a catch-all last entry, or set
+`SF_LEAD_OWNER_ID` or `SF_CASE_OWNER_ID` to a queue Id: the worker then
+sets OwnerId and sends `Sforce-Auto-Assign: FALSE` for that object, since
+the rule would override it. The queue must list Lead or Case (or both)
+under Supported Objects, and the permission set needs Edit on the Lead
+Owner field when `SF_LEAD_OWNER_ID` is used.
 It also sends `Sforce-Duplicate-Rule-Header: allowSave=true`, so a
 returning applicant is saved and flagged as a possible duplicate instead
 of being rejected.
@@ -344,7 +371,7 @@ npx wrangler dev
 `workers/package.json` pins the wrangler version for both local development
 and the Deploy Worker action, which installs from it.
 
-`npx wrangler dev` serves the worker on http://localhost:8787 and loads
+`npx wrangler dev` serves the worker on `http://localhost:8787` and loads
 secrets from `.dev.vars` (gitignored). The worker allows the origin
 `http://localhost:3000`, so `npm start` on the site works against it: build
 or start the site with `PF_API_BASE_URL=http://localhost:8787`.

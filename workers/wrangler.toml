@@ -29,6 +29,15 @@ SITE_URL = "https://p.foundation"
 # While empty, /api/apply skips Salesforce and only sends the email.
 SF_INSTANCE_URL = "https://pfoundation.my.salesforce.com"
 SF_API_VERSION = "v66.0"
+# Account that new Contacts from contact and support Cases belong to (for
+# example "Website Submitters"). While empty, no Contact is created and a
+# Case links only to an existing Contact with the same email.
+SF_CONTACT_ACCOUNT_ID = "001hm00000AcQwbAAF"
+# Queue Ids that own new Cases and Leads. While empty, the assignment rule
+# for that object runs instead. The queue must list the object under
+# Supported Objects.
+SF_CASE_OWNER_ID = "00Ghm000001hQTJEA2"
+SF_LEAD_OWNER_ID = "00Ghm000001hQTJEA2"
 
 [observability.logs]
 enabled = true
