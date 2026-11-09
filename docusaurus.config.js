@@ -45,6 +45,10 @@ const config = {
     // Stripe-hosted donation page, used as a fallback when the API is
     // unreachable.
     donateFallbackUrl: 'https://donate.stripe.com/8wM15masqehlgfu4gh',
+    // Cloudflare Turnstile site key (public) for the bot check on every
+    // form. Set PF_TURNSTILE_SITE_KEY at build time; while it is empty the
+    // forms skip the check. See workers/README.md, "Bot protection".
+    turnstileSiteKey: process.env.PF_TURNSTILE_SITE_KEY || '',
   },
 
   headTags: [

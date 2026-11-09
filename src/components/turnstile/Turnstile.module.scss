@@ -1,0 +1,22 @@
+/* Holds the Turnstile widget. Turnstile keeps an "interaction-only" widget
+   collapsed until Cloudflare asks for an interactive check, so the slot
+   takes no space until then. It must stay displayed (never display: none)
+   or the invisible check cannot run. */
+.slot {
+  width: 100%;
+}
+
+.slotActive {
+  margin-top: 1rem;
+}
+
+.prompt {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.5;
+
+  &:empty {
+    display: none;
+  }
+}

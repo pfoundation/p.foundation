@@ -3,15 +3,17 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import clsx from 'clsx';
 import React, { FunctionComponent, useState } from 'react';
 
+import { TurnstileError, useTurnstile } from '../turnstile/useTurnstile';
 import styles from './Newsletter.module.scss';
 
-type SubscribeStatus = 'idle' | 'loading' | 'success' | 'error';
+type SubscribeStatus = 'idle' | 'verifying' | 'loading' | 'success' | 'error';
 
 const FALLBACK_ERROR = 'Something went wrong. Please try again.';
 
 export const Newsletter: FunctionComponent = () => {
   const { siteConfig } = useDocusaurusContext();
   const apiBaseUrl = siteConfig.customFields.apiBaseUrl as string;
+  const turnstile = useTurnstile('newsletter');
 
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
@@ -20,6 +22,9 @@ export const Newsletter: FunctionComponent = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (status === 'loading' || status === 'verifying') {
+      return;
+    }
 
     // Honeypot: humans never see the "company" field. If it has a value,
     // show the success state without calling the API.
@@ -28,8 +33,20 @@ export const Newsletter: FunctionComponent = () => {
       return;
     }
 
-    setStatus('loading');
+    setStatus('verifying');
     setErrorMessage('');
+    let turnstileToken: string;
+    try {
+      turnstileToken = await turnstile.getToken();
+    } catch (err) {
+      setErrorMessage(
+        err instanceof TurnstileError ? err.message : FALLBACK_ERROR
+      );
+      setStatus('error');
+      return;
+    }
+
+    setStatus('loading');
 
     try {
       const response = await fetch(`${apiBaseUrl}/api/newsletter/subscribe`, {
@@ -38,6 +55,7 @@ export const Newsletter: FunctionComponent = () => {
         body: JSON.stringify({
           email,
           referralPage: window.location.pathname + window.location.search,
+          turnstileToken,
         }),
       });
 
@@ -131,11 +149,16 @@ export const Newsletter: FunctionComponent = () => {
                   <button
                     type="submit"
                     className={clsx('button', 'important-btn', styles.submit)}
-                    disabled={status === 'loading'}
+                    disabled={status === 'loading' || status === 'verifying'}
                   >
-                    {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
+                    {status === 'verifying'
+                      ? 'Verifying...'
+                      : status === 'loading'
+                      ? 'Subscribing...'
+                      : 'Subscribe'}
                   </button>
                 </form>
+                {turnstile.slot}
                 {status === 'error' && (
                   <p
                     id="newsletter-error"

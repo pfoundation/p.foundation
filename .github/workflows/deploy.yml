@@ -38,12 +38,21 @@ jobs:
           The site will guess the worker URL; donations and newsletter signups
           may fail. See workers/README.md."
 
+      - name: Check Turnstile configuration
+        if: ${{ vars.PF_TURNSTILE_SITE_KEY == '' }}
+        run:
+          echo "::warning::The PF_TURNSTILE_SITE_KEY repository variable is not
+          set. Forms will skip the Turnstile bot check, and the worker rejects
+          them once TURNSTILE_SECRET_KEY is set. See workers/README.md."
+
       - name: Build website
         run: npm run build
         env:
           # Base URL of the Cloudflare Worker that backs donations and the
           # mailing list. Set as a repository variable; see workers/README.md.
           PF_API_BASE_URL: ${{ vars.PF_API_BASE_URL }}
+          # Public Cloudflare Turnstile site key for the forms' bot check.
+          PF_TURNSTILE_SITE_KEY: ${{ vars.PF_TURNSTILE_SITE_KEY }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

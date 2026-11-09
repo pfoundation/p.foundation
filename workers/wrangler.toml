@@ -6,6 +6,7 @@
 #   MAILGUN_API_KEY    Mailgun private API key
 #   SF_CLIENT_ID       Salesforce External Client App consumer key
 #   SF_CLIENT_SECRET   Salesforce External Client App consumer secret
+#   TURNSTILE_SECRET_KEY  Cloudflare Turnstile widget secret key
 
 name = "pf-backend"
 main = "src/index.js"

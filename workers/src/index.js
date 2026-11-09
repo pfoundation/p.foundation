@@ -11,6 +11,9 @@
  *                                    in Salesforce (Lead or Case), falling back to a
  *                                    Mailgun email when Salesforce fails
  * Plus GET /health for monitoring. It must not serve pages or static assets.
+ *
+ * Every POST endpoint requires a Cloudflare Turnstile token (turnstileToken
+ * in the JSON body) once the TURNSTILE_SECRET_KEY secret is set.
  */
 
 const MAX_BODY_LENGTH = 10 * 1024;
@@ -86,6 +89,14 @@ const SF_TIMEOUT_MS = 8000;
 // refreshed well inside the shortest Salesforce session timeout (15 min is
 // the minimum org setting). A 401 also forces a refresh.
 const SF_TOKEN_TTL_MS = 10 * 60 * 1000;
+
+// Cloudflare Turnstile server side validation. Tokens are at most 2048
+// characters, single use, and valid for 300 seconds.
+const TURNSTILE_VERIFY_URL =
+  'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+const TURNSTILE_TIMEOUT_MS = 5000;
+const MAX_TURNSTILE_TOKEN_LENGTH = 2048;
+const TURNSTILE_FAILED_ERROR = 'The security check failed. Please try again.';
 
 /** Module scoped token cache, shared by requests within one isolate. */
 let sfTokenCache = null;
@@ -199,6 +210,84 @@ async function rateLimited(request, env, scope) {
 }
 
 /**
+ * Validate a Cloudflare Turnstile token with the siteverify API. Skipped
+ * (always passes) while TURNSTILE_SECRET_KEY is unset, so the worker keeps
+ * working before the widget is configured. Fails closed when siteverify
+ * cannot be reached.
+ *
+ * @param {Request} request Incoming request (for the visitor IP).
+ * @param {Record<string, string>} env Worker environment bindings.
+ * @param {unknown} token The turnstileToken value from the request body.
+ * @param {string} action Action the site renders the widget with for this
+ *   endpoint, so a token is only accepted where it was issued.
+ * @returns {Promise<{ ok: true } | { ok: false, error: string, status: number }>}
+ */
+async function verifyTurnstile(request, env, token, action) {
+  const secret = env.TURNSTILE_SECRET_KEY;
+  if (!secret) {
+    return { ok: true };
+  }
+  if (
+    typeof token !== 'string' ||
+    !token ||
+    token.length > MAX_TURNSTILE_TOKEN_LENGTH
+  ) {
+    return {
+      ok: false,
+      status: 403,
+      error: 'Please complete the security check and try again.',
+    };
+  }
+
+  const params = new URLSearchParams();
+  params.set('secret', secret);
+  params.set('response', token);
+  const ip = request.headers.get('CF-Connecting-IP');
+  if (ip) {
+    params.set('remoteip', ip);
+  }
+
+  let outcome;
+  try {
+    const response = await fetch(TURNSTILE_VERIFY_URL, {
+      method: 'POST',
+      body: params,
+      signal: AbortSignal.timeout(TURNSTILE_TIMEOUT_MS),
+    });
+    if (!response.ok) {
+      throw new Error(`siteverify returned HTTP ${response.status}`);
+    }
+    outcome = await response.json();
+  } catch (err) {
+    console.error('Turnstile siteverify failed:', err);
+    return {
+      ok: false,
+      status: 503,
+      error:
+        'The security check is unavailable right now. Please try again in a minute.',
+    };
+  }
+
+  if (!outcome || outcome.success !== true) {
+    console.warn(
+      'Turnstile rejected a token:',
+      JSON.stringify(outcome && outcome['error-codes'])
+    );
+    return { ok: false, status: 403, error: TURNSTILE_FAILED_ERROR };
+  }
+  // Real widgets always carry the action the site rendered them with;
+  // Cloudflare's test keys return none, so an empty action is allowed.
+  if (outcome.action && outcome.action !== action) {
+    console.warn(
+      'Turnstile action mismatch:',
+      JSON.stringify({ expected: action, got: outcome.action })
+    );
+    return { ok: false, status: 403, error: TURNSTILE_FAILED_ERROR };
+  }
+  return { ok: true };
+}
+
+/**
  * Handle POST /api/donate/checkout: validate the donation request and create
  * a Stripe Checkout session, returning its hosted payment page URL.
  *
@@ -219,7 +308,7 @@ async function handleDonateCheckout(request, env, cors) {
   if (body.error) {
     return jsonResponse({ error: body.error }, body.status, cors);
   }
-  const { amount, interval } = body.data ?? {};
+  const { amount, interval, turnstileToken } = body.data ?? {};
 
   if (
     !Number.isInteger(amount) ||
@@ -241,6 +330,16 @@ async function handleDonateCheckout(request, env, cors) {
       400,
       cors
     );
+  }
+
+  const turnstile = await verifyTurnstile(
+    request,
+    env,
+    turnstileToken,
+    'donate'
+  );
+  if (!turnstile.ok) {
+    return jsonResponse({ error: turnstile.error }, turnstile.status, cors);
   }
 
   // URLSearchParams handles all value encoding; never concatenate strings
@@ -347,6 +446,16 @@ async function handleNewsletterSubscribe(request, env, cors) {
     .slice(0, MAX_REFERRAL_LENGTH)
     // eslint-disable-next-line no-control-regex
     .replace(/[\u0000-\u001f\u007f]/g, '');
+
+  const turnstile = await verifyTurnstile(
+    request,
+    env,
+    data.turnstileToken,
+    'newsletter'
+  );
+  if (!turnstile.ok) {
+    return jsonResponse({ error: turnstile.error }, turnstile.status, cors);
+  }
 
   const params = new URLSearchParams();
   params.set('address', email);
@@ -517,6 +626,16 @@ async function handleApply(request, env, cors) {
       );
     }
     answers.push([label, value]);
+  }
+
+  const turnstile = await verifyTurnstile(
+    request,
+    env,
+    data.turnstileToken,
+    'apply'
+  );
+  if (!turnstile.ok) {
+    return jsonResponse({ error: turnstile.error }, turnstile.status, cors);
   }
 
   const submission = { form, formLabel, email, answers };

@@ -10,6 +10,10 @@ import clsx from 'clsx';
 import React, { FunctionComponent, useState } from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
+import {
+  TurnstileError,
+  useTurnstile,
+} from '../../components/turnstile/useTurnstile';
 import styles from './apply.module.scss';
 
 export type FieldType =
@@ -46,7 +50,7 @@ export type FieldDef = {
 };
 
 type FieldValues = Record<string, string | string[]>;
-type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+type FormStatus = 'idle' | 'verifying' | 'loading' | 'success' | 'error';
 
 const FALLBACK_ERROR =
   'Something went wrong and the application was not sent. Please try again.';
@@ -245,6 +249,8 @@ export const ApplicationForm: FunctionComponent<{
   submitLabel?: string;
   /** Submit button label while the request is in flight. */
   loadingLabel?: string;
+  /** Submit button label while the bot check runs. */
+  verifyingLabel?: string;
   /** Heading of the success state. */
   successTitle?: string;
   /** Body of the success state; receives the submitted email. */
@@ -257,6 +263,7 @@ export const ApplicationForm: FunctionComponent<{
   selector,
   submitLabel = 'Submit application',
   loadingLabel = 'Sending application...',
+  verifyingLabel = 'Verifying...',
   successTitle = 'Application received',
   successMessage = (email) => (
     <>
@@ -267,6 +274,7 @@ export const ApplicationForm: FunctionComponent<{
 }) => {
   const { siteConfig } = useDocusaurusContext();
   const apiBaseUrl = siteConfig.customFields.apiBaseUrl as string;
+  const turnstile = useTurnstile('apply');
 
   const [values, setValues] = useState<FieldValues>(() => {
     const initial: FieldValues = {};
@@ -316,7 +324,7 @@ export const ApplicationForm: FunctionComponent<{
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (status === 'loading') {
+    if (status === 'loading' || status === 'verifying') {
       return;
     }
 
@@ -347,8 +355,23 @@ export const ApplicationForm: FunctionComponent<{
       return;
     }
 
-    setStatus('loading');
+    // Bot check runs only now, after a valid submit. Most visitors pass
+    // invisibly; otherwise the widget appears and the submission continues
+    // once it is completed.
+    setStatus('verifying');
     setServerError('');
+    let turnstileToken: string;
+    try {
+      turnstileToken = await turnstile.getToken();
+    } catch (err) {
+      setServerError(
+        err instanceof TurnstileError ? err.message : errorFallback
+      );
+      setStatus('error');
+      return;
+    }
+
+    setStatus('loading');
 
     const answers: Record<string, string> = {};
     for (const field of fields) {
@@ -362,7 +385,12 @@ export const ApplicationForm: FunctionComponent<{
       const response = await fetch(`${apiBaseUrl}/api/apply`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ form: formKey, email, fields: answers }),
+        body: JSON.stringify({
+          form: formKey,
+          email,
+          fields: answers,
+          turnstileToken,
+        }),
       });
 
       if (response.ok) {
@@ -448,10 +476,16 @@ export const ApplicationForm: FunctionComponent<{
       <button
         type="submit"
         className={styles.submitBtn}
-        disabled={status === 'loading'}
+        disabled={status === 'loading' || status === 'verifying'}
       >
-        {status === 'loading' ? loadingLabel : submitLabel}
+        {status === 'verifying'
+          ? verifyingLabel
+          : status === 'loading'
+          ? loadingLabel
+          : submitLabel}
       </button>
+
+      {turnstile.slot}
 
       {status === 'error' && (
         <div className={styles.errorBox} role="alert">

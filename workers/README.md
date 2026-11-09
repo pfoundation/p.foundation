@@ -22,6 +22,13 @@ Do not add page serving, redirects, or other duties here.
 All request and response bodies are JSON. Error responses use the shape
 `{ "error": "<human readable message>" }` for any 4xx or 5xx status.
 
+Every POST endpoint also takes a `turnstileToken` string: the Cloudflare
+Turnstile token the site gets when the visitor submits. Once
+`TURNSTILE_SECRET_KEY` is set, a request without a valid token is rejected
+with 403, and with 503 if Cloudflare's siteverify API cannot be reached. See
+[Bot protection](#bot-protection). The curl examples below omit it, so they
+only work while the secret is unset (for example in local development).
+
 CORS: the worker allows the origins `https://p.foundation` and
 `http://localhost:3000`, the methods POST, OPTIONS, and GET, and the
 `Content-Type` header. The frontend sends `Content-Type: application/json`,
@@ -38,6 +45,8 @@ Request body:
 | ---------- | ------- | ----------------------------------------- |
 | `amount`   | integer | USD cents, 100 to 1000000 ($1 to $10,000) |
 | `interval` | string  | exactly `"one_time"` or `"monthly"`       |
+
+Plus `turnstileToken` (Turnstile action `donate`).
 
 ```sh
 curl -X POST https://webapi.p.foundation/api/donate/checkout \
@@ -67,6 +76,8 @@ Request body:
 | -------------- | ------ | ------------------------------------------------- |
 | `email`        | string | required, valid email address, max 254 characters |
 | `referralPage` | string | optional, page path that hosted the form          |
+
+Plus `turnstileToken` (Turnstile action `newsletter`).
 
 ```sh
 curl -X POST https://webapi.p.foundation/api/newsletter/subscribe \
@@ -117,6 +128,8 @@ Request body:
 | `email`  | string | required, valid email address, max 254 characters                                                                            |
 | `fields` | object | 1 to 20 entries; each key is a question label (non-empty string, max 80 chars), each value an answer string (max 2000 chars) |
 
+Plus `turnstileToken` (Turnstile action `apply`, for every form key).
+
 ```sh
 curl -X POST https://webapi.p.foundation/api/apply \
   -H 'Content-Type: application/json' \
@@ -152,7 +165,7 @@ curl https://webapi.p.foundation/health
 ### GitHub Actions secrets
 
 Set these in the repository: Settings, then Secrets and variables, then
-Actions, then the Secrets tab. The Deploy Worker workflow needs all six;
+Actions, then the Secrets tab. The Deploy Worker workflow needs all seven;
 a deploy fails while any of them is missing.
 
 | Secret                  | What it is and where to get it                                                                                                                   |
@@ -163,14 +176,16 @@ a deploy fails while any of them is missing.
 | `MAILGUN_API_KEY`       | Mailgun private API key. Pushed to the worker as a runtime secret on every deploy.                                                               |
 | `SF_CLIENT_ID`          | Consumer key of the Salesforce External Client App (see Salesforce setup). Pushed as a runtime secret.                                           |
 | `SF_CLIENT_SECRET`      | Consumer secret of the same app. Pushed as a runtime secret.                                                                                     |
+| `TURNSTILE_SECRET_KEY`  | Secret key of the Cloudflare Turnstile widget (see Bot protection). Pushed as a runtime secret; while empty the worker skips the bot check.      |
 
 ### GitHub Actions variables
 
 Set these in the same place, on the Variables tab.
 
-| Variable          | What it is                                                                                                                                                                                                                     |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `PF_API_BASE_URL` | The deployed worker URL, normally `https://webapi.p.foundation` (no trailing slash). Consumed by the GitHub Pages build in `deploy.yml` so the site knows where the API lives; the site falls back to the same URL when unset. |
+| Variable                | What it is                                                                                                                                                                                                                     |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `PF_API_BASE_URL`       | The deployed worker URL, normally `https://webapi.p.foundation` (no trailing slash). Consumed by the GitHub Pages build in `deploy.yml` so the site knows where the API lives; the site falls back to the same URL when unset. |
+| `PF_TURNSTILE_SITE_KEY` | Site key (public) of the Cloudflare Turnstile widget. Consumed by the GitHub Pages build; while unset the forms skip the bot check and send no token.                                                                          |
 
 ### Worker runtime config (wrangler.toml [vars])
 
@@ -191,7 +206,7 @@ These are plain, non secret values committed in `wrangler.toml`.
 
 ## First deploy checklist
 
-1. Set the four GitHub secrets listed above.
+1. Set the GitHub secrets listed above.
 2. Push to `master` (any change under `workers/`), or run the "Deploy Worker"
    workflow manually from the Actions tab.
 3. The worker deploys to the custom domain `https://webapi.p.foundation`
@@ -336,6 +351,46 @@ secret, and redeploy. Submissions during the gap fall back to email.
 
 ## Abuse protection
 
+### Bot protection
+
+Every form on the site (applications, contact, support, the newsletter
+signup, and the donation widget) runs a Cloudflare Turnstile check when the
+visitor clicks submit, never before: the script is not even loaded until
+then. The widget renders with `appearance: interaction-only`, so most
+visitors pass invisibly and the submission continues on its own after a
+second or two. Only when Cloudflare wants an interactive check does the
+widget appear under the submit button, with a one-line prompt, and the
+submission continues as soon as the visitor completes it. The client code
+lives in `src/components/turnstile/useTurnstile.tsx`.
+
+The worker validates each token with the siteverify API before calling
+Stripe, Mailgun, or Salesforce, and checks that the token's action matches
+the endpoint (`donate`, `newsletter`, or `apply`). Tokens are single use, so
+the site gets a fresh one on every submit.
+
+Setup:
+
+1. Cloudflare dashboard, Turnstile, Add widget. Name it
+   "p.foundation forms", add the hostnames `p.foundation` and `localhost`, and choose
+   Widget Mode **Managed** (the mode that only asks for interaction when
+   needed). Create, then copy the site key and secret key.
+2. Set the `PF_TURNSTILE_SITE_KEY` repository variable to the site key and
+   re-run the GitHub Pages deploy. The site now sends tokens; the worker
+   ignores them until step 3.
+3. Add the `TURNSTILE_SECRET_KEY` GitHub secret and redeploy the worker
+   (push under `workers/` or run Deploy Worker). From now on, requests
+   without a valid token are rejected.
+
+Do step 2 before step 3: if the worker has the secret while the site has no
+site key, every form submission fails with 403.
+
+For local development, Cloudflare's test keys skip the real challenge: site
+key `1x00000000000000000000AA` (always passes) or `3x00000000000000000000FF`
+(always asks for interaction), with the secret
+`1x0000000000000000000000000000000AA`. Leave both empty to disable the check.
+
+### Rate limiting
+
 All three POST endpoints are rate limited to 10 requests per minute per IP
 and per endpoint, via the Workers rate limiting binding configured in
 `wrangler.toml` (`RATE_LIMITER`). The binding uses Cloudflare's beta
@@ -374,7 +429,9 @@ and the Deploy Worker action, which installs from it.
 `npx wrangler dev` serves the worker on `http://localhost:8787` and loads
 secrets from `.dev.vars` (gitignored). The worker allows the origin
 `http://localhost:3000`, so `npm start` on the site works against it: build
-or start the site with `PF_API_BASE_URL=http://localhost:8787`.
+or start the site with `PF_API_BASE_URL=http://localhost:8787`. With the
+Turnstile test secret from `.dev.vars.example`, also set
+`PF_TURNSTILE_SITE_KEY=1x00000000000000000000AA`.
 
 ## Custom domain
 

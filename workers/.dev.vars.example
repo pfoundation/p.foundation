@@ -4,3 +4,7 @@ MAILGUN_API_KEY=replace_me
 # Optional: leave empty to skip Salesforce locally (forms then go by email).
 SF_CLIENT_ID=
 SF_CLIENT_SECRET=
+# Optional: leave empty to skip the Turnstile bot check locally. This is
+# Cloudflare's test secret that accepts every token; pair it with the test
+# site key 1x00000000000000000000AA (PF_TURNSTILE_SITE_KEY) on the site.
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA

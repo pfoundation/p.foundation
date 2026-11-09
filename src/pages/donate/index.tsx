@@ -3,6 +3,7 @@ import React, { FunctionComponent, useState } from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 
+import { useTurnstile } from '../../components/turnstile/useTurnstile';
 import styles from './donate.module.scss';
 
 type DonationInterval = 'monthly' | 'one_time';
@@ -29,11 +30,13 @@ const DonationWidget: FunctionComponent = () => {
   const { siteConfig } = useDocusaurusContext();
   const apiBaseUrl = siteConfig.customFields.apiBaseUrl as string;
   const donateFallbackUrl = siteConfig.customFields.donateFallbackUrl as string;
+  const turnstile = useTurnstile('donate');
 
   const [interval, setDonationInterval] = useState<DonationInterval>('monthly');
   const [preset, setPreset] = useState<number | null>(25);
   const [custom, setCustom] = useState('');
   const [loading, setLoading] = useState(false);
+  const [verifying, setVerifying] = useState(false);
   const [error, setError] = useState(false);
 
   const amount = preset ?? (custom.trim() === '' ? NaN : Number(custom));
@@ -67,14 +70,20 @@ const DonationWidget: FunctionComponent = () => {
       return;
     }
     setLoading(true);
+    setVerifying(true);
     setError(false);
     try {
+      // Bot check runs only now; the widget appears only if Cloudflare
+      // needs the donor to interact, and checkout continues once it passes.
+      const turnstileToken = await turnstile.getToken();
+      setVerifying(false);
       const response = await fetch(`${apiBaseUrl}/api/donate/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           amount: Math.round(amount * 100),
           interval,
+          turnstileToken,
         }),
       });
       const data = (await response.json()) as { url?: string };
@@ -84,11 +93,14 @@ const DonationWidget: FunctionComponent = () => {
       window.location.assign(data.url);
     } catch {
       setError(true);
+      setVerifying(false);
       setLoading(false);
     }
   };
 
-  const ctaLabel = loading
+  const ctaLabel = verifying
+    ? 'Verifying...'
+    : loading
     ? 'Redirecting to secure checkout...'
     : !isValid
     ? 'Donate'
@@ -192,6 +204,8 @@ const DonationWidget: FunctionComponent = () => {
       >
         {ctaLabel}
       </button>
+
+      {turnstile.slot}
 
       {error && (
         <div className={styles.errorBox} role="alert">
