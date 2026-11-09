@@ -10,7 +10,7 @@ description: The third-party service providers that P Foundation engages to proc
 
 ## Introduction
 
-P Foundation (“**we**,” “**us**,” or “**our**”) engages a limited number of third-party service providers to help operate our website, programs, and organization. Where one of these providers processes personal information on our behalf, we refer to it as a “**subprocessor**.” This page lists our current subprocessors and should be read together with our [Privacy Policy](/terms/privacy), which describes the personal information we collect and how we use it.
+P Foundation (“**we**,” “**us**,” or “**our**”) engages a limited number of third-party service providers to help operate our website, programs, and organization. Where one of these providers processes personal information on our behalf, we refer to it as a “**subprocessor**.” This page lists our current subprocessors and should be read together with our [Privacy Policy](./privacy.md), which describes the personal information we collect and how we use it.
 
 ## How We Select Subprocessors
 
@@ -46,7 +46,7 @@ P Foundation operates its own network, AS399728, and exchanges traffic with Inte
 
 ## Changes to This List
 
-We update this page when we add or replace a subprocessor and revise the “Effective Date” at the top accordingly. For customers under our [Master Services Agreement](/terms/msa), this page is the register described in Section 3.4 of that Agreement: we give at least 30 days' notice before adding or replacing a provider that delivers Customer Content or processes Customer Data, except for an emergency replacement under Section 3.5, which we notify as soon as practicable.
+We update this page when we add or replace a subprocessor and revise the “Effective Date” at the top accordingly. For customers under our [Master Services Agreement](./msa.md), this page is the register described in Section 3.4 of that Agreement: we give at least 30 days' notice before adding or replacing a provider that delivers Customer Content or processes Customer Data, except for an emergency replacement under Section 3.5, which we notify as soon as practicable.
 
 ## Contact Us
 

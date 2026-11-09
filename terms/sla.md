@@ -8,7 +8,7 @@ description: 'Annex A to the OpenCache Service Terms: availability commitments, 
 
 **Last Updated:** November 9, 2026 · [Changelog](https://github.com/pfoundation/p.foundation/commits/master/terms/sla.md)
 
-Annex A to [Appendix 1 (OpenCache Service Terms)](/terms/opencache) of the P Foundation [Master Services Agreement](/terms/msa) (the "Agreement"). It applies to each OpenCache Service Order. Capitalized terms not defined here have the meanings given in the Agreement and Appendix 1.
+Annex A to [Appendix 1 (OpenCache Service Terms)](./opencache.md) of the P Foundation [Master Services Agreement](./msa.md) (the "Agreement"). It applies to each OpenCache Service Order. Capitalized terms not defined here have the meanings given in the Agreement and Appendix 1.
 
 This SLA commits P Foundation to 99.99% monthly availability for OpenCache globally and 99.9% in each Footprint country, 24x7 incident response, and defined maintenance and reporting practices, for Customer traffic up to the Committed Capacity. Outside the Footprint, Provider delivers only through Delivery Partners whose service levels match or exceed these (Section 10). OpenCache is supplied free of charge unless a Service Order states otherwise, and remedies are operational and contractual rather than financial (Section 7).
 

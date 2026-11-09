@@ -8,7 +8,7 @@ description: 'Appendix 1 to the P Foundation Master Services Agreement: the serv
 
 **Last Updated:** November 9, 2026 · [Changelog](https://github.com/pfoundation/p.foundation/commits/master/terms/opencache.md)
 
-This Appendix sets the terms for OpenCache. It applies only to a Service Order that names OpenCache, and for that Service Order it forms part of the [Master Services Agreement](/terms/msa). A Service Order may vary any value in this Appendix or in Annex A, as Section 2.2 of the Agreement allows. The [OpenCache Service Level Agreement](/terms/sla) is Annex A to this Appendix. Capitalized terms not defined here have the meanings in the Agreement.
+This Appendix sets the terms for OpenCache. It applies only to a Service Order that names OpenCache, and for that Service Order it forms part of the [Master Services Agreement](./msa.md). A Service Order may vary any value in this Appendix or in Annex A, as Section 2.2 of the Agreement allows. The [OpenCache Service Level Agreement](./sla.md) is Annex A to this Appendix. Capitalized terms not defined here have the meanings in the Agreement.
 
 ## 1. Definitions
 
@@ -40,7 +40,7 @@ This Appendix sets the terms for OpenCache. It applies only to a Service Order t
 
 ## 3. Third-Party Providers
 
-**3.1 Current providers.** The Delivery Partners, DNS Provider and other subprocessors that Provider uses for OpenCache are listed at [p.foundation/terms/subprocessors](/terms/subprocessors). Provider may change them under Sections 3.4 to 3.6 of the Agreement by updating that page, without amending this Appendix. Delivery Partners must meet the standard in Section 10.2 of Annex A.
+**3.1 Current providers.** The Delivery Partners, DNS Provider and other subprocessors that Provider uses for OpenCache are listed at [p.foundation/terms/subprocessors](./subprocessors.md). Provider may change them under Sections 3.4 to 3.6 of the Agreement by updating that page, without amending this Appendix. Delivery Partners must meet the standard in Section 10.2 of Annex A.
 
 **3.2 Delivery Partners.** For Delivery Partner Locations, Provider configures the Delivery Partner under Provider's own account, using Customer's OpenCache configuration. Customer needs no separate agreement with the Delivery Partner. To serve HTTPS requests, the Delivery Partner holds TLS certificates for the Customer hostnames it serves. The Delivery Partner's own operational, content and abuse policies apply to the traffic it carries.
 
@@ -116,7 +116,7 @@ This Appendix sets the terms for OpenCache. It applies only to a Service Order t
 
 ## 10. Service Levels and Service Order Details
 
-**10.1 Service levels.** Provider's service levels, support and remedies for OpenCache are set out in Annex A, the [OpenCache Service Level Agreement](/terms/sla).
+**10.1 Service levels.** Provider's service levels, support and remedies for OpenCache are set out in Annex A, the [OpenCache Service Level Agreement](./sla.md).
 
 **10.2 Service Order details.** Each OpenCache Service Order states:
 

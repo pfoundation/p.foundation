@@ -76,7 +76,7 @@ We will not use personal data in ways that are incompatible with the purposes fo
 
 We understand the importance of your privacy. We share personal information with others only in limited circumstances, and always with appropriate safeguards. The categories of third parties with whom we may share information include:
 
-- **Service Providers:** We employ trusted third-party companies and individuals to perform certain services on our behalf (“**processors**” or service providers). Our current list of these providers is published on our [Subprocessors](/terms/subprocessors) page. These include, for example:
+- **Service Providers:** We employ trusted third-party companies and individuals to perform certain services on our behalf (“**processors**” or service providers). Our current list of these providers is published on our [Subprocessors](./subprocessors.md) page. These include, for example:
 
 - **Payment Processors:** As noted, we use external payment processors (such as Stripe for online donations) to handle payment transactions securely. These processors will receive the necessary personal and payment information to process your donation or payment (like name, contact info, and credit card details) and are **not** permitted to use it for other purposes. They must comply with strict data security standards such as PCI-DSS for handling credit card data.
 

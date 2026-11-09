@@ -68,7 +68,7 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 
 **3.3 Third-Party Providers.** Provider may use Third-Party Providers to supply the Services. Provider remains responsible to Customer for each Service, except where a Service Appendix states that a Third-Party Provider's own terms govern part of that Service.
 
-**3.4 Register and changes.** Provider will keep a current list of the Third-Party Providers that deliver Customer Content or process Customer Data for each Service at [p.foundation/terms/subprocessors](/terms/subprocessors). Provider will give at least 30 days' notice before adding or replacing one. Customer may object on reasonable grounds within that period; if the Parties cannot resolve the objection, Customer may terminate the affected Service Order without liability.
+**3.4 Register and changes.** Provider will keep a current list of the Third-Party Providers that deliver Customer Content or process Customer Data for each Service at [p.foundation/terms/subprocessors](./subprocessors.md). Provider will give at least 30 days' notice before adding or replacing one. Customer may object on reasonable grounds within that period; if the Parties cannot resolve the objection, Customer may terminate the affected Service Order without liability.
 
 **3.5 Emergency replacement.** If a Third-Party Provider fails, ends its service or becomes unsuitable at short notice, Provider may replace it immediately to protect the Service, and will notify Customer as soon as practicable.
 
