@@ -187,6 +187,7 @@ These are plain, non secret values committed in `wrangler.toml`.
 | `SF_API_VERSION`        | Salesforce REST API version, `v66.0`.                                                                                                                                                                  |
 | `SF_CONTACT_ACCOUNT_ID` | Account Id (for example the "Website Submitters" account) that new Contacts from contact and support forms are created under. While empty, Cases link only to an existing Contact with the same email. |
 | `SF_CASE_OWNER_ID`      | Queue (or user) Id that owns new Cases. While empty, the active Case assignment rule picks the owner.                                                                                                  |
+| `SF_LEAD_OWNER_ID`      | Queue (or user) Id that owns new Leads. While empty, the active Lead assignment rule picks the owner.                                                                                                  |
 
 ## First deploy checklist
 
@@ -218,7 +219,8 @@ new form on the site from failing in Salesforce.
 The worker also writes these standard fields, which need no setup:
 
 - Lead: FirstName, LastName, Company, Email, Website, LeadSource (`Web`),
-  Description (every answer in full).
+  Description (every answer in full), and OwnerId when `SF_LEAD_OWNER_ID`
+  is set.
 - Case: SuppliedName, SuppliedEmail, SuppliedCompany, Subject, Priority
   (support Severity mapped Low to Low, Normal to Medium, High and Urgent to
   High), Origin (`Web`), Description, ContactId, and OwnerId when
@@ -251,7 +253,7 @@ relax them for the integration user or the forms will fall back to email.
    `Salesforce API Integration`. Grant:
    - Object Settings, Leads: Read, Create. Field permissions: Edit on
      Website Form, Description, Website, Lead Source, Email, First Name,
-     Company.
+     Company, Lead Owner.
    - Object Settings, Cases: Read, Create. Field permissions: Edit on
      Website Form, Description, Subject, Priority, Case Origin, Web Email,
      Web Name, Web Company, Contact Name, Case Owner.
@@ -314,11 +316,14 @@ Run As user.
 The worker sends `Sforce-Auto-Assign: TRUE`, so the active Lead and Case
 assignment rules run on every record: route by `Website_Form__c` (for
 example `opencache-isp` to the peering team, `support` to the NOC queue).
-Without an active Case assignment rule whose entries match, a Case stays
-owned by the integration user and its notifications go to that user's
-email. Either activate a rule with a catch-all last entry, or set
-`SF_CASE_OWNER_ID` to a queue Id: the worker then sets OwnerId and sends
-`Sforce-Auto-Assign: FALSE` for Cases, since the rule would override it.
+Without an active assignment rule whose entries match, a Lead or Case
+stays owned by the integration user and its notifications go to that
+user's email. Either activate a rule with a catch-all last entry, or set
+`SF_LEAD_OWNER_ID` or `SF_CASE_OWNER_ID` to a queue Id: the worker then
+sets OwnerId and sends `Sforce-Auto-Assign: FALSE` for that object, since
+the rule would override it. The queue must list Lead or Case (or both)
+under Supported Objects, and the permission set needs Edit on the Lead
+Owner field when `SF_LEAD_OWNER_ID` is used.
 It also sends `Sforce-Duplicate-Rule-Header: allowSave=true`, so a
 returning applicant is saved and flagged as a possible duplicate instead
 of being rejected.

@@ -909,9 +909,9 @@ function buildSalesforceRecord(sobject, submission) {
  * SF_CLIENT_SECRET is unset.
  *
  * A Case is linked to the submitter's Contact (found or created first). A
- * Contact failure is logged and the Case is still created without it. Case
- * ownership goes to SF_CASE_OWNER_ID (a queue) when set, otherwise to the
- * active Case assignment rule.
+ * Contact failure is logged and the Case is still created without it. Lead
+ * and Case ownership goes to SF_LEAD_OWNER_ID or SF_CASE_OWNER_ID (a queue)
+ * when set, otherwise to the active assignment rule for that object.
  *
  * @param {{ form: string, formLabel: string, email: string, answers: string[][] }} submission
  * @param {Record<string, string>} env Worker environment bindings.
@@ -929,9 +929,14 @@ async function submitToSalesforce(submission, env) {
     return { ok: false, reason: 'email longer than 80 characters' };
   }
   const record = buildSalesforceRecord(sobject, submission);
-  // Run the active Lead or Case assignment rule, unless a Case queue is
-  // configured: the rule would override an explicit OwnerId.
-  let autoAssign = 'TRUE';
+  // A configured queue owns the record. Otherwise the active Lead or Case
+  // assignment rule runs; it is turned off with a queue, since the rule would
+  // override an explicit OwnerId.
+  const ownerId =
+    sobject === 'Lead' ? env.SF_LEAD_OWNER_ID : env.SF_CASE_OWNER_ID;
+  if (ownerId) {
+    record.OwnerId = ownerId;
+  }
 
   try {
     if (sobject === 'Case') {
@@ -946,13 +951,9 @@ async function submitToSalesforce(submission, env) {
           String(err && err.message ? err.message : err)
         );
       }
-      if (env.SF_CASE_OWNER_ID) {
-        record.OwnerId = env.SF_CASE_OWNER_ID;
-        autoAssign = 'FALSE';
-      }
     }
     const id = await sfCreate(env, sobject, record, {
-      'Sforce-Auto-Assign': autoAssign,
+      'Sforce-Auto-Assign': ownerId ? 'FALSE' : 'TRUE',
     });
     return { ok: true, id };
   } catch (err) {
