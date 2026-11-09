@@ -176,15 +176,17 @@ Set these in the same place, on the Variables tab.
 
 These are plain, non secret values committed in `wrangler.toml`.
 
-| Var                    | Value and purpose                                                                                                                                                         |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ALLOWED_ORIGINS`      | `https://p.foundation,http://localhost:3000`. Comma separated exact origins allowed by CORS.                                                                              |
-| `MAILGUN_LIST_ADDRESS` | `updates@bounce.p.foundation`. The mailing list members are added to.                                                                                                     |
-| `MAILGUN_DOMAIN`       | `bounce.p.foundation`. Sending domain for application emails (`forms@bounce.p.foundation`). Must be an active Mailgun domain; it already is, as the mailing list uses it. |
-| `MAILGUN_API_BASE`     | `https://api.mailgun.net`. Use `https://api.eu.mailgun.net` for EU domains.                                                                                               |
-| `SITE_URL`             | `https://p.foundation`. Used to build the Stripe success and cancel URLs.                                                                                                 |
-| `SF_INSTANCE_URL`      | Salesforce My Domain URL, for example `https://pfoundation.my.salesforce.com`. While empty, `/api/apply` skips Salesforce and only emails.                                |
-| `SF_API_VERSION`       | Salesforce REST API version, `v66.0`.                                                                                                                                     |
+| Var                     | Value and purpose                                                                                                                                                                                      |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ALLOWED_ORIGINS`       | `https://p.foundation,http://localhost:3000`. Comma separated exact origins allowed by CORS.                                                                                                           |
+| `MAILGUN_LIST_ADDRESS`  | `updates@bounce.p.foundation`. The mailing list members are added to.                                                                                                                                  |
+| `MAILGUN_DOMAIN`        | `bounce.p.foundation`. Sending domain for application emails (`forms@bounce.p.foundation`). Must be an active Mailgun domain; it already is, as the mailing list uses it.                              |
+| `MAILGUN_API_BASE`      | `https://api.mailgun.net`. Use `https://api.eu.mailgun.net` for EU domains.                                                                                                                            |
+| `SITE_URL`              | `https://p.foundation`. Used to build the Stripe success and cancel URLs.                                                                                                                              |
+| `SF_INSTANCE_URL`       | Salesforce My Domain URL, for example `https://pfoundation.my.salesforce.com`. While empty, `/api/apply` skips Salesforce and only emails.                                                             |
+| `SF_API_VERSION`        | Salesforce REST API version, `v66.0`.                                                                                                                                                                  |
+| `SF_CONTACT_ACCOUNT_ID` | Account Id (for example the "Website Submitters" account) that new Contacts from contact and support forms are created under. While empty, Cases link only to an existing Contact with the same email. |
+| `SF_CASE_OWNER_ID`      | Queue (or user) Id that owns new Cases. While empty, the active Case assignment rule picks the owner.                                                                                                  |
 
 ## First deploy checklist
 
@@ -219,7 +221,19 @@ The worker also writes these standard fields, which need no setup:
   Description (every answer in full).
 - Case: SuppliedName, SuppliedEmail, SuppliedCompany, Subject, Priority
   (support Severity mapped Low to Low, Normal to Medium, High and Urgent to
-  High), Origin (`Web`), Description.
+  High), Origin (`Web`), Description, ContactId, and OwnerId when
+  `SF_CASE_OWNER_ID` is set.
+- Contact (created for a Case when no Contact has the submitter's email):
+  FirstName, LastName (the email's local part when the form has no name),
+  Email, Phone (when the form has a Phone question), AccountId
+  (`SF_CONTACT_ACCOUNT_ID`).
+
+Before each Case the worker runs `SELECT Id FROM Contact WHERE Email = ...
+ORDER BY CreatedDate LIMIT 1` and links the oldest match, creating a
+Contact only when there is none. With ContactId set, Salesforce can email
+the submitter when the team comments on the Case. If the Contact lookup or
+create fails, the error is logged and the Case is still created without a
+Contact.
 
 Confirm the `Web` value is active in the Lead Source and Case Origin
 picklists, and the Low, Medium, and High values in Case Priority. Validation
@@ -240,7 +254,10 @@ relax them for the integration user or the forms will fall back to email.
      Company.
    - Object Settings, Cases: Read, Create. Field permissions: Edit on
      Website Form, Description, Subject, Priority, Case Origin, Web Email,
-     Web Name, Web Company.
+     Web Name, Web Company, Contact Name, Case Owner.
+   - Object Settings, Contacts: Read, Create. Field permissions: Edit on
+     First Name, Email, Phone, Account Name.
+   - Object Settings, Accounts: Read.
 4. Assign the permission set to the integration user.
 
 If the Lead or Case objects are not offered under that license in your
@@ -297,6 +314,11 @@ Run As user.
 The worker sends `Sforce-Auto-Assign: TRUE`, so the active Lead and Case
 assignment rules run on every record: route by `Website_Form__c` (for
 example `opencache-isp` to the peering team, `support` to the NOC queue).
+Without an active Case assignment rule whose entries match, a Case stays
+owned by the integration user and its notifications go to that user's
+email. Either activate a rule with a catch-all last entry, or set
+`SF_CASE_OWNER_ID` to a queue Id: the worker then sets OwnerId and sends
+`Sforce-Auto-Assign: FALSE` for Cases, since the rule would override it.
 It also sends `Sforce-Duplicate-Rule-Header: allowSave=true`, so a
 returning applicant is saved and flagged as a possible duplicate instead
 of being rejected.
