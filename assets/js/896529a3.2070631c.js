@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkp_foundation||=[]).push([[1934],{5355(s){s.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"terms"}')}}]);
