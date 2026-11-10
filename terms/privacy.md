@@ -1,11 +1,12 @@
 ---
+sidebar_label: 'Privacy Policy'
 title: P Foundation Privacy Policy
 description: P Foundation's Privacy Policy details the collection, use, and protection of your personal information, confirming we do not sell your data and adhere to US and international privacy standards.
 ---
 
 # P Foundation Privacy Policy
 
-**Effective Date:** November 18, 2025
+**Effective Date:** November 9, 2026 · [Changelog](https://github.com/pfoundation/p.foundation/commits/master/terms/privacy.md)
 
 ## Introduction
 
@@ -75,7 +76,7 @@ We will not use personal data in ways that are incompatible with the purposes fo
 
 We understand the importance of your privacy. We share personal information with others only in limited circumstances, and always with appropriate safeguards. The categories of third parties with whom we may share information include:
 
-- **Service Providers:** We employ trusted third-party companies and individuals to perform certain services on our behalf (“**processors**” or service providers). These include, for example:
+- **Service Providers:** We employ trusted third-party companies and individuals to perform certain services on our behalf (“**processors**” or service providers). Our current list of these providers is published on our [Subprocessors](./subprocessors.md) page. These include, for example:
 
 - **Payment Processors:** As noted, we use external payment processors (such as Stripe for online donations) to handle payment transactions securely. These processors will receive the necessary personal and payment information to process your donation or payment (like name, contact info, and credit card details) and are **not** permitted to use it for other purposes. They must comply with strict data security standards such as PCI-DSS for handling credit card data.
 

@@ -229,6 +229,16 @@ const config = {
             from: '/aidubbing',
             to: '/dubbing',
           },
+          // Legal pages live under /terms.
+          {
+            from: '/privacy',
+            to: '/terms/privacy',
+          },
+          // The MSA template names the register /terms/processor.
+          {
+            from: '/terms/processor',
+            to: '/terms/subprocessors',
+          },
           // The ISP application became the Embedded OpenCache PoP page.
           {
             from: '/apply/opencache/isp',
@@ -279,6 +289,16 @@ const config = {
         routeBasePath: 'OpenIX',
         sidebarCollapsed: false,
         sidebarCollapsible: true,
+      },
+    ],
+    // Legal pages (/terms/*) share one sidebar for moving between them.
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'terms',
+        path: 'terms',
+        routeBasePath: 'terms',
+        sidebarPath: require.resolve('./sidebarsTerms.js'),
       },
     ],
   ],
@@ -387,7 +407,7 @@ const config = {
           },
           {
             label: 'Privacy Policy',
-            to: '/privacy',
+            to: '/terms/privacy',
           },
           {
             label: 'Code of Conduct',

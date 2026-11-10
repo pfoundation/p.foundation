@@ -148,7 +148,7 @@ export const Newsletter: FunctionComponent = () => {
                 <p className={styles.consent}>
                   By subscribing you agree to receive email updates about P
                   Foundation&apos;s work. Read our{' '}
-                  <Link className={styles.consentLink} to="/privacy">
+                  <Link className={styles.consentLink} to="/terms/privacy">
                     privacy policy
                   </Link>
                   .
