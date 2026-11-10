@@ -13,11 +13,11 @@ This page lists the agreements, service terms, and policies that apply to P Foun
 
 Our services are provided under our standard Master Services Agreement. Each service adds its own Service Appendix and any service level agreement. These terms apply to a customer only once that customer and P Foundation sign a Service Order, which records the customer's details, the services ordered, and any agreed variations. A signed Service Order is governed by the version of these terms in force on the date it is signed. To discuss a service, please [contact us](https://p.foundation/contact).
 
-| Document                                               | Applies to                | Summary                                                                                                                                           |
-| ------------------------------------------------------ | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Master Services Agreement](./msa.md)                  | All P Foundation services | General terms for every service: structure, data protection, confidentiality, liability, term and termination, and what a Service Order contains. |
-| [Appendix 1: OpenCache Service Terms](./opencache.md)  | OpenCache                 | Service-specific terms for OpenCache: delivery path, capacity, neutrality, content handling, data handling, and transition.                       |
-| [Annex A: OpenCache Service Level Agreement](./sla.md) | OpenCache                 | Availability commitments, incident response, maintenance, remedies, reporting, and escalation for OpenCache.                                      |
+| Document                                               | Applies to                | Summary                                                                                                                     |
+| ------------------------------------------------------ | ------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| [Master Services Agreement](./msa.md)                  | All P Foundation services | General terms for every service: structure, data protection, confidentiality, liability, and term and termination.          |
+| [Appendix 1: OpenCache Service Terms](./opencache.md)  | OpenCache                 | Service-specific terms for OpenCache: delivery path, capacity, neutrality, content handling, data handling, and transition. |
+| [Annex A: OpenCache Service Level Agreement](./sla.md) | OpenCache                 | Availability commitments, incident response, maintenance, remedies, reporting, and escalation for OpenCache.                |
 
 ## Privacy and Data Protection
 

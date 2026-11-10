@@ -6,14 +6,14 @@ description: 'Appendix 1 to the P Foundation Master Services Agreement: the serv
 
 # Appendix 1: OpenCache Service Terms
 
-**Last Updated:** November 9, 2026 · [Changelog](https://github.com/pfoundation/p.foundation/commits/master/terms/opencache.md)
+**Last Updated:** November 10, 2026 · [Changelog](https://github.com/pfoundation/p.foundation/commits/master/terms/opencache.md)
 
-This Appendix sets the terms for OpenCache. It applies only to a Service Order that names OpenCache, and for that Service Order it forms part of the [Master Services Agreement](./msa.md). A Service Order may vary any value in this Appendix or in Annex A, as Section 2.2 of the Agreement allows. The [OpenCache Service Level Agreement](./sla.md) is Annex A to this Appendix. Capitalized terms not defined here have the meanings in the Agreement.
+This Appendix sets the terms for OpenCache. It applies only to a Service Order that names OpenCache, and for that Service Order it forms part of the [Master Services Agreement](./msa.md). The [OpenCache Service Level Agreement](./sla.md) is Annex A to this Appendix. Capitalized terms not defined here have the meanings in the Agreement.
 
 ## 1. Definitions
 
 - **"Committed Capacity"** means the peak egress and monthly volume, per Footprint country, that Provider commits to carry for Customer in the Footprint, as stated in the Service Order and updated under Section 4.3.
-- **"Content Class"** means the class that Provider assigns to a Customer hostname, which sets the delivery addresses and cache treatment for that hostname. Content Classes are shown in the Console under the names used in Annex A.
+- **"Content Class"** means the class that Provider assigns to a Customer hostname, which sets the delivery addresses and cache treatment for that hostname. Content Classes are identified by the numbers shown in the Console.
 - **"Delivery Partner"** means a third-party content delivery network that Provider uses to deliver Customer Content to End Users outside the Footprint.
 - **"Delivery Partner Location"** means any location where End User requests are served by a Delivery Partner rather than by a PoP.
 - **"DNS Provider"** means the third-party authoritative DNS service that Provider uses to resolve OpenCache hostnames and steer End User requests.
@@ -41,15 +41,15 @@ This Appendix sets the terms for OpenCache. It applies only to a Service Order t
 
 ## 3. Third-Party Providers
 
-**3.1 Current providers.** The Delivery Partners, DNS Provider and other subprocessors that Provider uses for OpenCache are listed at [p.foundation/terms/subprocessors](./subprocessors.md). Provider may change them under Sections 3.4 to 3.6 of the Agreement by updating that page, without amending this Appendix. Delivery Partners must meet the standard in Section 10.2 of Annex A.
+**3.1 Current providers.** The Delivery Partners, DNS Provider and other subprocessors that Provider uses for OpenCache are listed at [p.foundation/terms/subprocessors](./subprocessors.md). Provider may change them under Sections 3.4 to 3.6 of the Agreement by updating that page, without amending this Appendix.
 
-**3.2 Delivery Partners.** For Delivery Partner Locations, Provider configures the Delivery Partner under Provider's own account, using Customer's OpenCache configuration. Customer needs no separate agreement with the Delivery Partner. To serve HTTPS requests, the Delivery Partner holds TLS certificates for the Customer hostnames it serves. The Delivery Partner's own operational, content and abuse policies apply to the traffic it carries.
+**3.2 Delivery Partners.** For Delivery Partner Locations, Provider configures the Delivery Partner under Provider's own account, using Customer's OpenCache configuration. The Delivery Partner holds TLS certificates for the Customer hostnames it serves. The Delivery Partner's own operational, content and abuse policies apply to the traffic it carries.
 
 **3.3 Delivery Partner allowance.** Provider bears the cost of Delivery Partner delivery. The Service Order may set a monthly Delivery Partner allowance. If Customer's Delivery Partner traffic exceeds that allowance for two consecutive months, Provider may, after 15 days' notice, steer the excess to Customer's Origin or fallback CDN.
 
 **3.4 Excluding Delivery Partners.** Customer may elect in the Service Order, or later on 15 days' notice, not to use Delivery Partners. Requests from outside the Footprint are then resolved to the fallback hostname Customer designates.
 
-**3.5 DNS Provider.** The DNS Provider is part of the delivery path for all OpenCache traffic. Provider remains fully responsible for DNS resolution and steering under Annex A, whichever DNS Provider it uses.
+**3.5 DNS Provider.** Provider remains fully responsible for DNS resolution and steering under Annex A, whichever DNS Provider it uses.
 
 **3.6 Changes of provider.** When Provider replaces a Delivery Partner or the DNS Provider, it will migrate Customer's configuration and certificates itself and coordinate the cut-over with Customer to avoid interruption.
 
@@ -72,22 +72,19 @@ This Appendix sets the terms for OpenCache. It applies only to a Service Order t
 **5.1 Provider will:**
 
 1. operate, monitor and maintain OpenCache, every PoP and the configuration of each Delivery Partner and the DNS Provider, 24 hours a day, 7 days a week;
-2. keep health steering in operation, moving traffic away from a degraded or saturated delivery point;
-3. manage its relationships with Host Networks, internet exchanges and Third-Party Providers, without Customer needing a separate agreement with them;
-4. provide delivery reporting in the Console, including traffic, cache offload and errors per country and delivery point, with Delivery Partner traffic shown separately.
+2. manage its relationships with Host Networks, internet exchanges and Third-Party Providers, without Customer needing a separate agreement with them.
 
 **5.2 Customer will:**
 
 1. maintain an Origin able to serve all cache misses, and a fallback delivery path for End Users if OpenCache is unavailable;
 2. set cache-control headers and cache rules suitable for its content;
-3. give the forecasts and notices described in Section 4;
-4. tell Provider promptly of any delivery problem it observes, including through its quality-of-experience monitoring.
+3. tell Provider promptly of any delivery problem it observes, including through its quality-of-experience monitoring.
 
 ## 6. Neutrality and Footprint Changes
 
 **6.1 Neutral treatment.** Provider makes OpenCache available to content providers on these published terms. Provider will not prioritize, deprioritize, alter or selectively degrade Customer Content relative to other content in the Footprint, except as allowed by Section 12.3 of the Agreement.
 
-**6.2 Host Networks.** Host Networks provide space, power and connectivity only. They gain no access to Customer configuration, certificates or traffic policies, and TLS for Footprint traffic terminates only on Provider-operated hardware.
+**6.2 Host Networks.** Host Networks provide space, power and connectivity only. They gain no access to Customer configuration, certificates or traffic policies.
 
 **6.3 Footprint changes.** Provider may add PoPs and countries to the Footprint at any time. Provider will give at least 30 days' notice before permanently removing a PoP that carried more than 10% of Customer's Footprint traffic in the preceding month, except where the removal is caused by a Host Network or a force majeure event.
 
@@ -103,25 +100,21 @@ This Appendix sets the terms for OpenCache. It applies only to a Service Order t
 
 **8.1 Request logs.** OpenCache records request logs that contain End User IP addresses and request details. Provider keeps request logs containing Personal Data for no longer than 30 days, after which they are deleted or irreversibly aggregated.
 
-**8.2 Third-Party Providers.** Delivery Partners process request data for the traffic they serve, and the DNS Provider processes DNS queries, each as Provider's subprocessor under Section 6.4 of the Agreement, in the regions where their infrastructure operates. They are listed in the register under Section 3.4 of the Agreement.
+**8.2 Third-Party Providers.** Delivery Partners process request data for the traffic they serve, and the DNS Provider processes DNS queries, each as Provider's subprocessor under Section 6.4 of the Agreement, in the regions where their infrastructure operates.
 
 **8.3 Security.** TLS private keys for Footprint traffic are stored and used only on Provider-operated hardware. Configuration, telemetry and logs travel encrypted between PoPs and the control plane. Provider applies critical security patches to PoP software within 14 days.
 
 ## 9. Fees, Suspension, Termination and Transition
 
-**9.1 Fees.** OpenCache is supplied free of charge unless the Service Order states otherwise. Section 5.6 of the Agreement applies to any proposed Fee.
+**9.1 Fees.** OpenCache is supplied free of charge unless the Service Order states otherwise.
 
 **9.2 Suspension.** In addition to Section 12.3 of the Agreement, Provider may rate-limit Customer traffic that materially exceeds the Committed Capacity without the notice required by Section 4, to the extent needed to protect the Footprint or a Host Network.
 
-**9.3 Termination for convenience.** Customer may terminate an OpenCache Service Order on 30 days' notice, and may stop directing traffic to OpenCache at any time. Provider may terminate on 180 days' notice.
+**9.3 Transition.** On any termination other than for Customer's breach, Provider will continue OpenCache on these terms for up to 90 days, as Customer requests, to allow Customer to migrate traffic. Provider will purge Customer Content from the Footprint and Delivery Partners, and remove Customer's DNS records and certificates, within 7 days after the Service ends. This Section survives termination.
 
-**9.4 Transition.** On any termination other than for Customer's breach, Provider will continue OpenCache on these terms for up to 90 days, as Customer requests, to allow Customer to migrate traffic. Provider will purge Customer Content from the Footprint and Delivery Partners, and remove Customer's DNS records and certificates, within 7 days after the Service ends. This Section survives termination.
+## 10. Service Order Details
 
-## 10. Service Levels and Service Order Details
-
-**10.1 Service levels.** Provider's service levels, support and remedies for OpenCache are set out in Annex A, the [OpenCache Service Level Agreement](./sla.md).
-
-**10.2 Service Order details.** Each OpenCache Service Order states:
+Each OpenCache Service Order states:
 
 - Customer services and hostnames covered;
 - the Content Class of each hostname;

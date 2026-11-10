@@ -6,9 +6,7 @@ description: "P Foundation's standard terms for its services, which apply when P
 
 # P Foundation Master Services Agreement
 
-**Last Updated:** November 9, 2026 · [Changelog](https://github.com/pfoundation/p.foundation/commits/master/terms/msa.md)
-
-These are P Foundation's standard terms for its services. They apply to a customer only when that customer and P Foundation sign a Service Order that refers to them. Each service has its own Service Appendix, and each customer's specifics, including any agreed variations, are set out in its Service Order.
+**Last Updated:** November 10, 2026 · [Changelog](https://github.com/pfoundation/p.foundation/commits/master/terms/msa.md)
 
 ## Parties and Formation
 
@@ -29,8 +27,6 @@ A. P Foundation is a nonprofit organization that builds and operates open intern
 
 B. Customer wishes to receive one or more of those services.
 
-C. This Agreement sets out the general terms that apply to all of them. Terms specific to a service are set out in its Service Appendix, and terms specific to Customer in a Service Order.
-
 ## 1. Definitions
 
 In this Agreement, the following terms have these meanings. A Service Appendix may add definitions for its Service.
@@ -45,20 +41,18 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 - **"Personal Data"** means information relating to an identified or identifiable natural person, including IP addresses and user or device identifiers.
 - **"Service"** means each service that Provider supplies under a Service Order, as described in its Service Appendix.
 - **"Service Appendix"** means the service-specific terms for a Service, including any service level agreement attached to it.
-- **"Service Order"** means an order that contains the details listed in Schedule 1 and is signed by both Parties.
+- **"Service Order"** means an order for a Service that refers to this Agreement and is signed by authorized representatives of both Parties.
 - **"Third-Party Provider"** means a third party that Provider uses to supply part of a Service, such as a content delivery network, DNS provider, cloud provider, data center or network operator.
 
 ## 2. Structure of this Agreement
 
-**2.1 Service Appendices.** Each Service is described in a Service Appendix, which sets its service-specific terms and any service levels. Service Appendices are numbered in sequence and each forms part of this Agreement once agreed in writing by both Parties.
+**2.1 Service Appendices.** Each Service is described in a Service Appendix. Service Appendices are numbered in sequence and each forms part of this Agreement once agreed in writing by both Parties.
 
-**2.2 Service Orders.** Provider supplies a Service only under a Service Order. Each Service Order names the Service and its Service Appendix, and sets out the Customer-specific details, Fees (if any), term and contacts. Each Service Order forms a separate contract incorporating this Agreement and the relevant Service Appendix. A Service Order may vary any notice period, time limit, amount or other value in this Agreement or a Service Appendix.
+**2.2 Service Orders.** Provider supplies a Service only under a Service Order. Each Service Order forms a separate contract incorporating this Agreement and the relevant Service Appendix. A Service Order may vary any notice period, time limit, amount or other value in this Agreement or a Service Appendix.
 
 **2.3 Affiliates.** Either Party's Affiliates may sign Service Orders under this Agreement. Customer may also allow its Affiliates to use a Service under Customer's Service Order, and Customer is responsible for their compliance.
 
 **2.4 Order of precedence.** If documents conflict, they apply in this order: (a) a Service Order, for the matters it expressly varies; (b) the relevant Service Appendix, including its service level agreement; (c) the body of this Agreement; (d) the Documentation.
-
-**2.5 New services.** The Parties may add a Service by agreeing a new Service Appendix in writing, without amending the body of this Agreement.
 
 ## 3. Provision of Services
 
@@ -88,7 +82,7 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 
 ## 5. Fees and Payment
 
-**5.1 Fees.** As a nonprofit, Provider supplies some Services free of charge. Fees apply only where a Service Order states them. Where a Service Order states no Fees, nothing is payable for that Service.
+**5.1 Fees.** Fees apply only where a Service Order states them. Where a Service Order states no Fees, nothing is payable for that Service.
 
 **5.2 Invoicing.** Unless a Service Order states otherwise, Provider invoices recurring Fees monthly in advance and one-time Fees on signature of the Service Order. Invoices are payable in U.S. dollars within thirty (30) days of the invoice date.
 
@@ -222,29 +216,10 @@ In this Agreement, the following terms have these meanings. A Service Appendix m
 
 **16.2 Assignment.** Neither Party may assign this Agreement or a Service Order without the other's written consent, except to an Affiliate or to a successor in a merger or sale of substantially all of the relevant business, on notice. Provider may also assign to a successor nonprofit or Affiliate that continues to supply the Service.
 
-**16.3 Subcontractors.** Provider may use subcontractors and Third-Party Providers under Section 3.3, and remains responsible for their performance except as stated there.
+**16.3 Independent parties.** The Parties are independent contractors. Nothing in this Agreement creates a partnership, agency, joint venture or exclusivity, and Customer remains free to use other providers.
 
-**16.4 Independent parties.** The Parties are independent contractors. Nothing in this Agreement creates a partnership, agency, joint venture or exclusivity, and Customer remains free to use other providers.
+**16.4 Entire agreement.** This Agreement, its Service Appendices and Service Orders are the entire agreement on their subject matter and replace any earlier trial or test terms. Amendments must be in writing and signed by both Parties.
 
-**16.5 Entire agreement.** This Agreement, its Service Appendices and Service Orders are the entire agreement on their subject matter and replace any earlier trial or test terms. Amendments must be in writing and signed by both Parties.
+**16.5 Severability and waiver.** An invalid provision is enforced to the maximum extent allowed and does not affect the rest. A failure to enforce a right is not a waiver of it.
 
-**16.6 Severability and waiver.** An invalid provision is enforced to the maximum extent allowed and does not affect the rest. A failure to enforce a right is not a waiver of it.
-
-**16.7 Counterparts.** This Agreement and each Service Order may be signed in counterparts and by electronic signature.
-
-## Schedule 1: Service Orders
-
-Each Service Order refers to this Agreement and states:
-
-| Item                        | Detail                                                                                                                 |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Customer                    | Customer's legal name, entity type, jurisdiction of incorporation, registration number and principal place of business |
-| Service                     | The Service and its Service Appendix                                                                                   |
-| Start date and term         | The start date, and the term or that Section 12.2 applies                                                              |
-| Customer Affiliates covered | Any Customer Affiliates that may use the Service, or that none are covered                                             |
-| Service details             | The details the Service Appendix asks for, such as hostnames, locations, capacity or ports                             |
-| Fees                        | The Fees and billing terms, or that no Fees apply                                                                      |
-| Variations                  | Any change to this Agreement or the Service Appendix that applies to that Service Order                                |
-| Contacts                    | For each Party: commercial and escalation, technical lead, 24x7 operations, and legal notices                          |
-
-A Service Order is signed by authorized representatives of both Parties, and may be signed in counterparts or by electronic signature under Section 16.7. Provider's postal address for legal notices is P Foundation, 700 12th St NW, Suite 700, Washington, DC 20005, United States, together with the email address stated in the Service Order.
+**16.6 Counterparts.** This Agreement and each Service Order may be signed in counterparts and by electronic signature.

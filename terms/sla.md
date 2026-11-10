@@ -6,11 +6,9 @@ description: 'Annex A to the OpenCache Service Terms: availability commitments, 
 
 # OpenCache Service Level Agreement
 
-**Last Updated:** November 9, 2026 · [Changelog](https://github.com/pfoundation/p.foundation/commits/master/terms/sla.md)
+**Last Updated:** November 10, 2026 · [Changelog](https://github.com/pfoundation/p.foundation/commits/master/terms/sla.md)
 
 Annex A to [Appendix 1 (OpenCache Service Terms)](./opencache.md) of the P Foundation [Master Services Agreement](./msa.md) (the "Agreement"). It applies to each OpenCache Service Order. Capitalized terms not defined here have the meanings given in the Agreement and Appendix 1.
-
-This SLA commits P Foundation to 99.99% monthly availability for OpenCache globally and 99.9% in each Footprint country, 24x7 incident response, and defined maintenance and reporting practices, for Customer traffic up to the Committed Capacity. Outside the Footprint, Provider delivers only through Delivery Partners whose service levels match or exceed these (Section 10). OpenCache is supplied free of charge unless a Service Order states otherwise, and remedies are operational and contractual rather than financial (Section 7).
 
 ## 1. Definitions and Measurement
 
@@ -31,36 +29,37 @@ This SLA commits P Foundation to 99.99% monthly availability for OpenCache globa
 
 where T is the total Measurement Intervals in the month, U the Unavailable Intervals for that scope, and E the intervals excluded under Section 6.
 
-**1.6 Steering is not downtime.** Requests that the Service's health steering moves from one PoP to another PoP, and that are then served successfully, are not Failed Requests. The SLA measures whether End Users in a Footprint country are served, not whether each individual PoP is up.
+**1.6 Steering is not downtime.** Requests that the Service's health steering moves from one PoP to another PoP, and that are then served successfully, are not Failed Requests.
 
 **1.7 Data sources.** Provider measures service levels from its PoP request logs and from synthetic probes it runs every 60 seconds from inside each Footprint country and from representative locations served by Delivery Partners, together with Delivery Partner reporting. Customer may submit its own quality-of-experience or multi-CDN switching data within 15 days after the monthly report. The Parties will reconcile any difference in good faith, and where they cannot, Customer's data showing errors attributable to the Service will be considered alongside Provider's.
 
 ## 2. Service Levels
 
-Provider commits to the following service levels each calendar month, for traffic within the Committed Capacity. Features on Provider's rolling-release channel are covered once they reach the stable release.
+Provider commits to the following service levels each calendar month, for traffic within the Committed Capacity.
 
-| Service level                      | Commitment                                                                                                                                     | How measured                                             |
-| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| Global availability                | At least 99.99% Global Availability per month (about 4 minutes of Unavailable Intervals per month)                                             | Section 1.5                                              |
-| Country availability               | At least 99.9% Country Availability in each Footprint country (about 43 minutes of Unavailable Intervals per month)                            | Section 1.5                                              |
-| Request success rate               | At least 99.95% of Eligible Requests per month served without a Failed Request, per Footprint country                                          | PoP request logs                                         |
-| Health steering                    | A PoP failing health checks is removed from serving within 60 seconds                                                                          | Control-plane telemetry (health scored every 15 seconds) |
-| Purge completion                   | 95% of purge requests complete on all PoPs within 60 seconds; 100% within 5 minutes                                                            | Purge API timestamps                                     |
-| Prefill and Purge API availability | At least 99.9% per month                                                                                                                       | Synthetic API checks                                     |
-| Configuration propagation          | Console and API changes live on all PoPs within 10 minutes                                                                                     | Control-plane telemetry                                  |
-| TLS certificates                   | Provider-managed certificates renewed at least 14 days before expiry; no Customer hostname served with an expired Provider-managed certificate | Certificate monitoring                                   |
-| Console and reporting availability | At least 99.5% per month                                                                                                                       | Synthetic checks                                         |
+| Service level                      | Commitment                                                                                                                                     | How measured            |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| Global availability                | At least 99.99% Global Availability per month                                                                                                  | Section 1.5             |
+| Country availability               | At least 99.9% Country Availability in each Footprint country                                                                                  | Section 1.5             |
+| Request success rate               | At least 99.95% of Eligible Requests per month served without a Failed Request, per Footprint country                                          | PoP request logs        |
+| Health steering                    | A PoP failing health checks is removed from serving within 60 seconds                                                                          | Control-plane telemetry |
+| Purge completion                   | 95% of purge requests complete on all PoPs within 60 seconds; 100% within 5 minutes                                                            | Purge API timestamps    |
+| Prefill and Purge API availability | At least 99.9% per month                                                                                                                       | Synthetic API checks    |
+| Configuration propagation          | Console and API changes live on all PoPs within 10 minutes                                                                                     | Control-plane telemetry |
+| TLS certificates                   | Provider-managed certificates renewed at least 14 days before expiry; no Customer hostname served with an expired Provider-managed certificate | Certificate monitoring  |
+| Console and reporting availability | At least 99.5% per month                                                                                                                       | Synthetic checks        |
 
 ## 3. Performance Objectives
 
-Provider will report on the following objectives every month but does not commit to them, because they depend on Customer's content mix, cache headers and steering choices. Cache offload objectives apply by Content Class: each target applies to the traffic of Customer hostnames in the Content Classes it names, and other Content Classes have no offload objective unless the Service Order sets one.
+Provider will report on the following objectives every month but does not commit to them.
 
-| Objective                                                  | Target                                                                                                                             |
-| ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Cache offload, Video on demand and Premium video classes   | At least 90% of requests for cacheable objects served from cache, counted from the third request for each object                   |
-| Cache offload, Live video and Live sports & events classes | At least 80% of requests for cacheable objects served from cache, counted from the third request for each object                   |
-| Time to first byte on a cache hit, inside Host Networks    | Median of 15 ms or less                                                                                                            |
-| Time to first byte on a cache hit, global                  | Median of 55 ms or less, across all delivery locations including Delivery Partner Locations, excluding End Users in mainland China |
+| Objective                                               | Target                                                                                                                             |
+| ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Cache offload, Content Classes 3 and 9                  | At least 90% of requests for cacheable objects served from cache, counted from the third request for each object                   |
+| Cache offload, Content Classes 2 and 11                 | At least 80% of requests for cacheable objects served from cache, counted from the third request for each object                   |
+| Cache offload, all other Content Classes                | At least 75% of requests for cacheable objects served from cache, counted from the third request for each object                   |
+| Time to first byte on a cache hit, inside Host Networks | Median of 15 ms or less                                                                                                            |
+| Time to first byte on a cache hit, global               | Median of 55 ms or less, across all delivery locations including Delivery Partner Locations, excluding End Users in mainland China |
 
 If an objective is missed for two consecutive months, the Parties will review the cause together and agree any configuration or capacity changes within 15 business days.
 
@@ -114,7 +113,7 @@ The following are excluded from the service level calculations, to the extent th
 
 ## 7. Remedies and Chronic Failure
 
-**7.1 No service credits.** No financial service credits apply, except as stated in Section 10.5 or in a Service Order. The remedies below apply instead.
+**7.1 No service credits.** No financial service credits apply, except as stated in Section 10.4 or in a Service Order. The remedies below apply instead.
 
 **7.2 Service level failure.** If Provider misses any service level in Section 2 in a month, Provider will, at no charge:
 
@@ -128,7 +127,7 @@ The following are excluded from the service level calculations, to the extent th
 2. Country Availability is below 99.0% in any single month; or
 3. two or more Severity 1 incidents in a calendar quarter are not restored within 4 hours.
 
-**7.4 Customer's rights on chronic failure.** On a chronic failure, Customer may, by notice within 60 days, do one or more of the following without liability: (a) terminate the OpenCache Service Order, or the part of it for the affected country, with immediate effect; (b) reduce or stop traffic in the affected country without the notice periods in the Agreement or Appendix 1; (c) require a review meeting between the Parties' executives at escalation level 4 within 10 business days.
+**7.4 Customer's rights on chronic failure.** On a chronic failure, Customer may, by notice within 60 days, do one or more of the following without liability: (a) terminate the OpenCache Service Order, or the part of it for the affected country, with immediate effect; (b) require a review meeting between the Parties' executives at escalation level 4 within 10 business days.
 
 **7.5 Exclusive remedies.** The remedies in this Section are Customer's exclusive remedies for failure to meet a service level. They do not limit Customer's rights for breach of other obligations, including Sections 6 and 7 of the Agreement, or for gross negligence or willful misconduct.
 
@@ -136,7 +135,7 @@ The following are excluded from the service level calculations, to the extent th
 
 ## 8. Reporting and Service Reviews
 
-**8.1 Real-time.** The Console shows Customer's traffic, offload, errors and PoP health in near real time. Provider will expose a per-PoP and per-country health status endpoint that Customer's multi-CDN switching can consume.
+**8.1 Real-time.** The Console shows Customer's traffic, cache offload, errors and PoP health per country and delivery point in near real time, with Delivery Partner traffic shown separately. Provider will expose a per-PoP and per-country health status endpoint that Customer's multi-CDN switching can consume.
 
 **8.2 Monthly report.** By the 5th business day of each month, Provider will send a service report covering, per Footprint country:
 
@@ -149,7 +148,7 @@ The following are excluded from the service level calculations, to the extent th
 
 **8.3 Quarterly review.** The Parties will meet each quarter to review service performance, capacity plans, Footprint expansion and any changes to Customer's traffic.
 
-**8.4 SLA review.** The Parties will review the targets in this SLA every 6 months. Changes take effect only when agreed in writing by both Parties.
+**8.4 SLA review.** The Parties will review the targets in this SLA every 6 months.
 
 ## 9. Escalation Matrix
 
@@ -166,19 +165,16 @@ Names and contact details for each level are set in the Service Order.
 
 ## 10. Delivery Partner Locations and DNS
 
-**10.1 Scope.** Country Availability measures delivery from the Footprint. Global Availability also covers traffic that Delivery Partners serve in Delivery Partner Locations.
+**10.1 Delivery Partner standard.** Provider will use only Delivery Partners whose service levels match or exceed those in this SLA, including at least 99.99% monthly availability.
 
-**10.2 Delivery Partner standard.** Provider will use only Delivery Partners whose service levels match or exceed those in this SLA, including at least 99.99% monthly availability. The Delivery Partners in use at any time are listed in the register under Section 3.4 of the Agreement.
+**10.2 Provider's commitments for Delivery Partner traffic.** Whichever Delivery Partner it uses, Provider will:
 
-**10.3 Provider's commitments for Delivery Partner traffic.** Whichever Delivery Partner it uses, Provider will:
+1. handle Delivery Partner incidents under Section 4 and escalate them to the Delivery Partner;
+2. where the Delivery Partner fails to serve Customer traffic in a location for more than 15 minutes, steer the affected requests to Customer's fallback hostname, or advise Customer to steer them;
+3. report Delivery Partner traffic, availability and incidents separately in the monthly report under Section 8.2.
 
-1. monitor Delivery Partner delivery of Customer hostnames with synthetic probes from representative locations;
-2. handle Delivery Partner incidents under Section 4, with the same severities, response times and updates, and escalate them to the Delivery Partner;
-3. where the Delivery Partner fails to serve Customer traffic in a location for more than 15 minutes, steer the affected requests to Customer's fallback hostname, or advise Customer to steer them;
-4. report Delivery Partner traffic, availability and incidents separately in the monthly report under Section 8.2.
+**10.3 Falling below the standard.** If a Delivery Partner's service levels fall below the standard in Section 10.1, Provider will notify Customer within 10 business days of becoming aware and replace that Delivery Partner within 90 days.
 
-**10.4 Falling below the standard.** If a Delivery Partner's service levels fall below the standard in Section 10.2, Provider will notify Customer within 10 business days of becoming aware and replace that Delivery Partner within 90 days. Until then, Customer may exclude Delivery Partners under Section 3.4 of Appendix 1, without liability.
+**10.4 Credits.** Where Customer pays Fees for Delivery Partner delivery under a Service Order, Provider will pass through to Customer, pro rata, any service credits it receives from the Delivery Partner for failures affecting Customer traffic. Otherwise, credits Provider receives relate to its own account.
 
-**10.5 Credits.** Where Customer pays Fees for Delivery Partner delivery under a Service Order, Provider will pass through to Customer, pro rata, any service credits it receives from the Delivery Partner for failures affecting Customer traffic. Otherwise, credits Provider receives relate to its own account.
-
-**10.6 DNS.** DNS resolution is part of OpenCache, whichever DNS Provider Provider uses. A failure to resolve Customer hostnames counts toward Unavailable Intervals under Section 1.4 and is not excluded as a Third-Party Provider failure. Provider will keep DNS records for Customer hostnames at a time-to-live of no more than 60 seconds, allowing steering changes to take effect quickly.
+**10.5 DNS.** A failure to resolve Customer hostnames counts toward Unavailable Intervals under Section 1.4 and is not excluded as a Third-Party Provider failure. Provider will keep DNS records for Customer hostnames at a time-to-live of no more than 60 seconds.
